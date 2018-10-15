@@ -1,0 +1,118 @@
+<html>
+  <head>
+    <title>IpSpawn</title>
+    <script src="../style/bootstrap1.js" ></script>
+    <script src="../style/bootstrap2.js" ></script>
+    <script src="../style/bootstrap3.js" ></script>
+    <link rel="stylesheet" href="../style/bootstrap.css" >
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  </head>
+  <body>
+  <header>
+     <div class="navbar navbar-dark bg-dark shadow-sm">
+       <div class="container d-flex justify-content-between">
+         <a href="../../index.html" class="navbar-brand d-flex align-items-center"><strong>IpSpawn</strong></a>
+       </div>
+     </div>
+   </header>
+
+   <main role="main">
+
+       <center><div class="container">
+          <br><center><h3><strong>Boite a outils</strong></h3></center>
+           <a href="../view/outils.php" class="btn btn-success my-2">Boite a outils</a>
+           <a href="../view/serveur.php" class="btn btn-primary my-2">Gestion de serveur Debian 9</a>
+           <a href="../view/contact.php" class="btn btn-danger my-2">Contact</a>
+         </p>
+       </div></center>
+       <section class="jumbotron ">
+<?php
+  if ( isset($_GET['action'])){
+    if ($_GET["action"] === "plage"){
+      if ($_GET['status'] === "start"){
+        echo "<center><h3>Découpage de plages</h3>";
+        echo "Veuillez entrer le nombre de sous réseaux a former :<br>";
+        echo "<form action='redirection.php' method='GET'>";
+        echo "<input type='number' name='nb_networks' value=''><br>";
+        echo "<input type='hidden' name='action' value='plage'>";
+        echo "<button name='status' value='go'>Valider</button></center>";
+      }elseif($_GET['status'] === "go"){
+        if (isset($_GET['nb_networks'])){
+          echo "<center><h3>Découpage de plages<br></h3>";
+          echo "<form action='redirection.php' method='GET'>";
+          echo "L'addresse de départ :<br>";
+          echo "<input type='text' name='addr_network' value=''><br>";
+          echo "Le masque :<br>";
+          echo "<input type='text' name='mask_network' value=''><br><br>";
+          echo "<input type='hidden' name='nb_networks' value='".$_GET["nb_network"]."'>";
+          for ($i =  0; $i < $_GET['nb_networks'];$i++){
+            echo "Nom du réseau &#x200b &#x200b &#x200b";
+            echo "<input type='text' name='name_network'.$i.' value=''>";
+            echo "&#x200b &#x200b &#x200b Nombre d'hotes &#x200b &#x200b &#x200b";
+            echo "<input type='number' name='nb_hote'.$i.' value=''>";
+            echo "<br>";
+          }
+          echo "<input type='hidden' name='action' value='plage'><br>";
+          echo "<button name='status' value='end'>Valider</button>";
+          echo "</center>";
+        }
+      }elseif($_GET['status'] === "end"){
+        echo "<center><h2> Résultat Calcul de plage :</h2><br>";
+        echo "
+                Reseau : IpSpawn <br>
+                Nombre d'hotes : 5 <br>
+                Adresse de départ : 192.168.0.0<br>
+                Dernier hote : 192.168.0.254<br>
+                Addresse de Broadcast : 192.168.0.255<br></center>
+              ";
+      }
+    }elseif($_GET["action"] === "binaire"){
+      if ($_GET['status'] === "start"){
+        echo "<center><h3>Convertion binaire / decimal</h3>";
+        echo "Veuillez entrer la chaine de charactère binaire :<br>";
+        echo "<form action='redirection.php' method='GET'>";
+        echo "<input type='number' name='nb_binaire' value=''><br>";
+        echo "<input type='hidden' name='action' value='binaire'>";
+        echo "<button name='status' value='end'>Valider</button></center>";
+      }elseif($_GET['status'] === "end"){
+        echo "<center><h2> Résultat convertion binaire :</h2><br>";
+        echo "11111111 = 255 ";
+      }
+    }elseif($_GET['action'] === "services"){
+      echo "<center><h3>Installation des services</h3>";
+      echo "<button class='btn'>Télécharger le script</button>";
+      echo "<h5>Une fois le script télécharger faite un su et executez le avec ./nomduscript</h5>";
+      echo "<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>";
+    }elseif($_GET['action'] === "web"){
+      echo "<center><h3>Installation d'un serveur Web'</h3>";
+      echo "<button class='btn'>Télécharger le script</button>";
+      echo "<h5>Une fois le script télécharger faite un su et executez le avec ./nomduscript</h5>";
+      echo "<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>";
+    }elseif($_GET['action'] === "dns"){
+      echo "<center><h3>Installation d'un serveur Dns'</h3>";
+      echo "<button class='btn'>Télécharger le script</button>";
+      echo "<h5>Une fois le script télécharger faite un su et executez le avec ./nomduscript</h5>";
+      echo "<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>";
+    }elseif($_GET['action'] === "mail"){
+      echo "<center><h3>Installation d'un serveur mail'</h3>";
+      echo "<button class='btn'>Télécharger le script</button>";
+      echo "<h5>Une fois le script télécharger faite un su et executez le avec ./nomduscript</h5>";
+      echo "<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>";
+    }elseif($_GET['action'] === "user"){
+      echo "<center><h3>Gestion des utilisateurs</h3>";
+      echo "<button class='btn'>Télécharger le script</button>";
+      echo "<h5>Une fois le script télécharger faite un su et executez le avec ./nomduscript</h5>";
+      echo "<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>";
+    }
+  }else {
+    header("location:../index.php");
+  }
+?>
+</main>
+<footer class="text-muted">
+  <div class="container">
+    <center><p>Henry Fumey-Humbert . Joran Prigent . Robin Cuvillier . Rodney Nguengue . Guillaume Zisa</p></center>
+  </div>
+</footer>
+</body>
+</html>
