@@ -100,9 +100,30 @@
       echo "<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>";
     }elseif($_GET['action'] === "user"){
       echo "<center><h3>Gestion des utilisateurs</h3>";
-      echo "<button class='btn'>Télécharger le script</button>";
-      echo "<h5>Une fois le script télécharger faite un su et executez le avec ./nomduscript</h5>";
-      echo "<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>";
+      echo "<h5>Que voulez vous faire ?</h5><br>";
+      echo "<a class='btn btn-dark' href='../controller/redirection.php?action=addgroup&status=start'>Ajouter un groupe</a>";
+      echo "<a class='btn btn-dark' href='../controller/redirection.php?action=addprivilege&status=start'>Ajouter des privilèges a un groupe</a>";
+      echo "<a class='btn btn-dark' href='../controller/redirection.php?action=adduser&status=start'>Ajouter un utilisateur</a><br><br>";
+      echo "<a class='btn btn-dark' href='../controller/redirection.php?action=modgroup&status=start'>Modifier un groupe</a>";
+      echo "<a class='btn btn-dark' href='../controller/redirection.php?action=modprivilege&status=start'>Modifier les privilèges d'un groupe</a>";
+      echo "<a class='btn btn-dark' href='../controller/redirection.php?action=moduser&status=start'>Modifier un utilisateur</a><br><br>";
+      echo "<a class='btn btn-dark' href='../controller/redirection.php?action=delgroup&status=start'>Supprimer un groupe</a>";
+      echo "<a class='btn btn-dark' href='../controller/redirection.php?action=deluser&status=start'>Supprimer un utilisateur</a><br><br>";
+      echo "<a class='btn btn-dark' href='../controller/redirection.php?action=listgroup&status=start'>Lister les groupes et leurs droits</a>";
+    } elseif($_GET['action'] === "addgroup"){
+      if($_GET['status'] === "start"){
+        echo "<center><h3>Ajout d'un groupe'</h3><br>";
+        echo "<Nom du groupe : </h5>";
+        echo "<form action='../controller/redirection.php' method='GET'>";
+        echo "<input type='hidden' name='action' value='addgroup'>";
+        echo "<input type='text' name='group' =''>";
+        echo "<br><button class='btn btn-dark' name='status' value='end'>Continuer</button>";
+        echo "</form>";
+      }elseif($_GET['status'] === "end"){
+        echo "<center><h3>Génération du script (add_group_".$_GET['group'].".sh)</h3></center>";
+        echo "<center><h5>Il est conseiller de mettre vos script dans /root/scripts/ </br>Pour les executer vous devrez faire chmod +x add_group_".$_GET['group'].".sh <br>puis ./add_group_".$_GET['group'].".sh  .<br></center>";
+        require('../controller/gen_add_group.php');
+      }
     }
   }else {
     header("location:../index.php");
