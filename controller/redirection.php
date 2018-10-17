@@ -83,10 +83,9 @@
       echo "<h5>Une fois le script télécharger faite un su et executez le avec ./nomduscript</h5>";
       include("../controller/gen_services.php");
     }elseif($_GET['action'] === "web"){
-      echo "<center><h3>Installation d'un serveur Web'</h3>";
-      echo "<button class='btn'>Télécharger le script</button>";
+      echo "<center><h3>Installation d'un serveur Web</h3>";
       echo "<h5>Une fois le script télécharger faite un su et executez le avec ./nomduscript</h5>";
-      echo "<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>";
+      include("../controller/gen_server_web.php");
     }elseif($_GET['action'] === "dns"){
       echo "<center><h3>Installation d'un serveur Dns'</h3>";
       echo "<button class='btn'>Télécharger le script</button>";
