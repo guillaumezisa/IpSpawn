@@ -63,7 +63,7 @@
             echo "<br>";
           }
           echo "<input type='hidden' name='action' value='plage'><br>";
-          echo "<button name='status' value='end'>Valider</button>";
+          echo "<button class='btn btn-dark' name='status' value='end'>Valider</button>";
           echo "</center>";
         }
       }elseif($_GET['status'] === "end"){
@@ -84,7 +84,7 @@
         echo "<form action='redirection.php' method='GET'>";
         echo "<input type='number' name='nb_binaire' value=''><br>";
         echo "<input type='hidden' name='action' value='binaire'>";
-        echo "<button name='status' value='end'>Valider</button></center>";
+        echo "<button class='btn btn-dark' name='status' value='end'>Valider</button></center>";
       }elseif($_GET['status'] === "end"){
         echo "<center><h2> Résultat convertion binaire :</h2><br>";
         echo "11111111 = 255 ";
@@ -102,13 +102,13 @@
     }elseif($_GET['action'] === "dns"){
       echo $serveur;
       echo "<center><h3>Installation d'un serveur Dns'</h3>";
-      echo "<button class='btn'>Télécharger le script</button>";
+      echo "<button class='btn btn-dark'>Télécharger le script</button>";
       echo "<h5>Une fois le script télécharger faite un su et executez le avec ./nomduscript</h5>";
       echo "<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>";
     }elseif($_GET['action'] === "mail"){
       echo $serveur;
       echo "<center><h3>Installation d'un serveur mail'</h3>";
-      echo "<button class='btn'>Télécharger le script</button>";
+      echo "<button class='btn btn-dark'>Télécharger le script</button>";
       echo "<h5>Une fois le script télécharger faite un su et executez le avec ./nomduscript</h5>";
       echo "<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>";
     }elseif($_GET['action'] === "user"){
