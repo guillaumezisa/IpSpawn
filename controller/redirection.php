@@ -12,23 +12,33 @@
      <div class="navbar navbar-dark bg-dark shadow-sm">
        <div class="container d-flex justify-content-between">
          <a href="../../index.html" class="navbar-brand d-flex align-items-center"><strong>IpSpawn</strong></a>
+         <a href="../view/contact.php" class="navbar-brand d-flex align-items-center"><strong>Contacts</strong></a>
        </div>
      </div>
    </header>
 
    <main role="main">
-
-       <center><div class="container">
+<?php
+       $outil="<center><div class='container'>
           <br><center><h3><strong>Boite a outils</strong></h3></center>
-           <a href="../view/outils.php" class="btn btn-success my-2">Boite a outils</a>
-           <a href="../view/serveur.php" class="btn btn-primary my-2">Gestion de serveur Debian 9</a>
-           <a href="../view/contact.php" class="btn btn-danger my-2">Contact</a>
+           <a href='../view/outils.php' class='btn btn-success my-2'>Boite a outils</a>
+           <a href='../view/serveur.php' class='btn btn-primary my-2'>Gestion de serveur(s) Debian 9</a>
+           <a href='../view/contact.php' class='btn btn-danger my-2'>Guide d'utilisation</a>
          </p>
        </div></center>
-       <section class="jumbotron ">
-<?php
+       <section class='jumbotron'>";
+       $serveur="<center><div class='container'>
+          <br><center><h3><strong>Gestion de Serveur</strong></h3></center>
+           <a href='../view/outils.php' class='btn btn-success my-2'>Boite a outils</a>
+           <a href='../view/serveur.php' class='btn btn-primary my-2'>Gestion de serveur(s) Debian 9</a>
+           <a href='../view/contact.php' class='btn btn-danger my-2'>Guide d'utilisation</a>
+         </p>
+       </div></center>
+       <section class='jumbotron'>";
+
   if ( isset($_GET['action'])){
     if ($_GET["action"] === "plage"){
+      echo $outil;
       if ($_GET['status'] === "start"){
         echo "<center><h3>Découpage de plages</h3>";
         echo "Veuillez entrer le nombre de sous réseaux a former :<br>";
@@ -67,6 +77,7 @@
               ";
       }
     }elseif($_GET["action"] === "binaire"){
+      echo $outil;
       if ($_GET['status'] === "start"){
         echo "<center><h3>Convertion binaire / decimal</h3>";
         echo "Veuillez entrer la chaine de charactère binaire :<br>";
@@ -79,24 +90,29 @@
         echo "11111111 = 255 ";
       }
     }elseif($_GET['action'] === "services"){
+      echo $serveur;
       echo "<center><h3>Installation des services</h3>";
       echo "<h5>Une fois le script télécharger faite un su et executez le avec ./nomduscript</h5>";
       include("../controller/gen_services.php");
     }elseif($_GET['action'] === "web"){
+      echo $serveur;
       echo "<center><h3>Installation d'un serveur Web</h3>";
       echo "<h5>Une fois le script télécharger faite un su et executez le avec ./nomduscript</h5>";
       include("../controller/gen_server_web.php");
     }elseif($_GET['action'] === "dns"){
+      echo $serveur;
       echo "<center><h3>Installation d'un serveur Dns'</h3>";
       echo "<button class='btn'>Télécharger le script</button>";
       echo "<h5>Une fois le script télécharger faite un su et executez le avec ./nomduscript</h5>";
       echo "<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>";
     }elseif($_GET['action'] === "mail"){
+      echo $serveur;
       echo "<center><h3>Installation d'un serveur mail'</h3>";
       echo "<button class='btn'>Télécharger le script</button>";
       echo "<h5>Une fois le script télécharger faite un su et executez le avec ./nomduscript</h5>";
       echo "<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>";
     }elseif($_GET['action'] === "user"){
+      echo $serveur;
       echo "<center><h3>Gestion des utilisateurs</h3>";
       echo "<h5>Que voulez vous faire ?</h5><br>";
       echo "<a class='btn btn-dark' href='../controller/redirection.php?action=addgroup&status=start'>Ajouter un groupe</a>";
@@ -109,6 +125,7 @@
       echo "<a class='btn btn-dark' href='../controller/redirection.php?action=deluser&status=start'>Supprimer un utilisateur</a><br><br>";
       echo "<a class='btn btn-dark' href='../controller/redirection.php?action=listgroup&status=start'>Lister les groupes et leurs droits</a>";
     } elseif($_GET['action'] === "addgroup"){
+      echo $serveur;
       if($_GET['status'] === "start"){
         echo "<center><h3>Ajout d'un groupe'</h3><br>";
         echo "<Nom du groupe : </h5>";
@@ -123,10 +140,12 @@
         require('../controller/gen_add_group.php');
       }
     } elseif($_GET['action'] === "addprivilege"){
+      echo $serveur;
       if($_GET['status'] === "start"){
 
       }
     }elseif($_GET['action'] === "adduser"){
+      echo $serveur;
       if($_GET['status'] === "start"){
         echo "<center><h3>Ajout d'un utilisateur</h3><br>";
         echo "<h5>Nom de l'utilisateur : </h5>";

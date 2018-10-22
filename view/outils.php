@@ -12,6 +12,7 @@
      <div class="navbar navbar-dark bg-dark shadow-sm">
        <div class="container d-flex justify-content-between">
          <a href="../index.html" class="navbar-brand d-flex align-items-center"><strong>IpSpawn</strong></a>
+         <a href="../view/contact.php" class="navbar-brand d-flex align-items-center"><strong>Contacts</strong></a>
        </div>
      </div>
    </header>
@@ -21,8 +22,8 @@
        <center><div class="container">
           <br><center><h3><strong>Boite a outils</strong></h3></center>
            <a href="outils.php" class="btn btn-success my-2">Boite a outils</a>
-           <a href="serveur.php" class="btn btn-primary my-2">Gestion de serveur Debian 9</a>
-           <a href="contact.php" class="btn btn-danger my-2">Contact</a>
+           <a href="serveur.php" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
+           <a href="guide.php" class="btn btn-danger my-2">Guide d'utilisation</a>
          </p>
        </div></center>
        <section class="jumbotron ">
