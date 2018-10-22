@@ -45,7 +45,7 @@
         echo "<form action='redirection.php' method='GET'>";
         echo "<input type='number' name='nb_networks' value=''><br>";
         echo "<input type='hidden' name='action' value='plage'>";
-        echo "<button name='status' value='go'>Valider</button></center>";
+        echo "<button class='btn btn-dark' name='status' value='go'>Valider</button></center>";
       }elseif($_GET['status'] === "go"){
         if (isset($_GET['nb_networks'])){
           echo "<center><h3>Découpage de plages<br></h3>";
@@ -72,8 +72,8 @@
                 Reseau : IpSpawn <br>
                 Nombre d'hotes : 5 <br>
                 Adresse de départ : 192.168.0.0<br>
-                Dernier hote : 192.168.0.254<br>
-                Addresse de Broadcast : 192.168.0.255<br></center>
+                Dernier hote : 192.168.0.6<br>
+                Addresse de Broadcast : 192.168.0.7<br></center>
               ";
       }
     }elseif($_GET["action"] === "binaire"){
