@@ -1,24 +1,8 @@
-<html>
-  <head>
-    <title>IpSpawn</title>
-    <script src="../style/bootstrap1.js" ></script>
-    <script src="../style/bootstrap2.js" ></script>
-    <script src="../style/bootstrap3.js" ></script>
-    <link rel="stylesheet" href="../style/bootstrap.css" >
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  </head>
-  <body>
-  <header>
-     <div class="navbar navbar-dark bg-dark shadow-sm">
-       <div class="container d-flex justify-content-between">
-         <a href="../index.html" class="navbar-brand d-flex align-items-center"><strong>IpSpawn</strong></a>
-         <a href="../view/contact.php" class="navbar-brand d-flex align-items-center"><strong>Contacts</strong></a>
-       </div>
-     </div>
-   </header>
+<?php
+include("../view/header_section.php");
+?>
 
    <main role="main">
-
        <center><div class="container">
           <br><center><h3><strong>Gestion de Serveur(s)</strong></h3></center>
            <a href="outils.php" class="btn btn-success my-2">Boite a outils</a>
