@@ -86,11 +86,6 @@
         echo "<center><h2> Résultat convertion binaire :</h2><br>";
         echo "11111111 = 255 ";
       }
-    }elseif($_GET['action'] === "services"){
-      echo $serveur;
-      echo "<center><h3>Installation des services</h3>";
-      echo "<h5>Une fois le script télécharger faite un su et executez le avec ./nomduscript</h5>";
-      include("../controller/gen_services.php");
     }elseif($_GET['action'] === "web"){
       echo $serveur;
       echo "<center><h3>Installation d'un serveur Web</h3>";
@@ -98,7 +93,7 @@
       include("../controller/gen_server_web.php");
     }elseif($_GET['action'] === "dns"){
       echo $serveur;
-      echo "<center><h3>Installation d'un serveur Dns'</h3>";
+      echo "<center><h3>Installation Dns'</h3>";
       echo "<button class='btn btn-dark'>Télécharger le script</button>";
       echo "<h5>Une fois le script télécharger faite un su et executez le avec ./nomduscript</h5>";
       echo "<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>ici un script !<br>";

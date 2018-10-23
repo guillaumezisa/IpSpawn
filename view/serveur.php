@@ -12,14 +12,11 @@ include("../view/header_section.php");
        </div></center>
        <section class="jumbotron ">
          <div class="ml-2">
-           <strong><h4>Installation des services de départ :</h4></strong>
-           Installation des services de base et mise a jour du systeme.<br>
-         <a class="btn btn-dark" href="../controller/redirection.php?action=services&status=start">Services de départ</a><br><br>
          <strong><h4>Installation d'un serveur web:</h4></strong>
          Installation de la suite lamp ( Linux , Apache2 , Mariadb , Php ).<br>
           <a class="btn btn-dark" href="../controller/redirection.php?action=web&status=start">Serveur Web</a><br><br>
-          <strong><h4>Installation d'un serveur dns:</h4></strong>
-          Installation d'un serveur dns ( Bind9 , Dnsutils ) .<br>
+          <strong><h4>Installation dns:</h4></strong>
+          Installation dns ( Bind9 , Dnsutils ) .<br>
            <a class="btn btn-dark" href="../controller/redirection.php?action=dns&status=start">Serveur Dns</a><br><br>
            <strong><h4>Installation d'un serveur mail:</h4></strong>
            Installation d'un serveur de mail ( PostFix ).<br>
