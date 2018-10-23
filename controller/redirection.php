@@ -23,12 +23,5 @@ include('../view/header.php');
   }else {
     header("location:../index.php");
   }
+  include('../view/footer.php');
 ?>
-</main>
-<footer class="text-muted">
-  <div class="container">
-    <center><p>Henry Fumey-Humbert . Joran Prigent . Robin Cuvillier . Rodney Nguengue . Guillaume Zisa</p></center>
-  </div>
-</footer>
-</body>
-</html>
