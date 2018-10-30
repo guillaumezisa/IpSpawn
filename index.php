@@ -1,5 +1,6 @@
 <?php
-include("view/header_index.php");
+  include("view/header_index.php");
+  include("controller/collecte_log.php");
 ?>
    <main role="main">
      <section class="jumbotron text-center">
