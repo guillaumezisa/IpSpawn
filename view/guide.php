@@ -1,6 +1,3 @@
-<?php
-  include("../view/header_section.php");
-?>
    <main role="main">
 
        <center><div class="container">

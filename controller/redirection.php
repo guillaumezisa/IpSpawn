@@ -1,6 +1,14 @@
 <?php
 include('../view/header.php');
-  if ( isset($_GET['action'])){
+  if ( isset($_GET['enter'])){
+    if ($_GET["enter"] === "contact"){
+      include('../view/contact.php');
+    }elseif($_GET["enter"] === "outils"){
+      include('../view/outils.php');
+    }elseif($_GET["enter"] === "serveur"){
+      include('../view/serveur.php');
+    }
+  }elseif ( isset($_GET['action'])){
     if ($_GET["action"] === "plage"){
       include('../view/outil_plage.php');
     }elseif($_GET["action"] === "binaire"){
