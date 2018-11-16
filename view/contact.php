@@ -3,7 +3,7 @@
        <center><div class="container">
           <br><center><h3><strong>Contacts</strong></h3></center>
            <a href="../controller/redirection.php?enter=outils" class="btn btn-success my-2">Boite a outils</a>
-           <a href="../controller/redirection.php?enter=serveur" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
+           <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
          </p>
        </div></center>
        <section class="jumbotron ">

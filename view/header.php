@@ -25,16 +25,16 @@
 <?php
 $outil="<center><div class='container'>
    <br><center><h3><strong>Boite a outils</strong></h3></center>
-    <a href='../view/outils.php' class='btn btn-success my-2'>Boite a outils</a>
-    <a href='../view/serveur.php' class='btn btn-primary my-2'>Gestion de serveur(s) Debian 9</a>
+    <a href='../view/tools.php' class='btn btn-success my-2'>Boite a outils</a>
+    <a href='../view/servers.php' class='btn btn-primary my-2'>Gestion de serveur(s) Debian 9</a>
 
   </p>
 </div></center>
 <section class='jumbotron'>";
 $serveur="<center><div class='container'>
    <br><center><h3><strong>Gestion de Serveur</strong></h3></center>
-    <a href='../view/outils.php' class='btn btn-success my-2'>Boite a outils</a>
-    <a href='../view/serveur.php' class='btn btn-primary my-2'>Gestion de serveur(s) Debian 9</a>
+    <a href='../view/tools.php' class='btn btn-success my-2'>Boite a outils</a>
+    <a href='../view/servers.php' class='btn btn-primary my-2'>Gestion de serveur(s) Debian 9</a>
 
   </p>
 </div></center>
