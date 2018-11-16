@@ -1,26 +1,11 @@
 #!/bin/bash
 
+source begin.sh
 
+begin
 
-statut=$('whoami')
-
-
-# Vérification des droits de l'éxécuteur du script
-
-if [ $statut != root ]
+if [ $statut = root ]
 then
-	echo ""
-	echo "Vous n'avez pas les droits n'écéssaires, contactez votre administrateur .."
-	echo ""
-	exit
-
-elif [ $statut = root ]
-then
-
-# Mise à jour
-
-apt-get upgrade
-apt-get update
 
 # Lancement de l'installation des différents paquets
 
@@ -32,9 +17,9 @@ apt-get install -y mariadb-server
 apt-get install -y postfix-mysql
 apt-get install -y telnet
 apt-get install -y mailutils
-echo ""
+echo""
 echo "FIN"
-exit
+echo ""
 fi
 
 # Fin du programme
