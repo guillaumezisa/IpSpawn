@@ -19,7 +19,19 @@ include('../view/header.php');
       include('../view/server_dns.php');
     }elseif($_GET['action'] === "mail"){
       include('../view/server_mail.php');
-    }elseif($_GET['action'] === "user"){
+    }elseif($_GET['action'] === "user"){ # UTILISATEURS
+      if (!isset($_GET['under_action'])){
+        include("../view/server_user.php");
+      } else {
+        if ($_GET['under_action'] === "add"){
+          include("../view/server_user_add.php");
+        }elseif ($_GET['under_action'] === "delete"){
+          include("../view/server_user_delete.php");
+        }elseif ($_GET['under_action'] === "modify"){
+          include("../view/server_user_modify.php");
+        }
+      }
+    }elseif($_GET['action'] === "server_user"){
       include("../view/server_user.php");
     } elseif($_GET['action'] === "group"){
       include('../view/server_group.php');

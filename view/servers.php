@@ -9,16 +9,16 @@
          <div class="ml-2">
          <strong><h4>Installation d'un serveur web:</h4></strong>
          Installation de la suite lamp ( Linux , Apache2 , Mariadb , Php ).<br>
-          <a class="btn btn-dark" href="../controller/redirection.php?action=web&status=start">Serveur Web</a><br><br>
+          <a class="btn btn-dark" href="../controller/redirection.php?action=server_web">Serveur Web</a><br><br>
           <strong><h4>Installation dns:</h4></strong>
           Installation dns ( Bind9 , Dnsutils ) .<br>
-           <a class="btn btn-dark" href="../controller/redirection.php?action=dns&status=start">Serveur Dns</a><br><br>
+           <a class="btn btn-dark" href="../controller/redirection.php?action=server_dns">Serveur Dns</a><br><br>
            <strong><h4>Installation d'un serveur mail:</h4></strong>
            Installation d'un serveur de mail ( PostFix ).<br>
-           <a class="btn btn-dark" href="../controller/redirection.php?action=mail&status=start">Serveur Mail</a><br><br>
+           <a class="btn btn-dark" href="../controller/redirection.php?action=server_mail">Serveur Mail</a><br><br>
            <strong><h4>Gestion des utilisateurs:</h4></strong>
            Installation du service sudo, création et modification de groupes et d'utilisateurs.<br> Ajout et modification de privileges .<br>
-           <a class="btn btn-dark" href="../controller/redirection.php?action=user&status=start">Gestion des utilisateurs</a><br><br>
+           <a class="btn btn-dark" href="../controller/redirection.php?action=server_user">Gestion des utilisateurs</a><br><br>
          </div>
        </section>
    </main>
