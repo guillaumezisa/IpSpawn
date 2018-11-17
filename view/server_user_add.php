@@ -13,6 +13,7 @@
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un utilisateur</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier utilisateur</button><br><br>
+        <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
 
     </div></center>
     <center><button type="submit" class="btn btn-dark" id="choice" >Valider</button></center><br><br>
