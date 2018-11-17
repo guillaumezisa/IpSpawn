@@ -9,6 +9,9 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   </head>
   <body>
+    <?php
+        session_start();
+    ?>
   <header>
      <div class="navbar navbar-dark bg-dark shadow-sm">
        <div class="container">
