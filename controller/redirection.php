@@ -19,28 +19,31 @@ include('../view/header.php');
       include('../view/server_dns.php');
     }elseif($_GET['action'] === "mail"){
       include('../view/server_mail.php');
-    }elseif($_GET['action'] === "user"){                                        # UTILISATEURS
+#-------------------------------------------------------------------------------
+# UTILISATEURS
+#-------------------------------------------------------------------------------
+    }elseif($_GET['action'] === "user"){
       if (isset($_GET['under_action'])){
+        //$under_action_value=['add','add_gen','del','del_gen','mod','mod_pass','mod_pass','mod_pass_gen','mod_name','mod_name_gen']
+        //$under_action_path=['../view/server_user_add.php','../controller/server_user_add.php','../view/server_user_delete.php','../view/server_user_modify.php','../view/server_user_modify_name.php','../view/server_user_modify_pass.php']
         if ($_GET['under_action'] === "add"){
           include("../view/server_user_add.php");
         }elseif ($_GET['under_action'] === "add_gen"){
           include("../controller/server_user_add.php");
-
         }elseif ($_GET['under_action'] === "del"){
           include("../view/server_user_delete.php");
         }elseif ($_GET['under_action'] === "del_gen"){
           include("../controller/server_user_delete.php");
-
         }elseif ($_GET['under_action'] === "mod"){
           include("../view/server_user_modify.php");
-        }elseif ($_GET['under_action'] === "mod_mdp"){
-          include("../view/server_user_modify.php");
-        }elseif ($_GET['under_action'] === "mod_mdp_gen"){
-          include("../controller/server_user_modify.php");
+        }elseif ($_GET['under_action'] === "mod_pass"){
+          include("../view/server_user_modify_pass.php");
+        }elseif ($_GET['under_action'] === "mod_pass_gen"){
+          include("../controller/server_user_modify_pass.php");
         }elseif ($_GET['under_action'] === "mod_name"){
-          include("../view/server_user_modify.php");
+          include("../view/server_user_modify_name.php");
         }elseif ($_GET['under_action'] === "mod_name_gen"){
-          include("../controller/server_user_modify.php");
+          include("../controller/server_user_modify_name.php");
         }
       } else {
         include("../view/server_user.php");

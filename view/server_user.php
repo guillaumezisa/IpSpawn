@@ -11,9 +11,9 @@
       <strong><h4>Ajout d'utilisateur(s)</h4></strong>
       <a class="btn btn-dark" href="../controller/redirection.php?action=user&under_action=add">Ajouter</a><br><br>
       <strong><h4>Suppression d'utilisateur(s)</h4></strong>
-      <a class="btn btn-dark" href="../controller/redirection.php?action=user&under_action=delete">Supprimer</a><br><br>
+      <a class="btn btn-dark" href="../controller/redirection.php?action=user&under_action=del">Supprimer</a><br><br>
       <strong><h4>Modification d'un utilisateur</h4></strong>
-      <a class="btn btn-dark" href="../controller/redirection.php?action=user&under_action=modify">Modifier</a><br><br>
+      <a class="btn btn-dark" href="../controller/redirection.php?action=user&under_action=mod">Modifier</a><br><br>
     </div>/</center>
     </section>
 </main>
