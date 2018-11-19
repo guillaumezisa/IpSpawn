@@ -1,5 +1,8 @@
 <?php
 include('../view/header.php');
+#-------------------------------------------------------------------------------
+# REDIRECTION VERS LES ACTIONS PRINCIPALES
+#-------------------------------------------------------------------------------
   if ( isset($_GET['enter'])){
     if ($_GET["enter"] === "contact"){
       include('../view/contact.php');
@@ -9,39 +12,54 @@ include('../view/header.php');
       include('../view/servers.php');
     }
   }elseif ( isset($_GET['action'])){
+#-------------------------------------------------------------------------------
+#   PLAGE IP
+#-------------------------------------------------------------------------------
     if ($_GET["action"] === "ip_range"){
       include('../view/tool_ip_range.php');
+#-------------------------------------------------------------------------------
+#   CONVERTISSEUR BINAIRE
+#-------------------------------------------------------------------------------
     }elseif($_GET["action"] === "binary_converter"){
       include('../view/tool_binary_converter.php');
+#-------------------------------------------------------------------------------
+#   INSTALLATION SERVEUR WEB
+#-------------------------------------------------------------------------------
     }elseif($_GET['action'] === "server_web"){
       include('../view/server_web.php');
+#-------------------------------------------------------------------------------
+#   INSTALLATION SERVEUR DNS
+#-------------------------------------------------------------------------------
     }elseif($_GET['action'] === "server_dns"){
       include('../view/server_dns.php');
+#-------------------------------------------------------------------------------
+#   INSTALLATION SERVEUR MAIL
+#-------------------------------------------------------------------------------
     }elseif($_GET['action'] === "mail"){
       include('../view/server_mail.php');
 #-------------------------------------------------------------------------------
-# UTILISATEURS
+#   GESTION DES UTILISATEURS
 #-------------------------------------------------------------------------------
     }elseif($_GET['action'] === "user"){
       if (isset($_GET['under_action'])){
-        #CREATION UTILISATEURS
+        #CREATION UTILISATEURS--------------------------------------------------
         if ($_GET['under_action'] === "add"){
           include("../view/server_user_add.php");
         }elseif ($_GET['under_action'] === "add_gen"){
           include("../controller/server_user_add.php");
-        #SUPPRESSION UTILISATEURS
+        #SUPPRESSION UTILISATEURS-----------------------------------------------
         }elseif ($_GET['under_action'] === "del"){
           include("../view/server_user_delete.php");
         }elseif ($_GET['under_action'] === "del_gen"){
           include("../controller/server_user_delete.php");
-        #MODIFICATION UTILISATEURS ( NOM,MDP)
+        #MODIFICATION UTILISATEURS ( NOM,MDP)-----------------------------------
         }elseif ($_GET['under_action'] === "mod"){
           include("../view/server_user_modify.php");
         }elseif ($_GET['under_action'] === "mod_pass"){
           include("../view/server_user_modify_pass.php");
         }elseif ($_GET['under_action'] === "mod_pass_gen"){
           include("../controller/server_user_modify_pass.php");
-        #MODIFICATION
+        #MODIFICATION-----------------------------------------------------------
         }elseif ($_GET['under_action'] === "mod_name"){
           include("../view/server_user_modify_name.php");
         }elseif ($_GET['under_action'] === "mod_name_gen"){
@@ -50,6 +68,9 @@ include('../view/header.php');
       } else {
         include("../view/server_user.php");
       }
+#-------------------------------------------------------------------------------
+# GROUPES
+#-------------------------------------------------------------------------------
     } elseif($_GET['action'] === "group"){
       if (isset($_GET['under_action'])){
         #CREATION DE GROUPES
