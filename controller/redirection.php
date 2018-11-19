@@ -24,22 +24,24 @@ include('../view/header.php');
 #-------------------------------------------------------------------------------
     }elseif($_GET['action'] === "user"){
       if (isset($_GET['under_action'])){
-        //$under_action_value=['add','add_gen','del','del_gen','mod','mod_pass','mod_pass','mod_pass_gen','mod_name','mod_name_gen']
-        //$under_action_path=['../view/server_user_add.php','../controller/server_user_add.php','../view/server_user_delete.php','../view/server_user_modify.php','../view/server_user_modify_name.php','../view/server_user_modify_pass.php']
+        #CREATION UTILISATEURS
         if ($_GET['under_action'] === "add"){
           include("../view/server_user_add.php");
         }elseif ($_GET['under_action'] === "add_gen"){
           include("../controller/server_user_add.php");
+        #SUPPRESSION UTILISATEURS
         }elseif ($_GET['under_action'] === "del"){
           include("../view/server_user_delete.php");
         }elseif ($_GET['under_action'] === "del_gen"){
           include("../controller/server_user_delete.php");
+        #MODIFICATION UTILISATEURS ( NOM,MDP)
         }elseif ($_GET['under_action'] === "mod"){
           include("../view/server_user_modify.php");
         }elseif ($_GET['under_action'] === "mod_pass"){
           include("../view/server_user_modify_pass.php");
         }elseif ($_GET['under_action'] === "mod_pass_gen"){
           include("../controller/server_user_modify_pass.php");
+        #MODIFICATION
         }elseif ($_GET['under_action'] === "mod_name"){
           include("../view/server_user_modify_name.php");
         }elseif ($_GET['under_action'] === "mod_name_gen"){
@@ -48,12 +50,40 @@ include('../view/header.php');
       } else {
         include("../view/server_user.php");
       }
-    }elseif($_GET['action'] === "server_user"){
-      include("../view/server_user.php");
     } elseif($_GET['action'] === "group"){
-      include('../view/server_group.php');
-    } elseif($_GET['action'] === "privilege"){
-      include('../view/server_privilege.php');
+      if (isset($_GET['under_action'])){
+        #CREATION DE GROUPES
+        if ($_GET['under_action'] === "add"){
+          include("../view/server_group_add.php");
+        }elseif ($_GET['under_action'] === "add_user"){
+          include("../controller/server_group_add_user.php");
+        }elseif ($_GET['under_action'] === "add_gen"){
+          include("../controller/server_group_add.php");
+        #SUPPRESSION DE GROUPES
+        }elseif ($_GET['under_action'] === "del"){
+          include("../view/server_group_delete.php");
+        }elseif ($_GET['under_action'] === "del_gen"){
+          include("../controller/server_group_delete.php");
+        #AJOUT DE DROITS
+        }elseif ($_GET['under_action'] === "add_right"){
+          include("../view/server_group_add_right.php");
+        }elseif ($_GET['under_action'] === "add_right_gen"){
+          include("../controller/server_group_add_right.php");
+        #MODIFICATION
+        }elseif ($_GET['under_action'] === "mod_name"){
+          include("../view/server_group_modify_name.php");
+        }elseif ($_GET['under_action'] === "mod_name_gen"){
+          include("../controller/server_group_modify_name.php");
+        }elseif ($_GET['under_action'] === "mod_reset"){
+          include("../view/server_reset.php");
+        }elseif ($_GET['under_action'] === "mod_reset_gen"){
+          include("../controller/server_group_reset.php");
+        }
+      } else {
+        include('../view/server_group.php');
+      }
+    } else {
+      header("location:../index.php");
     }
   }else {
     header("location:../index.php");

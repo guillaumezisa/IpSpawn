@@ -18,7 +18,7 @@
            <a class="btn btn-dark" href="../controller/redirection.php?action=server_mail">Serveur Mail</a><br><br>
            <strong><h4>Gestion des utilisateurs:</h4></strong>
            Installation du service sudo, création et modification de groupes et d'utilisateurs.<br> Ajout et modification de privileges .<br>
-           <a class="btn btn-dark" href="../controller/redirection.php?action=server_user">Gestion des utilisateurs</a><br><br>
+           <a class="btn btn-dark" href="../controller/redirection.php?action=user">Gestion des utilisateurs</a><br><br>
          </div>
        </section>
    </main>
