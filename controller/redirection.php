@@ -25,10 +25,22 @@ include('../view/header.php');
           include("../view/server_user_add.php");
         }elseif ($_GET['under_action'] === "add_gen"){
           include("../controller/server_user_add.php");
-        }elseif ($_GET['under_action'] === "delete"){
+
+        }elseif ($_GET['under_action'] === "del"){
           include("../view/server_user_delete.php");
-        }elseif ($_GET['under_action'] === "modify"){
+        }elseif ($_GET['under_action'] === "del_gen"){
+          include("../controller/server_user_delete.php");
+
+        }elseif ($_GET['under_action'] === "mod"){
           include("../view/server_user_modify.php");
+        }elseif ($_GET['under_action'] === "mod_mdp"){
+          include("../view/server_user_modify.php");
+        }elseif ($_GET['under_action'] === "mod_mdp_gen"){
+          include("../controller/server_user_modify.php");
+        }elseif ($_GET['under_action'] === "mod_name"){
+          include("../view/server_user_modify.php");
+        }elseif ($_GET['under_action'] === "mod_name_gen"){
+          include("../controller/server_user_modify.php");
         }
       } else {
         include("../view/server_user.php");
