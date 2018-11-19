@@ -17,8 +17,11 @@
            Installation d'un serveur de mail ( PostFix ).<br>
            <a class="btn btn-dark" href="../controller/redirection.php?action=server_mail">Serveur Mail</a><br><br>
            <strong><h4>Gestion des utilisateurs:</h4></strong>
-           Installation du service sudo, création et modification de groupes et d'utilisateurs.<br> Ajout et modification de privileges .<br>
-           <a class="btn btn-dark" href="../controller/redirection.php?action=user">Gestion des utilisateurs</a><br><br>
+            Ajouter & supprimer des utilisateurs, modification de nom ou de mot de passe d'utilisateurs .<br>
+            <a class="btn btn-dark" href="../controller/redirection.php?action=user">Gestion des utilisateurs</a><br><br>
+           <strong><h4>Gestion des groupes:</h4></strong>
+           Installation du service sudo, création et modification de groupes d'utilisateurs.<br> Gestion de privileges.<br>
+           <a class="btn btn-dark" href="../controller/redirection.php?action=group">Gestion des groupes</a><br><br>
          </div>
        </section>
    </main>

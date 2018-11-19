@@ -40,13 +40,9 @@
     var text_a = document.createTextNode(' Nouveau nom d\'utilisateur : ')
     input_q.type = "text";
     input_q.name ="username1[]";
-    //input_q.setAttribute("class","form-control");
-    //input_q.style.textAlign ="center";
     input_q.required = true;
     input_a.type = "text";
     input_a.name ="username2[]";
-    //input_a.setAttribute("class","form-control");
-    //input_a.style.textAlign ="center";
     input_a.pattern = "^[\(\)a-zA-Z0-9,-_ ]{0,}$";
     input_a.required = true;
     var parentDiv = document.getElementById("new").parentNode;

@@ -40,13 +40,9 @@
     var text_a = document.createTextNode(' Mot de passe : ')
     input_q.type = "text";
     input_q.name ="username[]";
-    //input_q.setAttribute("class","form-control");
-    //input_q.style.textAlign ="center";
     input_q.required = true;
     input_a.type = "password";
     input_a.name ="password[]";
-    //input_a.setAttribute("class","form-control");
-    //input_a.style.textAlign ="center";
     input_a.pattern = "^[\(\)a-zA-Z0-9,-_ ]{0,}$";
     input_a.required = true;
     var parentDiv = document.getElementById("new").parentNode;

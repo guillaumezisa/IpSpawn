@@ -69,7 +69,7 @@ include('../view/header.php');
         include("../view/server_user.php");
       }
 #-------------------------------------------------------------------------------
-# GROUPES
+#   GROUPES
 #-------------------------------------------------------------------------------
     } elseif($_GET['action'] === "group"){
       if (isset($_GET['under_action'])){
