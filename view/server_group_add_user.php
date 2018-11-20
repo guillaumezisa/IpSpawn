@@ -1,6 +1,6 @@
 <main role="main">
     <center><div class="container">
-       <br><center><h3><strong>Suppression d'utilisateur(s)</strong></h3></center>
+       <br><center><h3><strong>Ajout d'utilisateur(s) au(x) groupe(s)</strong></h3></center>
        <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
        <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
       </p>
@@ -8,8 +8,8 @@
     <section class="jumbotron ">
       <div class="ml-2"><center>
       <form action="../controller/redirection.php" method="GET">
-        <input type="hidden" name="action" value="user">
-        <input type="hidden" name="under_action" value="add_gen">
+        <input type="hidden" name="action" value="group">
+        <input type="hidden" name="under_action" value="add_user_gen">
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un utilisateur</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier utilisateur</button><br><br>
@@ -33,11 +33,16 @@
     var div = document.createElement('div');
     div.id = count;
     div.setAttribute('class','allDivs');
+    var input_q = document.createElement('input');
     var input_a = document.createElement('input');
     var br = document.createElement('br');
-    var text_a = document.createTextNode(' Mot de passe : ')
-    input_a.type = "username";
-    input_a.name ="text[]";
+    var text_q = document.createTextNode(' Nom d\'utilisateur : ');
+    var text_a = document.createTextNode(' Nom du groupe : ')
+    input_q.type = "text";
+    input_q.name ="username[]";
+    input_q.required = true;
+    input_a.type = "text";
+    input_a.name ="groupname[]";
     input_a.pattern = "^[\(\)a-zA-Z0-9,-_ ]{0,}$";
     input_a.required = true;
     var parentDiv = document.getElementById("new").parentNode;

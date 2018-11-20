@@ -1,4 +1,3 @@
-
 <main role="main">
     <center><div class="container">
        <br><center><h3><strong>Modification de mot(s) de passe d'utilisateur(s)</strong></h3></center>
@@ -12,7 +11,7 @@
 //GENERATION DU SCRIPT
 //OPTIONS D'AUTODESTRUTION
 if (isset( $_GET["auto_destruction"] )){ $rm = "rm adduser.sh"; } else { $rm = ""; }
-//GÉNÉRATIONDES VARIABLE DE FICHIERS
+//GÉNÉRATION DES VARIABLES DE FICHIERS
 $file_path="../script/script_client/mod_user_pass_".session_id().".sh";
 $file_name="mod_user_pass.sh";
 echo "<center><a class='btn btn-dark' href='".$file_path."'download='".$file_name."' target='_blank'>Télécharger le script </a></center><br>";
@@ -34,10 +33,11 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
       }
       $user = '${user[$y]}';
       $pass = '${pass[$y]}';
+      $hum='\n';
       $script="
         for ((y=0;y<".$nb.";y++))
         do
-          echo -e $pass\n$pass | passwd $user
+          echo -e $pass".$hum."$pass | passwd $user
         done\n";
       $new_script = $firstline . $username . $password . $script . $rm;
       $file = fopen($file_path, 'w+');
