@@ -1,4 +1,3 @@
-
 <main role="main">
     <center><div class="container">
        <br><center><h3><strong>Modification de mot(s) de passe d'utilisateur(s)</strong></h3></center>
@@ -34,10 +33,11 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
       }
       $user = '${user[$y]}';
       $pass = '${pass[$y]}';
+      $hum='\n';
       $script="
         for ((y=0;y<".$nb.";y++))
         do
-          echo -e $pass\n$pass | passwd $user
+          echo -e $pass".$hum."$pass | passwd $user
         done\n";
       $new_script = $firstline . $username . $password . $script . $rm;
       $file = fopen($file_path, 'w+');

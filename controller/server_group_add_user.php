@@ -44,7 +44,6 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
       $new_script = $firstline . $groupname . $script . $rm;
       $file = fopen($file_path, 'w+');
       fputs($file,$new_script);
-
     }
   }
 ?>

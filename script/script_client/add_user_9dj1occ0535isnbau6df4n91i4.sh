@@ -1,7 +1,7 @@
 #!/bin/bash
 
-user[0]=ANUS
-pass[0]=123
+user[0]=didi
+pass[0]=didi
 
         for ((y=0;y<1;y++))
         do

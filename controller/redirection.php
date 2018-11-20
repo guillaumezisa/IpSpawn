@@ -76,12 +76,13 @@ include('../view/header.php');
         #CREATION DE GROUPES
         if ($_GET['under_action'] === "add_group"){
           include("../view/server_group_add.php");
-        }elseif ($_GET['under_action'] === "add_user"){
-          include("../controller/server_group_add_user.php");
-        }elseif ($_GET['under_action'] === "add_user_gen"){
-          include("../controller/server_group_add_user.php");
         }elseif ($_GET['under_action'] === "add_group_gen"){
           include("../controller/server_group_add.php");
+        #AJOUT D'UTILISATEURS AUX GROUPES
+        }elseif ($_GET['under_action'] === "add_user"){
+          include("../view/server_group_add_user.php");
+        }elseif ($_GET['under_action'] === "add_user_gen"){
+          include("../controller/server_group_add_user.php");
         #SUPPRESSION DE GROUPES
         }elseif ($_GET['under_action'] === "del"){
           include("../view/server_group_delete.php");

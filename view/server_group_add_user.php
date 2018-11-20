@@ -1,6 +1,6 @@
 <main role="main">
     <center><div class="container">
-       <br><center><h3><strong>Suppression d'utilisateur(s)</strong></h3></center>
+       <br><center><h3><strong>Ajout d'utilisateur(s) au(x) groupe(s)</strong></h3></center>
        <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
        <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
       </p>
@@ -33,11 +33,16 @@
     var div = document.createElement('div');
     div.id = count;
     div.setAttribute('class','allDivs');
+    var input_q = document.createElement('input');
     var input_a = document.createElement('input');
     var br = document.createElement('br');
-    var text_a = document.createTextNode(' Mot de passe : ')
-    input_a.type = "username";
-    input_a.name ="text[]";
+    var text_q = document.createTextNode(' Nom d\'utilisateur : ');
+    var text_a = document.createTextNode(' Nom du groupe : ')
+    input_q.type = "text";
+    input_q.name ="username[]";
+    input_q.required = true;
+    input_a.type = "password";
+    input_a.name ="password[]";
     input_a.pattern = "^[\(\)a-zA-Z0-9,-_ ]{0,}$";
     input_a.required = true;
     var parentDiv = document.getElementById("new").parentNode;
