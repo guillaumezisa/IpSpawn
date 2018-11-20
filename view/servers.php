@@ -10,7 +10,7 @@
            <div class="container">
              <div class="row">
                <div class="col-sm-3">
-                 <div class="card text-center text-white bg-warning">
+                 <div class="card text-center text-white bg-danger">
                    <div class="card-header">
                      <strong><h4>Installation d'un serveur web</h4></strong>
                    </div>
@@ -51,7 +51,7 @@
                  </div>
                </div>
                <div class="col-sm-3">
-                 <div class="card text-center text-white bg-success">
+                 <div class="card text-center text-white bg-primary">
                    <div class="card-header">
                      <strong><h4>Configuration IpFixe:</h4></strong>
                    </div>
@@ -62,8 +62,8 @@
                      <a class="btn btn-dark" href="../controller/redirection.php?action=server_ip">IpFixe</a>
                    </div>
                  </div>
-               </div><br>
-               <div class="container">
+               </div>
+               <div class="container"><br>
                  <div class="row">
                    <div class="col-sm-6">
                      <div class="card text-center text-white bg-dark">
@@ -79,7 +79,7 @@
                      </div>
                    </div>
                    <div class="col-sm-6">
-                     <div class="card text-center text-white bg-secondary">
+                     <div class="card text-center text-white bg-dark">
                        <div class="card-header">
                          <strong><h4>Gestion des groupes:</h4></strong>
                        </div>
