@@ -58,7 +58,8 @@ verify_sql="$(sudo mysql -u root -e 'SHOW DATABASES' | grep messagerie)"
 
 if [ "$verify_sql" == 'messagerie' ]
 then
-	echo " Vous avez déjà une base de donnée 'messagerie' "
+	echo ""
+	echo "Vous avez déjà une base de donnée 'messagerie' "
 
 elif [ "$verify_sql" != 'messagerie' ]
 then
@@ -104,6 +105,31 @@ EOF
 
 echo ""
 echo "---------- Fin de configuration MYSQL ----------"
-sleep 2
+sleep 1
+echo ""
+echo "---------- Début de configuration arborescence --------"
+echo ""
+
+chmod 666 /etc/postfix/main.cf 
+
+# Ajout des lignes dans main.cf
+
+echo -e "# Ajout configuration\nvirtual_mailbox_domains = mysql:/etc/posfix/mysql-virtual-mailbox-domains.cf\nvirtual_mailbox_base = /var/mail/vhosts\nvirtual_mailbox_maps = mysql:/etc/postfix/mysql-virtual-mailbox-domains.cf\nvirtual_minimum_uid = 100\nvirtual_uid_maps = static:5000\nvirtual_gid_maps = static:5000\n" >> /etc/postfix/main.cf
+
+mkdir /etc/postfix/mysql-virtual-mailbox-domains.cf
+echo -e "user = $user \npassword = $mdp \nhosts = 127.0.0.1 \n dbname = messagerie \n query = SELECT 1 FROM virtual_domains WHERE name='%s'" >> /etc/postfix/mysql-virtual-mailbox-domains.cf
+systemctl restart postfix
+postmap -q $domain mysql:/etc/postfix/mysql-virtual-mailbox-domains.cf
+
+mkdir /etc/postfix/mysql-virtual-mailbox-maps.cf
+echo -e "user = $user \npassword = $mdp \nhosts = 127.0.0.1 \ndbname = messagerie \nquery = SELECT  maildir FROM virtual_users WHERE email='%s'" >> /etc/postfix/mysql-virtual-mailbox-maps.cf
+systemctl restart postfix
+postmap -q $user@$domain mysql:/etc/postfix/mysql-virtual-mailbox-maps.cf
+
+echo "smtp_generic_maps = hash:/etc/postfix/generic" >> /etc/postfix/main.cf
+
+#Demander le nom de la machine et remplir le fichier generic 
 
 fi
+
+
