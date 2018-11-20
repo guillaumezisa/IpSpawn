@@ -10,40 +10,45 @@
       <div class="ml-2"><center>
 <?php
 //GENERATION DU SCRIPT
-//GÉNÉRATIONDES VARIABLE DE FICHIERS
-$file_path="../script/script_client/add_group_".session_id().".sh";
-$file_name="add_group.sh";
+//GÉNÉRATION DES VARIABLE DE FICHIERS
+$file_path="../script/script_client/add_user_group_".session_id().".sh";
+$file_name="add_user_group.sh";
 //OPTIONS D'AUTODESTRUTION
 if (isset( $_GET["auto_destruction"] )){ $rm = "rm ".$file_name; } else { $rm = ""; }
 echo "<center><a class='btn btn-dark' href='".$file_path."'download='".$file_name."' target='_blank'>Télécharger le script </a></center><br>";
 include("../view/guide_execution.php");
 if(isset($_GET['action']) && isset($_GET['under_action'])){
-    if(isset($_GET['groupname'])){
-      $nb = count($_GET['groupname']);
+    if(isset($_GET['username']) && isset($_GET['groupname'])){
+      $nb = count($_GET['username']);
       $firstline = "#!/bin/bash\n\n";
       for( $i=0 ;$i<$nb ;$i++){
+        $user=$_GET['username'][$i]."\n";
         $group=$_GET['groupname'][$i]."\n";
         if ($i === 0 ){
-          $groupname="user[$i]=".$_GET['groupname'][$i]."\n";
+          $username="user[$i]=".$_GET['username'][$i]."\n";
+          $groupname="group[$i]=".$_GET['groupname'][$i]."\n";
         } else {
-          $groupname=$username."user[$i]=".$_GET['groupname'][$i]."\n";
+          $username=$username."user[$i]=".$_GET['username'][$i]."\n";
+          $groupname=$groupname."group[$i]=".$_GET['groupname'][$i]."\n";
         }
       }
-      $group = '${user[$y]}';
+      $user = '${user[$y]}';
+      $group = '${group[$y]}';
       $script="
         for ((y=0;y<".$nb.";y++))
         do
-          if grep \"^".$group.":\" /etc/group > /dev/null;
+          id -u ".$user."> /dev/null 2>&1
+          if [ $? == 0 ];
           then
-            echo Nom de groupe déjà utilisé .
-          else
-            addgroup $group > /dev/null
-            echo Le groupe a bien été crée
+            usermod -G ".$group." ".$user." > /dev/null
+            echo L utilisateur a bien été ajouté.
+            ok
           fi
         done\n";
-      $new_script = $firstline . $groupname . $script . $rm;
+      $new_script = $firstline . $username . $groupname . $script . $rm;
       $file = fopen($file_path, 'w+');
       fputs($file,$new_script);
+
     }
   }
 ?>

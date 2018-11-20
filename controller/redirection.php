@@ -42,7 +42,7 @@ include('../view/header.php');
 #-------------------------------------------------------------------------------
     }elseif($_GET['action'] === "user"){
       if (isset($_GET['under_action'])){
-        #CREATION UTILISATEURS--------------------------------------------------
+        #CREATION UTILISATEURS-✔-----------------------------------------------
         if ($_GET['under_action'] === "add"){
           include("../view/server_user_add.php");
         }elseif ($_GET['under_action'] === "add_gen"){
@@ -52,14 +52,15 @@ include('../view/header.php');
           include("../view/server_user_delete.php");
         }elseif ($_GET['under_action'] === "del_gen"){
           include("../controller/server_user_delete.php");
-        #MODIFICATION UTILISATEURS ( NOM,MDP)-----------------------------------
+        #MODIFICATION UTILISATEURS ( NOM,MDP)-✔---------------------------------
         }elseif ($_GET['under_action'] === "mod"){
           include("../view/server_user_modify.php");
+        #MODIFICATION ( MDP )-✔-------------------------------------------------
         }elseif ($_GET['under_action'] === "mod_pass"){
           include("../view/server_user_modify_pass.php");
         }elseif ($_GET['under_action'] === "mod_pass_gen"){
           include("../controller/server_user_modify_pass.php");
-        #MODIFICATION-----------------------------------------------------------
+        #MODIFICATION ( NOM )-✔-------------------------------------------------
         }elseif ($_GET['under_action'] === "mod_name"){
           include("../view/server_user_modify_name.php");
         }elseif ($_GET['under_action'] === "mod_name_gen"){
@@ -73,27 +74,27 @@ include('../view/header.php');
 #-------------------------------------------------------------------------------
     } elseif($_GET['action'] === "group"){
       if (isset($_GET['under_action'])){
-        #CREATION DE GROUPES
+        #CREATION DE GROUPES-✔--------------------------------------------------
         if ($_GET['under_action'] === "add_group"){
           include("../view/server_group_add.php");
         }elseif ($_GET['under_action'] === "add_group_gen"){
           include("../controller/server_group_add.php");
-        #AJOUT D'UTILISATEURS AUX GROUPES
+        #AJOUT D'UTILISATEURS AUX GROUPES-✔-------------------------------------
         }elseif ($_GET['under_action'] === "add_user"){
           include("../view/server_group_add_user.php");
         }elseif ($_GET['under_action'] === "add_user_gen"){
           include("../controller/server_group_add_user.php");
-        #SUPPRESSION DE GROUPES
+        #SUPPRESSION DE GROUPES-------------------------------------------------
         }elseif ($_GET['under_action'] === "del"){
           include("../view/server_group_delete.php");
         }elseif ($_GET['under_action'] === "del_gen"){
           include("../controller/server_group_delete.php");
-        #AJOUT DE DROITS
+        #AJOUT DE DROITS--------------------------------------------------------
         }elseif ($_GET['under_action'] === "add_right"){
           include("../view/server_group_add_right.php");
         }elseif ($_GET['under_action'] === "add_right_gen"){
           include("../controller/server_group_add_right.php");
-        #MODIFICATION
+        #MODIFICATION-----------------------------------------------------------
         }elseif ($_GET['under_action'] === "mod_name"){
           include("../view/server_group_modify_name.php");
         }elseif ($_GET['under_action'] === "mod_name_gen"){

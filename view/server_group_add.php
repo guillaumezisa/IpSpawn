@@ -9,7 +9,7 @@
       <div class="ml-2"><center>
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="group">
-        <input type="hidden" name="under_action" value="add_group">
+        <input type="hidden" name="under_action" value="add_group_gen">
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un groupe</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier groupe</button><br><br>

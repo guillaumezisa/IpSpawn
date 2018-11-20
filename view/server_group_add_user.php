@@ -8,8 +8,8 @@
     <section class="jumbotron ">
       <div class="ml-2"><center>
       <form action="../controller/redirection.php" method="GET">
-        <input type="hidden" name="action" value="user">
-        <input type="hidden" name="under_action" value="add_gen">
+        <input type="hidden" name="action" value="group">
+        <input type="hidden" name="under_action" value="add_user_gen">
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un utilisateur</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier utilisateur</button><br><br>
@@ -41,8 +41,8 @@
     input_q.type = "text";
     input_q.name ="username[]";
     input_q.required = true;
-    input_a.type = "password";
-    input_a.name ="password[]";
+    input_a.type = "text";
+    input_a.name ="groupname[]";
     input_a.pattern = "^[\(\)a-zA-Z0-9,-_ ]{0,}$";
     input_a.required = true;
     var parentDiv = document.getElementById("new").parentNode;

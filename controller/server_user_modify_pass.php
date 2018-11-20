@@ -11,7 +11,7 @@
 //GENERATION DU SCRIPT
 //OPTIONS D'AUTODESTRUTION
 if (isset( $_GET["auto_destruction"] )){ $rm = "rm adduser.sh"; } else { $rm = ""; }
-//GÉNÉRATIONDES VARIABLE DE FICHIERS
+//GÉNÉRATION DES VARIABLES DE FICHIERS
 $file_path="../script/script_client/mod_user_pass_".session_id().".sh";
 $file_name="mod_user_pass.sh";
 echo "<center><a class='btn btn-dark' href='".$file_path."'download='".$file_name."' target='_blank'>Télécharger le script </a></center><br>";

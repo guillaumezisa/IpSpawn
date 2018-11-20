@@ -9,7 +9,7 @@
     <section class="jumbotron ">
       <div class="ml-2"><center>
       <strong><h4>Création de groupe(s)</h4></strong>
-      <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=add">Créer</a><br><br>
+      <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=add_group">Créer</a><br><br>
       <strong><h4>Ajout d'utilisateurs aux groupe(s)</h4></strong>
       <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=add_user">Ajouter</a><br><br>
       <strong><h4>Suppression de groupe(s)</h4></strong>
