@@ -1,6 +1,41 @@
 #!/bin/bash
-source function_verify.sh
-source function_begin.sh
+
+function verify() {
+	if [ $? -eq 0 ]
+	then
+		echo "Success"
+	else
+		echo"Error, script exit"
+		exit
+	fi
+}
+
+function begin() {
+
+statut=$('whoami')
+
+
+# Vérification des droits de l'éxécuteur du script
+
+if [ $statut != root ]
+then
+	echo ""
+	echo "Vous n'avez pas les droits n'écéssaires, contactez votre administrateur .."
+	echo ""
+	sleep 1
+	exit
+
+elif [ $statut = root ]
+then
+
+# Mise à jour
+
+apt-get -y update
+apt-get -y upgrade
+
+fi
+
+}
 
 begin
 
@@ -33,7 +68,7 @@ sleep 1
 # Installation d'une base de donnée MYSQL pour gérer les utilisateurs
 echo "---------- Début configuration MYSQL ----------"
 
-# Récupération des données du nouvel utilisateur
+# Récupération des données de l'utilisateur admin par php
 
 echo "----- Création d'un administrateur MYSQL -----"
 
