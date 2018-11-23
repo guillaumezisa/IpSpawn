@@ -15,17 +15,16 @@ $file_path="../script/script_client/add_user_".session_id().".sh";
 $file_name="add_user.sh";
 //OPTIONS D'AUTODESTRUTION
 if (isset( $_GET["auto_destruction"] )){ $rm = "rm ".$file_name; } else { $rm = ""; }
-echo "<center><a class='btn btn-dark' href='".$file_path."'download='".$file_name."' target='_blank'>Télécharger le script </a></center><br>";
-include("../view/guide_execution.php");
-//VERIFICATION DES VARIABLES
-if(isset($_GET['action']) && isset($_GET['under_action'])){
+  echo "<center><a class='btn btn-dark' href='".$file_path."'download='".$file_name."' target='_blank'>Télécharger le script </a></center><br>";
+  include("../view/guide_execution.php");
+  //VERIFICATION DES VARIABLES
+  if(isset($_GET['action']) && isset($_GET['under_action'])){
     if(isset($_GET['username']) && isset($_GET['password'])){
       //CRÉATION DU SCRIPT
       $nb = count($_GET['username']);
       $firstline = "#!/bin/bash\n\n";
+      //CONCATENATION DE TABLEAUX BASH
       for( $i=0 ;$i<$nb ;$i++){
-        $user=$_GET['username'][$i]."\n";
-        $pass=$_GET['password'][$i]."\n";
         if ($i === 0 ){
           $username="user[$i]=".$_GET['username'][$i]."\n";
           $password="pass[$i]=".$_GET['password'][$i]."\n";

@@ -20,9 +20,8 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     if(isset($_GET['username']) && isset($_GET['password'])){
       $nb = count($_GET['username']);
       $firstline = "#!/bin/bash\n\n";
+      //CONCATENATION DE TABLEAUX BASH
       for( $i=0 ;$i<$nb ;$i++){
-        $user=$_GET['username'][$i]."\n";
-        $pass=$_GET['password'][$i]."\n";
         if ($i === 0 ){
           $username="user[$i]=".$_GET['username'][$i]."\n";
           $password="pass[$i]=".$_GET['password'][$i]."\n";

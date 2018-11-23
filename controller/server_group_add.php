@@ -21,8 +21,8 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     if(isset($_GET['groupname'])){
       $nb = count($_GET['groupname']);
       $firstline = "#!/bin/bash\n\n";
+      //CONCATENATION DE TABLEAUX BASH
       for( $i=0 ;$i<$nb ;$i++){
-        $group=$_GET['groupname'][$i]."\n";
         if ($i === 0 ){
           $groupname="user[$i]=".$_GET['groupname'][$i]."\n";
         } else {

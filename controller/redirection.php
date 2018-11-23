@@ -84,7 +84,7 @@ include('../view/header.php');
           include("../view/server_group_add_user.php");
         }elseif ($_GET['under_action'] === "add_user_gen"){
           include("../controller/server_group_add_user.php");
-        #SUPPRESSION DE GROUPES-------------------------------------------------
+        #SUPPRESSION DE GROUPES-✔-----------------------------------------------
         }elseif ($_GET['under_action'] === "del"){
           include("../view/server_group_delete.php");
         }elseif ($_GET['under_action'] === "del_gen"){

@@ -22,9 +22,8 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     if(isset($_GET['username1']) && isset($_GET['username2'])){
       $nb = count($_GET['username1']);
       $firstline = "#!/bin/bash\n\n";
+      //CONCATENATION DE TABLEAUX BASH
       for( $i=0 ;$i<$nb ;$i++){
-        $user1=$_GET['username1'][$i]."\n";
-        $user2=$_GET['username2'][$i]."\n";
         if ($i === 0 ){
           $username1="user1[$i]=".$_GET['username1'][$i]."\n";
           $username2="user2[$i]=".$_GET['username2'][$i]."\n";
