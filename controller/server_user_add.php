@@ -17,8 +17,10 @@ $file_name="add_user.sh";
 if (isset( $_GET["auto_destruction"] )){ $rm = "rm ".$file_name; } else { $rm = ""; }
 echo "<center><a class='btn btn-dark' href='".$file_path."'download='".$file_name."' target='_blank'>Télécharger le script </a></center><br>";
 include("../view/guide_execution.php");
+//VERIFICATION DES VARIABLES
 if(isset($_GET['action']) && isset($_GET['under_action'])){
     if(isset($_GET['username']) && isset($_GET['password'])){
+      //CRÉATION DU SCRIPT
       $nb = count($_GET['username']);
       $firstline = "#!/bin/bash\n\n";
       for( $i=0 ;$i<$nb ;$i++){
