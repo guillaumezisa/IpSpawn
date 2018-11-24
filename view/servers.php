@@ -17,7 +17,6 @@
                    <div class="card-body ">
                      <h5 class="card-title ">Installation de lamp <br>Apache2, Mariadb <br>& Php.
                      </h5>
-
                    </div>
                    <div class="card-footer text-muted">
                      <a class="btn btn-dark" href="../controller/redirection.php?action=server_web">Serveur Web</a><br>
