@@ -19,31 +19,64 @@ echo "<center><a class='btn btn-dark' href='".$file_path."'download='".$file_nam
 include("../view/guide_execution.php");
 if(isset($_GET['action']) && isset($_GET['under_action'])){
     if(isset($_GET['groupname'])){
-      $nb = count($_GET['groupname']);
+      $nb = count($_GET['commands']);
       $firstline = "#!/bin/bash\n\n";
       //CONCATENATION DE TABLEAUX BASH
+      $groupname="group=".$_GET['groupname']."\n";
       for( $i=0 ;$i<$nb ;$i++){
         if ($i === 0 ){
-          $groupname="group[$i]=".$_GET['groupname'][$i]."\n";
-          $commandyes="yes[$i]=".$_GET['commandyes'][$i]."\n";
-          $commandno="no[$i]=".$_GET['commandno'][$i]."\n";
+          $commands="com[$i]=".$_GET['commands'][$i]."\n";
         } else {
-          $groupname=$groupname."group[$i]=".$_GET['groupname'][$i]."\n";
-          $commandyes=$commandyes."yes[$i]=".$_GET['commandyes'][$i]."\n";
-          $commandno=$commandno."no[$i]=".$_GET['commandno'][$i]."\n";
+          $commands=$commands."com[$i]=".$_GET['commands'][$i]."\n";
         }
       }
-      $group = '${group[$y]}';
-      $yes = '${yes[$y]}';
-      $no = '${no[$y]}';
+      $group ='$group';
+      $group_new='$group_new';
+      $com ='${com[$y]}';
+      $comm='${com[$y]:1}';
+      $which='$(which $neutre)';
+      $which_simple='$which';
+      $which_com='$(which ${com[$y]})';
+      $path ='${path[$y]}';
+      $y='$y';
+      $string='$string';
       //GÉNÉRATION DU SCRIPT
       $script="
-        for ((y=0;y<".$nb.";y++))
-        do
+      apt install sudo
+      for ((y=0;y<".$nb.";y++))
+      do
+        if [[ ".$com." =~ ^[!] ]];then
+          if [ ".$y." -eq 0 ];then
+            neutre=".$comm."
+            which=".$which.";
+            path[$y]=!".$which_simple."
+            echo -n ".$path." > tmp
+          else
+            neutre=".$comm."
+            which=".$which.";
+            path[$y]=,!".$which_simple."
+            echo -n ".$path." >> tmp
+          fi
+        else
+          if [ ".$y." -eq 0 ];then
+            which=".$which_com.";
+            path[$y]=".$which_simple."
+            echo -n ".$path." > tmp
+          else
+            which=".$which_com.";
+            path[$y]=,".$which_simple."
+            echo -n ".$path." >> tmp
+          fi
+        fi
+      done
+      group_new='%'".$group.";
+      string=$(cat tmp)
+      echo ".$group_new."'	ALL=(ALL)' ".$string." >> /etc/sudoers;
+      rm tmp
+      service sudo restart";
 
-        done\n";
       //RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT
-      echo $new_script = $firstline . $groupname . $commandyes . $commandno . $script . $rm;
+      $new_script = $firstline . $groupname . $commands . $script . $rm;
       $file = fopen($file_path, 'w+');
       fputs($file,$new_script);
 
