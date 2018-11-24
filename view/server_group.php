@@ -30,7 +30,7 @@
                   <strong><h4>Ajout d'utilisateurs aux groupe(s)</h4></strong>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title"><br>Prérequis :<br>Les utilisateurs doivent éxister avant de pouvoir les ajouter aux groupes.<br><br></h5>
+                  <h5 class="card-title"><br>Prérequis :<br>Les utilisateurs doivent éxister avant de pouvoir les ajouter aux groupes.<br></h5>
                 </div>
                 <div class="card-footer text-muted">
                   <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=add_user">Ajouter</a><br>
@@ -66,20 +66,24 @@
           </div>
         </div>
       </div>
-            <div class="container"><br>
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="card text-center text-white bg-dark">
-                    <div class="card-header">
-                      <strong><h4>Réinitialiser les privilèges</h4></strong>
-                    </div>
-                    <div class="card-body">
-                      <h5 class="card-title">Attention:<br>Supprime définitivement tous les réglagles de droits.</h5>
-                    </div>
-                    <div class="card-footer text-muted">
-                      <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=mod_reset">Réinitialiser</a><br>
-                    </div>
-                  </div>
+        <div class="container"><br>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card text-center text-white bg-dark">
+                <div class="card-header">
+                  <strong><h4>Réinitialiser les privilèges</h4></strong>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Attention:<br>Supprime définitivement tous les réglagles de droits.</h5>
+                </div>
+                <div class="card-footer text-muted">
+                  <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=mod_reset">Réinitialiser</a><br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div></center>
     </section>
 </main>
