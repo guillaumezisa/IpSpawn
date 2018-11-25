@@ -56,7 +56,7 @@
                   <strong><h4>Ajout de privilège(s) au(x) groupe(s)</h4></strong>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Prérequis:<br>Nécéssite que les groupes éxiste & que les paquets des commandes existe bien.</h5>
+                  <h5 class="card-title">Prérequis:<br>Nécéssite que les groupes éxiste & que les paquets de commandes soient installés.</h5>
                 </div>
                 <div class="card-footer text-muted">
                   <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=add_right">Ajouter</a>
@@ -74,7 +74,7 @@
                   <strong><h4>Réinitialiser les privilèges</h4></strong>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Attention:<br>Supprime définitivement tous les réglagles de droits.</h5>
+                  <h5 class="card-title">Attention:<br>Supprime définitivement tous les réglages de droits.</h5>
                 </div>
                 <div class="card-footer text-muted">
                   <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=mod_reset">Réinitialiser</a><br>

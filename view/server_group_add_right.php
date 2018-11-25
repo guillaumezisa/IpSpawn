@@ -10,13 +10,11 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-1">
-
           </div>
           <div class="col-sm-10">
             <div class="text-light bg-info" style="width:100%;border:solid black 1.5px;border-radius:4px;"><br>
-              <center> Veuillez séparer chaqu'une de vos commandes par des ",".<br>
-                Si vous voulez que le groupe ne puisse pas utiliser une commande veuillez ajouter "!" devant la commande.<br>
-                Faites bien attention a rentrer des commandes éxistante sans fautes .<br><br>
+              <center>Si vous voulez que le groupe ne puisse pas utiliser une commande veuillez ajouter "!" devant la commande.<br>
+                Assurez vous de rentrer des commandes éxistante, sans fautes.<br><br>
             </div>
             </div>
           </div>
@@ -52,7 +50,7 @@
     div.setAttribute('class','allDivs');
     var input_a = document.createElement('input');
     var br = document.createElement('br');
-    var text_a = document.createTextNode(' Commandes autorisé : ')
+    var text_a = document.createTextNode(' Commande : ')
     input_a.type = "text";
     input_a.name ="commands[]";
     input_a.required = true;

@@ -6,7 +6,7 @@
   </div>
   <section class="jumbotron ">
     <h3>Contact</h3>
-    Pour nous contacter , vous pouvez nous envoyer un mail a l'une des addresses suivantes :<br>
+    Pour nous contacter, vous pouvez nous envoyer un mail à l'une des adresses suivantes :<br>
     <a href="mailto:rcuvillier@intechinfo.fr">rcuvillier@intechinfo.fr</a><br>
     <a href="mailto:nguengueogoula@intechinfo.fr">nguengueogoula@intechinfo.fr</a><br>
     <a href="mailto:jprigent@intechinfo.fr">jprigent@intechinfo.fr</a><br>
