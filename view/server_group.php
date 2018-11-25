@@ -1,7 +1,7 @@
 
 <main role="main">
     <center><div class="container">
-       <br><center><h3><strong>Gestion de Serveur(s)</strong></h3></center>
+       <br><center><h3><strong>Gestion de groupe(s)</strong></h3></center>
        <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
        <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
       </p>
@@ -68,13 +68,26 @@
       </div>
         <div class="container"><br>
           <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-6">
+              <div class="card text-center text-white bg-dark">
+                <div class="card-header">
+                  <strong><h4>Modifier nom(s) de groupe(s)</h4></strong>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Attention :<br>Si vous avez déjà donner des droits au(x) groupe(x)<br> de départ, vous devriez reinitialiser les droits avant de modifier vos groupes.</h5>
+                </div>
+                <div class="card-footer text-muted">
+                  <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=mod_name">Modifier</a><br>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
               <div class="card text-center text-white bg-dark">
                 <div class="card-header">
                   <strong><h4>Réinitialiser les privilèges</h4></strong>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Attention:<br>Supprime définitivement tous les réglages de droits.</h5>
+                  <h5 class="card-title"><br>Attention:<br>Supprime définitivement tous les réglages de droits.<br><br></h5>
                 </div>
                 <div class="card-footer text-muted">
                   <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=mod_reset">Réinitialiser</a><br>

@@ -1,17 +1,17 @@
 <main role="main"><center>
   <div class="container"><br>
-    <h3><strong>Modification des nom(s) d'utilisateur(s)</strong></h3>
+    <h3><strong>Modification des nom(s) de groupe(s)</strong></h3>
     <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron">
     <div class="ml-2">
       <form action="../controller/redirection.php" method="GET">
-        <input type="hidden" name="action" value="user">
-        <input type="hidden" name="under_action" value="add_gen">
-        <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un utilisateur</button>
+        <input type="hidden" name="action" value="group">
+        <input type="hidden" name="under_action" value="mod_name_gen">
+        <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un groupe</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
-        <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier utilisateur</button><br><br>
+        <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier groupe</button><br><br>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
       </div>
       <button type="submit" class="btn btn-dark" id="choice" >Valider</button></center><br><br>
@@ -34,13 +34,13 @@
     var input_q = document.createElement('input');
     var input_a = document.createElement('input');
     var br = document.createElement('br');
-    var text_q = document.createTextNode(' Ancien nom d\'utilisateur : ');
-    var text_a = document.createTextNode(' Nouveau nom d\'utilisateur : ')
+    var text_q = document.createTextNode(' Ancien nom de groupe : ');
+    var text_a = document.createTextNode(' Nouveau nom de groupe : ')
     input_q.type = "text";
-    input_q.name ="username1[]";
+    input_q.name ="groupname1[]";
     input_q.required = true;
     input_a.type = "text";
-    input_a.name ="username2[]";
+    input_a.name ="groupname2[]";
     input_a.pattern = "^[\(\)a-zA-Z0-9,-_ ]{0,}$";
     input_a.required = true;
     var parentDiv = document.getElementById("new").parentNode;
