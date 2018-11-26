@@ -26,6 +26,68 @@
           <div class="col-sm-1"></div>
         </div>
       </div>
+      <form action="../controller/redirection.php" method="GET">
+        <input type="hidden" name="action" value="mail">
+        <input type="hidden" name="under_action" value="gen_mail">
+        <h2>Administrateur</h2>
+        Nom Administrateur : <input type="textarea" name="name_admin"><br>
+        Mot de passe Admin : <input type="password" name="passwrd_admin"><br>
+        <p>
+        Domain mail : <input type="textarea" name="domain"><br>
+        Nom de la machine : <input type="textarea" name="hostname"><br>
+        <h2>Users</h2>
+        <p>
+        <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un utilisateur</button>
+        <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
+        <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier utilisateur</button><br><br>
+        <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
+        <button type="submit" class="btn btn-dark" id="choice" >Valider</button></center><br><br>
+      </form>
+    </div></center>
+  </section>
+</main>
+
+    <script>
+      function rm_last_div(event){
+        event.preventDefault();
+        var liste = document.getElementsByClassName('allDivs');
+        liste[liste.length-1].remove();
+      }
+      var count = 0;
+      function append(event){
+        event.preventDefault();
+        var div = document.createElement('div');
+        div.id = count;
+        div.setAttribute('class','allDivs');
+        var input_q = document.createElement('input');
+        var input_a = document.createElement('input');
+        var br = document.createElement('br');
+        var text_q = document.createTextNode(' Nom d\'utilisateur : ');
+        var text_a = document.createTextNode(' Mot de passe utilisateur : ')
+        input_q.type = "text";
+        input_q.name ="username[]";
+        input_q.required = true;
+        input_a.type = "text";
+        input_a.name ="psswrd[]";
+        input_a.pattern = "^[\(\)a-zA-Z0-9,-_ ]{0,}$";
+        input_a.required = true;
+        var parentDiv = document.getElementById("new").parentNode;
+        parentDiv.append(div);
+        div.append(text_q);
+        div.append(input_q);
+        div.append(text_a);
+        div.append(input_a);
+        div.append(parentDiv);
+        count++;
+      }
+      function reload(event){
+        var letsPlay = document.getElementsByTagName('input');
+        for(i = 0; i < letsPlay.length; i++){
+          letsPlay[i].required = false;
+          letsPlay[i].removeAttribute('pattern');
+        }
+      }
+</script>
     </div></center>
     </section>
 </main>
