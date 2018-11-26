@@ -14,6 +14,6 @@
       <a class="btn btn-dark" href="../controller/redirection.php?action=user&under_action=del">Supprimer</a><br><br>
       <strong><h4>Modification d'un utilisateur</h4></strong>
       <a class="btn btn-dark" href="../controller/redirection.php?action=user&under_action=mod">Modifier</a><br><br>
-    </div>/</center>
+    </div></center>
     </section>
 </main>

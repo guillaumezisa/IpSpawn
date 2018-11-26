@@ -15,13 +15,15 @@
           </div>
           <div class="col-sm-10">
             <div class="text-light bg-info" style="width:100%;border:solid black 1.5px;border-radius:4px;">
-              <br> C\'EST ICI POUR ECRIRE <3 ---><br><br>
+              <br>Prérequis : <br><br>
+			  <br>	- Avoir une machine avec une IP FIXE disposé à héberger le service.<br>
+			  <br>	- 
             </div>
             </div>
           </div>
           <div class="col-sm-1"></div>
         </div>
       </div>
-    </div>/</center>
+    </div></center>
     </section>
 </main>
