@@ -15,7 +15,7 @@
                      <strong><h4>Installation d'un serveur web</h4></strong>
                    </div>
                    <div class="card-body ">
-                     <h5 class="card-title ">Installation de lamp <br>Apache2, Mariadb <br>& Php.
+                     <h5 class="card-title ">Installation de lamp <br>Apache2 ou Nginx, Mariadb <br>& Php.
                      </h5>
                    </div>
                    <div class="card-footer text-muted">
