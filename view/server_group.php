@@ -90,7 +90,7 @@
                   <h5 class="card-title"><br>Attention:<br>Supprime définitivement tous les réglages de droits.<br><br></h5>
                 </div>
                 <div class="card-footer text-muted">
-                  <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=mod_reset">Réinitialiser</a><br>
+                  <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=mod_reset_gen">Réinitialiser</a><br>
                 </div>
               </div>
             </div>
@@ -98,5 +98,5 @@
         </div>
       </div>
     </div></center>
-    </section>
+  </section>
 </main>
