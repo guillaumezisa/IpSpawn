@@ -102,6 +102,8 @@ include('../view/header.php');
           include("../view/server_group_modify_name.php");
         }elseif ($_GET['under_action'] === "mod_name_gen"){
           include("../controller/server_group_modify_name.php");
+        }elseif ($_GET['under_action'] === "mod_reset"){
+          include("../view/server_reset.php");
         }elseif ($_GET['under_action'] === "mod_reset_gen"){
           include("../controller/server_group_reset.php");
         }
