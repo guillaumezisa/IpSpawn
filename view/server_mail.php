@@ -20,7 +20,8 @@
 			  <br>	- Avoir une machine avec une IP FIXE disposé à héberger le service.
 			  <br>	- Être administrateur du système.
 			  <br>	- Avoir un enregistrement DNS MX pointant sur la machine hôte du serveur.
-			  <br>	- Avoir la liste de ses utilisateurs du service de messagerie. </h5>
+			  <br>	- Avoir la liste de ses utilisateurs du service de messagerie.
+			  <br>	- Ne pas oublier de donner les droits d'éxécution au script (chmod +x "nomduscript").</h5>
             </div>
             </div>
           </div>
