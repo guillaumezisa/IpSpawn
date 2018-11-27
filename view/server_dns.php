@@ -7,7 +7,7 @@
     </div></center>
     <section class="jumbotron ">
       <div class="ml-2"><center>
-      <strong><h4>Installation d'un nameserver</h4></strong>
+      <strong><h4>Installation d'un DNS</h4></strong>
       <div class="container">
         <div class="row">
           <div class="col-sm-1">
@@ -30,7 +30,9 @@
         <input type="hidden" name="action" value="dns">
         <input type="hidden" name="under_action" value="gen_dns">
 		Nom de la machine : <input type="textarea" name="hostname">
+		<br>
         Nom du domaine : <input type="textarea" name="domain">
+		<br>
 		Ajout de la fonction qui boucle les enregistrements !
 		<h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
         <button type="submit" class="btn btn-dark" id="choice" >Valider</button><br><br>

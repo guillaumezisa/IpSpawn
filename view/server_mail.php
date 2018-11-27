@@ -21,7 +21,7 @@
 			  <br>	- Être administrateur du système.
 			  <br>	- Avoir un enregistrement DNS MX pointant sur la machine hôte du serveur.
 			  <br>	- Avoir la liste de ses utilisateurs du service de messagerie.
-			  <br>	- Ne pas oublier de donner les droits d'éxécution au script (chmod +x "nomduscript").</h5>
+			  <br>	- Ne pas oublier de donner les droits d'éxécution au script (chmod +x "nomduscript").<br></h5>
             </div>
             </div>
           </div>
@@ -40,7 +40,7 @@
         </tr>
         <p>
         <tr>
-          <td>Domain mail : <input type="textarea" name="domain"></td>
+          <td>Nom de domaine : <input type="textarea" name="domain"></td>
           <td>Nom de la machine : <input type="textarea" name="hostname"></td>
         </tr>
         </table>
