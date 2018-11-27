@@ -58,7 +58,7 @@
                      <h5 class="card-title">Configuration d'une ip fixe et de la résolution de noms.<br></h5>
                    </div>
                    <div class="card-footer text-muted">
-                     <a class="btn btn-dark" href="../controller/redirection.php?action=server_ip">IpFixe</a>
+                     <a class="btn btn-dark" href="../controller/redirection.php?action=ip_static">IpFixe</a>
                    </div>
                  </div>
                </div>
