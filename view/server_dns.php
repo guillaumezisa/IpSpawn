@@ -18,13 +18,22 @@
               <br><h1>Prérequis : </h1> <h5>
 			  <br>	- Avoir les droits administrateurs.
 			  <br>	- Ne pas oublier de donner les droits d'éxécution au script (chmod +x "nomduscript").
-			  <br>	- Avoir un nom de domaine.</h5>
+			  <br>	- Avoir un nom de domaine.
+			  <br>	- Avoir configurer sa machine en IP FIXE.</h5>
             </div>
 			</div>
           </div>
           <div class="col-sm-1"></div>
         </div>
       </div>
+	   <form action="../controller/redirection.php" method="GET">
+        <input type="hidden" name="action" value="dns">
+        <input type="hidden" name="under_action" value="gen_dns">
+		Nom de la machine : <input type="textarea" name="hostname">
+        Nom du domaine : <input type="textarea" name="domain">
+		Ajout de la fonction qui boucle les enregistrements !
+		<h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
+        <button type="submit" class="btn btn-dark" id="choice" >Valider</button><br><br>
 	</div></center>
     </section>
 </main>
