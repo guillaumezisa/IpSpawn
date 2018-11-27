@@ -30,21 +30,28 @@
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="mail">
         <input type="hidden" name="under_action" value="gen_mail">
+        <center>
+        <TABLE>
         <h2>Administrateur</h2>
-        Nom Administrateur : <input type="textarea" name="name_admin"><br>
-        Mot de passe Admin : <input type="password" name="passwrd_admin"><br>
+        <tr>
+          <td>Nom Admin : <input type="textarea" name="name_admin"></td>
+          <td>Mot de passe Admin : <input type="password" name="passwrd_admin"></td>
+        </tr>
         <p>
-        Domain mail : <input type="textarea" name="domain"><br>
-        Nom de la machine : <input type="textarea" name="hostname"><br>
+        <tr>
+          <td>Domain mail : <input type="textarea" name="domain"></td>
+          <td>Nom de la machine : <input type="textarea" name="hostname"></td>
+        </tr>
+        </table>
         <h2>Users</h2>
         <p>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un utilisateur</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier utilisateur</button><br><br>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
-        <button type="submit" class="btn btn-dark" id="choice" >Valider</button></center><br><br>
+        <button type="submit" class="btn btn-dark" id="choice" >Valider</button><br><br>
       </form>
-    </div></center>
+    </div></TABLE></center>
   </section>
 </main>
 

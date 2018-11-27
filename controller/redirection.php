@@ -39,7 +39,13 @@ include('../view/header.php');
 #   INSTALLATION SERVEUR MAIL
 #-------------------------------------------------------------------------------
 }elseif($_GET['action'] === "server_mail"){
+  if (isset($_GET['under_action'])){
+    if ($_GET['under_action'] === "mail_gen"){
       include('../view/server_mail.php');
+    }
+  }else {
+    include('../view/server_mail.php');
+  }
 #-------------------------------------------------------------------------------
 #   GESTION DES UTILISATEURS
 #-------------------------------------------------------------------------------
