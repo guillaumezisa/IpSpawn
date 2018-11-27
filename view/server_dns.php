@@ -20,6 +20,7 @@
 			  <br>	- Ne pas oublier de donner les droits d'éxécution au script (chmod +x "nomduscript").
 			  <br>	- Avoir un nom de domaine.
 			  <br>	- Avoir configurer sa machine en IP FIXE.</h5>
+			  <br>
             </div>
 			</div>
           </div>
@@ -29,6 +30,7 @@
 	   <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="dns">
         <input type="hidden" name="under_action" value="gen_dns">
+		<br> <h2>Gestion de la machine</h2>
 		Nom de la machine : <input type="textarea" name="hostname">
 		<br>
         Nom du domaine : <input type="textarea" name="domain">
