@@ -4,6 +4,8 @@
 statut=$('whoami')
 hostname="labsr.joranprigent.itinet.fr"
 ip="192.168.80.135"
+# Récupère l'IP du serveur
+mon_ip=`grep $HOSTNAME /etc/hosts |cut -f1`
 domain="joranprigent.itinet.fr"
 exist="$(grep search /etc/resolv.conf)"
 ipexist="$(grep $ip /etc/resolv.conf)"
@@ -11,6 +13,7 @@ option="master"
 reverse="$(echo $ip | awk -F. '{print $3"."$2"."$1}')"
 zonexist="$(grep $domain /etc/bind/named.conf.local)"
 reversexist="$(grep $reverse /etc/bind/named.conf.local)"
+# Récupère la date de création pour générer le fichier Bind
 date_creation=`date +%Y%m%d`01
 declare -A l
 num_columns=# il en veut combien le mec ?
