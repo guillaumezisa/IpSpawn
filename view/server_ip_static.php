@@ -8,9 +8,10 @@
     <div class="ml-2">
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="ip_static">
+        <input type="hidden" name="under_action" value="gen">
         <input type="text" name="ip" value="">
-        <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
-        <button type="submit" class="btn btn-dark" id="choice" >Valider</button></center><br><br>
+        <h6><input type="checkbox" name="auto_destruction" value="yes"> Détruire le script a la fin de l'éxécution (conseiller)</h6>
+        <button type="submit" class="btn btn-dark">Valider</button></center><br><br>
       </form>
     </div></center>
   </section>
