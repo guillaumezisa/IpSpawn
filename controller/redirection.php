@@ -29,7 +29,17 @@ include('../view/header.php');
 #   INSTALLATION SERVEUR WEB
 #-------------------------------------------------------------------------------
     }elseif($_GET['action'] === "server_web"){
-      include('../view/server_web.php');
+      if(isset($_GET["under_action"])){
+        if($_GET["under_action"] === "apache"){
+          include('../server_web_apache_gen.php');
+        }elseif($_GET["under_action"] === "nginx"){
+          include('../server_web_nginx_gen.php');
+        }else {
+          include('../view/server_web.php');
+        }
+      }else {
+        include('../view/server_web.php');
+      }
 #-------------------------------------------------------------------------------
 #   INSTALLATION SERVEUR DNS
 #-------------------------------------------------------------------------------
@@ -108,6 +118,8 @@ include('../view/header.php');
           include("../view/server_group_modify_name.php");
         }elseif ($_GET['under_action'] === "mod_name_gen"){
           include("../controller/server_group_modify_name.php");
+        }elseif ($_GET['under_action'] === "mod_reset"){
+          include("../view/server_reset.php");
         }elseif ($_GET['under_action'] === "mod_reset_gen"){
           include("../controller/server_group_reset.php");
         }

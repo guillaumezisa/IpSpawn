@@ -1,6 +1,6 @@
 <main role="main"><center>
   <div class="container"><br>
-  <h3><strong>Ajout de d'utilisateur(s) a des groupe(s)</strong></h3>
+  <h3><strong>Gestion du serveur mail</strong></h3>
     <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
@@ -8,12 +8,12 @@
     <div class="ml-2">
 <?php
 #-------------------------------------------------------------------------------
-# GENERATION DU SCRIPT D'AJOUT DE DROITS AU GROUPE
+# GENERATION DU SCRIPT MAIL
 #-------------------------------------------------------------------------------
 
 #GÉNÉRATION DES VARIABLE DE FICHIERS--------------------------------------------
-$file_path="../script/script_client/add_user_".session_id().".sh";
-$file_name="add_user.sh";
+$file_path="../script/server_mail/server_mail".session_id().".sh";
+$file_name="server_mail.sh";
 #VÉRIFICATION DE L'OPTION D'AUTO-DESTRUCTION------------------------------------
 if (isset( $_GET["auto_destruction"] )){ $rm = "rm ".$file_name; } else { $rm = ""; }
 #AJOUT DU LIEN DE TÉLÉCHARGEMENT & GUIDE----------------------------------------
