@@ -12,6 +12,18 @@ reverse="$(echo $ip | awk -F. '{print $3"."$2"."$1}')"
 zonexist="$(grep $domain /etc/bind/named.conf.local)"
 reversexist="$(grep $reverse /etc/bind/named.conf.local)"
 date_creation=`date +%Y%m%d`01
+declare -A l
+num_columns=# il en veut combien le mec ?
+
+# -----Il faut integrer les entrées utilisateur !!------
+# Création de la liste 2D 
+for (( i=1; i<=$num_columns; i++ ))
+do
+	for (( j=1; j<=3; j++ ))
+	do
+		l[$i,$j]=# Entrer user (variables PHP)
+	done
+done
 
 if [ $statut != root ]
 then
@@ -103,14 +115,31 @@ $domain.	IN	SOA	$hostname. root.$domain. (
 				64800
 				86400 )
 
-"
+`
+for (( i=1; i<=$num_columns; i++ ))
+do
+	echo -e "${l[$i,0]}			IN		${l[$i,1]}		${l[$i,2]}\n"
+done
+`" >>/etc/bind/db.$domain
+# El reverse +9000
+echo "
+\$TTL 86400
+@	IN	SOA	$hostname. root.$domain. (
+				$date_creation
+				21600
+				3600
+				64800
+				86400 )
 
-
-
-" >>/etc/bind/db.$domain
+`
+for (( i=1; i<=$num_columns; i++ ))
+do
+	echo -e "${l[$i,0]}			IN		${l[$i,1]}		${l[$i,2]}\n"
+done
+`" >>/etc/bind/db.$reverse.in-addr.arpa
 
 echo ""
 echo "---------- Fin de la configuration ----------"
 sleep 2
-fi
 
+fi
