@@ -33,18 +33,21 @@
         <input type="hidden" name="action" value="server_mail">
         <input type="hidden" name="under_action" value="gen_mail">
         <center>
-        <TABLE>
+		<br>
         <h2>Administrateur</h2>
-        <tr>
-          <td>Nom Admin : <input type="textarea" name="name_admin"></td>
-          <td>Mot de passe Admin : <input type="password" name="passwrd_admin"></td>
-        </tr>
-        <p>
-        <tr>
-          <td>Nom de domaine : <input type="textarea" name="domain"></td>
-          <td>Nom de la machine : <input type="textarea" name="hostname"></td>
-        </tr>
-        </table>
+<<<<<<< HEAD
+          <br>Nom Admin : <input type="textarea" name="name_admin">
+          <br>Mot de passe Admin : <input type="password" name="passwrd_admin">
+          <br>Nom de domaine : <input type="textarea" name="domain">
+          <br>Nom de la machine : <input type="textarea" name="hostname">
+=======
+		<br>
+          <br>Nom Admin : <input type="textarea" name="name_admin" required>
+          <br>Mot de passe Admin : <input type="password" name="passwrd_admin" required>
+          <br>Nom de domaine : <input type="textarea" name="domain" required>
+          <br>Nom de la machine : <input type="textarea" name="hostname" required>
+>>>>>>> ccb6df36a50760c61ed524710b7623d864e50119
+        <br>
         <h2>Users</h2>
         <p>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un utilisateur</button>
