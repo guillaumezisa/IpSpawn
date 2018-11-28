@@ -36,10 +36,10 @@
 		<br>
         <h2>Administrateur</h2>
 		<br>
-          <br>Nom Admin : <input type="textarea" name="name_admin">
-          <br>Mot de passe Admin : <input type="password" name="passwrd_admin">
-          <br>Nom de domaine : <input type="textarea" name="domain">
-          <br>Nom de la machine : <input type="textarea" name="hostname">
+          <br>Nom Admin : <input type="textarea" name="name_admin" required>
+          <br>Mot de passe Admin : <input type="password" name="passwrd_admin" required>
+          <br>Nom de domaine : <input type="textarea" name="domain" required>
+          <br>Nom de la machine : <input type="textarea" name="hostname" required>
         <br>
         <h2>Users</h2>
         <p>

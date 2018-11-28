@@ -1,8 +1,8 @@
 <main role="main"><center>
   <div class="container"><br>
-  <h3><strong>Mettre l'ip d'une machine en statique</strong></h3>
+    <h3><strong>Mettre l'ip d'une machine en statique</strong></h3>
     <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
-    <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
+    <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a><br><br>
   </div>
   <section class="jumbotron ">
     <div class="ml-2">
@@ -24,7 +24,7 @@ if (isset( $_GET["auto_destruction"] )){ $rm = "rm ".$file_name; } else { $rm = 
 #AJOUT DU LIEN DE TÉLÉCHARGEMENT & GUIDE----------------------------------------
 include("../view/guide_execution_ip_static.php");
 echo "<center><a class='btn btn-danger' href='".$file_path_reset."'download='".$file_name_reset."' target='_blank'>Télécharger le script de réinitialisation </a></center><br>";
-echo "<center><a class='btn btn-dark' href='".$file_path."'download='".$file_name."' target='_blank'>Télécharger le script du fixage d'ip</a></center><br>";
+echo "<center><a class='btn btn-dark' href='".$file_path."'download='".$file_name."' target='_blank'>Télécharger le script du fixage d'ip</a></center>";
 
 #-------------------------------------------------------------------------------
 # GÉNÉRATION DU SCRIPT
