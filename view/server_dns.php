@@ -1,6 +1,6 @@
 <main role="main">
     <center><div class="container">
-       <br><center><h3><strong>DNS</h3></center>
+       <br><center><h3><strong>D.N.S</h3></center>
        <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
        <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
       </p>
