@@ -44,7 +44,15 @@ include('../view/header.php');
 #   INSTALLATION SERVEUR DNS
 #-------------------------------------------------------------------------------
     }elseif($_GET['action'] === "server_dns"){
-      include('../view/server_dns.php');
+      if( isset($_GET['under_action']) ){
+        if ($_GET['under_action'] === "install_dns_gen"){
+          include('../controller/server_dns.php');
+        } else {
+          include('../view/server_dns.php');
+        }
+      }else {
+        include('../view/server_dns.php');
+      }
 #-------------------------------------------------------------------------------
 #   INSTALLATION SERVEUR MAIL
 #-------------------------------------------------------------------------------
