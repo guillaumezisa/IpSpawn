@@ -30,6 +30,7 @@
 	   <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="dns">
         <input type="hidden" name="under_action" value="gen_dns">
+		<center>
 		<br> <h2>Gestion de la machine</h2>
 		Nom de la machine : <input type="textarea" name="hostname">
 		<br>

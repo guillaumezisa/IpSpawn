@@ -35,7 +35,6 @@
         <center>
 		<br>
         <h2>Administrateur</h2>
-		<br>
           <br>Nom Admin : <input type="textarea" name="name_admin">
           <br>Mot de passe Admin : <input type="password" name="passwrd_admin">
           <br>Nom de domaine : <input type="textarea" name="domain">
