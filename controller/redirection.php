@@ -57,6 +57,17 @@ include('../view/header.php');
     include('../view/server_mail.php');
   }
 #-------------------------------------------------------------------------------
+#   MISE EN PLACE D'UNE IP FIXE
+#-------------------------------------------------------------------------------
+}elseif($_GET['action'] === "ip_static"){
+  if (isset($_GET['under_action'])){
+    if ($_GET['under_action'] === "gen"){
+      include('../controller/server_ip_static.php');
+    }
+  }else {
+    include('../view/server_ip_static.php');
+  }
+#-------------------------------------------------------------------------------
 #   GESTION DES UTILISATEURS
 #-------------------------------------------------------------------------------
     }elseif($_GET['action'] === "user"){
