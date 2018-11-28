@@ -5,13 +5,12 @@
        <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
       </p>
     </div></center>
-    <section class="jumbotron ">
-      <div class="ml-2"><center>
-      <strong><h4>Installation d'un DNS</h4></strong>
+    <section class="jumbotron" >
+      <div class="ml-2" ><center>
+      <strong><h4 style='margin-top:-4%'>Installation d'un DNS</h4></strong>
       <div class="container">
         <div class="row">
           <div class="col-sm-1">
-
           </div>
           <div class="col-sm-10">
             <div class="text-light bg-info" style="width:100%;border:solid black 1.5px;border-radius:4px; margin: 30px auto;">
@@ -26,7 +25,7 @@
           </div>
           <div class="col-sm-1"></div>
         </div>
-      </div>
+      </div><center>
 	   <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="dns">
         <input type="hidden" name="under_action" value="gen_dns">
