@@ -1,6 +1,0 @@
-User admin
-Mdp admin
-Domain mail
-Nom de la machine
-Nom new user
-Password new user

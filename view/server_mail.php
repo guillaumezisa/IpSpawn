@@ -28,7 +28,7 @@
         </div>
       </div>
       <form action="../controller/redirection.php" method="GET">
-        <input type="hidden" name="action" value="mail">
+        <input type="hidden" name="action" value="server_mail">
         <input type="hidden" name="under_action" value="gen_mail">
         <center>
         <TABLE>

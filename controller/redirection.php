@@ -50,8 +50,8 @@ include('../view/header.php');
 #-------------------------------------------------------------------------------
 }elseif($_GET['action'] === "server_mail"){
   if (isset($_GET['under_action'])){
-    if ($_GET['under_action'] === "mail_gen"){
-      include('../view/server_mail.php');
+    if ($_GET['under_action'] === "gen_mail"){
+      include('../controller/server_mail.php');
     }
   }else {
     include('../view/server_mail.php');
