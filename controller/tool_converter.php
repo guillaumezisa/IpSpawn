@@ -17,9 +17,10 @@
     $value=$_GET['convtype'];
     #GESTION DE L'ENTRÉE BINAIRE
     if($value === "0"){
-      $bin_to = [-3, -10, -4];
+      $bin_to = array(-3, -10, -4);
       for($i = 0; $i < 3; $i++){
-        echo Converter($entry, $bin_to[$i])."\n";
+        $n = $bin_to[$i];
+        echo Converter($entry, $n)."\n";
       }
     #GESTION DU RESTE
     }else{
