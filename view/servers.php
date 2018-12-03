@@ -58,7 +58,7 @@
                      <h5 class="card-title">Installation d'un serveur samba & configuration des différents espaces<br></h5>
                    </div>
                    <div class="card-footer text-muted">
-                     <a class="btn btn-dark" href="../controller/redirection.php?action=ip_static">Serveur Samba</a>
+                     <a class="btn btn-dark" href="../controller/redirection.php?action=server_samba">Serveur Samba</a>
                    </div>
                  </div>
                </div>

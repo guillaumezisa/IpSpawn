@@ -1,39 +1,38 @@
+
 <main role="main">
     <center><div class="container">
-       <br><center><h3><strong>Ajout d'utilisateur(s)</strong></h3></center>
+       <br><center><h3><strong>Installation & configuration du serveur Samba</strong></h3></center>
        <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
        <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
       </p>
-    </div>
-
-
+    </div></center>
     <section class="jumbotron ">
       <div class="ml-2"><center>
         <div class="container">
           <div class="row">
             <div class="col-sm-6">
-              <div class="card text-center text-white bg-success">
+              <div class="card text-center text-white bg-danger">
                 <div class="card-header">
-                  <strong><h4>Ajout d'utilisateur(s)</h4></strong>
+                  <strong><h4>Installation & Configuration de base</h4></strong>
                 </div>
                 <div class="card-body ">
-                  <h5 class="card-title ">Si vous souhaitez modifier le(s) nom(s) d'utilisateur(s).</h5><br><br>
+                  <h5 class="card-title ">Installation de samba et configuration des différentes zones de stockages.</h5>
                 </div>
                 <div class="card-footer text-muted">
-                  <a href="../controller/redirection.php?action=user&under_action=mod_name" class="btn btn-dark my-2">Modifier le nom d'utilisateur(s)</a>
+                  <a class="btn btn-dark" href="../controller/redirection.php?action=server_samba&under_action=install">Ajouter</a>
                 </div>
               </div>
             </div>
             <div class="col-sm-6">
-              <div class="card text-center text-white bg-success">
+              <div class="card text-center text-white bg-danger">
                 <div class="card-header">
-                  <strong><h4>Modification d'utilisateur(s)</h4></strong>
+                  <strong><h4>Modification des espaces d'utilisateurs</h4></strong>
                 </div>
                 <div class="card-body ">
-                  <h5 class="card-title ">Si vous souhaitez modifier le(s) mot(s) de passe(s) d'utilisateur(s), attention de bien supprimer ce script qui pourrait contenir des mots de passes.</h5>
+                  <h5 class="card-title ">Modification des différentes zone de stockage.<br><br></h5>
                 </div>
                 <div class="card-footer text-muted">
-                  <a href="../controller/redirection.php?action=user&under_action=mod_pass" class="btn btn-dark my-2">Modifier les mots de passe d'utilisateur(s)</a>
+                  <a class="btn btn-dark" href="../controller/redirection.php?action=server_samba&under_action=mod">Modifier</a><br>
                 </div>
               </div>
             </div>
