@@ -6,7 +6,6 @@
           <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
          </p>
        </div>
-
        <section class="jumbotron">
          <div class="ml-2">
            <div class="container">
@@ -14,13 +13,13 @@
                <div class="col-sm-6">
                  <div class="card text-center text-white bg-danger">
                    <div class="card-header">
-                     <strong><h4>Découpage de plage :</h4></strong>
+                     <strong><h4>Découpage de plage</h4></strong>
                    </div>
                    <div class="card-body ">
                      <h5 class="card-title ">Vous avez un réseau que vous souhaitez isoler , <br>ici vous pourrez calculer la taille des plages nécéssaire a chaqu'un de vos utilisateurs.</h5>
                    </div>
                    <div class="card-footer text-muted">
-                     <a class="btn btn-dark" href="../controller/redirection.php?action=plage&status=start">Découpage de plage</a><br>
+                     <a class="btn btn-dark" href="../controller/redirection.php?action=ip_range">Découpage de plage</a><br>
                    </div>
                  </div>
                </div>
@@ -33,7 +32,7 @@
                      <h5 class="card-title">Convertissez du binaire, décimal, héxadécimal, octal en binaire, décimal, héxadécimal, octal<br><br></h5>
                    </div>
                    <div class="card-footer text-muted">
-                     <a class="btn btn-dark" href="../controller/redirection.php?action=binaire&status=start">Convertir</a><br>
+                     <a class="btn btn-dark" href="../controller/redirection.php?action=converter">Convertir</a><br>
                    </div>
                  </div>
                </div>
