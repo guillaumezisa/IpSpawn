@@ -23,8 +23,13 @@ include('../view/header.php');
 #-------------------------------------------------------------------------------
 #   CONVERTISSEUR BINAIRE
 #-------------------------------------------------------------------------------
-    }elseif($_GET["action"] === "binary_converter"){
-      include('../view/tool_binary_converter.php');
+    }elseif($_GET["action"] === "converter"){
+      if (isset($_GET['under_action']) && $_GET['under_action'] === "result"){
+        include('../controller/tool_converter.php');
+      } else {
+        include('../view/tool_converter.php');
+      }
+
 #-------------------------------------------------------------------------------
 #   INSTALLATION SERVEUR WEB
 #-------------------------------------------------------------------------------
