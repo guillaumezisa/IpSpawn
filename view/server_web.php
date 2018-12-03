@@ -20,7 +20,7 @@
                   </h5>
                 </div>
                 <div class="card-footer text-muted">
-                  <a class="btn btn-dark" href="../controller/redirection.php?action=server_web&under_action=server_web_apache_gen">Installer</a><br>
+                  <a class="btn btn-dark" href="../controller/redirection.php?action=server_web&under_action=apache">Installer</a><br>
                 </div>
               </div>
             </div>
@@ -34,7 +34,7 @@
                   </h5>
                 </div>
                 <div class="card-footer text-muted">
-                  <a class="btn btn-dark" href="../controller/redirection.php?action=server_web&under_action=server_web_nginx_gen">Installer</a><br>
+                  <a class="btn btn-dark" href="../controller/redirection.php?action=server_web&under_action=nginx">Installer</a><br>
                 </div>
               </div>
             </div>
