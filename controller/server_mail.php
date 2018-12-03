@@ -29,14 +29,21 @@ include("../view/guide_execution.php");
 
       #CONCATENATION DE TABLEAUX BASH---------------------------------------------
       for( $i=0 ;$i<$nb ;$i++){
-        if ($i === 0 ){
-          $username = "username[$i]=".$_GET['username'][$i]."\n";
-          $psswrd = "psswrd[$i]=".$_GET['psswrd'][$i]."\n";
+        if(isset($_GET['username'][$i+1])){
+        #if ($i === 0 ){
+          $username = $_GET['username'][$i];
+          $psswrd = $_GET['psswrd'][$i];
+          #$username = "username[$i]=".$_GET['username'][$i]."\n";
+          #$psswrd = "psswrd[$i]=".$_GET['psswrd'][$i]."\n";
         } else { 
-          $username=$username."username[$i]=".$_GET['username'][$i]."\n";
-          $psswrd=$psswrd."psswrd[$i]=".$_GET['psswrd'][$i]."\n";
+          $username=$username." ".$_GET['username'][$i];
+          $psswrd=$psswrd." ".$_GET['psswrd'][$i];
+          #$username=$username."username[$i]=".$_GET['username'][$i]."\n";
+          #$psswrd=$psswrd."psswrd[$i]=".$_GET['psswrd'][$i]."\n";
       }
     }
+    $username="username=(".$username.")\n";
+    $psswrd="psswrd=(".$psswrd.")\n";
       #CRÉATION DE VARIABLES IMPORTANTES POUR ISOLER PHP & BASH-----------------
       $statut = '${statut}';
       $verify_sql = '${verify_sql}';
@@ -48,6 +55,7 @@ include("../view/guide_execution.php");
 
       $user ='${username[$y]}';
       $password ='${psswrd[$y]}';
+      $tmp ='$tmp';
 
       #GÉNÉRATION DU SCRIPT-----------------------------------------------------
       $firstline = "
@@ -164,15 +172,17 @@ EOF
     for ((y=0;y<".$nb.";y++))
     do
       #VÉRIFIE L'EXISTANCE DES L'UTILISATEURS
-      sudo mysql -u root  'messagerie' -e \"SELECT email FROM users WHERE email='".$user."@".$domain."'\" | grep ".$user."
-      if [ $? == 0 ];
+      sudo mysql -u root 'messagerie' -e \"SELECT email FROM users\" >> tmp.txt
+      tmp=$(cat tmp.txt | grep ".$user.")
+      if [ \"".$tmp."\" != \"\" ];
       then
+        echo \"L'utilisateur éxiste déjà\"
+      else
         #AJOUT DES UTILISATEURS NON-EXISTANT
-          sudo mysql -u root messagerie << EOF 
-          INSERT INTO users VALUES ('', 1, PASSWORD('".$password."'), '".$user."@".$domain."', '".$domain."/".$user."/');
-EOF
-        echo \"L'utilisateur ".$user." a bien été ajouté.\"
-      fi
+          sudo mysql -u root messagerie -e \"INSERT INTO users VALUES ('', 1, PASSWORD('".$password."'), '".$user."@".$domain."', '".$domain."/".$user."');\"
+          echo \"L'utilisateur ".$user." a bien été ajouté.\"
+    fi
+    rm tmp.txt
     done\n
 
     # Création des INSERT
