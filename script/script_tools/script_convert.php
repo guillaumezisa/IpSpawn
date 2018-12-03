@@ -1,10 +1,12 @@
 <?php
 function Converter($entry, $n){
 	$entry = preg_replace('/[^0-9a-fA-F]/', "", $entry);
+	// (Oct, Dec, Hex) => (Bin)
 	if($n === 3 || $n === 4 || $n === 10){
 		$sum_array = [1,2,4,8];
 		$sauce_array = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"];
 		$entry = strrev($entry);
+		// (Oct, Hex) => (Bin)
 		if($n === 3 || $n === 4){
 			$sauce = "";
 			$s = str_split($entry, $n);
@@ -18,6 +20,7 @@ function Converter($entry, $n){
 			}
 			$new_sauce = strrev($sauce);
 			return $new_sauce;
+			// (Dec) => (Bin)
 		}elseif($n === 10){
 			$sum = 0;
 			for($i = 0; $i < strlen($entry); $i++){
@@ -27,7 +30,9 @@ function Converter($entry, $n){
 			}
 			return $sum;
 		}
+	// (Bin) => (Oct, Dec, Hex)
 	}elseif($n === -3 || $n === -4){
+		// (Bin) => (Oct, Hex)
 		if($n === -3 || $n === -4){
 			$entry = str_split($entry, 1);
 			for($k = 0; $k < count($entry); $k++){$entry[$k] = strtr($entry[$k], ["A" => "10", "B" => "11", "C" => "12", "D" => "13", "E" => "14", "F" => "15"]);}
@@ -45,6 +50,7 @@ function Converter($entry, $n){
 				$out .= $bin;
 			}
 			return chunk_split($out, 4);
+		// (Bin) => (Dec)
 		}elseif($n === -10){
 			$bin = "";
 			$p = (int)log($entry, 2);
@@ -59,6 +65,4 @@ function Converter($entry, $n){
 		}
 	}
 }
-
-echo Converter($entry, $n);
 ?>

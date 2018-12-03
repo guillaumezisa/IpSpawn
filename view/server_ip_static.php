@@ -9,7 +9,8 @@
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="ip_static">
         <input type="hidden" name="under_action" value="gen">
-        <input type="text" name="ip" value="">
+        Veuillez entrer l'ip sur laquelle vous voulez devenir statique.<br>
+        <input type="text" name="ip" value=""><br>
         <h6><input type="checkbox" name="auto_destruction" value="yes"> Détruire le script a la fin de l'éxécution (conseiller)</h6>
         <button type="submit" class="btn btn-dark">Valider</button></center><br><br>
       </form>
