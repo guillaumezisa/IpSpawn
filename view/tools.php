@@ -5,17 +5,44 @@
           <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
           <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
          </p>
-       </div></center>
-       <section class="jumbotron ">
+       </div>
+
+       <section class="jumbotron">
          <div class="ml-2">
-           <strong><h4>Découpage de plage :</h4></strong>
-           Vous avez un réseau que vous souhaitez isoler , <br>ici vous pourrez calculer la taille des plages nécéssaire a chaqu'un de vos utilisateurs .<br>
-         <a class="btn btn-dark" href="../controller/redirection.php?action=plage&status=start">Découpage de plage</a><br><br>
-         <strong><h4>Convertisseur binaire / décimal :</h4></strong>
-         Vous avez un réseau que vous souhaitez isoler , <br>ici vous pourrez calculer la taille des plages nécéssaire a chaqu'un de vos utilisateurs .<br><br>
-          <a class="btn btn-dark" href="../controller/redirection.php?action=binaire&status=start">Convertisseur Binaire</a><br><br>
-         </div>
-       </section>
+           <div class="container">
+             <div class="row">
+               <div class="col-sm-6">
+                 <div class="card text-center text-white bg-danger">
+                   <div class="card-header">
+                     <strong><h4>Découpage de plage :</h4></strong>
+                   </div>
+                   <div class="card-body ">
+                     <h5 class="card-title ">Vous avez un réseau que vous souhaitez isoler , <br>ici vous pourrez calculer la taille des plages nécéssaire a chaqu'un de vos utilisateurs.</h5>
+                   </div>
+                   <div class="card-footer text-muted">
+                     <a class="btn btn-dark" href="../controller/redirection.php?action=plage&status=start">Découpage de plage</a><br>
+                   </div>
+                 </div>
+               </div>
+               <div class="col-sm-6">
+                 <div class="card text-center text-white bg-danger">
+                   <div class="card-header">
+                     <strong><h4>Convertisseur</h4></strong>
+                   </div>
+                   <div class="card-body">
+                     <h5 class="card-title">Convertissez du binaire, décimal, héxadécimal, octal en binaire, décimal, héxadécimal, octal<br><br></h5>
+                   </div>
+                   <div class="card-footer text-muted">
+                     <a class="btn btn-dark" href="../controller/redirection.php?action=binaire&status=start">Convertir</a><br>
+                   </div>
+                 </div>
+               </div>
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
    </main>
  </body>
 </html>
