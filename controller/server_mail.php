@@ -29,8 +29,7 @@ include("../view/guide_execution.php");
 
       #CONCATENATION DE TABLEAUX BASH---------------------------------------------
       for( $i=0 ;$i<$nb ;$i++){
-        if(isset($_GET['username'][$i+1])){
-        #if ($i === 0 ){
+        if ($i === 0 ){
           $username = $_GET['username'][$i];
           $psswrd = $_GET['psswrd'][$i];
           #$username = "username[$i]=".$_GET['username'][$i]."\n";
@@ -40,8 +39,8 @@ include("../view/guide_execution.php");
           $psswrd=$psswrd." ".$_GET['psswrd'][$i];
           #$username=$username."username[$i]=".$_GET['username'][$i]."\n";
           #$psswrd=$psswrd."psswrd[$i]=".$_GET['psswrd'][$i]."\n";
+        }
       }
-    }
     $username="username=(".$username.")\n";
     $psswrd="psswrd=(".$psswrd.")\n";
       #CRÉATION DE VARIABLES IMPORTANTES POUR ISOLER PHP & BASH-----------------
@@ -56,6 +55,8 @@ include("../view/guide_execution.php");
       $user ='${username[$y]}';
       $password ='${psswrd[$y]}';
       $tmp ='$tmp';
+
+    echo $username;
 
       #GÉNÉRATION DU SCRIPT-----------------------------------------------------
       $firstline = "
@@ -169,6 +170,8 @@ EOF
     INSERT INTO domains VALUES ('', '".$domain."');
 EOF
 
+touch /etc/postfix/generic
+
     for ((y=0;y<".$nb.";y++))
     do
       #VÉRIFIE L'EXISTANCE DES L'UTILISATEURS
@@ -180,6 +183,7 @@ EOF
       else
         #AJOUT DES UTILISATEURS NON-EXISTANT
           sudo mysql -u root messagerie -e \"INSERT INTO users VALUES ('', 1, PASSWORD('".$password."'), '".$user."@".$domain."', '".$domain."/".$user."');\"
+          echo -e \"".$user."@".$hostname.".".$domain."  ".$user."@".$domain."\\n\" >> /etc/postfix/generic
           echo \"L'utilisateur ".$user." a bien été ajouté.\"
     fi
     rm tmp.txt
@@ -208,10 +212,7 @@ EOF
     postmap -q ".$name_admin."@".$domain." mysql:/etc/postfix/mysql-virtual-mailbox-maps.cf
 
     echo 'smtp_generic_maps = hash:/etc/postfix/generic' >> /etc/postfix/main.cf
-
-    touch /etc/postfix/generic
     postmap /etc/postfix/generic
-
     systemctl restart postfix
 
     #Demander le nom de la machine et remplir le fichier generic 
