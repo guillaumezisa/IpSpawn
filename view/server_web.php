@@ -16,11 +16,11 @@
                   <strong><h4>Installation d'un serveur Apache2</h4></strong>
                 </div>
                 <div class="card-body ">
-                  <h5 class="card-title ">L'installation de serveur web permet d'héberger un site internet.<br><br>
+                  <h5 class="card-title ">Apache est un serveur web simple et assez ancien avec énormément de documentation, et énormément customisable.
                   </h5>
                 </div>
                 <div class="card-footer text-muted">
-                  <a class="btn btn-dark" href="../controller/redirection.php?action=server_web&under_action=server_web_apache_gen">Installer</a><br>
+                  <a class="btn btn-dark" href="../controller/redirection.php?action=server_web&under_action=apache">Installer</a><br>
                 </div>
               </div>
             </div>
@@ -30,11 +30,11 @@
                   <strong><h4>Installation d'un serveur Nginx</h4></strong>
                 </div>
                 <div class="card-body ">
-                  <h5 class="card-title ">L'installation de serveur web permet d'héberger un site internet.<br><br>
+                  <h5 class="card-title ">Nginx est un serveur web assez simple, plutot récent il est l'avenir des serveurs web, il est plus optimisé que apache et est customisable.
                   </h5>
                 </div>
                 <div class="card-footer text-muted">
-                  <a class="btn btn-dark" href="../controller/redirection.php?action=server_web&under_action=server_web_nginx_gen">Installer</a><br>
+                  <a class="btn btn-dark" href="../controller/redirection.php?action=server_web&under_action=nginx">Installer</a><br>
                 </div>
               </div>
             </div>

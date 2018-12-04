@@ -1,14 +1,13 @@
 <main role="main">
     <center><div class="container">
-       <br><center><h3><strong>Service de méssagerie</strong></h3></center>
+       <br><center><h3><strong>Service de messagerie</strong></h3></center>
        <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
        <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
       </p>
     </div></center>
     <section class="jumbotron ">
       <div class="ml-2"><center>
-      <strong><h4>Installation d'un service de messagerie :</h4></strong>
-      <div class="container">
+      <div class="container" style="margin-top:-4%">
         <div class="row">
           <div class="col-sm-1">
 
@@ -35,12 +34,11 @@
         <center>
 		<br>
         <h2>Administrateur</h2>
-		<br>
           <br>Nom Admin : <input type="textarea" name="name_admin" required>
           <br>Mot de passe Admin : <input type="password" name="passwrd_admin" required>
           <br>Nom de domaine : <input type="textarea" name="domain" required>
           <br>Nom de la machine : <input type="textarea" name="hostname" required>
-        <br>
+        <br><br>
         <h2>Users</h2>
         <p>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un utilisateur</button>

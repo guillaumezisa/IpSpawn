@@ -21,19 +21,24 @@ include('../view/header.php');
     if ($_GET["action"] === "ip_range"){
       include('../view/tool_ip_range.php');
 #-------------------------------------------------------------------------------
-#   CONVERTISSEUR BINAIRE
+#   CONVERTISSEUR
 #-------------------------------------------------------------------------------
-    }elseif($_GET["action"] === "binary_converter"){
-      include('../view/tool_binary_converter.php');
+    }elseif($_GET["action"] === "converter"){
+      if (isset($_GET['under_action']) && $_GET['under_action'] === "result"){
+        include('../controller/tool_converter.php');
+      } else {
+        include('../view/tool_converter.php');
+      }
+
 #-------------------------------------------------------------------------------
 #   INSTALLATION SERVEUR WEB
 #-------------------------------------------------------------------------------
     }elseif($_GET['action'] === "server_web"){
       if(isset($_GET["under_action"])){
         if($_GET["under_action"] === "apache"){
-          include('../server_web_apache_gen.php');
+          include('../controller/server_web_apache_gen.php');
         }elseif($_GET["under_action"] === "nginx"){
-          include('../server_web_nginx_gen.php');
+          include('../controller/server_web_nginx_gen.php');
         }else {
           include('../view/server_web.php');
         }
@@ -63,6 +68,25 @@ include('../view/header.php');
     }
   }else {
     include('../view/server_mail.php');
+  }
+#-------------------------------------------------------------------------------
+#   INSTALLATION SERVEUR SAMBA
+#-------------------------------------------------------------------------------
+}elseif($_GET['action'] === "server_samba"){
+  if (isset($_GET['under_action'])){
+    if ($_GET['under_action'] === "install"){
+    #INSTALLATION CRÉATION DES ZONES DE STOCKAGES-------------------------------
+      include('../view/server_samba_install.php');
+    } elseif ($_GET['under_action'] ==="install_gen"){
+      include('../controller/server_samba_install.php');
+    #MODIFICATION DES ZONES DE STOCKAGE-----------------------------------------
+    }elseif ($_GET['under_action'] ==="mod"){
+      include('../view/server_samba_modify.php');
+    }elseif ($_GET['under_action'] ==="mod_gen"){
+      include('../controller/server_samba_modify.php');
+    }
+  }else {
+    include('../view/server_samba.php');
   }
 #-------------------------------------------------------------------------------
 #   MISE EN PLACE D'UNE IP FIXE
