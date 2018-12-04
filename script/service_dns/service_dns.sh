@@ -2,23 +2,17 @@
 
 
 statut=$('whoami')
-hostname="labsr.joranprigent.itinet.fr"
-ip="192.168.80.135"
+hostname="robincuvillier"
+ip="192.168.70.130"
 # Récupère l'IP du serveur
 mon_ip=`grep $HOSTNAME /etc/hosts |cut -f1`
-domain="joranprigent.itinet.fr"
-exist="$(grep search /etc/resolv.conf)"
-ipexist="$(grep $ip /etc/resolv.conf)"
+domain="robincuvillier.itinet.fr"
 option="master"
-reverse="$(echo $ip | awk -F. '{print $3"."$2"."$1}')"
-zonexist="$(grep $domain /etc/bind/named.conf.local)"
-reversexist="$(grep $reverse /etc/bind/named.conf.local)"
-conf_exist="$(grep "listen-on { any; };" /etc/bind/named.conf.options)"
 # Récupère la date de création pour générer le fichier Bind
 date_creation=`date +%Y%d`
 num_columns=6
-test_resolution=("" "NS" "ns1.joranprigent.itinet.fr." "ns1" "A" "192.168.80.135")
-test_reverse=("" "NS" "ns1.joranprigent.itinet.fr." "192.168.80.135" "PTR" "ns1.joranprigent.itinet.fr.") 
+test_resolution=("" "NS" "ns1.robincuvillier.itinet.fr." "ns1" "A" "192.168.80.135")
+test_reverse=("" "NS" "ns1.robincuvillier.itinet.fr." "192.168.80.135" "PTR" "ns1.robincuvillier.itinet.fr.") 
 
 
 if [ $statut != root ]
@@ -48,6 +42,15 @@ echo ""
 sleep 2
 echo "---------- Début de la configuration ---------"
 sleep 2
+
+
+exist="$(grep search /etc/resolv.conf)"
+ipexist="$(grep $ip /etc/resolv.conf)"
+reverse="$(echo $ip | awk -F. '{print $3"."$2"."$1}')"
+zonexist="$(grep $domain /etc/bind/named.conf.local)"
+reversexist="$(grep $reverse /etc/bind/named.conf.local)"
+conf_exist="$(grep "listen-on { any; };" /etc/bind/named.conf.options)"
+
 
 # Ajout du FQDN dans le fichier hostname
 echo "$hostname" > /etc/hostname
@@ -79,7 +82,7 @@ then
 echo "
 zone "$domain" {
 	type $option;
-	file "/etc/bind/db.$domain";
+	file \""/etc/bind/db.$domain"\";
 };" >>/etc/bind/named.conf.local
 else
 	: ne fais rien
@@ -90,7 +93,7 @@ then
 echo "
 zone "$reverse.in-addr.arpa" {
 	type $option;
-	file "/etc/bind/db.$reverse.in-addr.arpa";
+	file "\"/etc/bind/db.$reverse.in-addr.arpa\"";
 };" >>/etc/bind/named.conf.local
 else
 	: ne fais rien	
@@ -101,7 +104,8 @@ fi
 # problème de tabulation
 if [ -z "$conf_exist" ]
 then
-	sed -i -r "/listen-on-v6.*/a  \ 	listen-on{ any; };" /etc/bind/named.conf.options
+	sed -i '25d' /etc/bind/named.conf.options
+	echo -e "	listen-on { any; };\n};" >> /etc/bind/named.conf.options
 else
 	: ne fais rien
 fi
