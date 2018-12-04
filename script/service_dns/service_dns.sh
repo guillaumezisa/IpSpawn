@@ -13,20 +13,13 @@ option="master"
 reverse="$(echo $ip | awk -F. '{print $3"."$2"."$1}')"
 zonexist="$(grep $domain /etc/bind/named.conf.local)"
 reversexist="$(grep $reverse /etc/bind/named.conf.local)"
+conf_exist="$(grep "listen-on { any; };" /etc/bind/named.conf.options)"
 # Récupère la date de création pour générer le fichier Bind
-date_creation=`date +%Y%m%d`01
-declare -A l
-num_columns=# il en veut combien le mec ?
+date_creation=`date +%Y%d`
+num_columns=6
+test_resolution=("" "NS" "ns1.joranprigent.itinet.fr." "ns1" "A" "192.168.80.135")
+test_reverse=("" "NS" "ns1.joranprigent.itinet.fr." "192.168.80.135" "PTR" "ns1.joranprigent.itinet.fr.") 
 
-# -----Il faut integrer les entrées utilisateur !!------
-# Création de la liste 2D 
-for (( i=1; i<=$num_columns; i++ ))
-do
-	for (( j=1; j<=3; j++ ))
-	do
-		l[$i,$j]=# Entrer user (variables PHP)
-	done
-done
 
 if [ $statut != root ]
 then
@@ -84,9 +77,9 @@ fi
 if [ -z "$zonexist" ]
 then
 echo "
-zone '$domain' {
+zone "$domain" {
 	type $option;
-	file '/etc/bind/db.$domain';
+	file "/etc/bind/db.$domain";
 };" >>/etc/bind/named.conf.local
 else
 	: ne fais rien
@@ -95,12 +88,22 @@ fi
 if [ -z "$reversexist" ]
 then
 echo "
-zone '$reverse.in-addr.arpa' {
+zone "$reverse.in-addr.arpa" {
 	type $option;
-	file '/etc/bind/db.$reverse.in-addr.arpa'
+	file "/etc/bind/db.$reverse.in-addr.arpa";
 };" >>/etc/bind/named.conf.local
 else
 	: ne fais rien	
+fi
+
+# Vérification de la configuration du fichier named.conf.options
+
+# problème de tabulation
+if [ -z "$conf_exist" ]
+then
+	sed -i -r "/listen-on-v6.*/a  \ 	listen-on{ any; };" /etc/bind/named.conf.options
+else
+	: ne fais rien
 fi
 
 # Création des fichiers des enregistrements
@@ -111,35 +114,44 @@ touch /etc/bind/db.$reverse.in-addr.arpa
 # Penser à ajouter la boucle pour les enregistrements !!!!
 echo "
 \$TTL 86400
-$domain.	IN	SOA	$hostname. root.$domain. (
+@	IN	SOA	$domain. root.$domain. (
 				$date_creation
 				21600
 				3600
 				64800
 				86400 )
 
-`
-for (( i=1; i<=$num_columns; i++ ))
+" >>/etc/bind/db.$domain
+
+for (( i=0; i<$num_columns; i+=3 ))
 do
-	echo -e "${l[$i,0]}			IN		${l[$i,1]}		${l[$i,2]}\n"
+
+	echo -e "${test_resolution[$i]}		IN		${test_resolution[$i+1]}		${test_resolution[$i+2]} ">>/etc/bind/db.$domain
+
 done
-`" >>/etc/bind/db.$domain
-# El reverse +9000
+
+# La partie des enregsitrements en reverse
 echo "
 \$TTL 86400
-@	IN	SOA	$hostname. root.$domain. (
+@	IN	SOA	$domain. root.$domain. (
 				$date_creation
 				21600
 				3600
 				64800
 				86400 )
 
-`
-for (( i=1; i<=$num_columns; i++ ))
+" >>/etc/bind/db.$reverse.in-addr.arpa
+
+
+for (( i=0; i<$num_columns; i+=3 ))
 do
-	echo -e "${l[$i,0]}			IN		${l[$i,1]}		${l[$i,2]}\n"
+	cuted_ip="$(echo "${test_reverse[$i]}" | awk -F. '{print $4}')"
+	echo -e "$cuted_ip		IN		${test_reverse[$i+1]}		${test_reverse[$i+2]}" >>/etc/bind/db.$reverse.in-addr.arpa
+ 
 done
-`" >>/etc/bind/db.$reverse.in-addr.arpa
+
+`sudo service bind9 restart`
+`sudo service networking restart`
 
 echo ""
 echo "---------- Fin de la configuration ----------"
