@@ -19,7 +19,11 @@ include('../view/header.php');
 #   PLAGE IP
 #-------------------------------------------------------------------------------
     if ($_GET["action"] === "ip_range"){
-      include('../view/tool_ip_range.php');
+      if (isset($_GET['under_action'])){
+        include('../controller/tool_ip_range.php');
+      }else {
+        include('../view/tool_ip_range.php');
+      }
 #-------------------------------------------------------------------------------
 #   CONVERTISSEUR
 #-------------------------------------------------------------------------------
