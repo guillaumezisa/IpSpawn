@@ -2,11 +2,10 @@
 
 
 statut=$('whoami')
-hostname="robincuvillier"
-ip="192.168.70.130"
+hostname="labsr"
+ip="192.168.80.135"
 # Récupère l'IP du serveur
-mon_ip=`grep $HOSTNAME /etc/hosts |cut -f1`
-domain="robincuvillier.itinet.fr"
+domain="joranprigent.itinet.fr"
 option="master"
 # Récupère la date de création pour générer le fichier Bind
 date_creation=`date +%Y%d`
@@ -53,10 +52,9 @@ conf_exist="$(grep "listen-on { any; };" /etc/bind/named.conf.options)"
 
 
 # Ajout du FQDN dans le fichier hostname
-echo "$hostname" > /etc/hostname
-
+`sudo hostnamectl set-hostname $hostname.$domain`
 # Modification du fichier hosts
-sed -i -r "2s/.*/$ip	$hostname/g" /etc/hosts
+sed -i -r "2s/.*/$ip	$hostname.$domain/g" /etc/hosts
 
 # Modifications du fichier resolv.conf
 sed -i -r "s/search.*/search $domain/g" /etc/resolv.conf
