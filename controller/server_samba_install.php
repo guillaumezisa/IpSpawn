@@ -27,7 +27,7 @@ include("../view/guide_execution.php");
 
       #CRÉATION DE VARIABLES IMPORTANTES POUR ISOLER PHP & BASH-----------------
       $statut = '${statut}';
-      $path = $_GET['path'];
+      $path = $_GET['zone'];
 
       #GÉNÉRATION DU SCRIPT-----------------------------------------------------
       $firstline = "
@@ -37,93 +37,101 @@ include("../view/guide_execution.php");
       #-------------------------------------------------------------------------\n";
 
       $script="
-      # Mise à jour
+    
+      function begin() {
+        statut=$('whoami')
+      # Vérification des droits de l'éxécuteur du script
+        if [ ".$statut." != root ]
+        then
+          echo \"Vous n'avez pas les droits n'écéssaires, contactez votre administrateur ...\"
+          sleep 1
+          exit
+  
+        elif [ ".$statut." = root ]
+          then
+          apt-get -y update
+          apt-get -y upgrade
+        fi
+      }
+  
+      begin
+  
+      if [ ".$statut." = root ]
+      then
 
-      sudo apt-get -y update
-      sudo apt-get -y upgrade
+        # Installation des paquets samba
 
-      # Installation des paquets samba
+        sudo apt-get -y install samba
+        sudo apt-get -y install samba-common-bin
 
-      sudo apt-get -y install samba
-      sudo apt-get -y install samba-common-bin
+        cp /etc/samba/smb.conf /etc/samba/smb.conf_backup
+        grep -v -E \"^#|^;\" /etc/samba/smb.conf_backup | grep . > /etc/samba/smb.conf
+        systemctl restart smbd
 
-      cp /etc/samba/smb.conf /etc/samba/smb.conf_backup
-      grep -v -E \"^#|^;\" /etc/samba/smb.conf_backup | grep . > /etc/samba/smb.conf
-      systemctl restart smbd
+        mkdir ".$path."
+        mkdir ".$path."/commun
+        chmod 755 ".$path."
+        chmod 777 ".$path."/commun
 
-      mkdir ".$path."
-      mkdir ".$path."/commun
-      chmod 744 ".$path."
-      chmod 777 ".$path."/commun
+        echo -e \"\n[commun]\n  comment = Dossier commun à tous\n path = ".$path."/commun\n log file = /var/log/samba/log.commun\n  max log size = 100\nbrowseable = yes\n  hide dot files = yes\n  read only = no\n  public = yes\n  writable = yes\n  create mode = 0775\n  printable = no\n\"  >> /etc/samba/smb.conf
 
-      echo -e \"
-      [commun]
-      comment = public anonymous access
-      path = ".$path."/commun
-      browsable =yes
-      create mask = 0660
-      directory mask = 0771
-      writable = yes
-      guest ok = yes\"  >> /etc/samba/smb.conf
-
-      systemctl restart smbd
-
+        systemctl restart smbd
       ";
 
-      if(isset($username) && isset($_GET['psswrd'])){
-        $nb = count($username);
+      if(isset($_GET['dossier']) && isset($_GET['group']) && isset($_GET['password'])){
+        $nb = count($_GET['dossier']);
 
         #CONCATENATION DE TABLEAUX BASH---------------------------------------------
         for( $i=0 ;$i<$nb ;$i++){
           if ($i === 0 ){
-          $username = "user[$i]=".$_GET['username'][$i]."\n";
-          $password = "psswrd[$i]=".$_GET['psswrd'][$i]."\n";
-          $group = "group[$i]=".$_GET['group'][$i]."\n";
-          } else {
-            $username=$username."user[$i]=".$_GET['username'][$i]."\n";
-            $password=$password."psswrd[$i]=".$_GET['psswrd'][$i]."\n";
-            $group=$group."group[$i]=".$_GET['group'][$i]."\n";
+            $dossiers = $_GET['dossier'][$i];
+            $passwords = $_GET['password'][$i];
+            $groups= $_GET['group'][$i];
+          } else { 
+            $dossiers=$dossiers." ".$_GET['dossier'][$i];
+            $passwords=$passwords." ".$_GET['password'][$i];
+            $groups=$groups." ".$_GET['group'][$i];
           }
         }
-      }
-      $user ='${user[$y]}';
-      $password ='${psswrd[$y]}';
+      $dossiers="dossier=(".$dossiers.")\n";
+      $groups="group=(".$groups.")\n";
+      $passwords="password=(".$passwords.")\n";
+  
+      $password ='${password[$y]}';
       $group = '${group[$y]}';
+      $dossier = '${dossier[$y]}';
 
-    $script=$script."
-    liste=($( ls -la ".$path." | awk -F\" \" '{print$9}'))
-    for ((y=0;y<".$nb.";y++))
-    do
-      for ((i=0;i<".$nb.";i++))
+      $script=$script."
+      
+      for ((y=0;y<".$nb.";y++))
       do
-        if [ $user ==  $(liste[$i])];
+      
+        cat /etc/group | awk -F\":\" '{print$1}' | grep -w ".$group."
+        if [ $? == 0 ];
         then
-          echo'Utilisateur $user existe déjà'
-          break
+          echo \"'".$group."' déjà existant.\"
         else
-
-        # Création Utilisateur
-        useradd $user
-        #AJOUTER UN VERIFY
-
-        # Création groupe
-        groupadd $group
-        # AJOUTER UN VERIFY
-
-        # Définition du Mot de passe
-        smbpasswd -a $user $psswrd
+          groupadd ".$group."
+        fi
 
         # Création du Répertoire partagé
-        sudo mkdir -p $path/$group
+        mkdir -p ".$path."/".$dossier."
 
         # Application des Droits au dossier
-        chown -R root:$group $path/$group
-        chmod -R 770 $path/$group
+        chown -R root:".$group." ".$path."/".$dossier."
+        chmod -R 770 ".$path."/".$dossier."
+      
+        echo -e \"[".$dossier."]\n  comment = Dossier du group ".$group."\n path = ".$path."/".$dossier."\n log file = /var/log/samba/log.".$dossier."\n  max log size = 100\n  hide dot files = yes\n  guest ok = no\n guest only = no\n write list = @".$group."\n  read list = \n  valid users = @".$group."\n\"  >> /etc/samba/smb.conf
+      
+      done
+      systemctl restart smbd
+      fi
+      ";
 
-    "
+    }
 
   #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
-  $new_script = $firstline . $username . $password . $script . $rm;
+  $new_script = $firstline . $dossiers . $groups . $passwords . $script . $rm;
   $file = fopen($file_path, 'w+');
   fputs($file,$new_script);
 

@@ -30,9 +30,11 @@ include("../view/guide_execution.php");
       #CONCATENATION DE TABLEAUX BASH---------------------------------------------
       for( $i=0 ;$i<$nb ;$i++){
         if ($i === 0 ){
-        $username = "user[$i]=".$_GET['username'][$i]."\n";
-        $password = "psswrd[$i]=".$_GET['psswrd'][$i]."\n";
+          $group = "group[$i]=".$_GET['group'][$i]."\n";
+          $username = "user[$i]=".$_GET['username'][$i]."\n";
+          $password = "psswrd[$i]=".$_GET['psswrd'][$i]."\n";
         } else {
+          $group = "group[$i]=".$_GET['group'][$i]."\n";
           $username=$username."user[$i]=".$_GET['username'][$i]."\n";
           $password=$password."psswrd[$i]=".$_GET['psswrd'][$i]."\n";
       }
@@ -41,6 +43,8 @@ include("../view/guide_execution.php");
       $statut = '${statut}';
       $user ='${user[$y]}';
       $password ='${psswrd[$y]}';
+      $group = '${group[$y]}';
+      $path = $_GET['path']
 
       #GÉNÉRATION DU SCRIPT-----------------------------------------------------
       $firstline = "
@@ -50,24 +54,64 @@ include("../view/guide_execution.php");
       #-------------------------------------------------------------------------\n";
 
       $script="
-      liste=($( ls -la ".$path." | awk -F\" \" '{print$9}'))
+
+      function begin() {
+        statut=$('whoami')
+      # Vérification des droits de l'éxécuteur du script
+        if [ ".$statut." != root ]
+        then
+          echo \"Vous n'avez pas les droits n'écéssaires, contactez votre administrateur ...\"
+          sleep 1
+          exit
+  
+        elif [ ".$statut." = root ]
+          then
+          apt-get -y update
+          apt-get -y upgrade
+        fi
+      }
+  
+      begin
+  
+      if [ ".$statut." = root ]
+      then
+      
       for ((y=0;y<".$nb.";y++))
       do
-        for ((i=0;i<".$nb.";i++))
-        do
-          if [ $user == $(liste[$i])];
-          then
-            echo'Utilisateur $user existe déjà'
-            break
-          else
+      
+      id ".$user."
+      if [ $? == 0 ];
+      then
+        echo \"'".$user."' déjà existant.\"
+      else
+      #
+      #BESOIN DE TROUVER COMMENT ADDUSER EN 1 LIGNE ET L'ASSIGNER A UN GROUPE
+      #
+        useradd -p '".$password"' ".$user."
+      fi
 
-          # Création Utilisateur
-          useradd $user
-          #AJOUTER UN VERIFY
 
-          # Définition du Mot de passe
-          smbpasswd -a $user $psswrd
+      cat /etc/group | awk -F\":\" '{print$1}' | grep -w ".$group."
+      if [ $? == 0 ];
+      then
+        echo \"'".$group."' déjà existant.\"
+      else
+        groupadd ".$group."
+      fi
 
+      # Création du Répertoire partagé
+      mkdir -p ".$path."/".$dossier."
+
+      # Application des Droits au dossier
+      chown -R root:".$group." ".$path."/".$dossier."
+      chmod -R 770 ".$path."/".$dossier."
+    
+      echo -e \"[".$dossier."]\n  comment = Dossier du group ".$group."\n path = ".$path."/".$dossier."\n log file = /var/log/samba/log.".$dossier."\n  max log size = 100\n  hide dot files = yes\n  guest ok = no\n guest only = no\n write list = @".$group."\n  read list = \n  valid users = @".$group."\n\"  >> /etc/samba/smb.conf
+      
+      done
+      systemctl restart smbd
+
+      fi
       ";
 
       #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------

@@ -11,10 +11,10 @@
         <input type="hidden" name="under_action" value="install_gen">
         <h4>Configuration de la zone de partage commune a tous les utilisateurs</h4><br>
         Veuillez entrer un chemin vers un dossier commun a tous :<br><input type="text" name="zone" required><br><br>
-        <h4>Configuration des utilisateurs </h4>
-        <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un utilisateur</button>
+        <h4>Configuration des dossiers </h4>
+        <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un sous-dossier</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
-        <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier utilisateur</button><br><br>
+        <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier dossier</button><br><br>
         </div>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
         <button type="submit" class="btn btn-dark" id="choice" >Valider</button></center></center>
@@ -39,18 +39,18 @@
     var input_b = document.createElement('input');
     var input_a = document.createElement('input');
     var br = document.createElement('br');
-    var text_q = document.createTextNode(' Nom de l\'utilisateur : ');
-    var text_b = document.createTextNode(' Groupe de l\'utilisateur : ');
-    var text_a = document.createTextNode(' Mot de passe de l\'utilisateur : ');
+    var text_q = document.createTextNode(' Nom du dossier : ');
+    var text_b = document.createTextNode(' Groupe gérant : ');
+    var text_a = document.createTextNode(' Mot de passe d\'accès : ');
     input_q.type = "text";
-    input_q.name ="username[]";
+    input_q.name ="dossier[]";
     input_q.required = true;
     input_b.type = "text";
-    input_b.name ="usergroup[]";
+    input_b.name ="group[]";
     input_b.required = true;
     input_b.pattern = "^[\(\)a-zA-Z0-9,-_ ]{0,}$";
     input_a.type = "text";
-    input_a.name ="userpassword[]";
+    input_a.name ="password[]";
     input_a.pattern = "^[\(\)a-zA-Z0-9,-_ ]{0,}$";
     input_a.required = true;
     var parentDiv = document.getElementById("new").parentNode;
