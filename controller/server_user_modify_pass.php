@@ -25,6 +25,7 @@ include("../view/guide_execution.php");
 #-------------------------------------------------------------------------------
 # GÉNÉRATION DU SCRIPT
 #-------------------------------------------------------------------------------
+
 if(isset($_GET['action']) && isset($_GET['under_action'])){
   if(isset($_GET['username']) && isset($_GET['password'])){
     $nb = count($_GET['username']);
@@ -56,13 +57,14 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
       for ((y=0;y<".$nb.";y++))
       do
         #MODIFICATION DU MOT DE PASSE D'UTILISATEURS----------------------------
-        echo -e ".$pass." ".$hum." ".$pass | passwd ".$user."
+        echo -e ".$pass." ".$hum." ".$pass." | passwd ".$user."
       done\n";
 
     #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT---------------------------
     $new_script = $firstline . $username . $password . $script . $rm;
     $file = fopen($file_path, 'w+');
     fputs($file,$new_script);
+
     }
   }
 ?>
