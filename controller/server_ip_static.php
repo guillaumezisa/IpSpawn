@@ -50,22 +50,16 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     #---------------------------------------------------------------------------\n";
 
     $script="
-    #VERIFICATION DE L'EXISTANCE DES PAQUETS---------------------------------
-    if [ ".$find_package_net." = \"\" ];
-    then
 	   apt install net-tools -y
-    fi
-    if [ ".$find_package_res." = \"\" ];
-    then
 	   apt install resolvconf -y
-    fi
+
 
     #CRÉATION DES VARIABLES IMPORTANTES--------------------------------------
     card=$(ip route |grep default | awk '{print $5}');
     ip=".$_GET['ip'].";
-    broadcast=$(ip a | grep $card| grep inet | awk '{print $4}');
+    broadcast=$(ip a | grep ".$card."| grep inet | awk '{print $4}');
     gateway=$(ip route | grep default | awk '{print $3}');
-    mask=$(ifconfig | grep $ip | awk '{print $4}');
+    mask=$(ifconfig | grep ".$ip." | awk '{print $4}');
     dns=$(cat /etc/resolv.conf | grep name | awk '{print $2}' | sed -n '1p')
 
     echo \"source /etc/network/interface.d/*\" > /etc/network/interfaces
