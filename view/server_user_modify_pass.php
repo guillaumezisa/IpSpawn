@@ -1,6 +1,6 @@
 <main role="main"><center>
   <div class="container"><br>
-    <h3><strong>Modification des mot(s) de passe des utilisateur(s)</strong></h3>
+    <h3><strong>Modification de mot(s) de passe des utilisateur(s)</strong></h3>
     <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
@@ -8,7 +8,7 @@
     <div class="ml-2">
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="user">
-        <input type="hidden" name="under_action" value="add_gen">
+        <input type="hidden" name="under_action" value="mod_pass_gen">
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un utilisateur</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier utilisateur</button><br><br>
