@@ -118,7 +118,7 @@ include('../view/header.php');
         }elseif ($_GET['under_action'] === "del"){
           include("../view/server_user_delete.php");
         }elseif ($_GET['under_action'] === "del_gen"){
-          include("../controller/server_user_delete.php");
+          include("../controller/server_user_del.php");
         #MODIFICATION UTILISATEURS ( NOM,MDP)-✔---------------------------------
         }elseif ($_GET['under_action'] === "mod"){
           include("../view/server_user_modify.php");
