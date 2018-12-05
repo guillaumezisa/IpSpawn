@@ -59,7 +59,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
       #-------------------------------------------------------------------------\n";
 
       $script="
-      apt install sudo
+      apt install sudo -y
       for ((y=0;y<".$nb.";y++))
       do
         #TRAITEMENT DES COMMANDES NEGATIVES-------------------------------------

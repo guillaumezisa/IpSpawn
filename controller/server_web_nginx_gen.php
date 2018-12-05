@@ -34,8 +34,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     #---------------------------------------------------------------------------\n";
 
     $script="
-    if [ ".$nginx." = '' ];
-    then
+
     apt install nginx -y
     apt install php-fpm -y
     apt install php -y
@@ -45,9 +44,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     sed -i -r 's/.*#location ~ \.php$ {*/location ~ \.php$ {/g' /etc/nginx/sites-available/default
     sed -i -r 's/.*#include snippets/fastcgi-php.conf;*/include snippets/fastcgi-php.conf;/g' /etc/nginx/sites-available/default
     sed -i -r 's/.*#fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;*/fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;}/g' /etc/nginx/sites-available/default
-    else
-      echo Nginx est déjà installer.
-    fi
+
     ";
 
     #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------

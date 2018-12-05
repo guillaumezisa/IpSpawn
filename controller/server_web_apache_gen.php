@@ -34,14 +34,11 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     #---------------------------------------------------------------------------\n";
 
     $script="
-    if [ ".$apache." = '' ];
-    then
+
       apt install apache2 -y
       apt install php -y
       apt install mariadb-server
-    else
-      echo Apache2 est déjà installer.
-    fi
+
     ";
 
     #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
