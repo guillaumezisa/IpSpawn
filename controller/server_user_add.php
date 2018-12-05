@@ -1,6 +1,6 @@
 <main role="main"><center>
   <div class="container"><br>
-  <h3><strong>Ajout de d'utilisateur(s) a des groupe(s)</strong></h3>
+  <h3><strong>Ajout d'utilisateur(s) à des groupe(s)</strong></h3>
     <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
@@ -52,7 +52,7 @@ include("../view/guide_execution.php");
       $script="
         for ((y=0;y<".$nb.";y++))
         do
-          #VERIFICATION DE L'EXISTANCE DE L'UTILISATEUR-------------------------
+          #VERIFICATION DE L'EXISTENCE DE L'UTILISATEUR-------------------------
           id -u ".$user."> /dev/null 2>&1
           if [ $? == 0 ];
           then

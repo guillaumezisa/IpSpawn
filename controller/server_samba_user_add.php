@@ -1,6 +1,6 @@
 <main role="main"><center>
   <div class="container"><br>
-  <h3><strong>Gestion du serveur mail</strong></h3>
+  <h3><strong>Ajout d'utilisateur(s) à des groupe(s)</strong></h3>
     <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
@@ -12,8 +12,8 @@
 #-------------------------------------------------------------------------------
 
 #GÉNÉRATION DES VARIABLE DE FICHIERS--------------------------------------------
-$file_path="../script/server_mail/server_samba".session_id().".sh";
-$file_name="server_samba.sh";
+$file_path="../script/server_samba/samba_add_user.sh".session_id().".sh";
+$file_name="samba_add_user.sh";
 #VÉRIFICATION DE L'OPTION D'AUTO-DESTRUCTION------------------------------------
 if (isset( $_GET["auto_destruction"] )){ $rm = "rm ".$file_name; } else { $rm = ""; }
 #AJOUT DU LIEN DE TÉLÉCHARGEMENT & GUIDE----------------------------------------
@@ -63,22 +63,22 @@ include("../view/guide_execution.php");
           echo \"Vous n'avez pas les droits n'écéssaires, contactez votre administrateur ...\"
           sleep 1
           exit
-  
+
         elif [ ".$statut." = root ]
           then
           apt-get -y update
           apt-get -y upgrade
         fi
       }
-  
+
       begin
-  
+
       if [ ".$statut." = root ]
       then
-      
+
       for ((y=0;y<".$nb.";y++))
       do
-      
+
       id ".$user."
       if [ $? == 0 ];
       then
@@ -105,9 +105,9 @@ include("../view/guide_execution.php");
       # Application des Droits au dossier
       chown -R root:".$group." ".$path."/".$dossier."
       chmod -R 770 ".$path."/".$dossier."
-    
+
       echo -e \"[".$dossier."]\n  comment = Dossier du group ".$group."\n path = ".$path."/".$dossier."\n log file = /var/log/samba/log.".$dossier."\n  max log size = 100\n  hide dot files = yes\n  guest ok = no\n guest only = no\n write list = @".$group."\n  read list = \n  valid users = @".$group."\n\"  >> /etc/samba/smb.conf
-      
+
       done
       systemctl restart smbd
 
