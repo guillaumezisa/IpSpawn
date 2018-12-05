@@ -40,7 +40,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     $ip='$ip';
     $mask='$mask';
     $gateway='$gateway';
-    $dns='dns';
+    $dns='$dns';
 
     #GÉNÉRATION DU SCRIPT-------------------------------------------------------
     $firstline = "
@@ -77,6 +77,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     echo \"gateway ".$gateway." \" >> /etc/network/interfaces
     echo \"\" >> /etc/network/interfaces
     echo \"dns-nameservers ".$dns." \" >> /etc/network/interfaces
+    echo \"dns-nameservers 8.8.8.8 \" >> /etc/network/interfaces
     service networking restart
     \n";
 
