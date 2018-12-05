@@ -1,6 +1,6 @@
 <main role="main"><center>
   <div class="container"><br>
-  <h3><strong>Ajout de d'utilisateur(s) a des groupe(s)</strong></h3>
+  <h3><strong>Modification de mot(s) de passe(s) d'utilisateur(s)</strong></h3>
     <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
@@ -56,7 +56,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
       for ((y=0;y<".$nb.";y++))
       do
         #MODIFICATION DU MOT DE PASSE D'UTILISATEURS----------------------------
-        echo -e $pass".$hum."$pass | passwd $user
+        echo -e ".$pass." ".$hum." ".$pass | passwd ".$user."
       done\n";
 
     #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT---------------------------
