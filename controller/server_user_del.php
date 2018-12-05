@@ -12,8 +12,8 @@
 #-------------------------------------------------------------------------------
 
 #GÉNÉRATION DES VARIABLE DE FICHIERS--------------------------------------------
-$file_path="../script/script_client/add_user_".session_id().".sh";
-$file_name="add_user.sh";
+$file_path="../script/script_client/del_user_".session_id().".sh";
+$file_name="del_user.sh";
 
 #VÉRIFICATION DE L'OPTION D'AUTO-DESTRUCTION------------------------------------
 if (isset( $_GET["auto_destruction"] )){ $rm = "rm ".$file_name; } else { $rm = ""; }
@@ -26,7 +26,7 @@ include("../view/guide_execution.php");
 # GÉNÉRATION DU SCRIPT
 #-------------------------------------------------------------------------------
 if(isset($_GET['action']) && isset($_GET['under_action'])){
-  if(isset($_GET['username'])<){
+  if(isset($_GET['username'])){
     $nb = count($_GET['username']);
 
     #CONCATENATION DE TABLEAUX BASH---------------------------------------------
@@ -50,7 +50,8 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     for ((y=0;y<".$nb.";y++))
     do
       #SUPPRESSION DES UTILISATEURS---------------------------------------------
-      userdel ".$user."
+      userdel -r ".$user."
+
     done\n";
 
     #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT---------------------------
