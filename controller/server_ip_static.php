@@ -41,6 +41,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     $gateway='$gateway';
     $dns='$dns';
     $old_ip='$old_ip';
+    $ip='$ip';
 
     #GÉNÉRATION DU SCRIPT-------------------------------------------------------
     $firstline = "
