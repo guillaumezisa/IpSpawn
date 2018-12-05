@@ -8,7 +8,7 @@
     <div class="ml-2" style="margin-top:-2%">
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="server_samba">
-        <input type="hidden" name="under_action" value="install_gen">
+        <input type="hidden" name="under_action" value="add_gen">
         <h4>Configuration de la zone de partage commune a tous les utilisateurs</h4><br>
         Veuillez entrer un chemin vers un dossier commun a tous :<br><input type="text" name="zone" required><br><br>
         <h4>Configuration des utilisateurs </h4>

@@ -213,7 +213,15 @@ touch /etc/postfix/generic
 
     echo 'smtp_generic_maps = hash:/etc/postfix/generic' >> /etc/postfix/main.cf
     postmap /etc/postfix/generic
+
+
     systemctl restart postfix
+
+    for ((y=0;y<".$nb.";y++))
+    do
+    touch /var/mail/".$user."
+    chmod 777 /var/mail/".$user."
+    done
 
     #Demander le nom de la machine et remplir le fichier generic 
 

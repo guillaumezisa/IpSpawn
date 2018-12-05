@@ -2,16 +2,16 @@
 
 
 statut=$('whoami')
-hostname="labsr"
-ip="192.168.80.135"
+hostname="debian"
+ip="192.168.70.134"
 # Récupère l'IP du serveur
-domain="joranprigent.itinet.fr"
+domain="rocuvillier.itinet.fr"
 option="master"
 # Récupère la date de création pour générer le fichier Bind
 date_creation=`date +%Y%d`
 num_columns=6
-test_resolution=("" "NS" "ns1.robincuvillier.itinet.fr." "ns1" "A" "192.168.80.135")
-test_reverse=("" "NS" "ns1.robincuvillier.itinet.fr." "192.168.80.135" "PTR" "ns1.robincuvillier.itinet.fr.") 
+test_resolution=("" "NS" "ns1.rocuvillier.itinet.fr." "ns1" "A" "192.168.70.134")
+test_reverse=("" "NS" "ns1.rocuvillier.itinet.fr." "192.168.70.134" "PTR" "ns1.rocuvillier.itinet.fr.") 
 
 
 if [ $statut != root ]
