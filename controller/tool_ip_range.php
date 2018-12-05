@@ -102,24 +102,30 @@
               ];
 
       if ($nb_pow[$i] > 8){
+        echo "debug-1-".$nb_pow[$i];
         if ($nb_pow[$i] < 16){
+          echo "debug-2-".$nb_pow[$i]."<br>";
           for( $y=0 ; $y<count($value) ; $y++){
-            if ($value[1][$y] === $nb_pow[$i]-8 ){
+            echo $value[1][$y]." : ".$nb_pow[$i]."<br>";
+            if ($value[1][$y] === $nb_pow[$i] ){
+              echo "lol1";
               $mask[$i]="255.255.".$value[0][$y].".0";
               break;
             }
           }
         }elseif ($nb_pow[$i] > 16){
           if ($nb_pow[$i] < 24){
+            echo "debug-3-".$nb_pow[$i];
             for( $y=0 ; $y<count($value) ; $y++){
-              if ($value[1][$y] === $nb_pow[$i]-16 ){
+              if ($value[1][$y] === $nb_pow[$i] ){
                 $mask[$i]="255.255.".$value[0][$y].".0";
                 break;
               }
             }
           } elseif ($nb_pow[$i] > 24){
+            echo "debug-4-".$nb_pow[$i];
             for( $y=0 ; $y<count($value) ; $y++){
-              if ($value[1][$y] === $nb_pow[$i]-24 ){
+              if ($value[1][$y] === $nb_pow[$i] ){
                 $mask[$i]="255.255.".$value[0][$y].".0";
                 break;
               }
@@ -127,6 +133,7 @@
           }
         }
       }elseif($nb_pow[$i] <= 8){
+        echo "debug-0-".$nb_pow[$i];
         for( $y=0 ; $y<count($value) ; $y++){
           if ($value[1][$y] === $nb_pow[$i] ){
             $mask[$i]="255.255.255.".$value[0][$y];
