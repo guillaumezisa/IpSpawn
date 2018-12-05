@@ -37,10 +37,10 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     $find_package_net='"dpkg -l | grep net-tools"';
     $find_package_res='"dpkg -l | grep resolvconf"';
     $card='$card';
-    $ip='$ip';
     $mask='$mask';
     $gateway='$gateway';
     $dns='$dns';
+    $old_ip='$old_ip';
 
     #GÉNÉRATION DU SCRIPT-------------------------------------------------------
     $firstline = "
@@ -59,8 +59,9 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     ip=".$_GET['ip'].";
     broadcast=$(ip a | grep ".$card."| grep inet | awk '{print $4}');
     gateway=$(ip route | grep default | awk '{print $3}');
-    mask=$(ifconfig | grep ".$ip." | awk '{print $4}');
-    dns=$(cat /etc/resolv.conf | grep name | awk '{print $2}' | sed -n '1p')
+    old_ip=$(ip route | grep ".$card." | grep src | awk '{print $9}');
+    mask=$(ifconfig | grep ".$old_ip." | awk '{print $4}');
+    dns=$(cat /etc/resolv.conf | grep name | awk '{print $2}' | sed -n '1p');
 
     echo \"source /etc/network/interface.d/*\" > /etc/network/interfaces
     echo \"\" >> /etc/network/interfaces
