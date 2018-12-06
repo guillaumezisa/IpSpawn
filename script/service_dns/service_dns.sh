@@ -5,7 +5,7 @@
 # Auteur : Prigent Joran				 #
 # Mail : jprigent@intechinfo.fr	         #
 # Version : 1.1 						 #
-# Date : 06/12/2018						 #
+# Date : 2018/06/12					     #
 #----------------------------------------#
 
 statut=$('whoami')
