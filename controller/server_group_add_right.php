@@ -56,9 +56,9 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
       #!/bin/bash
       #-------------------------------------------------------------------------
       #SCRIPT DE MOFICATION DES DROITS DE GROUPE généré par IpSpawn.com
-      V.1.3
-      Le : 2018/12/06
-      Script par Guillaume Zisa : zisa@intechinfo.fr
+      #V.1.3
+      #Le : 2018/12/06
+      #Script par Guillaume Zisa : zisa@intechinfo.fr
       #-------------------------------------------------------------------------\n";
 
       $script="

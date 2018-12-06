@@ -11,11 +11,11 @@
 statut=$('whoami')
 
 # Variables à changer en fonction des besoins et de la machine
-hostname="debian"
+hostname=`hostname`
 ip="192.168.70.134"
 domain="rocuvillier.itinet.fr"
-num_columns=6
-test_resolution=("" "NS" "ns1.rocuvillier.itinet.fr." "ns1" "A" "192.168.70.134")
+num_columns=12
+test_resolution=("" "NS" "ns1.rocuvillier.itinet.fr." "ns1" "A" "192.168.70.134" "mail" "A" "192.168.70.134" "@" "MX" "10 mail")
 test_reverse=("" "NS" "ns1.rocuvillier.itinet.fr." "192.168.70.134" "PTR" "ns1.rocuvillier.itinet.fr.") 
 
 # Réglage du DNS en Master

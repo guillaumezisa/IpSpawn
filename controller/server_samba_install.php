@@ -34,10 +34,10 @@ include("../view/guide_execution.php");
       #!/bin/bash
       #-------------------------------------------------------------------------
       #SCRIPT D'INSTALATION D'UN SERVEUR SAMBA
-      V.1.3
-      Le : 2018/12/06
-      Script par Rodney Nguengue : nguengue@intechinfo.fr
-      Script par Robin Cuvillier : rcvuillier@intechinfo.fr  
+      #V.1.3
+      #Le : 2018/12/06
+      #Script par Rodney Nguengue : nguengue@intechinfo.fr
+      #Script par Robin Cuvillier : rcvuillier@intechinfo.fr  
       #-------------------------------------------------------------------------\n";
 
       $script="
