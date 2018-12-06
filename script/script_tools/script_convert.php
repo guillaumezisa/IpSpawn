@@ -14,19 +14,23 @@ Script par Henri Fumey-Humbert: fumey-humbert@intechinfo.fr
 # si n=4 converti de binaire en héxadecimal
 
 function Converter($entry, $n){
-	$entry = preg_replace('/[^0-9a-fA-F]/', "", $entry);
+	$entry = preg_replace('/[^0-9a-fA-F]/', "", $entry); // Verification de du saisie
+	// ============================================
 	// (Oct, Dec, Hex) => (Bin)
+	// ============================================
 	if($n === 3 || $n === 4 || $n === 10){
-		$sum_array = [1,2,4,8];
-		$sauce_array = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"];
-		$entry = strrev($entry);
+		$sum_array = [1,2,4,8]; // Initialisation
+		$sauce_array = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"]; // Initialisation
+		$entry = strrev($entry); // Separation des octets dans une liste
+		// ============================================
 		// (Oct, Hex) => (Bin)
+		// ============================================
 		if($n === 3 || $n === 4){
-			$sauce = "";
-			$s = str_split($entry, $n);
+			$sauce = ""; // Initialisation tmp
+			$s = str_split($entry, $n); // Regroupement des bits
 			for($i = 0; $i < count($s); $i++){
-				$val = $s[$i];
-				$sum = 0;
+				$val = $s[$i]; // Initialisation tmp
+				$sum = 0; // Conteur
 				for($j = 0; $j < strlen($val); $j++){
 					if($val[$j] === "1"){$sum += $sum_array[$j];}
 				}
@@ -34,9 +38,11 @@ function Converter($entry, $n){
 			}
 			$new_sauce = strrev($sauce);
 			return $new_sauce;
+			// ============================================
 			// (Dec) => (Bin)
+			// ============================================
 		}elseif($n === 10){
-			$sum = 0;
+			$sum = 0; // Conteur
 			for($i = 0; $i < strlen($entry); $i++){
 				if($entry[$i] === "1"){
 					$sum += pow(2, $i);
@@ -44,13 +50,17 @@ function Converter($entry, $n){
 			}
 			return $sum;
 		}
+	// ============================================
 	// (Bin) => (Oct, Dec, Hex)
+	// ============================================
 	}elseif($n === -3 || $n === -4){
+		// ============================================
 		// (Bin) => (Oct, Hex)
+		// ============================================
 		if($n === -3 || $n === -4){
 			$entry = str_split($entry, 1);
 			for($k = 0; $k < count($entry); $k++){$entry[$k] = strtr($entry[$k], ["A" => "10", "B" => "11", "C" => "12", "D" => "13", "E" => "14", "F" => "15"]);}
-			$out = false;
+			$out = false; // Initialisation
 			for($i = 0; $i < count($entry); $i++) {
 				$bin = "";
 				$dec = $entry[$i];
@@ -64,10 +74,12 @@ function Converter($entry, $n){
 				$out .= $bin;
 			}
 			return chunk_split($out, 4);
+		// ============================================
 		// (Bin) => (Dec)
+		// ============================================
 		}elseif($n === -10){
-			$bin = "";
-			$p = (int)log($entry, 2);
+			$bin = ""; // Initialisation
+			$p = (int)log($entry, 2); // Initialisation tmp
 			for($i = $p; $i >= 0; $i--){
 				if($entry >= pow(2, $i)){
 					$bin .= "1";
