@@ -8,10 +8,10 @@ Script par Henri Fumey-Humbert: fumey-humbert@intechinfo.fr
 
 #$entry est ce que l'on veut convertir
 
-# si n=0 converti en binaire
-# si n=3 converti en octal
-# si n=10 converti en decimal
-# si n=4 converti en héxadecimal
+# si n=0 converti de (octal, decimal, héxadecimal) en binaire
+# si n=3 converti de binaire en octal
+# si n=10 converti de binaire en decimal
+# si n=4 converti de binaire en héxadecimal
 
 function Converter($entry, $n){
 	$entry = preg_replace('/[^0-9a-fA-F]/', "", $entry);
