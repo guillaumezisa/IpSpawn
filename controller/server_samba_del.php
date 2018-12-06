@@ -48,6 +48,9 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     #!/bin/bash
     #---------------------------------------------------------------------------
     #SCRIPT DE SUPPRESSION D'UTILISATEURS généré dans le serveur samba
+    V.1
+    Le : 2018/12/06
+    Script par Robin Cuvillier : rcvuillier@intechinfo.fr  
     #---------------------------------------------------------------------------\n";
     $script="
     for ((y=0;y<".$nb.";y++))

@@ -63,6 +63,10 @@ include("../view/guide_execution.php");
       #!/bin/bash
       #-------------------------------------------------------------------------
       #SCRIPT D'INSTALATION D'UN SERVEUR MAIL
+      V.1.4
+      Le : 2018/12/06
+      Script par Joran Prigent: prigent@intechinfo.fr  
+      Script par Robin Cuvillier : rcuvillier@intechinfo.fr
       #-------------------------------------------------------------------------\n";
 
       $script="
@@ -240,6 +244,8 @@ touch /etc/postfix/generic
     sed -i -r \"107s/password_query = \ /password_query = SELECT email as user, password FROM virtual_users WHERE email='%u'/g\"   /etc/dovecot/dovecot-sql.conf.ext
 
     systemctl restart dovecot
+
+    echo -e \"mail		IN		A\n@		IN		MX		10		mail\" >> /etc/bind/db.".$domain."
 
     fi\n";
 

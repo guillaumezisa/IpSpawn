@@ -52,6 +52,9 @@ include("../view/guide_execution.php");
       #!/bin/bash
       #-------------------------------------------------------------------------
       #SCRIPT D'INSTALATION D'UN SERVEUR SAMBA
+      V.1.2
+      Le : 2018/12/06
+      Script par Robin Cuvillier : rcvuillier@intechinfo.fr  
       #-------------------------------------------------------------------------\n";
 
       $script="

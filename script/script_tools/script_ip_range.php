@@ -1,4 +1,12 @@
 <?php
+
+/*
+Script plage d'IP
+V.1
+Le : 2018/12/06
+Script par Henri Fumey-Humbert: fumey-humbert@intechinfo.fr
+*/
+
 function calc_plage ($calcul_adresse_ip, $calcul_mask){
  
     // ============================================
