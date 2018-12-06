@@ -183,6 +183,8 @@ include("../view/guide_execution.php");
     sleep 1
     echo '---------- Début de configuration arborescence --------'
 
+    domainname ".$domain."
+
     chmod 666 /etc/postfix/main.cf 
 
     # Ajout des lignes dans main.cf

@@ -47,6 +47,9 @@ include("../view/guide_execution.php");
       #!/bin/bash
       #-------------------------------------------------------------------------
       #SCRIPT D'AJOUT D'UTILISATEUR généré par IpSpawn.com
+      #V.1
+      #Le : 2018/12/06
+      #Script par Guillaume Zisa : zisa@intechinfo.fr
       #-------------------------------------------------------------------------\n";
 
       $script="

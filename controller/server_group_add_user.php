@@ -50,6 +50,9 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
       #!/bin/bash
       #-------------------------------------------------------------------------
       #SCRIPT D'AJOUT D'UTILISATEURS généré par IpSpawn.com
+      #V.1.3
+      #Le : 2018/12/06
+      #Script par Guillaume Zisa : zisa@intechinfo.fr
       #-------------------------------------------------------------------------\n";
       $script="
         for ((y=0;y<".$nb.";y++))
@@ -60,7 +63,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
           then
             #AJOUT DES UTILISATEURS NON-EXISTANT--------------------------------
             usermod -G ".$group." ".$user." > /dev/null
-            echo L'utilisateur a bien été ajouté.
+            echo \"L'utilisateur a bien été ajouté.\"
           fi
         done\n";
 

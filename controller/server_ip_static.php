@@ -48,6 +48,9 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     #!/bin/bash
     #---------------------------------------------------------------------------
     #SCRIPT MISE EN PLACE D'UNE IP FIXE généré par IpSpawn.com
+    #V.1
+    #Le : 2018/12/06
+    #Script par Guillaume Zisa : zisa@intechinfo.fr
     #---------------------------------------------------------------------------\n";
 
     $script="

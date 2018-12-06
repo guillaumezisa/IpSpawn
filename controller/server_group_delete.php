@@ -47,6 +47,9 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     #!/bin/bash
     #---------------------------------------------------------------------------
     #SCRIPT DE SUPPRESSION DE GROUPE généré par IpSpawn.com
+    #V.1.3
+    #Le : 2018/12/06
+    #Script par Guillaume Zisa : zisa@intechinfo.fr
     #---------------------------------------------------------------------------\n";
 
     $script="
@@ -57,7 +60,11 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
           then
             #SUPPRESSION DU GROUPE----------------------------------------------
             groupdel ".$group."\n
-            echo Le groupe a bien été supprimé.
+            if [ $? == 0 ];
+            then
+                echo Le groupe a bien été supprimé.
+            else
+              echo \"L'utilisateur principal du group doit être supprimé d'abord\"
           else
             echo Le groupe n'existe pas.
           fi

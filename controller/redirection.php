@@ -84,10 +84,14 @@ include('../view/header.php');
     } elseif ($_GET['under_action'] ==="install_gen"){
       include('../controller/server_samba_install.php');
     #MODIFICATION DES ZONES DE STOCKAGE-----------------------------------------
-    }elseif ($_GET['under_action'] ==="mod"){
-      include('../view/server_samba_modify.php');
-    }elseif ($_GET['under_action'] ==="mod_gen"){
-      include('../controller/server_samba_modify.php');
+    }elseif ($_GET['under_action'] ==="del"){
+      include('../view/server_samba_del.php');
+    }elseif ($_GET['under_action'] ==="del_gen"){
+      include('../controller/server_samba_del.php');
+    }elseif ($_GET['under_action'] ==="add"){
+      include('../view/server_samba_add.php');
+    }elseif ($_GET['under_action'] ==="add_gen"){
+      include('../controller/server_samba_add.php');
     }
   }else {
     include('../view/server_samba.php');
@@ -118,7 +122,7 @@ include('../view/header.php');
         }elseif ($_GET['under_action'] === "del"){
           include("../view/server_user_delete.php");
         }elseif ($_GET['under_action'] === "del_gen"){
-          include("../controller/server_user_delete.php");
+          include("../controller/server_user_del.php");
         #MODIFICATION UTILISATEURS ( NOM,MDP)-✔---------------------------------
         }elseif ($_GET['under_action'] === "mod"){
           include("../view/server_user_modify.php");

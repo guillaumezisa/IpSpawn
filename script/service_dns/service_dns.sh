@@ -1,19 +1,30 @@
 #!/bin/bash
 
+#----------------------------------------#
+# Script de DNS générer par ipspawn.com  #
+# Auteur : Prigent Joran				 #
+# Mail : jprigent@intechinfo.fr	         #
+# Version : 1.1 						 #
+# Date : 2018/06/12					     #
+#----------------------------------------#
 
 statut=$('whoami')
-hostname="labsr"
-ip="192.168.80.135"
-# Récupère l'IP du serveur
-domain="joranprigent.itinet.fr"
+
+# Variables à changer en fonction des besoins et de la machine
+hostname=`hostname`
+ip="192.168.70.134"
+domain="rocuvillier.itinet.fr"
+num_columns=12
+test_resolution=("" "NS" "ns1.rocuvillier.itinet.fr." "ns1" "A" "192.168.70.134" "mail" "A" "192.168.70.134" "@" "MX" "10 mail")
+test_reverse=("" "NS" "ns1.rocuvillier.itinet.fr." "192.168.70.134" "PTR" "ns1.rocuvillier.itinet.fr.") 
+
+# Réglage du DNS en Master
 option="master"
 # Récupère la date de création pour générer le fichier Bind
 date_creation=`date +%Y%d`
-num_columns=6
-test_resolution=("" "NS" "ns1.robincuvillier.itinet.fr." "ns1" "A" "192.168.80.135")
-test_reverse=("" "NS" "ns1.robincuvillier.itinet.fr." "192.168.80.135" "PTR" "ns1.robincuvillier.itinet.fr.") 
 
 
+# Vérification du statut de l'utilisateur qui lance le script
 if [ $statut != root ]
 then
 	echo ""
@@ -42,7 +53,7 @@ sleep 2
 echo "---------- Début de la configuration ---------"
 sleep 2
 
-
+# Mise en place des variables de configuration
 exist="$(grep search /etc/resolv.conf)"
 ipexist="$(grep $ip /etc/resolv.conf)"
 reverse="$(echo $ip | awk -F. '{print $3"."$2"."$1}')"
@@ -113,7 +124,7 @@ touch /etc/bind/db.$domain
 touch /etc/bind/db.$reverse.in-addr.arpa
 
 # Contenu du fichier d'enregistrement
-# Penser à ajouter la boucle pour les enregistrements !!!!
+
 echo "
 \$TTL 86400
 @	IN	SOA	$domain. root.$domain. (
@@ -124,6 +135,8 @@ echo "
 				86400 )
 
 " >>/etc/bind/db.$domain
+
+# Boucle qui permet de rajouter les enregistrements
 
 for (( i=0; i<$num_columns; i+=3 ))
 do
@@ -144,6 +157,7 @@ echo "
 
 " >>/etc/bind/db.$reverse.in-addr.arpa
 
+# Boucle qui permet d'insérer les enregistrements dans la zone reverse
 
 for (( i=0; i<$num_columns; i+=3 ))
 do
@@ -151,6 +165,8 @@ do
 	echo -e "$cuted_ip		IN		${test_reverse[$i+1]}		${test_reverse[$i+2]}" >>/etc/bind/db.$reverse.in-addr.arpa
  
 done
+
+# Redémarage des services
 
 `sudo service bind9 restart`
 `sudo service networking restart`
