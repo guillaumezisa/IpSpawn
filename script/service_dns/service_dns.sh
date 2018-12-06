@@ -3,7 +3,9 @@
 #----------------------------------------#
 # Script de DNS générer par ipspawn.com  #
 # Auteur : Prigent Joran				 #
+#		   Henri Fumey-Humbert			 #
 # Mail : jprigent@intechinfo.fr	         #
+#		 fumey-humbert@intechinfo.fr     #
 # Version : 1.1 						 #
 # Date : 2018/06/12					     #
 #----------------------------------------#
