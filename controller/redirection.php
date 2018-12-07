@@ -160,12 +160,23 @@ include('../view/header.php');
           include("../view/server_group_delete.php");
         }elseif ($_GET['under_action'] === "del_gen"){
           include("../controller/server_group_delete.php");
-        #AJOUT DE DROITS--------------------------------------------------------
+        #GESTION DES GROUPES AVANCÉE--------------------------------------------
         }elseif ($_GET['under_action'] === "add_right"){
-          include("../view/server_group_add_right.php");
-        }elseif ($_GET['under_action'] === "add_right_gen"){
-          include("../controller/server_group_add_right.php");
-        #MODIFICATION-----------------------------------------------------------
+          if (isset($_GET['under_actionx'])){
+            if ($_GET['under_actionx'] === "sudoers"){
+              include("../view/server_group_add_to_sudoers.php");
+            }elseif ($_GET['under_actionx'] === "right"){
+              include("../view/server_group_change_right.php");
+            }elseif ($_GET['under_actionx'] === "owner"){
+              include("../view/server_group_change_owner.php");
+            }elseif ($_GET['under_actionx'] === "command"){
+              echo "DÉCOUVERTE STRICT SHELL IMPLÉMENTATION";
+              include("../view/server_group_add_right.php");
+            }
+          }else{
+            include("../view/server_group_add_right.php");
+          }
+        #MODIFICATION-✔---------------------------------------------------------
         }elseif ($_GET['under_action'] === "mod_name"){
           include("../view/server_group_modify_name.php");
         }elseif ($_GET['under_action'] === "mod_name_gen"){
