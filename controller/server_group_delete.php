@@ -41,7 +41,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
 
     #CRÉATION DE VARIABLES IMPORTANTES POUR ISOLER PHP & BASH-----------------
     $group = '${group[$y]}';
-
+    $root = '"root"';
     #GÉNÉRATION DU SCRIPT-----------------------------------------------------
     $firstline = "
     #!/bin/bash
@@ -53,6 +53,8 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     #---------------------------------------------------------------------------\n";
 
     $script="
+    #ROOT OBLIGATOIRE POUR L'EXECUTION------------------------------------------
+    if [ $(whoami) == ".$root." ];then
         for ((y=0;y<".$nb.";y++))
         do
           #VÉRIFICATION DE L'EXISTANCE DU GROUPE--------------------------------
@@ -68,7 +70,10 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
           else
             echo Le groupe n'existe pas.
           fi
-        done\n";
+        done\n
+      else
+        echo Vous devez être root pour executer ce script
+      fi";
       #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
       $new_script = $firstline . $groupname . $script . $rm;
       $file = fopen($file_path, 'w+');

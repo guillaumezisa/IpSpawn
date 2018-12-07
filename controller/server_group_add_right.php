@@ -50,6 +50,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
       $path ='${path[$y]}';
       $y='$y';
       $string='$string';
+      $root = '"root"';
 
       #GÉNÉRATION DU SCRIPT-----------------------------------------------------
       $firstline = "
@@ -62,46 +63,51 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
       #-------------------------------------------------------------------------\n";
 
       $script="
-      apt install sudo -y
-      for ((y=0;y<".$nb.";y++))
-      do
-        #TRAITEMENT DES COMMANDES NEGATIVES-------------------------------------
-        if [[ ".$com." =~ ^[!] ]];then
-          if [ ".$y." -eq 0 ];then
-            #OBTENTION DU PATH DES COMMANDES AVEC !-----------------------------
-            neutre=".$comm."
-            which=".$which.";
-            path[$y]=!".$which_simple."
-            echo -n ".$path." > tmp
-          else
-            #OBTENTION DU PATH DES COMMANDES AVEC ! & CONCATENATION-------------
-            neutre=".$comm."
-            which=".$which.";
-            path[$y]=,!".$which_simple."
-            echo -n ".$path." >> tmp
+      #ROOT OBLIGATOIRE POUR L'EXECUTION------------------------------------------
+      if [ $(whoami) == ".$root." ];then
+        apt install sudo -y
+        for ((y=0;y<".$nb.";y++))
+        do
+          #TRAITEMENT DES COMMANDES NEGATIVES-----------------------------------
+          if [[ ".$com." =~ ^[!] ]];then
+            if [ ".$y." -eq 0 ];then
+              #OBTENTION DU PATH DES COMMANDES AVEC !---------------------------
+              neutre=".$comm."
+              which=".$which.";
+              path[$y]=!".$which_simple."
+              echo -n ".$path." > tmp
+            else
+              #OBTENTION DU PATH DES COMMANDES AVEC ! & CONCATENATION-----------
+              neutre=".$comm."
+              which=".$which.";
+              path[$y]=,!".$which_simple."
+              echo -n ".$path." >> tmp
+              fi
+            else
+              #TRAITEMENT DES COMMANDES POSITIVES-------------------------------
+              if [ ".$y." -eq 0 ];then
+              #OBTENTION DU PATH DES COMMANDES----------------------------------
+              which=".$which_com.";
+              path[$y]=".$which_simple."
+              echo -n ".$path." > tmp
+            else
+              #OBTENTION DU PATH DES COMMANDES & CONCATENATION------------------
+              which=".$which_com.";
+              path[$y]=,".$which_simple."
+              echo -n ".$path." >> tmp
+            fi
           fi
-        else
-        #TRAITEMENT DES COMMANDES POSITIVES-------------------------------------
-          if [ ".$y." -eq 0 ];then
-          #OBTENTION DU PATH DES COMMANDES--------------------------------------
-            which=".$which_com.";
-            path[$y]=".$which_simple."
-            echo -n ".$path." > tmp
-          else
-          #OBTENTION DU PATH DES COMMANDES & CONCATENATION----------------------
-            which=".$which_com.";
-            path[$y]=,".$which_simple."
-            echo -n ".$path." >> tmp
-          fi
-        fi
-      done
-      #CRÉATION DES DERNIERES VARIABLES NÉCÉSSAIRE & CONCATENATION FINAL--------
-      group_new='%'".$group.";
-      string=$(cat tmp)
-      #INSERTION DE LA CONFIGURATION, EFFACEMENT DU FICHIER TMP & RESTART-------
-      echo ".$group_new."'	ALL=(ALL)' ".$string." >> /etc/sudoers;
-      rm tmp
-      service sudo restart";
+        done
+        #CRÉATION DES DERNIERES VARIABLES NÉCÉSSAIRE & CONCATENATION FINAL--------
+        group_new='%'".$group.";
+        string=$(cat tmp)
+        #INSERTION DE LA CONFIGURATION, EFFACEMENT DU FICHIER TMP & RESTART-------
+        echo ".$group_new."'	ALL=(ALL)' ".$string." >> /etc/sudoers;
+        rm tmp
+        service sudo restart
+      else
+        echo Vous devez être root pour executer ce script
+      fi";
 
       #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
       $new_script = $firstline . $groupname . $commands . $script . $rm;

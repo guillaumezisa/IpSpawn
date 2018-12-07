@@ -26,29 +26,38 @@ echo "<center><a class='btn btn-danger' href='".$file_path."'download='".$file_n
 if(isset($_GET['action']) && isset($_GET['under_action'])){
     #CREATION DE VARIABLE D'ISOLEMENT
     $nginx='"dpkg -l | grep nginx"';
+    $root='"root"';
     #GÉNÉRATION DU SCRIPT-------------------------------------------------------
     $firstline = "
     #!/bin/bash
     #---------------------------------------------------------------------------
     #SCRIPT D'INSTALLATION D'NGINX généré par IpSpawn.com
-    #V.1.3
+    #V.1.4
     #Le : 2018/12/06
     #Script par Guillaume Zisa : zisa@intechinfo.fr
     #---------------------------------------------------------------------------\n";
 
     $script="
+    #ROOT OBLIGATOIRE POUR L'EXECUTION------------------------------------------
+    if [ $(whoami) == ".$root." ];then
 
-    apt install nginx -y
-    apt install php-fpm -y
-    apt install php -y
-    apt install mariadb-server -y
+      #INSTALLATION DES PAQUETS IMPORTANT---------------------------------------
+      apt install nginx -y
+      apt install php-fpm -y
+      apt install php -y
+      apt install mariadb-server -y
 
-    sed -i -r '44s/index.html/index.html index.php/g' /etc/nginx/sites-available/default
-    sed -i -r '56s/#//g' /etc/nginx/sites-available/default
-    sed -i -r '57s/#//g' /etc/nginx/sites-available/default
-    sed -i -r '60s/#//g' /etc/nginx/sites-available/default
-    sed -i -r '63s/#//g' /etc/nginx/sites-available/default
+      #MODIFICATION DU FICHIER DEFAULT POUR AUTORISER LE PHP--------------------
+      sed -i -r '44s/index.html/index.html index.php/g' /etc/nginx/sites-available/default
+      sed -i -r '56s/#//g' /etc/nginx/sites-available/default
+      sed -i -r '57s/#//g' /etc/nginx/sites-available/default
+      sed -i -r '60s/#//g' /etc/nginx/sites-available/default
+      sed -i -r '63s/#//g' /etc/nginx/sites-available/default
 
+      service nginx restart
+    else
+	   echo Vous devez être root pour executer ce script;
+    fi
     ";
 
     #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------

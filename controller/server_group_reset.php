@@ -25,7 +25,8 @@ include("../view/guide_execution.php");
 #-------------------------------------------------------------------------------
 # GÉNÉRATION DU SCRIPT
 #-------------------------------------------------------------------------------
-
+#GÉNÉRATION DE VARIABLES IMPORTANTES--------------------------------------------
+$root = '"root"';
 #GÉNÉRATION DU SCRIPT-----------------------------------------------------------
 $firstline = "
 #!/bin/bash
@@ -36,10 +37,16 @@ $firstline = "
 #Script par Guillaume Zisa : zisa@intechinfo.fr
 #-------------------------------------------------------------------------------\n";
 $script="
-echo 'Defaults	env_reset' > /etc/sudoers
-echo 'Defaults	mail_badpass' >> /etc/sudoers
-echo 'Defaults	secure_path=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"' >> /etc/sudoers
-echo 'root	ALL=(ALL:ALL) ALL' >> /etc/sudoers
+#ROOT OBLIGATOIRE POUR L'EXECUTION------------------------------------------
+if [ $(whoami) == ".$root." ];then
+  #CLEARING THE SUDOER
+  echo 'Defaults	env_reset' > /etc/sudoers
+  echo 'Defaults	mail_badpass' >> /etc/sudoers
+  echo 'Defaults	secure_path=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"' >> /etc/sudoers
+  echo 'root	ALL=(ALL:ALL) ALL' >> /etc/sudoers
+else
+  echo Vous devez être root pour executer ce script
+fi
 ";
 
 #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------------

@@ -44,6 +44,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
       #CRÉATION DE VARIABLES IMPORTANTES POUR ISOLER PHP & BASH-----------------
       $user = '${user[$y]}';
       $group = '${group[$y]}';
+      $root = '"root"';
 
       #GÉNÉRATION DU SCRIPT-----------------------------------------------------
       $firstline = "
@@ -55,6 +56,8 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
       #Script par Guillaume Zisa : zisa@intechinfo.fr
       #-------------------------------------------------------------------------\n";
       $script="
+      #ROOT OBLIGATOIRE POUR L'EXECUTION------------------------------------------
+      if [ $(whoami) == ".$root." ];then
         for ((y=0;y<".$nb.";y++))
         do
           #VÉRIFIE L'EXISTANCE DES L'UTILISATEURS-------------------------------
@@ -65,7 +68,10 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
             usermod -G ".$group." ".$user." > /dev/null
             echo \"L'utilisateur a bien été ajouté.\"
           fi
-        done\n";
+        done
+      else
+        echo Vous devez être root pour executer ce script
+      fi";
 
       #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
       $new_script = $firstline . $username . $groupname . $script . $rm;

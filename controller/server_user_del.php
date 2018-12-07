@@ -39,23 +39,29 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     }
     #CRÉATION DE VARIABLES IMPORTANTES POUR ISOLER PHP & BASH-------------------
     $user = '${user[$y]}';
+    $root='"root"';
 
     #GÉNÉRATION DU SCRIPT-------------------------------------------------------
     $firstline = "
     #!/bin/bash
     #---------------------------------------------------------------------------
     #SCRIPT DE SUPPRESSION D'UTILISATEURS généré par IpSpawn.com
-    #V.1
+    #V.1.1
     #Le : 2018/12/06
     #Script par Guillaume Zisa : zisa@intechinfo.fr
     #---------------------------------------------------------------------------\n";
     $script="
-    for ((y=0;y<".$nb.";y++))
-    do
-      #SUPPRESSION DES UTILISATEURS---------------------------------------------
-      userdel -r ".$user."
+    #ROOT OBLIGATOIRE POUR L'EXECUTION------------------------------------------
+    if [ $(whoami) == ".$root." ];then
+      for ((y=0;y<".$nb.";y++))
+      do
+        #SUPPRESSION DES UTILISATEURS---------------------------------------------
+        userdel -r ".$user."
 
-    done\n";
+        done\n
+    else
+      echo Vous devez être root pour executer ce script
+    fi";
 
     #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT---------------------------
     $new_script = $firstline . $username . $script . $rm;
