@@ -39,75 +39,74 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
       }
     }
 
-      #CRÉATION DE VARIABLES IMPORTANTES POUR ISOLER PHP & BASH-----------------
-      $group ='$group';
-      $group_new='$group_new';
-      $com ='${com[$y]}';
-      $comm='${com[$y]:1}';
-      $which='$(which $neutre)';
-      $which_simple='$which';
-      $which_com='$(which ${com[$y]})';
-      $path ='${path[$y]}';
-      $y='$y';
-      $string='$string';
-      $root = '"root"';
+    #CRÉATION DE VARIABLES IMPORTANTES POUR ISOLER PHP & BASH-------------------
+    $group ='$group';
+    $group_new='$group_new';
+    $com ='${com[$y]}';
+    $comm='${com[$y]:1}';
+    $which='$(which $neutre)';
+    $which_simple='$which';
+    $which_com='$(which ${com[$y]})';
+    $path ='${path[$y]}';
+    $y='$y';
+    $string='$string';
+    $root = '"root"';
 
-      #GÉNÉRATION DU SCRIPT-----------------------------------------------------
-      $firstline = "
-      #!/bin/bash
-      #-------------------------------------------------------------------------
-      #SCRIPT DE MOFICATION DES DROITS DE GROUPE généré par IpSpawn.com
-      #V.1.3
-      #Le : 2018/12/06
-      #Script par Guillaume Zisa : zisa@intechinfo.fr
-      #-------------------------------------------------------------------------\n";
+    #GÉNÉRATION DU SCRIPT-------------------------------------------------------
+    $firstline = "#!/bin/bash
+#-------------------------------------------------------------------------------
+#SCRIPT DE MOFICATION DES DROITS DE GROUPE généré par IpSpawn.com
+#V.1.3
+#Le : 2018/12/06
+#Script par Guillaume Zisa : zisa@intechinfo.fr
+#-------------------------------------------------------------------------------\n";
 
       $script="
-      #ROOT OBLIGATOIRE POUR L'EXECUTION------------------------------------------
-      if [ $(whoami) == ".$root." ];then
-        apt install sudo -y
-        for ((y=0;y<".$nb.";y++))
-        do
-          #TRAITEMENT DES COMMANDES NEGATIVES-----------------------------------
-          if [[ ".$com." =~ ^[!] ]];then
-            if [ ".$y." -eq 0 ];then
-              #OBTENTION DU PATH DES COMMANDES AVEC !---------------------------
-              neutre=".$comm."
-              which=".$which.";
-              path[$y]=!".$which_simple."
-              echo -n ".$path." > tmp
-            else
-              #OBTENTION DU PATH DES COMMANDES AVEC ! & CONCATENATION-----------
-              neutre=".$comm."
-              which=".$which.";
-              path[$y]=,!".$which_simple."
-              echo -n ".$path." >> tmp
-              fi
-            else
-              #TRAITEMENT DES COMMANDES POSITIVES-------------------------------
-              if [ ".$y." -eq 0 ];then
-              #OBTENTION DU PATH DES COMMANDES----------------------------------
-              which=".$which_com.";
-              path[$y]=".$which_simple."
-              echo -n ".$path." > tmp
-            else
-              #OBTENTION DU PATH DES COMMANDES & CONCATENATION------------------
-              which=".$which_com.";
-              path[$y]=,".$which_simple."
-              echo -n ".$path." >> tmp
-            fi
-          fi
-        done
-        #CRÉATION DES DERNIERES VARIABLES NÉCÉSSAIRE & CONCATENATION FINAL--------
-        group_new='%'".$group.";
-        string=$(cat tmp)
-        #INSERTION DE LA CONFIGURATION, EFFACEMENT DU FICHIER TMP & RESTART-------
-        echo ".$group_new."'	ALL=(ALL)' ".$string." >> /etc/sudoers;
-        rm tmp
-        service sudo restart
+#ROOT OBLIGATOIRE POUR L'EXECUTION----------------------------------------------
+if [ $(whoami) == ".$root." ];then
+  apt install sudo -y
+  for ((y=0;y<".$nb.";y++))
+  do
+    #TRAITEMENT DES COMMANDES NEGATIVES-----------------------------------------
+    if [[ ".$com." =~ ^[!] ]];then
+      if [ ".$y." -eq 0 ];then
+        #OBTENTION DU PATH DES COMMANDES AVEC !---------------------------------
+        neutre=".$comm."
+        which=".$which.";
+        path[$y]=!".$which_simple."
+        echo -n ".$path." > tmp
       else
-        echo Vous devez être root pour executer ce script
-      fi";
+        #OBTENTION DU PATH DES COMMANDES AVEC ! & CONCATENATION-----------------
+        neutre=".$comm."
+        which=".$which.";
+        path[$y]=,!".$which_simple."
+        echo -n ".$path." >> tmp
+      fi
+    else
+      #TRAITEMENT DES COMMANDES POSITIVES---------------------------------------
+      if [ ".$y." -eq 0 ];then
+        #OBTENTION DU PATH DES COMMANDES----------------------------------------
+        which=".$which_com.";
+        path[$y]=".$which_simple."
+        echo -n ".$path." > tmp
+      else
+        #OBTENTION DU PATH DES COMMANDES & CONCATENATION------------------------
+        which=".$which_com.";
+        path[$y]=,".$which_simple."
+        echo -n ".$path." >> tmp
+      fi
+    fi
+  done
+  #CRÉATION DES DERNIERES VARIABLES NÉCÉSSAIRE & CONCATENATION FINAL------------
+  group_new='%'".$group.";
+  string=$(cat tmp)
+  #INSERTION DE LA CONFIGURATION, EFFACEMENT DU FICHIER TMP & RESTART-----------
+  echo ".$group_new."'	ALL=(ALL)' ".$string." >> /etc/sudoers;
+  rm tmp
+  service sudo restart
+else
+    echo Vous devez être root pour executer ce script
+fi";
 
       #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
       $new_script = $firstline . $groupname . $commands . $script . $rm;

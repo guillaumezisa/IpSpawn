@@ -42,38 +42,32 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     #CRÉATION DE VARIABLES IMPORTANTES POUR ISOLER PHP & BASH-----------------
     $group = '${group[$y]}';
     $root = '"root"';
-    #GÉNÉRATION DU SCRIPT-----------------------------------------------------
-    $firstline = "
-    #!/bin/bash
-    #---------------------------------------------------------------------------
-    #SCRIPT DE SUPPRESSION DE GROUPE généré par IpSpawn.com
-    #V.1.3
-    #Le : 2018/12/06
-    #Script par Guillaume Zisa : zisa@intechinfo.fr
-    #---------------------------------------------------------------------------\n";
+    #GÉNÉRATION DU SCRIPT-------------------------------------------------------
+    $firstline = "#!/bin/bash
+#-------------------------------------------------------------------------------
+#SCRIPT DE SUPPRESSION DE GROUPE généré par IpSpawn.com
+#V.1.3
+#Le : 2018/12/06
+#Script par Guillaume Zisa : zisa@intechinfo.fr
+#-------------------------------------------------------------------------------\n";
 
     $script="
-    #ROOT OBLIGATOIRE POUR L'EXECUTION------------------------------------------
-    if [ $(whoami) == ".$root." ];then
-        for ((y=0;y<".$nb.";y++))
-        do
-          #VÉRIFICATION DE L'EXISTANCE DU GROUPE--------------------------------
-          if grep \"^".$group.":\" /etc/group > /dev/null;
-          then
-            #SUPPRESSION DU GROUPE----------------------------------------------
-            groupdel ".$group."\n
-            if [ $? == 0 ];
-            then
-                echo Le groupe a bien été supprimé.
-            else
-              echo \"L'utilisateur principal du group doit être supprimé d'abord\"
-          else
-            echo Le groupe n'existe pas.
-          fi
-        done\n
-      else
-        echo Vous devez être root pour executer ce script
-      fi";
+#ROOT OBLIGATOIRE POUR L'EXECUTION----------------------------------------------
+if [ $(whoami) == ".$root." ];then
+  for ((y=0;y<".$nb.";y++))
+  do
+    #VÉRIFICATION DE L'EXISTANCE DU GROUPE--------------------------------------
+    if grep \"^".$group.":\" /etc/group > /dev/null;
+    then
+      #SUPPRESSION DU GROUPE----------------------------------------------------
+      groupdel ".$group."\n
+    else
+      echo Le groupe n'existe pas.
+    fi
+  done
+else
+  echo Vous devez être root pour executer ce script
+fi";
       #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
       $new_script = $firstline . $groupname . $script . $rm;
       $file = fopen($file_path, 'w+');

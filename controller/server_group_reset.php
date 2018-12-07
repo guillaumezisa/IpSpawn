@@ -28,8 +28,7 @@ include("../view/guide_execution.php");
 #GÉNÉRATION DE VARIABLES IMPORTANTES--------------------------------------------
 $root = '"root"';
 #GÉNÉRATION DU SCRIPT-----------------------------------------------------------
-$firstline = "
-#!/bin/bash
+$firstline = "#!/bin/bash
 #-------------------------------------------------------------------------------
 #SCRIPT DE REINITIALISATION généré par IpSpawn.com
 #V.1.2

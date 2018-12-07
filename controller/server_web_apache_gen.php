@@ -24,32 +24,31 @@ echo "<center><a class='btn btn-danger' href='".$file_path."'download='".$file_n
 # GÉNÉRATION DU SCRIPT
 #-------------------------------------------------------------------------------
 if(isset($_GET['action']) && isset($_GET['under_action'])){
-    #CREATION DE VARIABLE D'ISOLEMENT
+    #CREATION DE VARIABLE D'ISOLEMENT-------------------------------------------
     $apache='"dpkg -l | grep apache2"';
     $root='"root"';
     #GÉNÉRATION DU SCRIPT-------------------------------------------------------
-    $firstline = "
-    #!/bin/bash
-    #---------------------------------------------------------------------------
-    #SCRIPT D'INSTALLATION D'APACHE2 généré par IpSpawn.com
-    #V.1.2
-    #Le : 2018/12/06
-    #Script par Guillaume Zisa : zisa@intechinfo.fr
-    #---------------------------------------------------------------------------\n";
+    $firstline = "#!/bin/bash
+#-------------------------------------------------------------------------------
+#SCRIPT D'INSTALLATION D'APACHE2 généré par IpSpawn.com
+#V.1.3
+#Le : 2018/12/06
+#Script par Guillaume Zisa : zisa@intechinfo.fr
+#-------------------------------------------------------------------------------\n";
 
     $script="
-    #ROOT OBLIGATOIRE POUR L'EXECUTION------------------------------------------
-    if [ $(whoami) == ".$root." ];then
-      #INSTALLATION DES PAQUETS IMPORTANT---------------------------------------
-      apt install apache2 -y
-      apt install php -y
-      apt install mariadb-server
-    else
-      echo Vous devez être root pour executer ce script
-    fi
-    ";
+#ROOT OBLIGATOIRE POUR L'EXECUTION----------------------------------------------
+if [ $(whoami) == ".$root." ];then
+  #INSTALLATION DES PAQUETS IMPORTANT-------------------------------------------
+  apt install apache2 -y
+  apt install php -y
+  apt install mariadb-server
+else
+  echo Vous devez être root pour executer ce script
+fi
+";
 
-    #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
+    #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT---------------------------
     $new_script = $firstline . $script ;
     $file = fopen($file_path, 'w+');
     fputs($file,$new_script);

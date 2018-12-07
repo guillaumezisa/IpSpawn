@@ -47,27 +47,26 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     $root='"root"';
     $hum='\n';
 
-    #GÉNÉRATION DU SCRIPT-----------------------------------------------------
-    $firstline = "
-    #!/bin/bash
-    #---------------------------------------------------------------------------
-    #SCRIPT DE MOFICATION DE MDP UTILISATEURS généré par IpSpawn.com
-    #V.1.2
-    #Le : 2018/12/06
-    #Script par Guillaume Zisa : zisa@intechinfo.fr
-    #---------------------------------------------------------------------------\n";
+    #GÉNÉRATION DU SCRIPT-------------------------------------------------------
+    $firstline = "#!/bin/bash
+#-------------------------------------------------------------------------------
+#SCRIPT DE MOFICATION DE MDP UTILISATEURS généré par IpSpawn.com
+#V.1.2
+#Le : 2018/12/06
+#Script par Guillaume Zisa : zisa@intechinfo.fr
+#---------------------------------------------------------------------------\n";
 
-    $script="
-    #ROOT OBLIGATOIRE POUR L'EXECUTION------------------------------------------
-    if [ $(whoami) == ".$root." ];then
-      for ((y=0;y<".$nb.";y++))
-      do
-        #MODIFICATION DU MOT DE PASSE D'UTILISATEURS----------------------------
-        echo -e \"$pass$hum$pass\" | passwd ".$user."
-      done\n
-    else
-      echo Vous devez être root pour executer ce script
-    fi";
+$script="
+#ROOT OBLIGATOIRE POUR L'EXECUTION----------------------------------------------
+if [ $(whoami) == ".$root." ];then
+  for ((y=0;y<".$nb.";y++))
+  do
+    #MODIFICATION DU MOT DE PASSE D'UTILISATEURS--------------------------------
+    echo -e \"$pass$hum$pass\" | passwd ".$user."
+  done\n
+else
+  echo Vous devez être root pour executer ce script
+fi";
 
     #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT---------------------------
     $new_script = $firstline . $username . $password . $script . $rm;

@@ -42,33 +42,32 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     $root = '"root"';
 
     #GÉNÉRATION DU SCRIPT-------------------------------------------------------
-    $firstline = "
-    #!/bin/bash
-    #-------------------------------------------------------------------------
-    #SCRIPT DE MOFICATION DES DROITS DE GROUPE généré par IpSpawn.com
-    #V.1.4
-    #Le : 2018/12/06
-    #Script par Guillaume Zisa : zisa@intechinfo.fr
-    #-------------------------------------------------------------------------\n";
+    $firstline = "#!/bin/bash
+#-------------------------------------------------------------------------------
+#SCRIPT DE MOFICATION DES DROITS DE GROUPE généré par IpSpawn.com
+#V.1.4
+#Le : 2018/12/06
+#Script par Guillaume Zisa : zisa@intechinfo.fr
+#-------------------------------------------------------------------------------\n";
 
     $script="
-    #ROOT OBLIGATOIRE POUR L'EXECUTION------------------------------------------
-    if [ $(whoami) == ".$root." ];then
-      for ((y=0;y<".$nb.";y++))
-      do
-        #VÉRIFICATION DE L'EXISTANCE DU GROUPE----------------------------------
-        if grep \"^".$group.":\" /etc/group > /dev/null;
-        then
-          echo Nom de groupe déjà utilisé .
-        else
-          #CRÉATION DU GROUPE---------------------------------------------------
-          addgroup $group > /dev/null
-          echo Le groupe a bien été crée
-        fi
-      done\n
+#ROOT OBLIGATOIRE POUR L'EXECUTION----------------------------------------------
+if [ $(whoami) == ".$root." ];then
+  for ((y=0;y<".$nb.";y++))
+  do
+    #VÉRIFICATION DE L'EXISTANCE DU GROUPE--------------------------------------
+    if grep \"^".$group.":\" /etc/group > /dev/null;
+    then
+      echo Nom de groupe déjà utilisé .
     else
-      echo Vous devez être root pour executer ce script
-    fi";
+      #CRÉATION DU GROUPE-------------------------------------------------------
+      addgroup $group > /dev/null
+      echo Le groupe a bien été crée
+    fi
+  done\n
+else
+  echo Vous devez être root pour executer ce script
+fi";
 
     #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
     $new_script = $firstline . $groupname . $script . $rm;

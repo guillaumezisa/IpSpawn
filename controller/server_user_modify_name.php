@@ -45,27 +45,27 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     $user2 = '${user2[$y]}';
     $root='"root"';
 
-    #GÉNÉRATION DU SCRIPT-----------------------------------------------------
-    $firstline = "
-    #!/bin/bash
-    #---------------------------------------------------------------------------
-    #SCRIPT DE MOFICATION D'UTILISATEURS généré par IpSpawn.com
-    #V.1.2
-    #Le : 2018/12/06
-    #Script par Guillaume Zisa : zisa@intechinfo.fr
-    #---------------------------------------------------------------------------\n";
+    #GÉNÉRATION DU SCRIPT-------------------------------------------------------
+    $firstline = "#!/bin/bash
+#-------------------------------------------------------------------------------
+#SCRIPT DE MOFICATION D'UTILISATEURS généré par IpSpawn.com
+#V.1.3
+#Le : 2018/12/06
+#Script par Guillaume Zisa : zisa@intechinfo.fr
+#---------------------------------------------------------------------------\n";
 
     $script="
-    #ROOT OBLIGATOIRE POUR L'EXECUTION------------------------------------------
-    if [ $(whoami) == ".$root." ];then
-      for ((y=0;y<".$nb.";y++))
-      do
-        #MODIFICATION D'UTILISATEUR---------------------------------------------
-        usermod --login $user2 --home /home/\"$user2\" --move-home $user1
-      done\n
-    else
-      echo Vous devez être root pour executer ce script
-    fi";
+#ROOT OBLIGATOIRE POUR L'EXECUTION----------------------------------------------
+if [ $(whoami) == ".$root." ];then
+  for ((y=0;y<".$nb.";y++))
+  do
+    #MODIFICATION D'UTILISATEUR-------------------------------------------------
+    usermod --login $user2 --home /home/\"$user2\" --move-home $user1
+  done\n
+else
+  echo Vous devez être root pour executer ce script
+fi";
+
     #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT---------------------------
     $new_script = $firstline . $username1 . $username2 . $script . $rm;
     $file = fopen($file_path, 'w+');

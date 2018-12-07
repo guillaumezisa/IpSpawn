@@ -44,35 +44,35 @@ include("../view/guide_execution.php");
       $root='"root"';
 
       #GÉNÉRATION DU SCRIPT-----------------------------------------------------
-      $firstline = "
-      #!/bin/bash
-      #-------------------------------------------------------------------------
-      #SCRIPT D'AJOUT D'UTILISATEUR généré par IpSpawn.com
-      #V.1.1
-      #Le : 2018/12/06
-      #Script par Guillaume Zisa : zisa@intechinfo.fr
-      #-------------------------------------------------------------------------\n";
+      $firstline = "#!/bin/bash
+#-------------------------------------------------------------------------------
+#SCRIPT D'AJOUT D'UTILISATEUR généré par IpSpawn.com
+#V.1.1
+#Le : 2018/12/06
+#Script par Guillaume Zisa : zisa@intechinfo.fr
+#-------------------------------------------------------------------------------\n";
 
       $script="
-      #ROOT OBLIGATOIRE POUR L'EXECUTION------------------------------------------
-      if [ $(whoami) == ".$root." ];then
-        for ((y=0;y<".$nb.";y++))
-        do
-          #VERIFICATION DE L'EXISTENCE DE L'UTILISATEUR-------------------------
-          id -u ".$user."> /dev/null 2>&1
-          if [ $? == 0 ];
-          then
-            echo Nom d\'utilisateur déjà utilisé.
-          else
-            #CRÉATION D'UN UTILISATEUR------------------------------------------
-            useradd -m -d /home/".$user." -s /bin/bash ".$user."
-            echo ".$user.":".$pass."| chpasswd
-            groupdel -f  ".$user."
-          fi
-        done\n
-      else
-        echo Vous devez être root pour executer ce script
-      fi";
+#ROOT OBLIGATOIRE POUR L'EXECUTION----------------------------------------------
+if [ $(whoami) == ".$root." ];then
+  for ((y=0;y<".$nb.";y++))
+  do
+    #VERIFICATION DE L'EXISTENCE DE L'UTILISATEUR-------------------------------
+    id -u ".$user."> /dev/null 2>&1
+    if [ $? == 0 ];
+    then
+      echo Nom d\'utilisateur déjà utilisé.
+    else
+      #CRÉATION D'UN UTILISATEUR------------------------------------------------
+      useradd -m -d /home/".$user." -s /bin/bash ".$user."
+      echo ".$user.":".$pass."| chpasswd
+      groupdel -f  ".$user."
+    fi
+  done
+else
+  echo Vous devez être root pour executer ce script
+fi";
+
       #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
       $new_script = $firstline . $username . $password . $script . $rm;
       $file = fopen($file_path, 'w+');

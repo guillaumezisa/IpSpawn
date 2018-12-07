@@ -47,31 +47,30 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
       $root = '"root"';
 
       #GÉNÉRATION DU SCRIPT-----------------------------------------------------
-      $firstline = "
-      #!/bin/bash
-      #-------------------------------------------------------------------------
-      #SCRIPT D'AJOUT D'UTILISATEURS généré par IpSpawn.com
-      #V.1.3
-      #Le : 2018/12/06
-      #Script par Guillaume Zisa : zisa@intechinfo.fr
-      #-------------------------------------------------------------------------\n";
+      $firstline = "#!/bin/bash
+#-------------------------------------------------------------------------------
+#SCRIPT D'AJOUT D'UTILISATEURS généré par IpSpawn.com
+#V.1.3
+#Le : 2018/12/06
+#Script par Guillaume Zisa : zisa@intechinfo.fr
+#-------------------------------------------------------------------------------\n";
       $script="
-      #ROOT OBLIGATOIRE POUR L'EXECUTION------------------------------------------
-      if [ $(whoami) == ".$root." ];then
-        for ((y=0;y<".$nb.";y++))
-        do
-          #VÉRIFIE L'EXISTANCE DES L'UTILISATEURS-------------------------------
-          id -u ".$user."> /dev/null 2>&1
-          if [ $? == 0 ];
-          then
-            #AJOUT DES UTILISATEURS NON-EXISTANT--------------------------------
-            usermod -G ".$group." ".$user." > /dev/null
-            echo \"L'utilisateur a bien été ajouté.\"
-          fi
-        done
-      else
-        echo Vous devez être root pour executer ce script
-      fi";
+#ROOT OBLIGATOIRE POUR L'EXECUTION----------------------------------------------
+if [ $(whoami) == ".$root." ];then
+  for ((y=0;y<".$nb.";y++))
+  do
+    #VÉRIFIE L'EXISTANCE DES L'UTILISATEURS-------------------------------------
+    id -u ".$user."> /dev/null 2>&1
+    if [ $? == 0 ];
+    then
+      #AJOUT DES UTILISATEURS NON-EXISTANT--------------------------------------
+      usermod -G ".$group." ".$user." > /dev/null
+      echo \"L'utilisateur a bien été ajouté.\"
+    fi
+  done
+else
+  echo Vous devez être root pour executer ce script
+fi";
 
       #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
       $new_script = $firstline . $username . $groupname . $script . $rm;
