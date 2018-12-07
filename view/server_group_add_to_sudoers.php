@@ -1,6 +1,6 @@
 <main role="main">
     <center><div class="container">
-       <br><center><h3><strong>Ajout de droits aux groupes</strong></h3></center>
+       <br><center><h3><strong>Ajout de groupe(s) au(x) sudoers</strong></h3></center>
        <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
        <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
       </p>
@@ -13,8 +13,7 @@
           </div>
           <div class="col-sm-10">
             <div class="text-light bg-info" style="width:100%;border:solid black 1.5px;border-radius:4px;"><br>
-              <center>Si vous voulez que le groupe ne puisse pas utiliser une commande veuillez ajouter "!" devant la commande.<br>
-                Assurez vous de rentrer des commandes éxistante, sans fautes.<br><br>
+              <center>Les groupes ajouter au sudoers ont les droits sudo ( super utilisateur / root ), <br>faites attention de ne pas donner ces privilèges a n'importe qui.<br><br>
             </div>
             </div>
           </div>
@@ -24,12 +23,12 @@
       <div class="ml-2"><center>
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="group">
-        <input type="hidden" name="under_action" value="add_right_gen">
-        <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter une commande</button>
+        <input type="hidden" name="under_action" value="add_right">
+        <input type="hidden" name="under_actionx" value="gen_sudoers">
+        <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un groupe</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
-        <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer la dernière commande</button><br><br>
+        <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier groupe </button><br><br>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
-        Nom du groupe :<input type="text" name="groupname" value="">
     </div></center>
     <center><button type="submit" class="btn btn-dark" id="choice" >Valider</button></center><br><br>
     </form>
@@ -50,9 +49,9 @@
     div.setAttribute('class','allDivs');
     var input_a = document.createElement('input');
     var br = document.createElement('br');
-    var text_a = document.createTextNode(' Commande : ')
+    var text_a = document.createTextNode(' Groupe : ')
     input_a.type = "text";
-    input_a.name ="commands[]";
+    input_a.name ="group[]";
     input_a.required = true;
     var parentDiv = document.getElementById("new").parentNode;
     parentDiv.append(div);

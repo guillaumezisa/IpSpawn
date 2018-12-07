@@ -20,7 +20,7 @@
                   <h5 class="card-title ">Modifier les droits d'executions et d'acces peut vous être utile pour sécuriser des zones, faites tous de meme bien attention a ne pas rendre des fichiers de commandes innacceble(/bin) ou des fichier de configuration innaccesible(/etc) cela pourrait casser votre système.</h5>
                 </div>
                 <div class="card-footer text-muted">
-                  <a class="btn btn-dark" href="../controller/redirection.php?action=user&under_action=add">Modifier</a>
+                  <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=add_right&under_actionx=right">Modifier</a>
                 </div>
               </div>
             </div>
@@ -33,7 +33,7 @@
                   <h5 class="card-title ">Modifier le propriétaire peut vous être utile car le propriétaire a tous les droits sur un fichier / dossier, faites tous de meme attention car si vous n'êtes pas sure de ce que vous faites vous pourriez corrompre votre systeme et le fragilisé</h5><br><br>
                 </div>
                 <div class="card-footer text-muted">
-                  <a class="btn btn-dark" href="../controller/redirection.php?action=user&under_action=del">Modifier</a><br>
+                  <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=add_right&under_actionx=owner">Modifier</a><br>
                 </div>
               </div>
             </div>
@@ -46,7 +46,7 @@
                   <h5 class="card-title ">Cela permet d'autoriser tous les membres du groupes l'utilisation de la commande sudo, <br>faite egalement attention de ne pas donner ce privilege a n'importe qui. </h5><br><br><br>
                 </div>
                 <div class="card-footer text-muted">
-                  <a class="btn btn-dark" href="../controller/redirection.php?action=user&under_action=mod">Ajouter</a><br>
+                  <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=add_right&under_actionx=sudoers">Ajouter</a><br>
                 </div>
               </div>
             </div>

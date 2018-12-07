@@ -163,15 +163,26 @@ include('../view/header.php');
         #GESTION DES GROUPES AVANCÉE--------------------------------------------
         }elseif ($_GET['under_action'] === "add_right"){
           if (isset($_GET['under_actionx'])){
+            #AJOUT DE GROUPES AU SUDOERS----------------------------------------
             if ($_GET['under_actionx'] === "sudoers"){
               include("../view/server_group_add_to_sudoers.php");
+            }elseif ($_GET['under_actionx'] === "gen_sudoers"){
+              include("../controller/server_group_add_to_sudoers.php");
+            #AJOUT DES DROITS DES REPERTOIRES-----------------------------------
             }elseif ($_GET['under_actionx'] === "right"){
               include("../view/server_group_change_right.php");
+            }elseif ($_GET['under_actionx'] === "gen_right"){
+              include("../controller/server_group_change_right.php");
+            #AJOUT DES PROPRIETAIRES DES RÉPERTOIRES----------------------------
             }elseif ($_GET['under_actionx'] === "owner"){
               include("../view/server_group_change_owner.php");
+            }elseif ($_GET['under_actionx'] === "gen_owner"){
+              include("../controller/server_group_change_owner.php");
+            #MODIFICATION DES DROITS COMMANDES DES GROUPES----------------------
             }elseif ($_GET['under_actionx'] === "command"){
-              echo "DÉCOUVERTE STRICT SHELL IMPLÉMENTATION";
-              include("../view/server_group_add_right.php");
+              include("../view/server_group_add_strict_shell.php");
+            }elseif ($_GET['under_actionx'] === "gen_command"){
+              include("../controller/server_group_add_strict_shell.php");
             }
           }else{
             include("../view/server_group_add_right.php");

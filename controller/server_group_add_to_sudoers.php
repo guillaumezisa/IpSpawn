@@ -1,6 +1,6 @@
 <main role="main"><center>
   <div class="container"><br>
-  <h3><strong>Ajout de d'utilisateur(s) a des groupe(s)</strong></h3>
+  <h3><strong>Ajout de groupe(s) aux sudoers</strong></h3>
     <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
@@ -12,8 +12,8 @@
 #-------------------------------------------------------------------------------
 
 #GÉNÉRATION DES VARIABLE DE FICHIERS--------------------------------------------
-$file_path="../script/script_client/add_right_group_".session_id().".sh";
-$file_name="add_right_group.sh";
+$file_path="../script/script_client/add_right_group_sudoers_".session_id().".sh";
+$file_name="add_right_group_sudoers.sh";
 
 #VÉRIFICATION DE L'OPTION D'AUTO-DESTRUCTION------------------------------------
 if (isset( $_GET["auto_destruction"] )){ $rm = "rm ".$file_name; } else { $rm = ""; }
@@ -25,38 +25,30 @@ include("../view/guide_execution.php");
 #-------------------------------------------------------------------------------
 # GÉNÉRATION DU SCRIPT
 #-------------------------------------------------------------------------------
+
 if(isset($_GET['action']) && isset($_GET['under_action'])){
-  if(isset($_GET['groupname'])){
-    $nb = count($_GET['commands']);
+  if(isset($_GET['group'])){
+    $nb = count($_GET['group']);
 
     #CONCATENATION DE TABLEAUX BASH---------------------------------------------
-    $groupname="group=".$_GET['groupname']."\n";
+
     for( $i=0 ;$i<$nb ;$i++){
       if ($i === 0 ){
-        $commands="com[$i]=".$_GET['commands'][$i]."\n";
+        $groups="group[$i]=".$_GET['group'][$i]."\n";
       } else {
-        $commands=$commands."com[$i]=".$_GET['commands'][$i]."\n";
+        $groups=$groups."group[$i]=".$_GET['group'][$i]."\n";
       }
     }
 
     #CRÉATION DE VARIABLES IMPORTANTES POUR ISOLER PHP & BASH-------------------
-    $group ='$group';
-    $group_new='$group_new';
-    $com ='${com[$y]}';
-    $comm='${com[$y]:1}';
-    $which='$(which $neutre)';
-    $which_simple='$which';
-    $which_com='$(which ${com[$y]})';
-    $path ='${path[$y]}';
-    $y='$y';
-    $string='$string';
-    $root = '"root"';
+    $group = '${group[$y]}';
+    $root='"root"';
 
     #GÉNÉRATION DU SCRIPT-------------------------------------------------------
     $firstline = "#!/bin/bash
 #-------------------------------------------------------------------------------
 #SCRIPT DE MOFICATION DES DROITS DE GROUPE généré par IpSpawn.com
-#V.1.3
+#V.1.4
 #Le : 2018/12/06
 #Script par Guillaume Zisa : zisa@intechinfo.fr
 #-------------------------------------------------------------------------------\n";
@@ -64,52 +56,24 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
       $script="
 #ROOT OBLIGATOIRE POUR L'EXECUTION----------------------------------------------
 if [ $(whoami) == ".$root." ];then
-  apt install sudo -y
   for ((y=0;y<".$nb.";y++))
   do
-    #TRAITEMENT DES COMMANDES NEGATIVES-----------------------------------------
-    if [[ ".$com." =~ ^[!] ]];then
-      if [ ".$y." -eq 0 ];then
-        #OBTENTION DU PATH DES COMMANDES AVEC !---------------------------------
-        neutre=".$comm."
-        which=".$which.";
-        path[$y]=!".$which_simple."
-        echo -n ".$path." > tmp
-      else
-        #OBTENTION DU PATH DES COMMANDES AVEC ! & CONCATENATION-----------------
-        neutre=".$comm."
-        which=".$which.";
-        path[$y]=,!".$which_simple."
-        echo -n ".$path." >> tmp
-      fi
+    #VÉRIFICATION DE L'EXISTANCE DU GROUPE--------------------------------------
+    if grep \"^".$group.":\" /etc/group > /dev/null;
+    then
+      echo \"%".$group."  ALL=(ALL:ALL) ALL \" >> /etc/sudoers
+      echo Le groupe ".$group." a été ajouté aux sudoers
     else
-      #TRAITEMENT DES COMMANDES POSITIVES---------------------------------------
-      if [ ".$y." -eq 0 ];then
-        #OBTENTION DU PATH DES COMMANDES----------------------------------------
-        which=".$which_com.";
-        path[$y]=".$which_simple."
-        echo -n ".$path." > tmp
-      else
-        #OBTENTION DU PATH DES COMMANDES & CONCATENATION------------------------
-        which=".$which_com.";
-        path[$y]=,".$which_simple."
-        echo -n ".$path." >> tmp
-      fi
+      echo Le groupe ".$group." est introuvable
     fi
-  done
-  #CRÉATION DES DERNIERES VARIABLES NÉCÉSSAIRE & CONCATENATION FINAL------------
-  group_new='%'".$group.";
-  string=$(cat tmp)
-  #INSERTION DE LA CONFIGURATION, EFFACEMENT DU FICHIER TMP & RESTART-----------
-  echo ".$group_new."'	ALL=(ALL)' ".$string." >> /etc/sudoers;
-  rm tmp
+  done\n
   service sudo restart
 else
     echo Vous devez être root pour executer ce script
 fi";
 
       #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
-      $new_script = $firstline . $groupname . $commands . $script . $rm;
+      $new_script = $firstline . $groups . $script . $rm;
       $file = fopen($file_path, 'w+');
       fputs($file,$new_script);
     }
