@@ -37,11 +37,22 @@ include("../view/guide_execution.php");
       #V.1.3
       #Le : 2018/12/06
       #Script par Rodney Nguengue : nguengue@intechinfo.fr
-      #Script par Robin Cuvillier : rcvuillier@intechinfo.fr  
-      #-------------------------------------------------------------------------\n";
+      #Script par Robin Cuvillier : rcvuillier@intechinfo.fr
+      #-------------------------------------------------------------------------
+      clear
+      echo \"========================================================================\"
+      echo \"\"
+      echo \"
+            ██╗██████╗ ███████╗██████╗  █████╗ ██╗    ██╗███╗   ██╗
+            ██║██╔══██╗██╔════╝██╔══██╗██╔══██╗██║    ██║████╗  ██║
+            ██║██████╔╝███████╗██████╔╝███████║██║ █╗ ██║██╔██╗ ██║
+            ██║██╔═══╝ ╚════██║██╔═══╝ ██╔══██║██║███╗██║██║╚██╗██║
+            ██║██║     ███████║██║     ██║  ██║╚███╔███╔╝██║ ╚████║
+            ╚═╝╚═╝     ╚══════╝╚═╝     ╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═══╝ \"
+      echo \"\"\n";
 
       $script="
-    
+
       function begin() {
         statut=$('whoami')
       # Vérification des droits de l'éxécuteur du script
@@ -50,16 +61,16 @@ include("../view/guide_execution.php");
           echo \"Vous n'avez pas les droits n'écéssaires, contactez votre administrateur ...\"
           sleep 1
           exit
-  
+
         elif [ ".$statut." = root ]
           then
           apt-get -y update
           apt-get -y upgrade
         fi
       }
-  
+
       begin
-  
+
       if [ ".$statut." = root ]
       then
 
@@ -91,7 +102,7 @@ include("../view/guide_execution.php");
             $dossiers = $_GET['dossier'][$i];
             $passwords = $_GET['password'][$i];
             $groups= $_GET['group'][$i];
-          } else { 
+          } else {
             $dossiers=$dossiers." ".$_GET['dossier'][$i];
             $passwords=$passwords." ".$_GET['password'][$i];
             $groups=$groups." ".$_GET['group'][$i];
@@ -100,16 +111,16 @@ include("../view/guide_execution.php");
       $dossiers="dossier=(".$dossiers.")\n";
       $groups="group=(".$groups.")\n";
       $passwords="password=(".$passwords.")\n";
-  
+
       $password ='${password[$y]}';
       $group = '${group[$y]}';
       $dossier = '${dossier[$y]}';
 
       $script=$script."
-      
+
       for ((y=0;y<".$nb.";y++))
       do
-      
+
         cat /etc/group | awk -F\":\" '{print$1}' | grep -w ".$group."
         if [ $? == 0 ];
         then
@@ -124,9 +135,9 @@ include("../view/guide_execution.php");
         # Application des Droits au dossier
         chown -R root:".$group." ".$path."/".$dossier."
         chmod -R 770 ".$path."/".$dossier."
-      
+
         echo -e \"[".$dossier."]\n  comment = Dossier du group ".$group."\n path = ".$path."/".$dossier."\n log file = /var/log/samba/log.".$dossier."\n  max log size = 100\n  hide dot files = yes\n  guest ok = no\n guest only = no\n write list = @".$group."\n  read list = \n  valid users = @".$group."\n\"  >> /etc/samba/smb.conf
-      
+
       done
       systemctl restart smbd
       fi
@@ -143,4 +154,4 @@ include("../view/guide_execution.php");
 ?>
 
 </section>
-</main> 
+</main>

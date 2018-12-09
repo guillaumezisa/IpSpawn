@@ -34,7 +34,7 @@ include("../view/guide_execution.php");
           $psswrd = $_GET['psswrd'][$i];
           #$username = "username[$i]=".$_GET['username'][$i]."\n";
           #$psswrd = "psswrd[$i]=".$_GET['psswrd'][$i]."\n";
-        } else { 
+        } else {
           $username=$username." ".$_GET['username'][$i];
           $psswrd=$psswrd." ".$_GET['psswrd'][$i];
           #$username=$username."username[$i]=".$_GET['username'][$i]."\n";
@@ -65,9 +65,20 @@ include("../view/guide_execution.php");
       #SCRIPT D'INSTALATION D'UN SERVEUR MAIL
       #V.1.4
       #Le : 2018/12/06
-      #Script par Joran Prigent: prigent@intechinfo.fr  
+      #Script par Joran Prigent: prigent@intechinfo.fr
       #Script par Robin Cuvillier : rcuvillier@intechinfo.fr
-      #-------------------------------------------------------------------------\n";
+      #-------------------------------------------------------------------------
+      clear
+      echo \"========================================================================\"
+      echo \"\"
+      echo \"
+            ██╗██████╗ ███████╗██████╗  █████╗ ██╗    ██╗███╗   ██╗
+            ██║██╔══██╗██╔════╝██╔══██╗██╔══██╗██║    ██║████╗  ██║
+            ██║██████╔╝███████╗██████╔╝███████║██║ █╗ ██║██╔██╗ ██║
+            ██║██╔═══╝ ╚════██║██╔═══╝ ██╔══██║██║███╗██║██║╚██╗██║
+            ██║██║     ███████║██║     ██║  ██║╚███╔███╔╝██║ ╚████║
+            ╚═╝╚═╝     ╚══════╝╚═╝     ╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═══╝ \"
+      echo \"\"\n";
 
       $script="
 
@@ -150,7 +161,7 @@ EOF
     CREATE TABLE domains (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
-    PRIMARY KEY (id) 
+    PRIMARY KEY (id)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 EOF
 
@@ -169,8 +180,8 @@ EOF
     fi
 
     # Récupération des informations des nouveaux utilisateurs du service de messagerie
-    
-    sudo mysql -u root messagerie << EOF 
+
+    sudo mysql -u root messagerie << EOF
     INSERT INTO domains VALUES ('', '".$domain."');
 EOF
 
@@ -199,7 +210,7 @@ touch /etc/postfix/generic
     sleep 1
     echo '---------- Début de configuration arborescence --------'
 
-    chmod 666 /etc/postfix/main.cf 
+    chmod 666 /etc/postfix/main.cf
 
     # Ajout des lignes dans main.cf
 
@@ -227,7 +238,7 @@ touch /etc/postfix/generic
     chmod 777 /var/mail/".$user."
     done
 
-    #Demander le nom de la machine et remplir le fichier generic 
+    #Demander le nom de la machine et remplir le fichier generic
 
     echo ---------- Installation Dovecot ----------
 

@@ -32,7 +32,7 @@ include("../view/guide_execution.php");
         if ($i === 0 ){
         $username = "user[$i]=".$_GET['username'][$i]."\n";
         $password = "psswrd[$i]=".$_GET['psswrd'][$i]."\n";
-        } else { 
+        } else {
           $username=$username."user[$i]=".$_GET['username'][$i]."\n";
           $password=$password."psswrd[$i]=".$_GET['psswrd'][$i]."\n";
       }
@@ -55,8 +55,19 @@ include("../view/guide_execution.php");
       $firstline = "
       #!/bin/bash
       #-------------------------------------------------------------------------
-      #SCRIPT D'INSTALATION D'UN SERVEUR MAIL
-      #-------------------------------------------------------------------------\n";
+      #SCRIPT D'INSTALATION D'UN SERVEUR DNS
+      #-------------------------------------------------------------------------
+      clear
+      echo \"========================================================================\"
+      echo \"\"
+      echo \"
+            ██╗██████╗ ███████╗██████╗  █████╗ ██╗    ██╗███╗   ██╗
+            ██║██╔══██╗██╔════╝██╔══██╗██╔══██╗██║    ██║████╗  ██║
+            ██║██████╔╝███████╗██████╔╝███████║██║ █╗ ██║██╔██╗ ██║
+            ██║██╔═══╝ ╚════██║██╔═══╝ ██╔══██║██║███╗██║██║╚██╗██║
+            ██║██║     ███████║██║     ██║  ██║╚███╔███╔╝██║ ╚████║
+            ╚═╝╚═╝     ╚══════╝╚═╝     ╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═══╝ \"
+      echo \"\"\n";
 
       $script="
 
@@ -75,7 +86,7 @@ include("../view/guide_execution.php");
     # Vérification des droits de l'éxécuteur du script
       if [ ".$statut." != root ]
       then
-        echo `Vous n'avez pas les droits n'écéssaires, contactez votre administrateur ..`
+        echo `Vous n'avez pas les droits nécéssaires, contactez votre administrateur ..`
         sleep 1
         exit
 
@@ -139,7 +150,7 @@ include("../view/guide_execution.php");
     CREATE TABLE domains (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
-    PRIMARY KEY (id) 
+    PRIMARY KEY (id)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
     EOF
 
@@ -158,8 +169,8 @@ include("../view/guide_execution.php");
     fi
 
     # Récupération des informations des nouveaux utilisateurs du service de messagerie
-    
-    sudo mysql -u root messagerie <<EOF 
+
+    sudo mysql -u root messagerie <<EOF
     INSERT INTO domains VALUES ('', '".$domain."');
     EOF
 
@@ -170,7 +181,7 @@ include("../view/guide_execution.php");
       if [ $? == 0 ];
       then
         #AJOUT DES UTILISATEURS NON-EXISTANT
-          sudo mysql -u root messagerie <<EOF 
+          sudo mysql -u root messagerie <<EOF
           INSERT INTO users VALUES ('', 1, PASSWORD('".$psswrd."'), '".$user."@".$domain."', '".$domain."/".$user."/');
           EOF
         echo L'utilisateur ".$user." a bien été ajouté.
@@ -185,7 +196,7 @@ include("../view/guide_execution.php");
 
     domainname ".$domain."
 
-    chmod 666 /etc/postfix/main.cf 
+    chmod 666 /etc/postfix/main.cf
 
     # Ajout des lignes dans main.cf
 
@@ -208,7 +219,7 @@ include("../view/guide_execution.php");
 
     systemctl restart postfix
 
-    #Demander le nom de la machine et remplir le fichier generic 
+    #Demander le nom de la machine et remplir le fichier generic
 
     echo ---------- Installation Dovecot ----------
 
