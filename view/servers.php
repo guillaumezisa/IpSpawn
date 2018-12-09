@@ -11,97 +11,101 @@
              <div class="row">
                <div class="col-sm-3">
                  <div class="card text-center text-white bg-danger">
-                   <div class="card-header">
+                   <div class="card-header bg-danger">
                      <strong><h4>Installation d'un serveur web</h4></strong>
                    </div>
-                   <div class="card-body ">
-                     <h5 class="card-title ">Installation de lamp <br>Apache2 ou Nginx, Mariadb & Php.<br><br>
+                   <div class="card-body bg-danger">
+                     <h5 class="card4"><bold>Installation d'un serveur web contenant les services suivants :<br>Apache2 ou Nginx, mysql & php.</bold>
                      </h5>
                    </div>
-                   <div class="card-footer text-muted">
-                     <a class="btn btn-dark" href="../controller/redirection.php?action=server_web">Serveur Web</a><br>
+                   <div class="card-footer bg-danger">
+                     <center><a class="btn btn-dark" href="../controller/redirection.php?action=server_web">Serveur Web</a></center>
                    </div>
                  </div>
                </div>
                <div class="col-sm-3">
                  <div class="card text-center text-white bg-danger">
-                   <div class="card-header">
+                   <div class="card-header bg-danger">
                      <strong><h4>Installation d'un serveur dns</h4></strong>
                    </div>
-                   <div class="card-body">
-                     <h5 class="card-title">Installation d'un dns <br>( Bind9 , Dnsutils ) .<br><br><br></h5>
+                   <div class="card-body bg-danger">
+                     <h5 class="card4"><bold>Installation d'un serveur dns avec les services suivants : Bind9 & Dnsutils.</bold>
+                     </h5>
                    </div>
-                   <div class="card-footer text-muted">
-                     <a class="btn btn-dark" href="../controller/redirection.php?action=server_dns">Serveur Dns</a>
+                   <div class="card-footer bg-danger">
+                     <center><a class="btn btn-dark" href="../controller/redirection.php?action=server_dns">Serveur Dns</a></center>
                    </div>
                  </div>
                </div>
                <div class="col-sm-3">
-                 <div class="card text-center text-white bg-primary">
-                   <div class="card-header">
+                 <div class="card text-center text-white bg-danger">
+                   <div class="card-header bg-danger">
                      <strong><h4>Installation d'un serveur mail</h4></strong>
                    </div>
-                   <div class="card-body">
-                     <h5 class="card-title">Installation d'un serveur de mail ( PostFix ).<br><br></h5>
+                   <div class="card-body bg-danger">
+                     <h5 class="card4"><bold>Installation d'un serveur mail avec PostFix</bold>
+                     </h5>
                    </div>
-                   <div class="card-footer text-muted">
-                     <a class="btn btn-dark" href="../controller/redirection.php?action=server_mail">Serveur Mail</a>
+                   <div class="card-footer bg-danger">
+                     <center><a class="btn btn-dark" href="../controller/redirection.php?action=server_mail">Serveur Mail</a></center>
                    </div>
                  </div>
                </div>
                <div class="col-sm-3">
-                 <div class="card text-center text-white bg-primary">
-                   <div class="card-header">
+                 <div class="card text-center text-white bg-danger">
+                   <div class="card-header bg-danger">
                      <strong><h4>Installation d'un serveur Samba</h4></strong>
                    </div>
-                   <div class="card-body">
-                     <h5 class="card-title">Installation d'un serveur samba & configuration des différents espaces<br></h5>
+                   <div class="card-body bg-danger">
+                     <h5 class="card4"><bold>Installation d'un serveur Samba & configuration des zones de stockages.</bold>
+                     </h5>
                    </div>
-                   <div class="card-footer text-muted">
-                     <a class="btn btn-dark" href="../controller/redirection.php?action=server_samba">Serveur Samba</a>
+                   <div class="card-footer bg-danger">
+                     <center><a class="btn btn-dark" href="../controller/redirection.php?action=server_samba">Serveur Samba</a></center>
                    </div>
                  </div>
                </div>
-               <div class="container"><br>
-                 <div class="row">
-                   <div class="col-sm-4">
-                     <div class="card text-center text-white bg-dark">
-                       <div class="card-header">
-                         <strong><h4>Configuration Ip Fixe</h4></strong>
-                       </div>
-                       <div class="card-body">
-                         <h5 class="card-title"><br>Configuration d'une ip fixe et de la résolution de noms.<br><br></h5>
-                       </div>
-                       <div class="card-footer text-muted">
-                         <a class="btn btn-dark" href="../controller/redirection.php?action=ip_static">IpFixe</a>
-                       </div>
-                     </div>
+             </div><br>
+             <div class="row">
+               <div class="col-sm-4">
+                 <div class="card text-center text-white bg-dark">
+                   <div class="card-header bg-dark">
+                     <strong><h4>Configuration Ip Fixe</h4></strong>
                    </div>
-                   <div class="col-sm-4">
-                     <div class="card text-center text-white bg-dark">
-                       <div class="card-header">
-                         <strong><h4>Gestion des utilisateurs</h4></strong>
-                       </div>
-                       <div class="card-body">
-                         <h5 class="card-title">Ajouter & supprimer des utilisateurs, modification de nom ou de mot de passe d'utilisateurs .<br><br></h5>
-                       </div>
-                       <div class="card-footer text-muted">
-                         <a class="btn btn-dark" href="../controller/redirection.php?action=user">Gestion des utilisateurs</a>
-                       </div>
-                     </div>
+                   <div class="card-body bg-secondary">
+                     <h5 class="card4"><bold>Configuration d'une ip fixe et de la résolution de noms.</bold>
+                     </h5>
                    </div>
-                   <div class="col-sm-4">
-                     <div class="card text-center text-white bg-dark">
-                       <div class="card-header">
-                         <strong><h4>Gestion des groupes</h4></strong>
-                       </div>
-                       <div class="card-body">
-                         <h5 class="card-title">Installation du service sudo, création et modification de groupes d'utilisateurs & gestion de privileges.</h5>
-                       </div>
-                       <div class="card-footer text-muted">
-                         <a class="btn btn-dark" href="../controller/redirection.php?action=group">Gestion des groupes</a>
-                       </div>
-                     </div>
+                   <div class="card-footer bg-dark">
+                     <a class="btn btn-dark" href="../controller/redirection.php?action=ip_static">IpFixe</a>
+                   </div>
+                 </div>
+               </div>
+               <div class="col-sm-4">
+                 <div class="card text-center text-white bg-dark">
+                   <div class="card-header bg-dark">
+                     <strong><h4>Gestion des utilisateurs</h4></strong>
+                   </div>
+                   <div class="card-body bg-secondary">
+                     <h5 class="card4"><bold>Ajouter & supprimer des utilisateurs, modification de nom ou de mot de passe d'utilisateurs.</bold>
+                     </h5>
+                   </div>
+                   <div class="card-footer bg-dark">
+                     <center><a class="btn btn-dark" href="../controller/redirection.php?action=user">Gestion des utilisateurs</a></center>
+                   </div>
+                 </div>
+               </div>
+               <div class="col-sm-4">
+                 <div class="card text-center text-white bg-dark">
+                   <div class="card-header bg-dark">
+                     <strong><h4>Gestion des groupes</h4></strong>
+                   </div>
+                   <div class="card-body bg-secondary">
+                     <h5 class="card4"><bold>Installation du service sudo, création et modification de groupes d'utilisateurs & gestion de privileges.</bold>
+                     </h5>
+                   </div>
+                   <div class="card-footer bg-dark">
+                     <center><a class="btn btn-dark" href="../controller/redirection.php?action=group">Gestion des groupes</a></center>
                    </div>
                  </div>
                </div>
