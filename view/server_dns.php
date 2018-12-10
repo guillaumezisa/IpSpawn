@@ -10,14 +10,15 @@
         <input type="hidden" name="action" value="dns">
         <input type="hidden" name="under_action" value="install_dns_gen">
         <h4>Configuration de la machine master </h4>
-        Nom de la machine master: <input type="text" name="master" required><br>
-        Nom du domaine : <input type="text" name="domain" required><br><br>
+        Nom de la machine master: <input type="text" name="master" maxlength="50" required><br>
+        Nom du domaine : <input type="text" name="domain" maxlength="50" required><br><br>
         <h4>Configuration de vos zones </h4>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter une machine</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer la dernière machine</button><br><br>
         </div>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
+        <input type="hidden" name="email" value="" />
         <button type="submit" class="btn btn-dark" id="choice" >Valider</button></center></center>
       </form>
     </div>

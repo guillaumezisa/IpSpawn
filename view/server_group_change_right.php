@@ -16,6 +16,7 @@
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer les derniers droits</button><br><br>
         <h6><input type="checkbox" name="recursion" value= "yes" > Activer la récursivité ( execute pour tous les fichiers de l'arborescence )<br>
         <input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
+        <input type="hidden" name="email" value="" />
       </div><button class="btn btn-dark" id="choice" >Valider</button></center><br><br>
       </form>
     </div></center>

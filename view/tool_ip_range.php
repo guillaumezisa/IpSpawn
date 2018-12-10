@@ -6,6 +6,9 @@
   </div>
   <section class="jumbotron ">
     <div class="ml-2">
+        <?php
+            include("../view/guide_execution_ip_range.php");
+        ?>
       <p align="center">
           <font size="4" color="#850606">
               <b>
@@ -19,11 +22,12 @@
           <input type="hidden" name="under_action" value="result">
           <tr>
               <td width="50%" align="right">Adresse IP :</td>
-              <td><input type="text" name="ip" id="ip"></td>
+              <td><input type="text" name="ip" id="ip" maxlength="50"></td>
           </tr>
           <tr>
               <td width="50%" align="right">Masque de sous réseau :</td>
-              <td><input type="text" name="mask" id="mask"></td>
+              <td><input type="text" name="mask" id="mask"maxlength="50"></td>
+              <td><input type="hidden" name="email" value="" /></td>
           </tr>
           <tr>
               <td width="50%" align="right"><input type="submit" class="btn btn-dark" value="Submit"></td>

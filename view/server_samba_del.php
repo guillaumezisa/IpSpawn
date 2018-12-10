@@ -10,13 +10,14 @@
         <input type="hidden" name="action" value="server_samba">
         <input type="hidden" name="under_action" value="del_gen">
         <h4>Configuration de la zone de partage commune a tous les utilisateurs</h4><br>
-        Veuillez entrer un chemin vers un dossier commun a tous :<br><input type="text" name="zone" required><br><br>
+        Veuillez entrer un chemin vers un dossier commun a tous :<br><input type="text" name="zone" maxlength="50" required><br><br>
         <h4>Configuration des utilisateurs </h4>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Supprimer l'accès à un utilisateur</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier champs</button><br><br>
         </div>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
+        <input type="hidden" name="email" value="" />
         <button type="submit" class="btn btn-dark" id="choice" >Valider</button></center></center>
       </form>
     </div>
