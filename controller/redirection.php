@@ -160,21 +160,21 @@ include('../view/header.php');
           include("../view/server_group_delete.php");
         }elseif ($_GET['under_action'] === "del_gen"){
           include("../controller/server_group_delete.php");
-        #GESTION DES GROUPES AVANCÉE--------------------------------------------
+        #GESTION DES GROUPES AVANCÉE-✔------------------------------------------
         }elseif ($_GET['under_action'] === "add_right"){
           if (isset($_GET['under_actionx'])){
-            #AJOUT DE GROUPES AU SUDOERS----------------------------------------
+            #AJOUT DE GROUPES AU SUDOERS-✔--------------------------------------
             if ($_GET['under_actionx'] === "sudoers"){
               include("../view/server_group_add_to_sudoers.php");
             }elseif ($_GET['under_actionx'] === "gen_sudoers"){
               include("../controller/server_group_add_to_sudoers.php");
-            #AJOUT DES DROITS DES REPERTOIRES-----------------------------------
+            #AJOUT DES DROITS DES REPERTOIRES-✔---------------------------------
             }elseif ($_GET['under_actionx'] === "right"){
               include("../view/server_group_change_right.php");
             }elseif ($_GET['under_actionx'] === "gen_right"){
               include("../controller/server_group_change_right.php");
             #AJOUT DES PROPRIETAIRES DES RÉPERTOIRES----------------------------
-            }elseif ($_GET['under_actionx'] === "owner"){
+          }elseif ($_GET['under_actionx'] === "owner"){
               include("../view/server_group_change_owner.php");
             }elseif ($_GET['under_actionx'] === "gen_owner"){
               include("../controller/server_group_change_owner.php");
