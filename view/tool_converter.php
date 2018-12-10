@@ -6,16 +6,20 @@
   </div>
   <section class="jumbotron ">
     <div class="ml-2">
+      <?php
+        include("../view/guide_execution_converter.php");
+      ?>
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="converter">
         <input type="hidden" name="under_action" value="result">
-        <input type="text" name="nb" value="">
+        <input type="text" name="nb" value="" maxlength="50">
         <select name="convtype">
           <option value="0">Binaire</option>
           <option value="3">Octal</option>
           <option value="10">Décimal</option>
           <option value="4">Héxadécimal</option>
         </select><br>
+        <input type="hidden" name="email" value="" />
         <button type="submit" class="btn btn-dark">Valider</button></center><br><br>
       </form>
     </div></center>

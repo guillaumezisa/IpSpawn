@@ -10,8 +10,9 @@
         <input type="hidden" name="action" value="ip_static">
         <input type="hidden" name="under_action" value="gen">
         Veuillez entrer l'ip sur laquelle vous voulez devenir statique.<br>
-        <input type="text" name="ip" value=""><br>
+        <input type="text" name="ip" value="" maxlength="50"><br>
         <h6><input type="checkbox" name="auto_destruction" value="yes"> Détruire le script a la fin de l'éxécution (conseiller)</h6>
+        <input type="hidden" name="email" value="" />
         <button type="submit" class="btn btn-dark">Valider</button></center><br><br>
       </form>
     </div></center>

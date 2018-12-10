@@ -10,13 +10,14 @@
         <input type="hidden" name="action" value="server_samba">
         <input type="hidden" name="under_action" value="install_gen">
         <h4>Configuration de la zone de partage commune a tous les utilisateurs</h4><br>
-        Veuillez entrer un chemin vers un dossier commun a tous :<br><input type="text" name="zone" required><br><br>
+        Veuillez entrer un chemin vers un dossier commun a tous :<br><input type="text" name="zone" maxlength="50" required><br><br>
         <h4>Configuration des dossiers </h4>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un sous-dossier</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier dossier</button><br><br>
         </div>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
+        <input type="hidden" name="email" value="" />
         <button type="submit" class="btn btn-dark" id="choice" >Valider</button></center></center>
       </form>
     </div>

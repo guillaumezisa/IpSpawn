@@ -34,10 +34,10 @@
         <center>
 		<br>
         <h2>Administrateur</h2>
-          <br>Nom Admin : <input type="textarea" name="name_admin" required>
+          <br>Nom Admin : <input type="textarea" name="name_admin" maxlength="50" required>
           <br>Mot de passe Admin : <input type="password" name="passwrd_admin" required>
-          <br>Nom de domaine : <input type="textarea" name="domain" required>
-          <br>Nom de la machine : <input type="textarea" name="hostname" required>
+          <br>Nom de domaine : <input type="textarea" name="domain" maxlength="50" required>
+          <br>Nom de la machine : <input type="textarea" name="hostname" maxlength="50" required>
         <br><br>
         <h2>Users</h2>
         <p>
@@ -45,6 +45,7 @@
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier utilisateur</button><br><br>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
+        <input type="hidden" name="email" value="" />
         <button type="submit" class="btn btn-dark" id="choice" >Valider</button><br><br>
       </form>
     </div></TABLE></center>
