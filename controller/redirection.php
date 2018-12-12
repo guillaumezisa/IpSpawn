@@ -179,10 +179,10 @@ include('../view/header.php');
             }elseif ($_GET['under_actionx'] === "gen_owner"){
               include("../controller/server_group_change_owner.php");
             #MODIFICATION DES DROITS COMMANDES DES GROUPES----------------------
-            }elseif ($_GET['under_actionx'] === "command"){
-              include("../view/server_group_add_strict_shell.php");
-            }elseif ($_GET['under_actionx'] === "gen_command"){
-              include("../controller/server_group_add_strict_shell.php");
+            }elseif ($_GET['under_actionx'] === "restrict"){
+              include("../view/server_group_restrict.php");
+            }elseif ($_GET['under_actionx'] === "gen_restrict"){
+              include("../controller/server_group_restrict.php");
             }
           }else{
             include("../view/server_group_add_right.php");
