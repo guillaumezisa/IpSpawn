@@ -176,7 +176,7 @@ include("../view/guide_execution.php");
 
     for ((y=0;y<".$nb.";y++))
     do
-      #VÉRIFIE L'EXISTANCE DES L'UTILISATEURS
+      #VÉRIFIE L'EXISTENCE DES L'UTILISATEURS
       sudo mysql -u root -d 'messagerie' -e 'SELECT email FROM users WHERE email='".$user."@".$domain."' | grep ".$user."
       if [ $? == 0 ];
       then
