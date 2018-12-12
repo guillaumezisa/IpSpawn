@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
   <h3><strong>Ajout de groupe(s) aux sudoers</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte a outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -11,7 +11,7 @@
 # GENERATION DU SCRIPT D'AJOUT DE DROITS AU GROUPE
 #-------------------------------------------------------------------------------
 
-#GÉNÉRATION DES VARIABLE DE FICHIERS--------------------------------------------
+#GÉNÉRATION DES VARIABLES DE FICHIERS--------------------------------------------
 $file_path="../script/script_client/add_right_group_sudoers_".session_id().".sh";
 $file_name="add_right_group_sudoers.sh";
 
@@ -47,7 +47,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     #GÉNÉRATION DU SCRIPT-------------------------------------------------------
     $firstline = "#!/bin/bash
 #-------------------------------------------------------------------------------
-#SCRIPT DE MOFICATION DES DROITS DE GROUPE généré par IpSpawn.com
+#SCRIPT DE MODIFICATION DES DROITS DE GROUPE généré par IpSpawn.com
 #V.1.4
 #Le : 2018/12/06
 #Script par Guillaume Zisa : zisa@intechinfo.fr
@@ -69,7 +69,7 @@ echo \"\"\n";
 if [ $(whoami) == ".$root." ];then
   for ((y=0;y<".$nb.";y++))
   do
-    #VÉRIFICATION DE L'EXISTANCE DU GROUPE--------------------------------------
+    #VÉRIFICATION DE L'EXISTENCE DU GROUPE--------------------------------------
     if grep \"^".$group.":\" /etc/group > /dev/null;
     then
       echo \"%".$group."  ALL=(ALL:ALL) ALL \" >> /etc/sudoers
@@ -80,7 +80,7 @@ if [ $(whoami) == ".$root." ];then
   done\n
   service sudo restart
 else
-    echo Vous devez être root pour executer ce script
+    echo Vous devez être root pour exécuter ce script
 fi";
 
       #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
