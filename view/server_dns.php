@@ -1,7 +1,7 @@
 <style>label
 {
 	display: block;
-	width: 150px;
+	width: 210px;
 }
 </style>
 <main role="main"><center>
@@ -34,9 +34,9 @@
 		<input type="hidden" name="action" value="dns">
 		<input type="hidden" name="under_action" value="install_dns_gen">
 		<h4>Configuration de la machine master </h4>
-		<label for="domain">Nom du domaine :</label><input type="text" name="domain" maxlength="50" required /><br/>
-		<label for="master">Nom de la machine master :</label><input type="text" name="master" maxlength="50" required /><br/>
-		<label for="private_ip">Ip privée de la machine master :</label><input type="text" name="private_ip" maxlength="50" required /><br/>
+		<label for="domain">Nom du domaine :</label><input type="text" name="domain" maxlength="50" required /><br/><br>
+		<label for="master">Nom de la machine master :</label><input type="text" name="master" maxlength="50" required /><br/><br>
+	<label for="private_ip">Ip privée de la machine master :</label><input type="text" name="private_ip" maxlength="50" required /><br/>
         <h4>Configuration de vos zones </h4>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter une machine</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
