@@ -35,9 +35,9 @@
 		<input type="hidden" name="under_action" value="install_dns_gen">
 		<h4><strong>Configuration de la machine master</strong></h4>
 		<br>
-		<label for="domain">Nom du domaine :</label><input type="text" name="domain" maxlength="50" required /><br/><br>
-		<label for="master">Nom de la machine master :</label><input type="text" name="master" maxlength="50" required /><br/><br>
-	<label for="private_ip">Ip privée de la machine master :</label><input type="text" name="private_ip" maxlength="50" required /><br/><br>
+		<label for="domain"><strong>Nom du domaine :</strong></label><input type="text" name="domain" maxlength="50" required /><br/><br>
+		<label for="master"><strong>Nom de la machine master :</strong></label><input type="text" name="master" maxlength="50" required /><br/><br>
+	<label for="private_ip"><strong>Ip privée de la machine master :</strong></label><input type="text" name="private_ip" maxlength="50" required /><br/><br>
         <h4><strong>Configuration de vos zones</strong></h4>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter une machine</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
