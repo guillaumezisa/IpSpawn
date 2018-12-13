@@ -1,7 +1,7 @@
 <style>label
 {
 	display: block;
-	width: 210px;
+	width: 250px;
 }
 </style>
 <main role="main"><center>
