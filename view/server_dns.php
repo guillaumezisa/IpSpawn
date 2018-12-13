@@ -28,7 +28,6 @@
 		<input type="hidden" name="action" value="dns">
 		<input type="hidden" name="under_action" value="install_dns_gen">
 		<h4>Configuration de la machine master </h4>
-		<script src="../style/span_style.css"></script>
 		<label for="domain">Nom du domaine :</label><input type="text" name="domain" maxlength="50" required /><br/>
 		<label for="master">Nom de la machine master :</label><input type="text" name="master" maxlength="50" required /><br/>
 		<label for="private_ip">Ip privée de la machine master :</label><input type="text" name="private_ip" maxlength="50" required /><br/>
