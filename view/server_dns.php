@@ -1,3 +1,9 @@
+<style>label
+{
+	display: block;
+	width: 150px;
+}
+</style>
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Installation d'un Dns</strong></h3>
