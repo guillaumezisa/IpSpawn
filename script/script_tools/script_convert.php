@@ -14,6 +14,11 @@ Script par Henri Fumey-Humbert: fumey-humbert@intechinfo.fr
 # si n=4 converti de binaire en héxadecimal
 
 function Converter($entry, $n){
+	foreach ($_REQUEST as $key => $val) 
+	{
+	$val = trim(stripslashes(htmlentities($val)));
+	$_REQUEST[$key] = $val;
+	}  
 	$entry = preg_replace('/[^0-9a-fA-F]/', "", $entry); // Verification de du saisie
 	$sauce_array = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"]; // Initialisation
 	if (preg_match("~^[0-9a-fA-F]+$~i", $entry)){

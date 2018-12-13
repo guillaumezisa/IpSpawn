@@ -5,13 +5,33 @@
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
-    <div class="ml-2" style="margin-top:-2%">
-      <form action="../controller/redirection.php" method="GET">
-        <input type="hidden" name="action" value="dns">
-        <input type="hidden" name="under_action" value="install_dns_gen">
-        <h4>Configuration de la machine master </h4>
-        Nom de la machine master: <input type="text" name="master" maxlength="50" required><br>
-        Nom du domaine : <input type="text" name="domain" maxlength="50" required><br><br>
+    <div class="ml-2" style="margin-top:-2%"><center>
+	 <div class="container" style="margin-top:-4%">
+        <div class="row">
+          <div class="col-sm-1">
+          </div>
+          <div class="col-sm-10">
+            <div class="text-light bg-info" style="width:100%;border:solid black 1.5px;border-radius:4px; margin: 30px auto;">
+              <br><h1>Prérequis : </h1> <h5>
+			  <br>	- Avoir un nom de domaine.
+			  <br>	- Être administrateur du système.
+			  <br>	- Avoir une machine avec une IP FIXE disposé à héberger le service.
+			  <br>	- Ne pas oublier de donner les droits d'éxécution au script (chmod +x "nomduscript").</h5>
+			  <br>
+            </div>
+            </div>
+          </div>
+          <div class="col-sm-1"></div>
+        </div>
+      </div>
+	<form action="../controller/redirection.php" method="GET">
+		<input type="hidden" name="action" value="dns">
+		<input type="hidden" name="under_action" value="install_dns_gen">
+		<h4>Configuration de la machine master </h4>
+		<script src="../style/span_style.css"></script>
+		<label for="domain">Nom du domaine :</label><input type="text" name="domain" maxlength="50" required /><br/>
+		<label for="master">Nom de la machine master :</label><input type="text" name="master" maxlength="50" required /><br/>
+		<label for="private_ip">Ip privée de la machine master :</label><input type="text" name="private_ip" maxlength="50" required /><br/>
         <h4>Configuration de vos zones </h4>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter une machine</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
