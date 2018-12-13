@@ -11,7 +11,7 @@
       <div class="ml-2"><center>
         <div class="container">
           <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-6">
               <div class="card text-center text-white bg-danger">
                 <div class="card-header">
                   <strong><h4>Modifier les droits d'execution/d'acces</h4></strong>
@@ -24,29 +24,46 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
               <div class="card text-center text-white bg-primary">
                 <div class="card-header">
                   <strong><h4>Modifier le propriétaire</h4></strong>
                 </div>
                 <div class="card-body ">
-                  <h5 class="card-title ">Modifier le propriétaire peut vous être utile car le propriétaire a tous les droits sur un fichier / dossier, faites tous de meme attention car si vous n'êtes pas sure de ce que vous faites vous pourriez corrompre votre systeme et le fragilisé</h5><br><br>
+                  <h5 class="card-title ">Modifier le propriétaire peut vous être utile car le propriétaire a tous les droits sur un fichier / dossier, faites tous de meme attention car si vous n'êtes pas sure de ce que vous faites vous pourriez corrompre votre systeme et le fragilisé</h5><br>
                 </div>
                 <div class="card-footer text-muted">
                   <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=add_right&under_actionx=owner">Modifier</a><br>
                 </div>
               </div>
             </div>
-            <div class="col-sm-4">
+          </div>
+        </div><br>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6">
               <div class="card text-center text-white bg-success">
                 <div class="card-header">
                   <strong><h4>Ajouter un groupe au sudoers</h4></strong>
                 </div>
                 <div class="card-body ">
-                  <h5 class="card-title ">Cela permet d'autoriser tous les membres du groupes l'utilisation de la commande sudo, <br>faite egalement attention de ne pas donner ce privilege a n'importe qui. </h5><br><br><br>
+                  <h5 class="card-title ">Cela permet d'autoriser tous les membres du groupes l'utilisation de la commande sudo, <br>faite egalement attention de ne pas donner ce privilege a n'importe qui. </h5>
                 </div>
                 <div class="card-footer text-muted">
                   <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=add_right&under_actionx=sudoers">Ajouter</a><br>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card text-center text-white bg-success">
+                <div class="card-header">
+                  <strong><h4>Restrictions ou privileges a un groupe du sudoers</h4></strong>
+                </div>
+                <div class="card-body ">
+                  <h5 class="card-title ">Cela permet de restreindre certaines commandes a certain groupes ou bien de donner le droit d'éxécuter certaine commande sans demander de mot de passe .</h5><br><br>
+                </div>
+                <div class="card-footer text-muted">
+                  <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=add_right&under_actionx=restrict">Ajouter</a><br>
                 </div>
               </div>
             </div>
