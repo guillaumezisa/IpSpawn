@@ -8,7 +8,11 @@ Script par Henri Fumey-Humbert: fumey-humbert@intechinfo.fr
 */
 
 function calc_plage ($calcul_adresse_ip, $calcul_mask){
-
+    foreach ($_REQUEST as $key => $val) 
+	{
+	$val = trim(stripslashes(htmlentities($val)));
+	$_REQUEST[$key] = $val;
+	}  
     // ============================================
     // Validation du champs IP
     // ============================================
