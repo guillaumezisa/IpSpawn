@@ -180,6 +180,7 @@ function checkForm(event)
       } else if (list[i].value === "MX"){
         liste = document.getElementsByClassName("allDivs");
         where = liste[i];
+		check[i].removeAttribute('readonly');
         check[i].value = "";
         check0[i].value = "1";
         check0[i].type = "number";
