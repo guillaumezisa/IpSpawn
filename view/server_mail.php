@@ -1,3 +1,9 @@
+<style>label
+{
+	display: block;
+	width: 250px;
+}
+</style>
 <main role="main">
     <center><div class="container">
        <br><center><h3><strong>Service de messagerie</strong></h3></center>
@@ -32,13 +38,13 @@
         <input type="hidden" name="under_action" value="gen_mail">
         <center>
 		<br>
-        <h2>Administrateur</h2>
-          <br>Nom Admin : <input type="textarea" name="name_admin" maxlength="50" required>
-          <br>Mot de passe Admin : <input type="password" name="passwrd_admin" required>
-          <br>Nom de domaine : <input type="textarea" name="domain" maxlength="50" required>
-          <br>Nom de la machine : <input type="textarea" name="hostname" maxlength="50" required>
-        <br><br>
-        <h2>Users</h2>
+		<h4><strong>Administrateur</strong></h4>
+		<br>
+			<label for="name_admin"><strong>    Nom Admin :</strong></label><input type="text" name="name_admin" maxlength="50" required /><br/><br>
+			<label for="passwrd_admin"><strong> Mot de passe Admin :</strong></label><input type="password" name="passwrd_admin" maxlength="50" required /><br/><br>
+			<label for="domain"><strong>  		Nom de domaine :</strong></label><input type="text" name="domain" maxlength="50" required /><br/><br>
+			<label for="hostname"><strong>		Nom de la machine :</strong></label><input type="text" name="hostname" maxlength="50" required /><br/><br>
+        <h4><strong>Users</strong></h4>
         <p>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un utilisateur</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
