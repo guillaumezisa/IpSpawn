@@ -3,6 +3,7 @@
 	display: block;
 	width: 250px;
 }
+</style>
 <main role="main">
     <center><div class="container">
        <br><center><h3><strong>Service de messagerie</strong></h3></center>
