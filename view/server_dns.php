@@ -30,7 +30,7 @@
           <div class="col-sm-1"></div>
         </div>
       </div>
-	<form action="../controller/redirection.php" method="GET">
+	<form action="../controller/redirection.php" id="monFormulaire" method="GET">
 		<input type="hidden" name="action" value="dns">
 		<input type="hidden" name="under_action" value="install_dns_gen">
 		<h4><strong>Configuration de la machine master</strong></h4>
@@ -45,15 +45,16 @@
         </div>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
         <input type="hidden" name="email" value="" />
-        <button type="submit" class="btn btn-dark" id="choice" >Valider</button></center></center>
+        
       </form>
+	  <button type="submit" class="btn btn-dark" id="choice" onclick="checkForm(event)">Valider</button></center></center>
     </div>
   </section>
 </main>
 
 <script>
 function cancel(event)
-{
+{  
   event.preventDefault();
 }
   $(window).keydown(function(e){
@@ -117,6 +118,7 @@ function cancel(event)
     input_a.setAttribute('id','submit' + count);
     input_a.required = true;
     var parentDiv = document.getElementById("new").parentNode;
+	console.log(parentDiv);
     parentDiv.append(div);
     div.append(text_q);
     div.append(input_q);
@@ -146,10 +148,9 @@ function cancel(event)
   }
 
 function checkForm(event)
-  {
-    event.preventDefault();
-    var check = document.getElementById('submit0');
-    console.log(check.value);
+{
+    var check = document.getElementById('monFormulaire');
+    check.submit();
   }
 
   function checkSelect()
