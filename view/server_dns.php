@@ -52,51 +52,151 @@
 </main>
 
 <script>
-  function rm_last_div(event){
-    event.preventDefault();
-    var liste = document.getElementsByClassName('allDivs');
-    liste[liste.length-1].remove();
+function cancel(event)
+{
+  event.preventDefault();
+}
+  $(window).keydown(function(e){
+      switch(e.which){
+          case(13):
+                  e.preventDefault();
+              break;
+          
   }
-  var count = 0;
+  });
   function append(event){
     event.preventDefault();
+    count = liste = document.getElementsByClassName('allDivs').length;
     var div = document.createElement('div');
     div.id = count;
     div.setAttribute('class','allDivs');
+    var text_q = document.createElement('span');
+    text_q.setAttribute('id','span'+ count);
+    text_q.textContent = "Nom de l'hôte : ";
     var input_q = document.createElement('input');
-    var input_b = document.createElement('input');
-    var input_a = document.createElement('input');
-    var br = document.createElement('br');
-    var text_q = document.createTextNode(' Nom de l\'hôte : ');
-    var text_b = document.createTextNode(' Type d\'enregistrement : ');
-    var text_a = document.createTextNode(' Ip local de la machine : ');
     input_q.type = "text";
     input_q.name ="hostname[]";
+    input_q.setAttribute('class','firstInp');
     input_q.required = true;
+    var input_b = document.createElement('input');
     input_b.type = "text";
-    input_b.name ="type_name[]";
+    input_b.name ="name[]";
     input_b.required = true;
-    input_b.pattern = "^[\(\)a-zA-Z0-9,-_ ]{0,}$";
+    var text_a = document.createElement('span');
+    text_a.setAttribute('id','spanInput'+ count);
+    text_a.textContent = " IP de la machine : ";
+    var input_c = document.createElement('input');
+    var input_a = document.createElement('input');
+    var br = document.createElement('br');
+    var text_b = document.createElement('select');
+    text_b.setAttribute('class','selectMach');
+    text_b.setAttribute('onchange','checkSelect()');
+    text_b.name = "type_name[]";
     input_a.type = "text";
+    input_a.setAttribute('class','secInp');
+    var option0 = document.createElement('option'); // Bloc à copier coller pour ajout d'options
+    option0.value = "A";
+    option0.innerText = "A";
+    text_b.append(option0);
+    var option1 = document.createElement('option');
+    option1.value = "NS";
+    option1.innerText = "NS";
+    text_b.append(option1);
+    var option2 = document.createElement('option');
+    option2.value = "MX";
+    option2.innerText = "MX";
+    text_b.append(option2);
+    var option3 = document.createElement('option');
+    option3.value = "CNAME";
+    option3.innerText = "CNAME";
+    text_b.append(option3 );
+    var text_3 = document.createTextNode(' Type d\'enregistrement : ');
+    input_b.pattern = "^[\(\)a-zA-Z0-9,-_ ]{0,}$";
     input_a.name ="private_ip[]";
-    input_a.pattern = "^[\(\)a-zA-Z0-9,-_ ]{0,}$";
+    input_a.pattern = "^[0-9]{2,3}.{1}[0-9]{2,3}.{1}[0-9]{2,3}.{1}[0-9]{2,3}$";
+    input_a.setAttribute('id','submit' + count);
     input_a.required = true;
     var parentDiv = document.getElementById("new").parentNode;
     parentDiv.append(div);
     div.append(text_q);
     div.append(input_q);
+    div.append(text_3);
     div.append(text_b);
-    div.append(input_b);
     div.append(text_a);
     div.append(input_a);
-    div.append(parentDiv);
-    count++;
+    count = count + 1;
+  }
+
+  </script>
+
+  <script>
+
+
+  function rm_last_div(event){
+    event.preventDefault();
+    var liste = document.getElementsByClassName('allDivs');
+    liste[liste.length-1].remove();
   }
   function reload(event){
     var letsPlay = document.getElementsByTagName('input');
     for(i = 0; i < letsPlay.length; i++){
       letsPlay[i].required = false;
       letsPlay[i].removeAttribute('pattern');
+    }
+  }
+
+function checkForm(event)
+  {
+    event.preventDefault();
+    var check = document.getElementById('submit0');
+    console.log(check.value);
+  }
+
+  function checkSelect()
+  {
+    var list = document.getElementsByClassName('selectMach'); // Options du select
+    var check = document.getElementsByClassName('firstInp'); // premier input
+    var check0 = document.getElementsByClassName('secInp');  // deuxième input
+    for(let i = 0;i < list.length;i++)
+    {
+      if(list[i].value === "NS")
+      {
+        check[i].setAttribute('readonly','true');
+        check[i].value = "";
+        check0[i].type = "text";
+        check0[i].value = "";
+        document.getElementById('span'+ i).textContent = " Nom d'hôte : ";
+        document.getElementById('spanInput'+ i).textContent = " FQDN : ";
+        check0[i].setAttribute('pattern', "^[A-Za-z0-9]+[.]{1}$");
+      }  else if(list[i].value === "CNAME"){
+        check[i].removeAttribute('readonly');
+        check[i].type = "text";
+        check0[i].type = "text";
+        check0[i].value = "";
+        document.getElementById('span'+ i).textContent = " Nom d'hôte : ";
+        document.getElementById('spanInput'+ i).textContent = " FQDN : ";
+        check0[i].setAttribute('pattern',"^[A-Za-z0-9]+[.]{1}$");      
+      } else if (list[i].value === "MX"){
+        liste = document.getElementsByClassName("allDivs");
+        where = liste[i];
+        check[i].value = "";
+        check0[i].value = "1";
+        check0[i].type = "number";
+        check0[i].max = 900;
+        document.getElementById('span'+ i).textContent = " FQDN : ";
+        check[i].setAttribute('pattern',"^[A-Za-z0-9]+[.]{1}$");
+        check0[i].removeAttribute('pattern');      
+        document.getElementById('spanInput'+ i).textContent = " Valeur de priorité : ";
+      } else {
+        check[i].removeAttribute('readonly');
+        check[i].type = "text";
+        check0[i].type = "text";
+        check0[i].value = "";
+        check[i].value = "";
+        document.getElementById('span'+ i).textContent = " Nom d'hôte : ";
+        document.getElementById('spanInput'+ i).textContent = " IP de la machine : ";
+        check0[i].setAttribute('pattern',"^[0-9]{2,3}.{1}[0-9]{2,3}.{1}[0-9]{2,3}.{1}[0-9]{2,3}$");
+      }
     }
   }
 </script>
