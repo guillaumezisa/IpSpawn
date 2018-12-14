@@ -98,7 +98,7 @@
     var text_3 = document.createTextNode(' Type d\'enregistrement : ');
     input_b.pattern = "^[\(\)a-zA-Z0-9,-_ ]{0,}$";
     input_a.name ="private_ip[]";
-    input_a.pattern = "^[0-9]{2,3}.{1}[0-9]{2,3}.{1}[0-9]{2,3}.{1}[0-9]{2,3}$";
+    input_a.pattern = "^[0-9]{1,3}.{1}[0-9]{1,3}.{1}[0-9]{1,3}.{1}[0-9]{1,3}$";
     input_a.setAttribute('id','submit' + count);
     input_a.required = true;
     var parentDiv = document.getElementById("NIQUEJS");
@@ -175,7 +175,7 @@
         check[i].value = "";
         document.getElementById('span'+ i).textContent = " Nom d'hôte : ";
         document.getElementById('spanInput'+ i).textContent = " IP de la machine : ";
-        check0[i].setAttribute('pattern',"^[0-9]{2,3}.{1}[0-9]{2,3}.{1}[0-9]{2,3}.{1}[0-9]{2,3}$");
+        check0[i].setAttribute('pattern',"^[0-9]{1,3}.{1}[0-9]{1,3}.{1}[0-9]{1,3}.{1}[0-9]{1,3}$");
       }
     }
   }
