@@ -7,14 +7,15 @@
   <section class="jumbotron">
     <div class="ml-2">
       <form action="../controller/redirection.php" method="GET">
-        <input type="hidden" name="action" value="user">
-        <input type="hidden" name="under_action" value="add_gen">
-        Nom du groupe a modifier : <input type="text" name="groupe" value=""><br><br>
+        <input type="hidden" name="action" value="group">
+        <input type="hidden" name="under_action" value="add_right">
+        <input type="hidden" name="under_actionx" value="gen_restrict">
+        Nom du groupe a modifier : <input type="text" name="group" value=""><br><br>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter une commande a restreindre</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer la derniere commande</button><br><br>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
-        <input type="hidden" name="email" value="" />
+        <input type="hidden" name="email" value=""
       </div>
       <button type="submit" class="btn btn-dark" id="choice" >Valider</button></center><br><br>
     </form>
