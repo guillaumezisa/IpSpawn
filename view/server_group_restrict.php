@@ -18,7 +18,7 @@
         <input type="hidden" name="under_actionx" value="gen_restrict">
 		<h4><strong>Groupe</strong></h4>
 		<br>
-		<label for="name_admin"><strong>Nom du groupe à modifier :</strong></label><input type="text" name="group" maxlength="50" required value="" /><br/><br>
+		<label for="group"><strong>Nom du groupe à modifier :</strong></label><input type="text" name="group" maxlength="50" required value="" /><br/><br>
 		<h4><strong>Restriction de commande(s)</strong></h4>
 		<br>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter une commande a restreindre</button>
