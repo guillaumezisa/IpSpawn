@@ -1,7 +1,7 @@
 <style>label
 {
 	display: block;
-	width: 250px;
+	width: 350px;
 }
 </style>
 <main role="main"><center>
@@ -16,7 +16,6 @@
         <input type="hidden" name="action" value="server_samba">
         <input type="hidden" name="under_action" value="del_gen">
         <strong><h4>Configuration de la zone de partage commune a tous les utilisateurs</h4><br><strong>
-		<br>
 		<label for="zone"><strong>Veuillez entrer un chemin vers un dossier commun a tous :</strong></label><input type="text" name="zone" maxlength="50" required value="" /><br/><br>
         <br>
         <strong><h4>Configuration des utilisateurs </h4><strong>
