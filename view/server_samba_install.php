@@ -1,3 +1,9 @@
+<style>label
+{
+	display: block;
+	width: 350px;
+}
+</style>
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Installation & configuration d'un serveur Samba</strong></h3>
@@ -9,9 +15,10 @@
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="server_samba">
         <input type="hidden" name="under_action" value="install_gen">
-        <h4>Configuration de la zone de partage commune a tous les utilisateurs</h4><br>
-        Veuillez entrer un chemin vers un dossier commun a tous :<br><input type="text" name="zone" maxlength="50" required><br><br>
-        <h4>Configuration des dossiers </h4>
+        <strong><h4>Configuration de la zone de partage commune a tous les utilisateurs</h4><br><strong>
+		<label for="zone"><strong>Veuillez entrer un chemin vers un dossier commun a tous :</strong></label><input type="text" name="zone" maxlength="50" required value="" /><br/><br>
+        <br>
+        <strong><h4>Configuration des utilisateurs </h4><strong><br>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un sous-dossier</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier dossier</button><br><br>
