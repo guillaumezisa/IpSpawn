@@ -1,8 +1,8 @@
 
 <main role="main"><center>
   <div class="container"><br>
-    <h3><strong>Ajout de d'utilisateur(s) a des groupe(s)</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+    <h3><strong>Ajout de d'utilisateur(s) à des groupe(s)</strong></h3>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte a outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
     </p>
   </div>
@@ -10,10 +10,10 @@
     <div class="ml-2">
 <?php
 #-------------------------------------------------------------------------------
-# GENERATION DU SCRIPT D'AJOUT D'UTILISATEURS AU GROUPES
+# GÉNÉRATION DU SCRIPT D'AJOUT D'UTILISATEURS AU GROUPES
 #-------------------------------------------------------------------------------
 
-#GÉNÉRATION DES VARIABLE DE FICHIERS--------------------------------------------
+#GÉNÉRATION DES VARIABLES DE FICHIERS--------------------------------------------
 $file_path="../script/script_client/add_user_group_".session_id().".sh";
 $file_name="add_user_group.sh";
 
@@ -70,7 +70,7 @@ echo \"\"\n";
 if [ $(whoami) == ".$root." ];then
   for ((y=0;y<".$nb.";y++))
   do
-    #VÉRIFIE L'EXISTANCE DES L'UTILISATEURS-------------------------------------
+    #VÉRIFIE L'EXISTENCE DES L'UTILISATEURS-------------------------------------
     id -u ".$user."> /dev/null 2>&1
     if [ $? == 0 ];
     then
@@ -80,7 +80,7 @@ if [ $(whoami) == ".$root." ];then
     fi
   done
 else
-  echo Vous devez être root pour executer ce script
+  echo Vous devez être root pour exécuter ce script
 fi";
 
       #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
