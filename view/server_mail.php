@@ -44,7 +44,7 @@
 			<label for="passwrd_admin"><strong> Mot de passe Admin :</strong></label><input type="password" name="passwrd_admin" maxlength="50" required /><br/><br>
 			<label for="domain"><strong>  		Nom de domaine :</strong></label><input type="text" name="domain" maxlength="50" required /><br/><br>
 			<label for="hostname"><strong>		Nom de la machine :</strong></label><input type="text" name="hostname" maxlength="50" required /><br/><br>
-        <h4><strong>Users</strong></h4>
+        <h4><strong>Users</strong></h4><br>
         <p>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un utilisateur</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
