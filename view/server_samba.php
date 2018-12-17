@@ -23,19 +23,6 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-6">
-              <div class="card text-center text-white bg-danger">
-                <div class="card-header">
-                  <strong><h4>Modification des espaces d'utilisateurs</h4></strong>
-                </div>
-                <div class="card-body ">
-                  <h5 class="card-title ">Modification des différentes zone de stockage.<br><br></h5>
-                </div>
-                <div class="card-footer text-muted">
-                  <a class="btn btn-dark" href="../controller/redirection.php?action=server_samba&under_action=mod">Modifier</a><br>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

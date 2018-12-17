@@ -146,7 +146,13 @@ include("../view/guide_execution.php");
     }
 
   #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
-  $new_script = $firstline . $dossiers . $groups . $passwords . $script . $rm;
+
+  if(isset($dossiers) || isset($groups) || isset($passwords)){
+    $new_script = $firstline . $dossiers . $groups . $passwords . $script . $rm;
+  } else {
+    $new_script = $firstline . $script . $rm;
+  }
+
   $file = fopen($file_path, 'w+');
   fputs($file,$new_script);
 
