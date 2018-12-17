@@ -3,6 +3,7 @@
 	display: block;
 	width: 250px;
 }
+</style>
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Installation & configuration d'un serveur Samba</strong></h3>

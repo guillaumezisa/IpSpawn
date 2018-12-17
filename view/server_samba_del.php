@@ -3,6 +3,7 @@
 	display: block;
 	width: 250px;
 }
+</style>
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Modification du serveur Samba</strong></h3>
