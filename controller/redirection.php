@@ -78,23 +78,11 @@ include('../view/header.php');
 #-------------------------------------------------------------------------------
 }elseif($_GET['action'] === "server_samba"){
   if (isset($_GET['under_action'])){
-    if ($_GET['under_action'] === "install"){
-    #INSTALLATION CRÉATION DES ZONES DE STOCKAGES-------------------------------
-      include('../view/server_samba_install.php');
-    } elseif ($_GET['under_action'] ==="install_gen"){
+    if ($_GET['under_action'] ==="install_gen"){
       include('../controller/server_samba_install.php');
-    #MODIFICATION DES ZONES DE STOCKAGE-----------------------------------------
-    }elseif ($_GET['under_action'] ==="del"){
-      include('../view/server_samba_del.php');
-    }elseif ($_GET['under_action'] ==="del_gen"){
-      include('../controller/server_samba_del.php');
-    }elseif ($_GET['under_action'] ==="add"){
-      include('../view/server_samba_add.php');
-    }elseif ($_GET['under_action'] ==="add_gen"){
-      include('../controller/server_samba_add.php');
-    }
+    }   
   }else {
-    include('../view/server_samba.php');
+    include('../view/server_samba_install.php');
   }
 #-------------------------------------------------------------------------------
 #   MISE EN PLACE D'UNE IP FIXE
