@@ -1,7 +1,7 @@
 <style>label
 {
 	display: block;
-	width: 350px;
+	width: 500px;
 }
 </style>
 <main role="main"><center>
@@ -17,7 +17,6 @@
         <input type="hidden" name="under_action" value="del_gen">
         <strong><h4>Configuration de la zone de partage commune a tous les utilisateurs</h4><br><strong>
 		<label for="zone"><strong>Veuillez entrer un chemin vers un dossier commun a tous :</strong></label><input type="text" name="zone" maxlength="50" required value="" /><br/><br>
-        <br>
         <strong><h4>Configuration des utilisateurs </h4><strong>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Supprimer l'accès à un utilisateur</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
