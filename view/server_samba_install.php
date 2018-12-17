@@ -15,9 +15,9 @@
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="server_samba">
         <input type="hidden" name="under_action" value="install_gen">
-        <strong><h4>Configuration de la zone de partage commune a tous les utilisateurs</h4><br><strong>
+        <strong><h4>Configuration de la zone de partage commune a tous les utilisateurs</h4><br></strong>
 		<label for="zone"><strong>Veuillez entrer un chemin vers un dossier commun a tous :</strong></label><input type="text" name="zone" maxlength="50" required value="" /><br/><br>
-        <strong><h4>Configuration des utilisateurs </h4><strong><br>
+        <strong><h4>Configuration des utilisateurs </h4></strong><br>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un sous-dossier</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier dossier</button><br><br>
