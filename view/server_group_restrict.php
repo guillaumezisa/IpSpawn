@@ -1,3 +1,9 @@
+<style>label
+{
+	display: block;
+	width: 250px;
+}
+</style>
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Ajout de restriction(s)ou de droit(s) a un groupe du sudoers</strong></h3>
@@ -10,7 +16,9 @@
         <input type="hidden" name="action" value="group">
         <input type="hidden" name="under_action" value="add_right">
         <input type="hidden" name="under_actionx" value="gen_restrict">
-        Nom du groupe a modifier : <input type="text" name="group" value=""><br><br>
+		<h4><strong>Groupe</strong></h4>
+		<br>
+		<label for="name_admin"><strong>Nom du groupe à modifier :</strong></label><input type="text" name="group" maxlength="50" required value="" /><br/><br>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter une commande a restreindre</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer la derniere commande</button><br><br>
