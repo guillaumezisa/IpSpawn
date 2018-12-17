@@ -1,3 +1,9 @@
+<style>label
+{
+	display: block;
+	width: 250px;
+}
+</style>
 <main role="main"><center>
   <div class="container"><br>
     <center><h3><strong>Convertisseur</strong></h3></center>
@@ -12,7 +18,7 @@
     <form name="" action="../controller/redirection.php" method="GET">
     <input type="hidden" name="action" value="ip_range">
     <input type="hidden" name="under_action" value="result">
-	<label for="ip"><strong>Adresse Ip : :</strong></label><input type="text" id="ip" name="ip" maxlength="50" required value=""/><br/><br>
+	<label for="ip"><strong>Adresse Ip :</strong></label><input type="text" id="ip" name="ip" maxlength="50" required value=""/><br/><br>
 	<label for="ip"><strong>Masque de sous réseau :</strong></label><input type="text" id="mask" name="mask" maxlength="50" required value=""/><br/><br>
 	<input type="hidden" name="email" value="" />
 	<button type="submit" class="btn btn-dark">Valider</button></center><br><br>
