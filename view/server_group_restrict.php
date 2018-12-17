@@ -19,6 +19,8 @@
 		<h4><strong>Groupe</strong></h4>
 		<br>
 		<label for="name_admin"><strong>Nom du groupe à modifier :</strong></label><input type="text" name="group" maxlength="50" required value="" /><br/><br>
+		<h4><strong>Restriction de commande(s)</strong></h4>
+		<br>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter une commande a restreindre</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer la derniere commande</button><br><br>
