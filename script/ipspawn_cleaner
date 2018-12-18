@@ -1,0 +1,50 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          scriptname
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start daemon at boot time
+# Description:       Enable service provided by daemon.
+### END INIT INFO
+
+#SUPPRESSION DES SCRIPTS ET SAUVEGARDES DES LOGS
+#A PLACE DANS /etc/init.d/ipspawn_cleaner.sh
+
+me=$(whoami)
+if [[ $me == "root" ]];
+then
+  #VERIFICATION DES FICHIERS ET DOSSIERS
+  if [[ -d !/var/www/html/logs ]];
+  then
+    mkdir /var/www/html/logs
+    touch /var/www/html/logs/web.log
+    chmod -R 755 /var/www/html/*
+    chown -R www-data:www-data /var/www/html/*
+  fi
+
+  if [[ -d !~/.logs ]];
+  then
+    mkdir ~/.logs
+    touch ~/.logs/web.log
+  fi
+
+  #EFFACAGE DES LOGS CHAQUES HEURES & ECRITURE DANS UN FICHIER ROOT
+  hour=$(date +%M)
+  last_hour=$hour;
+  while [ 1 -eq 1 ]
+  do
+    hour=$(date +%M)
+    if [[ $hour != $last_hour ]];
+    then
+      rm /var/www/html/script/script_client/* > /dev/nul 2>&1
+      cat /var/www/html/logs/web.log >> ~/.logs/web.log
+      echo "" > /var/www/html/logs/web.log
+      echo $hour;
+      last_hour=$hour;
+    fi
+  done
+else
+  echo "Vous devez être root";
+fi
