@@ -1,3 +1,9 @@
+<style>label
+{
+	display: block;
+	width: 500px;
+}
+</style>
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Modification du serveur Samba</strong></h3>
@@ -9,9 +15,9 @@
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="server_samba">
         <input type="hidden" name="under_action" value="del_gen">
-        <h4>Configuration de la zone de partage commune a tous les utilisateurs</h4><br>
-        Veuillez entrer un chemin vers un dossier commun a tous :<br><input type="text" name="zone" maxlength="50" required><br><br>
-        <h4>Configuration des utilisateurs </h4>
+        <h4><strong>Configuration de la zone de partage commune a tous les utilisateurs</strong></h4><br>
+		<label for="zone"><strong>Veuillez entrer un chemin vers un dossier commun a tous :</strong></label><input type="text" name="zone" maxlength="50" required value="" /><br/><br>
+        <h4><strong>Configuration des utilisateurs</strong></h4>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Supprimer l'accès à un utilisateur</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier champs</button><br><br>

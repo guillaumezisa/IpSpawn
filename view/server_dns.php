@@ -25,7 +25,7 @@
 		<label for="domain"><strong>Nom du domaine :</strong></label><input type="text" name="domain" maxlength="50" required /><br/><br>
 		<label for="master"><strong>Nom de la machine master :</strong></label><input type="text" name="master" maxlength="50" required /><br/><br>
 	<label for="private_ip"><strong>Ip privée de la machine master :</strong></label><input type="text" name="private_ip" maxlength="50" required /><br/><br>
-        <h4>Configuration de vos zones </h4>
+        <h4><strong>Configuration de vos zones</strong></h4><br>
         <button class="btn btn-dark" onclick="append(event)" onkeyup="cancel(this.key)" id="new">Ajouter une machine</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer la dernière machine</button><br><br>

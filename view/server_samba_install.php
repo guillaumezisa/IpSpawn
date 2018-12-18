@@ -1,3 +1,9 @@
+<style>label
+{
+	display: block;
+	width: 500px;
+}
+</style>
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Installation & configuration d'un serveur Samba</strong></h3>
@@ -5,13 +11,33 @@
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
+		<div class="ml-2"><center>
+		<div class="container" style="margin-top:-4%">
+			<div class="row">
+				<div class="col-sm-1">
+				</div>
+				<div class="col-sm-10">
+					<div class="text-light bg-info" style="width:100%;border:solid black 1.5px;border-radius:4px; margin: 30px auto;">
+						<br><h1>Prérequis : </h1> <h5>
+			<br>	- Avoir les ports 137 et 445.
+			<br>	- Avoir une serveur avec une adresse IP Fixe disposé à héberger le service de partage.
+			<br>	- Être administrateur du système.
+			<br>	- Avoir la liste des groupes et utilisateurs du service samba.
+			<br>	- Ne pas oublier de donner les droits d'éxécution au script (chmod +x "nomduscript").</h5>
+			<br>
+					</div>
+					</div>
+				</div>
+				<div class="col-sm-1"></div>
+			</div>
+		</div>
     <div class="ml-2" style="margin-top:-2%">
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="server_samba">
         <input type="hidden" name="under_action" value="install_gen">
-        <h4>Configuration de la zone de partage commune a tous les utilisateurs</h4><br>
-        Veuillez entrer un chemin vers un dossier commun a tous :<br><input type="text" name="zone" maxlength="50" required><br><br>
-        <h4>Configuration des dossiers </h4>
+        <h4><strong>Configuration de la zone de partage commune a tous les utilisateurs</strong></h4><br>
+		<label for="zone"><strong>Veuillez entrer un chemin vers un dossier commun a tous :</strong></label><input type="text" name="zone" maxlength="50" required value="" /><br/><br>
+        <h4><strong>Configuration des utilisateurs</strong></h4><br>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un sous-dossier</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier dossier</button><br><br>
