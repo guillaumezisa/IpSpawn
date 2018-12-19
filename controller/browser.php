@@ -12,13 +12,13 @@
   }
   if ( isset($index) && $index === true ){
     if ($browser === "firefox"){
-      //echo "<link rel='stylesheet' href='style/card_style_firefox.css' >";
+      echo "<link rel='stylesheet' href='style/card_style_firefox.css' >";
     }else{
       echo "<link rel='stylesheet' href='style/card_style.css' >";
     }
   }else{
     if ($browser === "firefox"){
-      //echo "<link rel='stylesheet' href='../style/card_style_firefox.css' >";
+      echo "<link rel='stylesheet' href='../style/card_style_firefox.css' >";
     }else{
       echo "<link rel='stylesheet' href='../style/card_style.css' >";
     }
