@@ -1,6 +1,7 @@
 <?php
   $bro=$_SERVER['HTTP_USER_AGENT'];
   $brow=explode( " ",$bro );
+  $browser="other";
   for ($i=0 ;$i < count($brow) ;$i++){
     $brows=explode( "/", $brow[$i]);
     for($y=0;$y< count($brows); $y++){
