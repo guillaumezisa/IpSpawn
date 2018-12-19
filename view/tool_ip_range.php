@@ -15,7 +15,7 @@
         <?php
             include("../view/guide_execution_ip_range.php");
         ?>
-    <form name="" action="../controller/tool_ip_range.php" method="GET">
+    <form name="" action="../controller/redirection.php" method="GET">
     <input type="hidden" name="action" value="ip_range">
     <input type="hidden" name="under_action" value="result">
 	<label for="ip"><strong>Adresse Ip :</strong></label><input type="text" id="ip" name="ip" maxlength="50" required value=""/><br/><br>

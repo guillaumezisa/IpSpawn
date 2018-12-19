@@ -14,10 +14,9 @@ Script par Henri Fumey-Humbert: fumey-humbert@intechinfo.fr
 # si n=4 converti de binaire en héxadecimal
 
 function Converter($entry, $n){
-	foreach ($_REQUEST as $key => $val) 
-	{
-	$val = trim(stripslashes(htmlentities($val)));
-	$_REQUEST[$key] = $val;
+	foreach ($_REQUEST as $key => $val) {
+		$val = trim(stripslashes(htmlentities($val)));
+		$_REQUEST[$key] = $val;
 	}  
 	$entry = preg_replace('/[^0-9a-fA-F]/', "", $entry); // Verification de du saisie
 	$sauce_array = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"]; // Initialisation
@@ -25,7 +24,7 @@ function Converter($entry, $n){
 		// ============================================
 		//  (Bin) => (Oct, Dec, Hex)
 		// ============================================
-		if(($n === 3 || $n === 4 || $n === 10) && preg_match("~^[01]+$~i", $entry){
+		if(($n === 3 || $n === 4 || $n === 10) && preg_match("~^[01]+$~i", $entry)){
 			$sum_array = [1,2,4,8]; // Initialisation
 			$entry = strrev($entry); // Separation des octets dans une liste
 			// ============================================
