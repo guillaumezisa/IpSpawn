@@ -6,6 +6,8 @@
     for($y=0;$y< count($brows); $y++){
       if( $brows[$y] === "Firefox"){
         $browser="firefox";
+      }else {
+        $browser="other";
       }
     }
   }

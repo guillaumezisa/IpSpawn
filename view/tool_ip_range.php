@@ -6,7 +6,7 @@
 </style>
 <main role="main"><center>
   <div class="container"><br>
-    <center><h3><strong>Convertisseur</strong></h3></center>
+    <center><h3><strong>Calcul de plage</strong></h3></center>
     <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
@@ -15,7 +15,7 @@
         <?php
             include("../view/guide_execution_ip_range.php");
         ?>
-    <form name="" action="../controller/redirection.php" method="GET">
+    <form name="" action="../controller/tool_ip_range.php" method="GET">
     <input type="hidden" name="action" value="ip_range">
     <input type="hidden" name="under_action" value="result">
 	<label for="ip"><strong>Adresse Ip :</strong></label><input type="text" id="ip" name="ip" maxlength="50" required value=""/><br/><br>
