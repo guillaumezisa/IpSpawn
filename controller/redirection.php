@@ -54,7 +54,7 @@ include('../view/header.php');
 #-------------------------------------------------------------------------------
     }elseif($_GET['action'] === "server_dns"){
       if( isset($_GET['under_action']) ){
-        if ($_GET['under_action'] === "install_dns_gen"){
+        if ($_GET['under_action'] === "gen_dns"){
           include('../controller/server_dns.php');
         } else {
           include('../view/server_dns.php');
@@ -80,7 +80,7 @@ include('../view/header.php');
   if (isset($_GET['under_action'])){
     if ($_GET['under_action'] ==="install_gen"){
       include('../controller/server_samba_install.php');
-    }   
+    }
   }else {
     include('../view/server_samba_install.php');
   }

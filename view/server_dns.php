@@ -1,9 +1,5 @@
-<script
-			  src="https://code.jquery.com/jquery-3.3.1.js"
-			  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-			  crossorigin="anonymous">
-</script>
-<style>label
+<style>
+label
 {
 	display: block;
 	width: 250px;
@@ -17,9 +13,9 @@
   </div><br>
   <section class="jumbotron ">
     <div class="ml-2" style="margin-top:-2%">
-      <form action="" method="POST">
-        <input type="hidden" name="action" value="dns">
-        <input type="hidden" name="under_action" value="install_dns_gen">
+      <form action="../controller/redirection.php" method="GET">
+        <input type="hidden" name="action" value="server_dns">
+        <input type="hidden" name="under_action" value="gen_dns">
         <h4><strong>Configuration de la machine master</strong></h4>
 		<br>
 		<label for="domain"><strong>Nom du domaine :</strong></label><input type="text" name="domain" maxlength="50" required /><br/><br>
@@ -46,7 +42,7 @@
           case(13):
                   e.preventDefault();
               break;
-          
+
   }
   });
   function append(event){
@@ -154,7 +150,7 @@
         check0[i].value = "";
         document.getElementById('span'+ i).textContent = " Nom d'hôte : ";
         document.getElementById('spanInput'+ i).textContent = " FQDN : ";
-        check0[i].setAttribute('pattern',"^[A-Za-z0-9]+[.]{1}$");      
+        check0[i].setAttribute('pattern',"^[A-Za-z0-9]+[.]{1}$");
       } else if (list[i].value === "MX"){
         liste = document.getElementsByClassName("allDivs");
         where = liste[i];
@@ -165,7 +161,7 @@
         check0[i].max = 900;
         document.getElementById('span'+ i).textContent = " FQDN : ";
         check[i].setAttribute('pattern',"^[A-Za-z0-9]+[.]{1}$");
-        check0[i].removeAttribute('pattern');      
+        check0[i].removeAttribute('pattern');
         document.getElementById('spanInput'+ i).textContent = " Valeur de priorité : ";
       } else {
         check[i].removeAttribute('readonly');
