@@ -4,13 +4,13 @@
     <div class='col-sm-10'>
       <div class='text-light bg-info' style='width:100%;border:solid black 1.5px;border-radius:4px; margin: 30px auto;'>
         <br><h4>Mode d'emploi : </h4>
-        Le niveau de protection ce determine par 3 chiffres qui dessigne chaqu'un une lettre U, G et P ( Utilisateurs,groupes,propriétaires).<br>
-        Voila un tableau pour vous aider a composer votre niveau de protection<br><br>
+        Le niveau de protection se détermine généralement par 3 chiffres désignant chacun <br> une lettre <bold>U, G et P ( Utilisateurs, Groupes, Propriétaires)</bold>.
+        <br>Voilà un tableau vous permettant de composer votre niveau de protection<br><br>
         <table style='border-collapse: collapse;'>
           <tr>
             <th style='border: 1px solid black'>Octal</th>
             <th style='border: 1px solid black'>Chiffre de protection</th>
-            <th style='border: 1px solid black'>Permission</th>
+            <th style='border: 1px solid black'>Permissions</th>
 
           </tr>
           <tr>
@@ -59,7 +59,7 @@
           <tr>
             <th style='border: 1px solid black'>Utilisateurs</th>
             <th style='border: 1px solid black'>Groupes</th>
-            <th style='border: 1px solid black'>Propriétaire</th>
+            <th style='border: 1px solid black'>Propriétaires</th>
 
           </tr>
           <tr>
@@ -68,8 +68,8 @@
             <td style='border: 1px solid black'>7</td>
           </tr>
         </table><br>
-        Si vous voulez changer les droits du dossier ouvrer un terminal allez dans le dossier et tapez pwd vous aurez le chemin.<br><br>
-        Pour les fichiers mettez vous dans le dossier faites pwd copier le chemin ici et rajouter le nom du fichier derriere le /.<br><br>
+        Si vous voulez changer les droits du dossier, vous devez ouvrir un terminal puis allez dans le dossier et tapez <bold>pwd</bold> vous aurez le chemin.<br><br>
+        Pour les fichiers mettez-vous dans le dossier puis faites un <bold>pwd</bold> copier le chemin ici et rajouter le nom du fichier derrière le <bold>/.</bold><br><br>
       </div>
     </div>
   </div>
