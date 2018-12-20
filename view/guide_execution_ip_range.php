@@ -8,7 +8,8 @@ echo"
         <br><h4>Prérequis : </h4>
         - Vous devez absolument remplir les deux champs.<br><br>
         - Le champ du mask doit être rempli avec le format CIDR (ex: 16).<br><br>
-      </div>
+        - Le mask doit être compris entre 0 et 32.<br><br>
+        </div>
     </div>
   </div>
 <div class='col-sm-1'></div>
