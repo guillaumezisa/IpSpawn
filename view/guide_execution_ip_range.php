@@ -7,6 +7,7 @@ echo"
       <div class='text-light bg-info' style='width:100%;border:solid black 1.5px;border-radius:4px; margin: 30px auto;'>
         <br><h4>Prérequis : </h4>
         - Vous devez absolument remplir les deux champs.<br><br>
+        - Le champ du mask doit être rempli avec le format CIDR (ex: 16).<br><br>
       </div>
     </div>
   </div>
