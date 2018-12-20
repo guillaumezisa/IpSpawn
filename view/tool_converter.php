@@ -19,8 +19,7 @@
         <input type="hidden" name="action" value="converter">
         <input type="hidden" name="under_action" value="result">
 		<label for="nb"><strong>Nombre :</strong></label><input type="text" name="nb" maxlength="50" required value="" /><br/><br>
-		<span><strong>Type de conversion :</strong></span><br/>
-        <select name="convtype" style="width:200px; height:22px;">
+		<label for="convtype"><strong>Type de conversion :</strong></label><select name="convtype" style="width:200px; height:25px;"><br/><br>
           <option value="0">Binaire</option>
           <option value="3">Octal</option>
           <option value="10">Décimal</option>
