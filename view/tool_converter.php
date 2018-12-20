@@ -1,3 +1,9 @@
+<style>label
+{
+	display: block;
+	width: 250px;
+}
+</style>
 <main role="main"><center>
   <div class="container"><br>
     <center><h3><strong>Convertisseur</strong></h3></center>
@@ -12,7 +18,7 @@
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="converter">
         <input type="hidden" name="under_action" value="result">
-        <input type="text" name="nb" value="" maxlength="50">
+		<label for="nb"><strong>Nombre :</strong></label><input type="text" name="nb" maxlength="50" required value="" /><br/><br>
         <select name="convtype">
           <option value="0">Binaire</option>
           <option value="3">Octal</option>
@@ -20,6 +26,7 @@
           <option value="4">Héxadécimal</option>
         </select><br>
         <input type="hidden" name="email" value="" />
+		<br>
         <button type="submit" class="btn btn-dark">Valider</button></center><br><br>
       </form>
     </div></center>
