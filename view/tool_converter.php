@@ -19,14 +19,14 @@
         <input type="hidden" name="action" value="converter">
         <input type="hidden" name="under_action" value="result">
 		<label for="nb"><strong>Nombre :</strong></label><input type="text" name="nb" maxlength="50" required value="" /><br/><br>
-		<br>
-		<span><strong>Type de conversion :</strong></span>
+		<span><strong>Type de conversion :</strong></span><br>
         <select name="convtype">
           <option value="0">Binaire</option>
           <option value="3">Octal</option>
           <option value="10">Décimal</option>
           <option value="4">Héxadécimal</option>
-        </select><br>
+        </select>
+		<br>
         <input type="hidden" name="email" value="" />
 		<br>
         <button type="submit" class="btn btn-dark">Valider</button></center><br><br>
