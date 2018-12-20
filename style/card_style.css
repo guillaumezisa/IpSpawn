@@ -1,6 +1,17 @@
 .card4{
-  color:white;
-  font-size:104%;
+  color:black;
+  font-size:120%;
+  width:100%;
+  max-height:16%;
+  height: 15%;
+  float:left;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.card3{
+  color:black;
+  font-size:120%;
   width:100%;
   max-height:16%;
   height: 15%;
@@ -16,8 +27,15 @@
   background: black;
 }
 ::-webkit-scrollbar-thumb {
-  background: #B22222;
+  background: #afafaf;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #8B0000;
+  background: #008BCD;
+}
+.card-color{
+  background-color:#cecece;
+}
+
+.card-header-footer{
+  background-color:#afafaf;
 }
