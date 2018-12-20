@@ -21,7 +21,7 @@
 		<label for="nb"><strong>Nombre :</strong></label><input type="text" name="nb" maxlength="50" required value="" /><br/><br>
 		<span><strong>Type de conversion :</strong></span>
 		<br>
-        <select name="convtype" style="width:200px; height:50px;">
+        <select name="convtype" style="width:150px; height:20px;">
           <option value="0">Binaire</option>
           <option value="3">Octal</option>
           <option value="10">Décimal</option>
