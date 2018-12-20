@@ -11,7 +11,5 @@ include("../script/script_tools/script_ip_range.php");
   #VERIFICATION DES VARIABLES IMPORTANTES---------------------------------------
   if (isset($_GET['ip']) && isset($_GET['mask'])){
     calc_plage($_GET['ip'], intval($_GET['mask']));
-  } else {
-    echo "blyat";
   }
 ?>
