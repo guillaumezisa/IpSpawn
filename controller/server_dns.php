@@ -8,12 +8,12 @@
     <div class="ml-2">
 <?php
 #-------------------------------------------------------------------------------
-# GENERATION DU SCRIPT MAIL
+# GENERATION DU SCRIPT DNS
 #-------------------------------------------------------------------------------
 
 #GÉNÉRATION DES VARIABLE DE FICHIERS--------------------------------------------
-$file_path="../script/server_mail/server_mail".session_id().".sh";
-$file_name="server_mail.sh";
+$file_path="../script/script_client/server_dns_".session_id().".sh";
+$file_name="server_dns.sh";
 #VÉRIFICATION DE L'OPTION D'AUTO-DESTRUCTION------------------------------------
 if (isset( $_GET["auto_destruction"] )){ $rm = "rm ".$file_name; } else { $rm = ""; }
 #AJOUT DU LIEN DE TÉLÉCHARGEMENT & GUIDE----------------------------------------
@@ -24,32 +24,23 @@ include("../view/guide_execution.php");
 # GÉNÉRATION DU SCRIPT
 #-------------------------------------------------------------------------------
   if(isset($_GET['action']) && isset($_GET['under_action'])){
-    if(isset($username) && isset($_GET['psswrd'])){
+    if(isset($_GET['master']) && isset($_GET['domain'])){
       $nb = count($username);
-
+      $master="master=".$_GET['master']."\n";
+      $domain="domain=".$_GET['domain'].".\n";
       #CONCATENATION DE TABLEAUX BASH---------------------------------------------
       for( $i=0 ;$i<$nb ;$i++){
         if ($i === 0 ){
-        $username = "user[$i]=".$_GET['username'][$i]."\n";
-        $password = "psswrd[$i]=".$_GET['psswrd'][$i]."\n";
+          $hostname = "user[$i]=".$_GET['username'][$i]."\n";
+          $type_name= "type_name[$i]=".$_GET['type_name'][$i]."\n";
+          $private_ip = "private_ip[$i]=".$_GET['private_ip'][$i]."\n";
         } else {
-          $username=$username."user[$i]=".$_GET['username'][$i]."\n";
-          $password=$password."psswrd[$i]=".$_GET['psswrd'][$i]."\n";
+          $hostname = $hostname."user[$i]=".$_GET['username'][$i]."\n";
+          $type_name= $type_name."type_name[$i]=".$_GET['type_name'][$i]."\n";
+          $private_ip = $private_ip."private_ip[$i]=".$_GET['private_ip'][$i]."\n";
       }
     }
       #CRÉATION DE VARIABLES IMPORTANTES POUR ISOLER PHP & BASH-----------------
-      $statut = '${statut}';
-      $verify_sql = '${verify_sql}';
-
-      $hostname = $_GET['hostname'];
-      $domain = $_GET['domain'];
-      $name_admin = $_GET['name_admin'];
-      $passwrd_admin = $_GET['passwrd_admin'];
-
-      $user ='${user[$y]}';
-      $password ='${psswrd[$y]}';
-
-      $s = "'%s'"
 
       #GÉNÉRATION DU SCRIPT-----------------------------------------------------
       $firstline = "
@@ -70,177 +61,171 @@ include("../view/guide_execution.php");
       echo \"\"\n";
 
       $script="
+      statut=\$(\'whoami\')
 
-    function verify() {
-      if [ $? -eq 0 ]
+      # Variables à changer en fonction des besoins et de la machine
+      hostname=\`hostname\`
+      ip=\"192.168.70.134\"
+      domain=\$domain
+      num_columns=12
+      test_resolution=(\"\" \"NS\" \"\$domain\" \"ns1\" \"A\" \"192.168.70.134\" \"mail\" \"A\" \"192.168.70.134\" \"@\" \"MX\" \"10 mail\")
+      test_reverse=(\"\" \"NS\" \"\$domain\" \"192.168.70.134\" \"PTR\" \"\$domain\")
+
+      # Réglage du DNS en Master
+      option=\"master\"
+      # Récupère la date de création pour générer le fichier Bind
+      date_creation=\`date +%Y%d\`
+
+
+      # Vérification du statut de l\'utilisateur qui lance le script
+      if [ \$statut != root ]
       then
-        echo 'Success'
+      	echo \"\"
+      	echo \"Vous n\'avez pas les droits n\'écéssaires, contactez votre administrateur ..\"
+      	echo \"\"
+      	sleep 1
+      	exit
+
+      elif [ \$statut = root ]
+      then
+
+      # Mise à jour
+
+      apt-get -y update
+      apt-get -y upgrade
+
+      # Installation des paquets nécéssaires
+
+      apt-get -y install bind9
+      apt-get -y install dnsutils
+
+      echo \"\"
+      echo \"---------- Fin de l\'installation ----------\"
+      echo \"\"
+      sleep 2
+      echo \"---------- Début de la configuration ---------\"
+      sleep 2
+
+      # Mise en place des variables de configuration
+      exist=\"\$(grep search /etc/resolv.conf)\"
+      ipexist=\"\$(grep \$ip /etc/resolv.conf)\"
+      reverse=\"\$(echo \$ip | awk -F. \'{print \$3\".\"\$2\".\"\$1}\')\"
+      zonexist=\"\$(grep \$domain /etc/bind/named.conf.local)\"
+      reversexist=\"\$(grep \$reverse /etc/bind/named.conf.local)\"
+      conf_exist=\"\$(grep \"listen-on { any; };\" /etc/bind/named.conf.options)\"
+
+
+      # Ajout du FQDN dans le fichier hostname
+      \`sudo hostnamectl set-hostname \$hostname.\$domain\`
+      # Modification du fichier hosts
+      sed -i -r \"2s/.*/\$ip	\$hostname.\$domain/g\" /etc/hosts
+
+      # Modifications du fichier resolv.conf
+      sed -i -r \"s/search.*/search \$domain/g\" /etc/resolv.conf
+
+      # Je vérifie si la section domain exite, sinon je l\'ajoute
+      if [ ! -z \"\$exist\" ]
+      then
+      	sed -i -r \"s/domain.*/domain \$domain/g\" /etc/resolv.conf
       else
-        echo 'Error, script exit'
-        exit
+      	sed -i -r \"/search.*/a \domain \$domain\" /etc/resolv.conf
       fi
-    }
 
-    function begin() {
-      statut=$('whoami')
-    # Vérification des droits de l'éxécuteur du script
-      if [ ".$statut." != root ]
+      # Je vérifie que le nameserver n\'ai pas déjà été rentré
+      if [ -z \"\$ipexist\" ]
       then
-        echo `Vous n'avez pas les droits nécéssaires, contactez votre administrateur ..`
-        sleep 1
-        exit
-
-      elif [ ".$statut." = root ]
-        then
-        apt-get -y update
-        apt-get -y upgrade
+      	sed -i -r \"/search.*/a \nameserver \$ip\" /etc/resolv.conf
+      else
+      	: ne fais rien
       fi
-    }
-
-    begin
-
-    if [ ".$statut." = root ]
-    then
-
-    # Lancement de l'installation des différents paquets
-
-    debconf-set-selections <<< 'postfix postfix/mailname string ".$hostname.".".$domain."'
-    verify
-    debconf-set-selections <<< `postfix postfix/main_mailer_type string 'Internet Site'`
-    verify
-    apt-get install -y postfix
-    verify
-    apt-get install -y dovecot-core dovecot-imapd dovecot-mysql
-    verify
-    apt-get install -y mariadb-server
-    verify
-    apt-get install -y postfix-mysql
-    verify
-    apt-get install -y telnet
-    verify
-    apt-get install -y mailutils
-    verify
-
-    echo '---------- Fin de l'installation ---------'
-    sleep 1
-    # Début de configuration de POSTFIX
-    # Installation d'une base de donnée MYSQL pour gérer les utilisateurs
-    echo '---------- Début configuration MYSQL ----------'
-
-    # Création du nouvel utilisateur et attribution des droits
-    sudo mysql -u root  -e `CREATE USER '".$name_admin."' IDENTIFIED BY '".$passwrd_admin."' ;`
-    sudo mysql -u root  -e `GRANT ALL PRIVILEGES ON messagerie.* to '".$name_admin."'@'localhost' IDENTIFIED BY '".$passwrd_admin."' ;`
-
-    # On vérifie si la base de donnée n'existe pas déjà
-    verify_sql="$(sudo mysql -u root -e 'SHOW DATABASES' | grep messagerie)"
-
-    if [ ".$verify_sql." == 'messagerie' ]
-    then
-      echo 'Erreur : Vous avez déjà une base de donnée nommée messagerie'
-
-    elif [ ".$verify_sql." != 'messagerie' ]
-    then
-    # Création de la base de donnée à exploiter
-    sudo mysql -u root <<EOF
-    CREATE DATABASE messagerie;
-    EOF
-
-    # Création des différentes tables
-    sudo mysql -u root messagerie <<EOF
-    CREATE TABLE domains (
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(50) NOT NULL,
-    PRIMARY KEY (id)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-    EOF
-
-    sudo mysql -u root messagerie <<EOF
-    CREATE TABLE users (
-    id INT NOT NULL AUTO_INCREMENT,
-    domain_id INT NOT NULL,
-    password VARCHAR(106) NOT NULL,
-    email VARCHAR(120) NOT NULL,
-    maildir VARCHAR(150) NOT NULL,
-    PRIMARY KEY (id),
-    UNIQUE KEY email  (email),
-    FOREIGN KEY (domain_id) REFERENCES domains(id) ON DELETE CASCADE
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-    EOF
-    fi
-
-    # Récupération des informations des nouveaux utilisateurs du service de messagerie
-
-    sudo mysql -u root messagerie <<EOF
-    INSERT INTO domains VALUES ('', '".$domain."');
-    EOF
-
-    for ((y=0;y<".$nb.";y++))
-    do
-      #VÉRIFIE L'EXISTENCE DES L'UTILISATEURS
-      sudo mysql -u root -d 'messagerie' -e 'SELECT email FROM users WHERE email='".$user."@".$domain."' | grep ".$user."
-      if [ $? == 0 ];
+      # Je vérifier que les zones n\'aient pas déjà été créers
+      if [ -z \"\$zonexist\" ]
       then
-        #AJOUT DES UTILISATEURS NON-EXISTANT
-          sudo mysql -u root messagerie <<EOF
-          INSERT INTO users VALUES ('', 1, PASSWORD('".$psswrd."'), '".$user."@".$domain."', '".$domain."/".$user."/');
-          EOF
-        echo L'utilisateur ".$user." a bien été ajouté.
+      echo \"
+      zone \"\$domain\" {
+      	type \$option;
+      	file \"/etc/bind/db.\$domain\ \";
+      };\" >>/etc/bind/named.conf.local
+      else
+      	: ne fais rien
       fi
-    done\n
+      # Je fais la même vérification pour la zone reverse
+      if [ -z \"\$reversexist\" ]
+      then
+      echo \"
+zone \"\$reverse.in-addr.arpa\" {
+type \$option;
+file \"/etc/bind/db.\$reverse.in-addr.arpa \";
+};\" >>/etc/bind/named.conf.local
+      else
+      	: ne fais rien
+      fi
 
-    # Création des INSERT
+      # Vérification de la configuration du fichier named.conf.options
 
-    echo '---------- Fin de configuration MYSQL ----------'
-    sleep 1
-    echo '---------- Début de configuration arborescence --------'
+      #PROBLÈME DE TABULATION---------------------------------------------------
+      if [ -z \"\$conf_exist\" ]
+      then
+      	sed -i \'25d\' /etc/bind/named.conf.options
+      	echo -e \"	listen-on { any; };\n};\" >> /etc/bind/named.conf.options
+      else
+      	: ne fais rien
+      fi
 
-    domainname ".$domain."
+      # Création des fichiers des enregistrements
+      touch /etc/bind/db.\$domain
+      touch /etc/bind/db.\$reverse.in-addr.arpa
 
-    chmod 666 /etc/postfix/main.cf
+      #CONTENUS DU FICHIER D'ENREGISTREMENTS------------------------------------
 
-    # Ajout des lignes dans main.cf
+      echo \"
+\$TTL 86400
+@	IN	SOA	\$domain. root.\$domain. (
+				\$date_creation
+				21600
+				3600
+				64800
+				86400 )
+      \" >>/etc/bind/db.\$domain
 
-    echo -e '# Ajout configuration\nvirtual_mailbox_domains = mysql:/etc/postfix/mysql-virtual-mailbox-domains.cf\nvirtual_mailbox_base = /var/mail/vhosts\nvirtual_mailbox_maps = mysql:/etc/postfix/mysql-virtual-mailbox-domains.cf\nvirtual_minimum_uid = 100\nvirtual_uid_maps = static:5000\nvirtual_gid_maps = static:5000\n' >> /etc/postfix/main.cf
+      #BOUCLE QUI PERMET L'AJOUT D'ENREGISTREMENTS------------------------------
+      for (( i=0; i<\$num_columns; i+=3 ))
+      do
+      	echo -e \"\${test_resolution[\$i]}		IN		\${test_resolution[\$i+1]}		\${test_resolution[\$i+2]} \">>/etc/bind/db.\$domain
+      done
 
-    touch /etc/postfix/mysql-virtual-mailbox-domains.cf
-    echo -e user = ".$name_admin." \npassword = ".$passwrd_admin." \nhosts = 127.0.0.1 \ndbname = messagerie \nquery = SELECT 1 FROM domains WHERE name=".$s." >> /etc/postfix/mysql-virtual-mailbox-domains.cf
-    systemctl restart postfix
-    postmap -q ".$domain." mysql:/etc/postfix/mysql-virtual-mailbox-domains.cf
+      #LA PARTIE DES ENREGISTREMENTS EN REVERSE---------------------------------
+      echo \"
+      \$TTL 86400
+@	IN	SOA	\$domain. root.\$domain. (
+				\$date_creation
+				21600
+				3600
+				64800
+				86400 )
+  \" >>/etc/bind/db.\$reverse.in-addr.arpa
 
-    touch /etc/postfix/mysql-virtual-mailbox-maps.cf
-    echo -e user = ".$name_admin." \npassword = ".$passwrd_admin." \nhosts = 127.0.0.1 \ndbname = messagerie \nquery = SELECT  maildir FROM users WHERE email=".$s." >> /etc/postfix/mysql-virtual-mailbox-maps.cf
-    systemctl restart postfix
-    postmap -q ".$name_admin."@".$domain." mysql:/etc/postfix/mysql-virtual-mailbox-maps.cf
+  #BOUCLE D'ENREGISTREMENT DE ZONE REVERSE--------------------------------------
+  for (( i=0; i<\$num_columns; i+=3 ))
+  do
+  	cuted_ip=\"\$(echo \"\${test_reverse[\$i]}\" | awk -F. \'{print \$4}\')\"
+  	echo -e \"\$cuted_ip		IN		\${test_reverse[\$i+1]}		\${test_reverse[\$i+2]}\" >>/etc/bind/db.\$reverse.in-addr.arpa
+  done
 
-    echo smtp_generic_maps = hash:/etc/postfix/generic >> /etc/postfix/main.cf
+  # REDÉMARAGE DES SERVICES-----------------------------------------------------
+  \`sudo service bind9 restart\`
+  \`sudo service networking restart\`
+  echo \"\"
+  echo \"---------- Fin de la configuration ----------\"
+  sleep 2
+fi
 
-    touch /etc/postfix/generic
-    postmap /etc/postfix/generic
 
-    systemctl restart postfix
 
-    #Demander le nom de la machine et remplir le fichier generic
-
-    echo ---------- Installation Dovecot ----------
-
-    sed -i -r '30s#mail_location = mbox:~/mail:INBOX=/var/mail/%u#mail_location = maildir:/var/mail/vhosts/%d/%n#g' /etc/dovecot/conf.d/10-mail.conf
-    sed -i -r '114s/#mail_privileged_group =/mail_privileged_group = mail/g' /etc/dovecot/conf.d/10-mail.conf
-    sed -i -r '10s/#disable_plaintext_auth = yes/disable_plaintext_auth = yes/g' /etc/dovecot/conf.d/10-auth.conf
-    sed -i -r '122s/!include auth-system.conf.ext/#!include auth-system.conf.ext/g' /etc/dovecot/conf.d/10-auth.conf
-    sed -i -r '123s/#!include auth-sql.conf.ext/!include auth-sql.conf.ext/g' /etc/dovecot/conf.d/10-auth.conf
-    sed -i -r '20s/ driver = sql/ driver = static/g' /etc/dovecot/conf.d/auth-sql.conf.ext
-    sed -i -r '21s# args = /etc/dovecot/dovecot-sql.conf.ext# args = uid=vhosts gid=vhosts home=/var/mail/vhosts/%d/%n#g' /etc/dovecot/conf.d/auth-sql.conf.ext
-    sed -i -r '32s/#driver =/driver = sql/g' /etc/dovecot/dovecot-sql.conf.ext
-    sed -i -r '71s/#connect =/connect = host=127.0.0.1 dbname=messagerie user=".$name_admin." password=".$passwrd_admin."/g' /etc/dovecot/dovecot-sql.conf.ext
-    sed -i -r '78s/#default_pass_scheme = MD5/default_pass_scheme = SHA512-CRYPT/g' /etc/dovecot/dovecot-sql.conf.ext
-    sed -i -r `107s/password_query = \ /password_query = SELECT email as user, password FROM virtual_users WHERE email='%u'/g`   /etc/dovecot/dovecot-sql.conf.ext
-
-    systemctl restart dovecot
-
-    fi\n";
+      ";
 
       #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
-      $new_script = $firstline . $username . $password . $script . $rm;
+      $new_script = $firstline  . $master . $hostname . $type_name . $private_ip . $domain. $username . $password . $script . $rm;
       $file = fopen($file_path, 'w+');
       fputs($file,$new_script);
 
