@@ -12,6 +12,9 @@
   </div>
   <section class="jumbotron ">
     <div class="ml-2">
+      <?php
+        include("../view/guide_execution_ip_static.php");
+      ?>
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="ip_static">
         <input type="hidden" name="under_action" value="gen">
