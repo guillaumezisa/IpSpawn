@@ -2,25 +2,26 @@
 
 #----------------------------------------#
 # Script de DNS générer par ipspawn.com  #
-# Auteur : Prigent Joran				 #
-#		   Henri Fumey-Humbert			 #
+# Auteur : Prigent Joran		 #
+#	   Henri Fumey-Humbert		 #
 # Mail : jprigent@intechinfo.fr	         #
-#		 fumey-humbert@intechinfo.fr     #
-# Version : 1.1 						 #
-# Date : 2018/06/12					     #
+#        fumey-humbert@intechinfo.fr     #
+# Version : 1.1 			 #
+# Date : 2018/06/12			 #
 #----------------------------------------#
 
 statut=$('whoami')
 
 # Variables à changer en fonction des besoins et de la machine
 hostname=`hostname`
-ip="192.168.70.134"
-domain="rocuvillier.itinet.fr"
+ip="192.168.80.135"
+domain="joranprigent.itinet.fr"
 num_columns=12
-test_resolution=("" "NS" "ns1.rocuvillier.itinet.fr." "ns1" "A" "192.168.70.134" "mail" "A" "192.168.70.134" "@" "MX" "10 mail")
-test_reverse=("" "NS" "ns1.rocuvillier.itinet.fr." "192.168.70.134" "PTR" "ns1.rocuvillier.itinet.fr.") 
+test_resolution=("" "NS" "ns1.joranprigent.itinet.fr." "ns1" "A" "192.168.80.135" "mail" "A" "192.168.80.135" "@" "MX" "10 mail.joranprigent.itinet.fr.")
+mx="MX"
+ns="NS"
 
-# Réglage du DNS en Master
+# Réglage du DNS en Masterq
 option="master"
 # Récupère la date de création pour générer le fichier Bind
 date_creation=`date +%Y%d`
@@ -64,10 +65,8 @@ reversexist="$(grep $reverse /etc/bind/named.conf.local)"
 conf_exist="$(grep "listen-on { any; };" /etc/bind/named.conf.options)"
 
 
-# Ajout du FQDN dans le fichier hostname
-`sudo hostnamectl set-hostname $hostname.$domain`
 # Modification du fichier hosts
-sed -i -r "2s/.*/$ip	$hostname.$domain/g" /etc/hosts
+sed -i -r "2s/.*/$ip	$hostname/g" /etc/hosts
 
 # Modifications du fichier resolv.conf
 sed -i -r "s/search.*/search $domain/g" /etc/resolv.conf
@@ -138,15 +137,6 @@ echo "
 
 " >>/etc/bind/db.$domain
 
-# Boucle qui permet de rajouter les enregistrements
-
-for (( i=0; i<$num_columns; i+=3 ))
-do
-
-	echo -e "${test_resolution[$i]}		IN		${test_resolution[$i+1]}		${test_resolution[$i+2]} ">>/etc/bind/db.$domain
-
-done
-
 # La partie des enregsitrements en reverse
 echo "
 \$TTL 86400
@@ -159,13 +149,33 @@ echo "
 
 " >>/etc/bind/db.$reverse.in-addr.arpa
 
-# Boucle qui permet d'insérer les enregistrements dans la zone reverse
+# Boucle qui permet de rajouter les enregistrements
+
 
 for (( i=0; i<$num_columns; i+=3 ))
 do
-	cuted_ip="$(echo "${test_reverse[$i]}" | awk -F. '{print $4}')"
-	echo -e "$cuted_ip		IN		${test_reverse[$i+1]}		${test_reverse[$i+2]}" >>/etc/bind/db.$reverse.in-addr.arpa
- 
+	cuted_ip="$(echo "${test_resolution[$i+2]}" | awk -F. '{print $4}')"
+	value="${test_resolution[$i+1]}"
+	
+	if [ "$value" == "$ns" ]
+	then
+
+		echo -e "@	IN	${test_resolution[$i+1]}	${test_resolution[$i+2]} ">>/etc/bind/db.$domain
+
+		echo -e "@	IN	${test_resolution[$i+1]}	${test_resolution[$i+2]} ">>/etc/bind/db.$reverse.in-addr.arpa
+	
+	elif [ "$value" == "$mx" ]
+	then
+
+		echo -e "@	IN	${test_resolution[$i+1]}	${test_resolution[$i+2]} ">>/etc/bind/db.$domain
+
+	else
+
+		echo -e "${test_resolution[$i]}		IN	${test_resolution[$i+1]}	${test_resolution[$i+2]} ">>/etc/bind/db.$domain
+
+		echo -e "$cuted_ip	IN	PTR	${test_resolution[$i+2]} ">>/etc/bind/db.$reverse.in-addr.arpa
+
+	fi
 done
 
 # Redémarage des services
