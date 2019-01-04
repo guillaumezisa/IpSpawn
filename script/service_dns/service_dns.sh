@@ -157,17 +157,22 @@ do
 	cuted_ip="$(echo "${test_resolution[$i+2]}" | awk -F. '{print $4}')"
 	value="${test_resolution[$i+1]}"
 	
-	if [ "$value" == "$ns" ]
+	if [ "$value" == "NS" ]
 	then
 
 		echo -e "@	IN	${test_resolution[$i+1]}	${test_resolution[$i+2]} ">>/etc/bind/db.$domain
 
 		echo -e "@	IN	${test_resolution[$i+1]}	${test_resolution[$i+2]} ">>/etc/bind/db.$reverse.in-addr.arpa
 	
-	elif [ "$value" == "$mx" ]
+	elif [ "$value" == "MX" ]
 	then
 
 		echo -e "@	IN	${test_resolution[$i+1]}	${test_resolution[$i+2]} ">>/etc/bind/db.$domain
+		
+	elif [ "$value" == "CNAME" ]
+	then
+
+		echo -e "${test_resolution[$i]}	IN	CNAME	${test_resolution[$i+2]} ">>/etc/bind/db.$domain
 
 	else
 
