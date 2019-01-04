@@ -2,7 +2,7 @@
 <main role="main">
     <center><div class="container">
        <br><center><h3><strong>Gestion de Serveur(s)</strong></h3></center>
-       <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+       <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
        <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
       </p>
     </div></center>
@@ -17,7 +17,7 @@
                   <strong><h4>Ajout d'utilisateur(s)</h4></strong>
                 </div>
                 <div class="card-body ">
-                  <h5 class="card-title ">L'ajout d'utilisateur est la première étape pour permettre a d'autre personne l'acces au serveur.</h5>
+                  <h5 class="card-title ">L'ajout d'utilisateur(s) est la première étape pour permettre à d'autres personnes l'accès au serveur.</h5>
                 </div>
                 <div class="card-footer text-muted">
                   <a class="btn btn-dark" href="../controller/redirection.php?action=user&under_action=add">Ajouter</a>
@@ -43,7 +43,7 @@
                   <strong><h4>Modification d'utilisateur(s)</h4></strong>
                 </div>
                 <div class="card-body ">
-                  <h5 class="card-title ">Si vous souhaitez modifier le(s) nom(s) ou mot(s) de passe(s) d'utilisateur(s).
+                  <h5 class="card-title ">Si vous souhaitez modifier le(s) nom(s) ou mot(s) de passe d'utilisateur(s).
                   </h5>
                 </div>
                 <div class="card-footer text-muted">

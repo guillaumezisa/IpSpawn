@@ -7,7 +7,7 @@
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Installation & configuration d'un serveur Samba</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -23,7 +23,7 @@
 			<br>	- Avoir une serveur avec une adresse IP Fixe disposé à héberger le service de partage.
 			<br>	- Être administrateur du système.
 			<br>	- Avoir la liste des groupes et utilisateurs du service samba.
-			<br>	- Ne pas oublier de donner les droits d'éxécution au script (chmod +x "nomduscript").</h5>
+			<br>	- Ne pas oublier de donner les droits d'exécution au script (chmod +x "nomduscript").</h5>
 			<br>
 					</div>
 					</div>
@@ -35,14 +35,14 @@
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="server_samba">
         <input type="hidden" name="under_action" value="install_gen">
-        <h4><strong>Configuration de la zone de partage commune a tous les utilisateurs</strong></h4><br>
-		<label for="zone"><strong>Veuillez entrer un chemin vers un dossier commun a tous :</strong></label><input type="text" name="zone" maxlength="50" required value="" /><br/><br>
+        <h4><strong>Configuration de la zone de partage commune à tous les utilisateurs</strong></h4><br>
+		<label for="zone"><strong>Veuillez entrer un chemin vers un dossier commun à tous :</strong></label><input type="text" name="zone" maxlength="50" required value="" /><br/><br>
         <h4><strong>Configuration des utilisateurs</strong></h4><br>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un sous-dossier</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier dossier</button><br><br>
         </div>
-        <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
+        <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
         <input type="hidden" name="email" value="" />
         <button type="submit" class="btn btn-dark" id="choice" >Valider</button></center></center>
       </form>

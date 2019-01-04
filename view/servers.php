@@ -1,7 +1,7 @@
    <main role="main">
        <center><div class="container">
           <br><center><h3><strong>Gestion de Serveur(s)</strong></h3></center>
-          <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+          <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
           <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
          </p>
        </div></center>
@@ -15,7 +15,7 @@
                      <strong><h4>Installation d'un serveur web</h4></strong>
                    </div>
                    <div class="card-body bg-danger">
-                     <h5 class="card4"><bold>Installation d'un serveur web contenant les services suivants :<br>Apache2 ou Nginx, mysql & php.</bold>
+                     <h5 class="card4"><bold>Installation d'un serveur web contenant les services suivants :<br>Apache2 ou Nginx, Mysql & PHP.</bold>
                      </h5>
                    </div>
                    <div class="card-footer bg-danger">
@@ -26,14 +26,14 @@
                <div class="col-sm-3">
                  <div class="card text-center text-white bg-danger">
                    <div class="card-header bg-danger">
-                     <strong><h4>Installation d'un serveur dns</h4></strong>
+                     <strong><h4>Installation d'un serveur DNS</h4></strong>
                    </div>
                    <div class="card-body bg-danger">
                      <h5 class="card4"><bold>Installation d'un serveur dns avec les services suivants : Bind9 & Dnsutils.</bold>
                      </h5>
                    </div>
                    <div class="card-footer bg-danger">
-                     <center><a class="btn btn-dark" href="../controller/redirection.php?action=server_dns">Serveur Dns</a></center>
+                     <center><a class="btn btn-dark" href="../controller/redirection.php?action=server_dns">Serveur DNS</a></center>
                    </div>
                  </div>
                </div>
@@ -101,7 +101,7 @@
                      <strong><h4>Gestion des groupes</h4></strong>
                    </div>
                    <div class="card-body bg-secondary">
-                     <h5 class="card4"><bold>Installation du service sudo, création et modification de groupes d'utilisateurs & gestion de privileges.</bold>
+                     <h5 class="card4"><bold>Installation du service sudo, création et modification de groupes d'utilisateurs & gestion de privilèges.</bold>
                      </h5>
                    </div>
                    <div class="card-footer bg-dark">

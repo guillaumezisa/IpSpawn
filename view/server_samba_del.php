@@ -7,7 +7,7 @@
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Modification du serveur Samba</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -15,14 +15,14 @@
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="server_samba">
         <input type="hidden" name="under_action" value="del_gen">
-        <h4><strong>Configuration de la zone de partage commune a tous les utilisateurs</strong></h4><br>
-		<label for="zone"><strong>Veuillez entrer un chemin vers un dossier commun a tous :</strong></label><input type="text" name="zone" maxlength="50" required value="" /><br/><br>
+        <h4><strong>Configuration de la zone de partage commune à tous les utilisateurs</strong></h4><br>
+		<label for="zone"><strong>Veuillez entrer un chemin vers un dossier commun à tous :</strong></label><input type="text" name="zone" maxlength="50" required value="" /><br/><br>
         <h4><strong>Configuration des utilisateurs</strong></h4>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Supprimer l'accès à un utilisateur</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier champs</button><br><br>
         </div>
-        <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
+        <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
         <input type="hidden" name="email" value="" />
         <button type="submit" class="btn btn-dark" id="choice" >Valider</button></center></center>
       </form>
