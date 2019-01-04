@@ -6,9 +6,9 @@
      <section class="jumbotron text-center">
        <div class="container">
          <center><img width='30%'src='style/images/Logo_black.png'></center><br>
-           <p class="lead text-muted">IpSpawn rassemble une boîte à outils de calcul de plage, de conversion binaire a décimal ainsi que la mise en place de services sur un serveur debian 9.</p>
+           <p class="lead text-muted">IpSpawn rassemble une boîte à outils de calcul de plage, de conversion binaire à décimal ainsi que la mise en place de services sur un serveur debian 9.</p>
          <p>
-           <a href="controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+           <a href="controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
            <a href="controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur Debian 9</a
              <?php
               echo '${user[$y]}' ;
