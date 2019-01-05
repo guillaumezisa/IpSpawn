@@ -6,8 +6,8 @@
 #	   Henri Fumey-Humbert		 #
 # Mail : jprigent@intechinfo.fr	         #
 #        fumey-humbert@intechinfo.fr     #
-# Version : 1.1 			 #
-# Date : 2018/06/12			 #
+# Version : 1.2 			 #
+# Date : 2019/04/01			 #
 #----------------------------------------#
 
 statut=$('whoami')
@@ -16,13 +16,12 @@ statut=$('whoami')
 hostname=`hostname`
 ip="192.168.80.135"
 domain="joranprigent.itinet.fr"
-num_columns=12
-test_resolution=("" "NS" "ns1.joranprigent.itinet.fr." "ns1" "A" "192.168.80.135" "mail" "A" "192.168.80.135" "@" "MX" "10 mail.joranprigent.itinet.fr.")
-mx="MX"
-ns="NS"
+num_columns=15
+test_resolution=("" "NS" "ns1.joranprigent.itinet.fr." "ns1" "A" "192.168.80.135" "mail" "A" "192.168.80.135" "@" "MX" "10 mail.joranprigent.itinet.fr." "smtp.joranprigent.itinet.fr." "CNAME" "mail.joranprigent.itinet.fr.")
 
-# Réglage du DNS en Masterq
+# Réglage du DNS en Master
 option="master"
+
 # Récupère la date de création pour générer le fichier Bind
 date_creation=`date +%Y%d`
 
@@ -157,17 +156,22 @@ do
 	cuted_ip="$(echo "${test_resolution[$i+2]}" | awk -F. '{print $4}')"
 	value="${test_resolution[$i+1]}"
 	
-	if [ "$value" == "$ns" ]
+	if [ "$value" == "NS" ]
 	then
 
 		echo -e "@	IN	${test_resolution[$i+1]}	${test_resolution[$i+2]} ">>/etc/bind/db.$domain
 
 		echo -e "@	IN	${test_resolution[$i+1]}	${test_resolution[$i+2]} ">>/etc/bind/db.$reverse.in-addr.arpa
 	
-	elif [ "$value" == "$mx" ]
+	elif [ "$value" == "MX" ]
 	then
 
 		echo -e "@	IN	${test_resolution[$i+1]}	${test_resolution[$i+2]} ">>/etc/bind/db.$domain
+		
+	elif [ "$value" == "CNAME" ]
+	then
+
+		echo -e "${test_resolution[$i]}	IN	CNAME	${test_resolution[$i+2]} ">>/etc/bind/db.$domain
 
 	else
 
