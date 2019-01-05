@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Ajout de droit(s) sur un fichier ou un repertoire</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -14,8 +14,8 @@
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter des droits</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer les derniers droits</button><br><br>
-        <h6><input type="checkbox" name="recursion" value= "yes" > Activer la récursivité ( execute pour tous les fichiers de l'arborescence )<br>
-        <input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
+        <h6><input type="checkbox" name="recursion" value= "yes" > Activer la récursivité ( exécute pour tous les fichiers de l'arborescence )<br>
+        <input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
         <input type="hidden" name="email" value="" />
       </div><button class="btn btn-dark" id="choice" >Valider</button></center><br><br>
       </form>

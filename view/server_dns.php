@@ -8,7 +8,7 @@ label
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Installation d'un Dns</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div><br>
   <section class="jumbotron ">
@@ -27,7 +27,7 @@ label
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer la dernière machine</button><br><br>
         <div id="NIQUEJS"></div>
 		</div>
-        <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
+        <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
         <button type="submit" class="btn btn-dark" id="choice">Valider</button>
       </form>
     </div>

@@ -9,9 +9,9 @@
           - Si vous avez déjà installer nginx vous devez le désinstaller avec les commandes suivantes :<br>
           service nginx stop , apt purge nginx , apt autoremove.<br><br>
           - Avoir les privilèges root ( su ou sudo avant les commandes suivantes ).<br><br>
-          - Ne pas oublier de donner les droits d'éxécution au : script chmod +x ".$file_name." <br><br>
-          - Pour executer un script : ./".$file_name."  <br><br>
-          - Pour désinstaller apache2 ecrivez : apt purge apache2 , apt autoremove<br><br>
+          - Ne pas oublier de donner les droits d'exécution au : script chmod +x ".$file_name." <br><br>
+          - Pour exécuter un script : ./".$file_name."  <br><br>
+          - Pour désinstaller apache2 écrivez : apt purge apache2 , apt autoremove<br><br>
           </div>
         </div>
       </div>

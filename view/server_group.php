@@ -2,7 +2,7 @@
 <main role="main">
     <center><div class="container">
        <br><center><h3><strong>Gestion de groupe(s)</strong></h3></center>
-       <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+       <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
        <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
       </p>
     </div></center>
@@ -43,7 +43,7 @@
                   <strong><h4>Suppression de groupe(s)</h4></strong>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title"><br>Prérequis:<br>Les groupes choisit doivent exister.<br><br><br></h5>
+                  <h5 class="card-title"><br>Prérequis:<br>Les groupes choisis doivent exister.<br><br><br></h5>
                 </div>
                 <div class="card-footer text-muted">
                   <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=del">Supprimer</a><br>
@@ -56,7 +56,7 @@
                   <strong><h4>Ajout de privilège(s) au(x) groupe(s)</h4></strong>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Prérequis:<br>Nécéssite que les groupes éxiste & que les paquets de commandes soient installés.</h5>
+                  <h5 class="card-title">Prérequis:<br>Nécéssite que les groupes existent & que les paquets de commandes soient installés.</h5>
                 </div>
                 <div class="card-footer text-muted">
                   <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=add_right">Ajouter</a>
@@ -74,7 +74,7 @@
                   <strong><h4>Modifier nom(s) de groupe(s)</h4></strong>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Attention :<br>Si vous avez déjà donner des droits au(x) groupe(x)<br> de départ, vous devriez reinitialiser les droits avant de modifier vos groupes.</h5>
+                  <h5 class="card-title">Attention :<br>Si vous avez déjà donner des droits au(x) groupe(x)<br> de départ, vous devriez réinitialiser les droits avant de modifier vos groupes.</h5>
                 </div>
                 <div class="card-footer text-muted">
                   <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=mod_name">Modifier</a><br>

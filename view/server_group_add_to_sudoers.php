@@ -1,7 +1,7 @@
 <main role="main">
     <center><div class="container">
        <br><center><h3><strong>Ajout de groupe(s) au(x) sudoers</strong></h3></center>
-       <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+       <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
        <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
       </p>
     </div></center>
@@ -13,7 +13,7 @@
           </div>
           <div class="col-sm-10">
             <div class="text-light bg-info" style="width:100%;border:solid black 1.5px;border-radius:4px;"><br>
-              <center>Les groupes ajouter au sudoers ont les droits sudo ( super utilisateur / root ), <br>faites attention de ne pas donner ces privilèges a n'importe qui.<br><br>
+              <center>Les groupes ajoutés au sudoers ont les droits sudo ( super utilisateur / root ), <br>faites attention de ne pas donner ces privilèges à n'importe qui.<br><br>
             </div>
             </div>
           </div>
@@ -28,7 +28,7 @@
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un groupe</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier groupe </button><br><br>
-        <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
+        <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
         <input type="hidden" name="email" value="" />
     </div></center>
     <center><button type="submit" class="btn btn-dark" id="choice" >Valider</button></center><br><br>

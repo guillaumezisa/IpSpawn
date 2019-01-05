@@ -7,7 +7,7 @@
 <main role="main">
     <center><div class="container">
        <br><center><h3><strong>Service de messagerie</strong></h3></center>
-       <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+       <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
        <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
       </p>
     </div></center>
@@ -25,7 +25,7 @@
 			  <br>	- Être administrateur du système.
 			  <br>	- Avoir un enregistrement DNS MX pointant sur la machine hôte du serveur.
 			  <br>	- Avoir la liste de ses utilisateurs du service de messagerie.
-			  <br>	- Ne pas oublier de donner les droits d'éxécution au script (chmod +x "nomduscript").</h5>
+			  <br>	- Ne pas oublier de donner les droits d'exécution au script (chmod +x "nomduscript").</h5>
 			  <br>
             </div>
             </div>
@@ -49,7 +49,7 @@
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un utilisateur</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier utilisateur</button><br><br>
-        <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script a la fin de l'éxécution (conseiller)</h6>
+        <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
         <input type="hidden" name="email" value="" />
         <button type="submit" class="btn btn-dark" id="choice" >Valider</button><br><br>
       </form>
