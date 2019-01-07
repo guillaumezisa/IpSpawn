@@ -10,6 +10,9 @@
     <section class="jumbotron ">
       <div class="ml-2"><center>
         <div class="container">
+          <?php
+            include("../view/guide_user.php");
+          ?>
           <div class="row">
             <div class="col-sm-4">
               <div class="card text-center text-white bg-danger">

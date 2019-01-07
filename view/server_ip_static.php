@@ -9,12 +9,12 @@
     <center><h3><strong>Ip Fixe</strong></h3></center>
     <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
-  </div>
+  </div></center>
   <section class="jumbotron ">
     <div class="ml-2">
       <?php
-        include("../view/guide_ip_static.php");
-      ?>
+        include("../view/guide_ip_fixe.php");
+      ?><center>
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="ip_static">
         <input type="hidden" name="under_action" value="gen">

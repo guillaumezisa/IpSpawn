@@ -7,6 +7,9 @@
       </p>
     </div></center>
     <section class="jumbotron ">
+      <?php
+        include("../view/guide_group.php");
+      ?>
       <div class="ml-2"><center>
         <div class="container">
           <div class="row">
@@ -16,7 +19,7 @@
                   <strong><h4>Création de groupe(s)</h4></strong>
                 </div>
                 <div class="card-body ">
-                  <h5 class="card-title ">La création de groupe permet d'y insérer des utilisateurs puis de donner des droits aux groupes.<br><br>
+                  <h5 class="card4">La création de groupe permet d'y insérer des utilisateurs puis de donner des droits aux groupes.<br><br>
                   </h5>
                 </div>
                 <div class="card-footer text-muted">
@@ -30,7 +33,7 @@
                   <strong><h4>Ajout d'utilisateurs aux groupe(s)</h4></strong>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title"><br>Prérequis :<br>Les utilisateurs doivent éxister avant de pouvoir les ajouter aux groupes.<br></h5>
+                  <h5 class="card4">Prérequis :<br>Les utilisateurs doivent éxister avant de pouvoir les ajouter aux groupes.<br></h5>
                 </div>
                 <div class="card-footer text-muted">
                   <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=add_user">Ajouter</a><br>
@@ -43,7 +46,7 @@
                   <strong><h4>Suppression de groupe(s)</h4></strong>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title"><br>Prérequis:<br>Les groupes choisis doivent exister.<br><br><br></h5>
+                  <h5 class="card4">Prérequis:<br>Les groupes choisis doivent exister.</h5>
                 </div>
                 <div class="card-footer text-muted">
                   <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=del">Supprimer</a><br>
@@ -56,7 +59,7 @@
                   <strong><h4>Ajout de privilège(s) au(x) groupe(s)</h4></strong>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Prérequis:<br>Nécéssite que les groupes existent & que les paquets de commandes soient installés.</h5>
+                  <h5 class="card4">Prérequis:<br>Nécéssite que les groupes existent & que les paquets de commandes soient installés.</h5>
                 </div>
                 <div class="card-footer text-muted">
                   <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=add_right">Ajouter</a>
@@ -73,8 +76,8 @@
                 <div class="card-header">
                   <strong><h4>Modifier nom(s) de groupe(s)</h4></strong>
                 </div>
-                <div class="card-body">
-                  <h5 class="card-title">Attention :<br>Si vous avez déjà donner des droits au(x) groupe(x)<br> de départ, vous devriez réinitialiser les droits avant de modifier vos groupes.</h5>
+                <div class="card-body bg-secondary">
+                  <h5 class="card2">Attention :<br>Si vous avez déjà donner des droits au(x) groupe(x)<br> de départ, vous devriez réinitialiser les droits avant de modifier vos groupes.</h5>
                 </div>
                 <div class="card-footer text-muted">
                   <a class="btn btn-secondary" href="../controller/redirection.php?action=group&under_action=mod_name">Modifier</a><br>
@@ -86,8 +89,8 @@
                 <div class="card-header">
                   <strong><h4>Réinitialiser les privilèges</h4></strong>
                 </div>
-                <div class="card-body">
-                  <h5 class="card-title"><br>Attention:<br>Supprime définitivement tous les réglages de droits.<br><br></h5>
+                <div class="card-body bg-secondary">
+                  <h5 class="card2"><br>Attention:<br>Supprime définitivement tous les réglages de droits.<br><br></h5>
                 </div>
                 <div class="card-footer text-muted">
                   <a class="btn btn-secondary" href="../controller/redirection.php?action=group&under_action=mod_reset_gen">Réinitialiser</a><br>
