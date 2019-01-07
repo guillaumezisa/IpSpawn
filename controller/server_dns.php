@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Gestion du serveur DNS</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte a outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -74,7 +74,7 @@ date_creation=`date +%Y%d`
 if [ \$statut != root ]
 then
  	echo \"\"
- 	echo \"Vous n\'avez pas les droits n\'écéssaires, contactez votre administrateur ..\"
+ 	echo \"Vous n\'avez pas les droits nécéssaires, contactez votre administrateur ..\"
  	echo \"\"
  	sleep 1
  	exit
@@ -124,7 +124,7 @@ then
   else
    	: ne fais rien
   fi
-  # Je vérifier que les zones n\'aient pas déjà été créers
+  # Je vérifier que les zones n\'aient pas déjà été créées
   if [ -z \"\$zonexist\" ]
   then
 echo \"

@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
   <h3><strong>Gestion du serveur mail</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -11,7 +11,7 @@
 # GENERATION DU SCRIPT MAIL
 #-------------------------------------------------------------------------------
 
-#GÉNÉRATION DES VARIABLE DE FICHIERS--------------------------------------------
+#GÉNÉRATION DES VARIABLES DE FICHIERS--------------------------------------------
 $file_path="../script/server_mail/server_mail".session_id().".sh";
 $file_name="server_mail.sh";
 #VÉRIFICATION DE L'OPTION D'AUTO-DESTRUCTION------------------------------------
@@ -94,10 +94,10 @@ include("../view/guide_execution.php");
 
     function begin() {
       statut=$('whoami')
-    # Vérification des droits de l'éxécuteur du script
+    # Vérification des droits de l'exécuteur du script
       if [ ".$statut." != root ]
       then
-        echo \"Vous n'avez pas les droits n'écéssaires, contactez votre administrateur ...\"
+        echo \"Vous n'avez pas les droits nécéssaires, contactez votre administrateur ...\"
         sleep 1
         exit
 

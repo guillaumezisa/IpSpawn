@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Mettre l'ip d'une machine en statique</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a><br><br>
   </div>
   <section class="jumbotron ">
@@ -12,7 +12,7 @@
 # GENERATION DU SCRIPT D'IP STATIC
 #-------------------------------------------------------------------------------
 
-#GÉNÉRATION DES VARIABLE DE FICHIERS--------------------------------------------
+#GÉNÉRATION DES VARIABLES DE FICHIERS--------------------------------------------
 $file_path="../script/script_client/get_static_".session_id().".sh";
 $file_name="get_static.sh";
 #GÉNÉRATION DES VARIABLE DE FICHIERS----------------------------------------
@@ -70,7 +70,7 @@ if [ \$(whoami) == \"root\" ];then
   old_ip_full=\$(ip a | grep \$card | grep inet | awk '{ print \$2}');
 
   echo \"========================================================================\";
-  echo \"  TRANSPHORMATION D'UN MASK CIDR EN UN MASQUE COMPLET \";
+  echo \"  TRANSFORMATION D'UN MASK CIDR EN UN MASQUE COMPLET \";
   full_mask=\$(ip a| grep \$card | grep inet | awk '{print \$2}');
   ip address del \$old_ip_full dev \$card
 
@@ -114,7 +114,7 @@ if [ \$(whoami) == \"root\" ];then
   echo \"     Votre passerelle vers internet : \$gateway\"
   echo \"========================================================================\"
 else
-  echo Vous devez être root pour executer ce script
+  echo Vous devez être root pour exécuter ce script
 fi
 ";
 
@@ -136,7 +136,7 @@ fi
     $script_reset="
     #ROOT OBLIGATOIRE POUR L'EXECUTION------------------------------------------
     if [ $(whoami) == \"root\" ];then
-      #RÉÉCRITURE DES PARAMETRES PAR DEFAULTS D'INTERFACES ( DHCP )-------------
+      #RÉÉCRITURE DES PARAMETRES PAR DEFAUT D'INTERFACES ( DHCP )-------------
       echo \"source /etc/network/interface.d/*\" > /etc/network/interfaces
       echo \"\" >> /etc/network/interfaces
       echo \"#LOCALHOST\" >> /etc/network/interfaces
@@ -145,7 +145,7 @@ fi
       echo \"iface lo inet loopback\" >> /etc/network/interfaces
       echo \"\" >> /etc/network/interfaces
     else
-      echo Vous devez être root pour executer ce script
+      echo Vous devez être root pour exécuter ce script
     fi";
 
     $new_script_reset = $firstline_reset . $script_reset ;

@@ -1,8 +1,8 @@
 
 <main role="main"><center>
   <div class="container"><br>
-    <h3><strong>Ajout de d'utilisateur(s) à des groupe(s)</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte a outils</a>
+    <h3><strong>Ajout d'utilisateur(s) à des groupe(s)</strong></h3>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
     </p>
   </div>
@@ -70,7 +70,7 @@ echo \"\"\n";
 if [ $(whoami) == ".$root." ];then
   for ((y=0;y<".$nb.";y++))
   do
-    #VÉRIFIE L'EXISTENCE DES L'UTILISATEURS-------------------------------------
+    #VÉRIFIE L'EXISTENCE D'UTILISATEURS-------------------------------------
     id -u ".$user."> /dev/null 2>&1
     if [ $? == 0 ];
     then

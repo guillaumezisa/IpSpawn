@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
-    <h3><strong>Ajout de droit(s) sur un fichier ou un repertoire</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+    <h3><strong>Ajout de droit(s) sur un fichier ou un répertoire</strong></h3>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
     </p>
   </div>
@@ -78,7 +78,7 @@ if [ $(whoami) == ".$root." ];then
     fi
   done
 else
-  echo Vous devez être root pour executer ce script
+  echo Vous devez être root pour exécuter ce script
 fi";
 
       #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------

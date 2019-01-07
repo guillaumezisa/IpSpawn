@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
-  <h3><strong>Restriction de commande(s) a un groupe</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+  <h3><strong>Restriction de commande(s) à un groupe</strong></h3>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -11,7 +11,7 @@
 # GENERATION DU SCRIPT D'AJOUT DE DROITS AU GROUPE
 #-------------------------------------------------------------------------------
 
-#GÉNÉRATION DES VARIABLE DE FICHIERS--------------------------------------------
+#GÉNÉRATION DES VARIABLES DE FICHIERS--------------------------------------------
 $file_path="../script/script_client/restrict_group".session_id().".sh";
 $file_name="restrict_group.sh";
 
@@ -50,7 +50,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     #GÉNÉRATION DU SCRIPT-------------------------------------------------------
     $firstline = "#!/bin/bash
 #-------------------------------------------------------------------------------
-#SCRIPT DE GESTION DES COMMANDES D'UN GROUPES généré par IpSpawn.com
+#SCRIPT DE GESTION DES COMMANDES D'UN GROUPE généré par IpSpawn.com
 #V.1.0
 #Le : 2018/12/16
 #Script par Guillaume Zisa : zisa@intechinfo.fr

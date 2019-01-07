@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
   <h3><strong>Suppression de groupe(s)</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -11,7 +11,7 @@
 # GENERATION DU SCRIPT D'AJOUT DE DROITS AU GROUPE
 #-------------------------------------------------------------------------------
 
-#GÉNÉRATION DES VARIABLE DE FICHIERS--------------------------------------------
+#GÉNÉRATION DES VARIABLES DE FICHIERS--------------------------------------------
 $file_path="../script/script_client/del_group_".session_id().".sh";
 $file_name="del_group.sh";
 
@@ -67,7 +67,7 @@ echo \"\"\n";
 if [ $(whoami) == ".$root." ];then
   for ((y=0;y<".$nb.";y++))
   do
-    #VÉRIFICATION DE L'EXISTANCE DU GROUPE--------------------------------------
+    #VÉRIFICATION DE L'EXISTENCE DU GROUPE--------------------------------------
     if grep \"^".$group.":\" /etc/group > /dev/null;
     then
       #SUPPRESSION DU GROUPE----------------------------------------------------
@@ -77,7 +77,7 @@ if [ $(whoami) == ".$root." ];then
     fi
   done
 else
-  echo Vous devez être root pour executer ce script
+  echo Vous devez être root pour exécuter ce script
 fi";
       #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
       $new_script = $firstline . $groupname . $script . $rm;

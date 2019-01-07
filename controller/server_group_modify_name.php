@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
   <h3><strong>Modification de nom(s) de groupe(s)</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -47,7 +47,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     #GÉNÉRATION DU SCRIPT-------------------------------------------------------
     $firstline = "#!/bin/bash
 #-------------------------------------------------------------------------------
-#SCRIPT DE MOFICATION D'UTILISATEURS généré par IpSpawn.com
+#SCRIPT DE MODIFICATION D'UTILISATEURS généré par IpSpawn.com
 #V.1.3
 #Le : 2018/12/06
 #Script par Guillaume Zisa : zisa@intechinfo.fr
@@ -73,7 +73,7 @@ if [ $(whoami) == ".$root." ];then
     groupmod --new-name $group2 $group1
   done\n
 else
-  echo Vous devez être root pour executer ce script
+  echo Vous devez être root pour exécuter ce script
 fi";
 
     #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT---------------------------
