@@ -77,7 +77,7 @@
                   <h5 class="card-title">Attention :<br>Si vous avez déjà donner des droits au(x) groupe(x)<br> de départ, vous devriez réinitialiser les droits avant de modifier vos groupes.</h5>
                 </div>
                 <div class="card-footer text-muted">
-                  <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=mod_name">Modifier</a><br>
+                  <a class="btn btn-secondary" href="../controller/redirection.php?action=group&under_action=mod_name">Modifier</a><br>
                 </div>
               </div>
             </div>
@@ -90,7 +90,7 @@
                   <h5 class="card-title"><br>Attention:<br>Supprime définitivement tous les réglages de droits.<br><br></h5>
                 </div>
                 <div class="card-footer text-muted">
-                  <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=mod_reset_gen">Réinitialiser</a><br>
+                  <a class="btn btn-secondary" href="../controller/redirection.php?action=group&under_action=mod_reset_gen">Réinitialiser</a><br>
                 </div>
               </div>
             </div>
