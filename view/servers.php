@@ -77,7 +77,7 @@
                      </h5>
                    </div>
                    <div class="card-footer bg-dark">
-                     <a class="btn btn-dark" href="../controller/redirection.php?action=ip_static">IpFixe</a>
+                     <a class="btn btn-secondary" href="../controller/redirection.php?action=ip_static">IpFixe</a>
                    </div>
                  </div>
                </div>
@@ -91,7 +91,7 @@
                      </h5>
                    </div>
                    <div class="card-footer bg-dark">
-                     <center><a class="btn btn-dark" href="../controller/redirection.php?action=user">Gestion des utilisateurs</a></center>
+                     <center><a class="btn btn-secondary" href="../controller/redirection.php?action=user">Gestion des utilisateurs</a></center>
                    </div>
                  </div>
                </div>
@@ -105,7 +105,7 @@
                      </h5>
                    </div>
                    <div class="card-footer bg-dark">
-                     <center><a class="btn btn-dark" href="../controller/redirection.php?action=group">Gestion des groupes</a></center>
+                     <center><a class="btn btn-secondary" href="../controller/redirection.php?action=group">Gestion des groupes</a></center>
                    </div>
                  </div>
                </div>

@@ -5,61 +5,47 @@
 }
 </style>
 <main role="main">
-    <center><div class="container">
-       <br><center><h3><strong>Service de messagerie</strong></h3></center>
-       <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
-       <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
-      </p>
-    </div></center>
-    <section class="jumbotron ">
-      <div class="ml-2"><center>
-      <div class="container" style="margin-top:-4%">
-        <div class="row">
-          <div class="col-sm-1">
-          </div>
-          <div class="col-sm-10">
-            <div class="text-light bg-info" style="width:100%;border:solid black 1.5px;border-radius:4px; margin: 30px auto;">
-              <br><h1>Prérequis : </h1> <h5>
-			  <br>	- Avoir les ports 25 et 143 d'ouverts sur sa box.
-			  <br>	- Avoir une machine avec une IP FIXE disposé à héberger le service.
-			  <br>	- Être administrateur du système.
-			  <br>	- Avoir un enregistrement DNS MX pointant sur la machine hôte du serveur.
-			  <br>	- Avoir la liste de ses utilisateurs du service de messagerie.
-			  <br>	- Ne pas oublier de donner les droits d'exécution au script (chmod +x "nomduscript").</h5>
-			  <br>
-            </div>
-            </div>
-          </div>
-          <div class="col-sm-1"></div>
-        </div>
-      </div>
-      <form action="../controller/redirection.php" method="GET">
-        <input type="hidden" name="action" value="server_mail">
-        <input type="hidden" name="under_action" value="gen_mail">
-        <center>
-		<br>
-		<h4><strong>Administrateur</strong></h4>
-		<br>
-		<table style='border-collapse: collapse;'>
-		  <tr>
-		    <th style='border: 1px solid black'>Octal</th>
-		    <th style='border: 1px solid black'>Chiffre de protection</th>
-		    <th style='border: 1px solid black'>Permissions</th>
-
-		  </tr>
-		  <tr>
-		    <th style='border: 1px solid black'>000</th>
-		    <td style='border: 1px solid black'>0=(0+0+0)</td>
-		    <td style='border: 1px solid black'>Aucune autorisation</td>
-		  </tr>
+	<center><div class="container">
+		<br><center><h3><strong>Service de messagerie</strong></h3></center>
+		<a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
+		<a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a></p>
+	</div></center>
+	<section class="jumbotron ">
+		<div class="ml-2"><center>
+			<div class="container" style="margin-top:-4%">
+				<div class="row">
+					<div class="col-sm-1">
+					</div>
+					<div class="col-sm-10">
+						<?php
+							include("../view/guide_mail.php");
+						?>
+					</div>
+				</div>
+				<div class="col-sm-1"></div>
+			</div>
+		</div>
+		<form action="../controller/redirection.php" method="GET">
+			<input type="hidden" name="action" value="server_mail">
+			<input type="hidden" name="under_action" value="gen_mail">
+			<center><br>
+				<h4><strong>Administrateur</strong></h4><br>
+				<table style='border-collapse: collapse;'>
+		  	<tr>
+		    	<th><label for="name_admin"><strong>    Nom Admin :</strong></label></th>
+		    	<th><label for="passwrd_admin"><strong> Mot de passe Admin :</strong></label></th>
+		    	<th><label for="domain"><strong>  		Nom de domaine :</strong></label></th>
+					<th><label for="hostname"><strong>		Nom de la machine :</strong></label></th>
+				</tr>
+				<tr>
+				  <th><input type="text" name="name_admin" maxlength="50" required /></th>
+				  <td><input type="password" name="passwrd_admin" maxlength="50" required /></td>
+				  <td><input type="text" name="domain" maxlength="50" required /></td>
+					<td><input type="text" name="hostname" maxlength="50" required /></td>
+				</tr>
 
 		</table><br>
-
-			<label for="name_admin"><strong>    Nom Admin :</strong></label><input type="text" name="name_admin" maxlength="50" required /><br/><br>
-			<label for="passwrd_admin"><strong> Mot de passe Admin :</strong></label><input type="password" name="passwrd_admin" maxlength="50" required /><br/><br>
-			<label for="domain"><strong>  		Nom de domaine :</strong></label><input type="text" name="domain" maxlength="50" required /><br/><br>
-			<label for="hostname"><strong>		Nom de la machine :</strong></label><input type="text" name="hostname" maxlength="50" required /><br/><br>
-        <h4><strong>Users</strong></h4><br>
+        <h4><strong>Utilisateurs</strong></h4><br>
         <p>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un utilisateur</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
