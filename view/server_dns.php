@@ -30,8 +30,8 @@ label
 		  </tr>
 		  <tr>
 		    <th ><center><input type="text" name="domain_name" maxlength="50" required></center></th>
-		    <td ><input type="text" name="master_name" maxlength="50" required></center></td>
-		    <td ><input type="text" name="master_ip" maxlength="50" required></center></td>
+		    <td ><center><input type="text" name="master_name" maxlength="50" required></center></td>
+		    <td ><center><input type="text" name="master_ip" maxlength="50" required></center></td>
 		  </tr>
 		</table><br>
         <h4><strong>Configuration de vos zones</strong></h4><br>
@@ -176,7 +176,7 @@ label
         check0[i].type = "number";
         check0[i].max = 900;
         document.getElementById('span'+ i).textContent = " FQDN : ";
-        check[i].setAttribute('pattern',"^[A-Za-z0-9/.]+[.]{1}$");
+        check[i].setAttribute('pattern',"^[A-Za-z0-9]+[.]{1}$");
         check0[i].removeAttribute('pattern');
         document.getElementById('spanInput'+ i).textContent = " Valeur de priorité : ";
       } else {
