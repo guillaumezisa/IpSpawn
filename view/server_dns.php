@@ -12,15 +12,28 @@ label
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div><br>
   <section class="jumbotron ">
+		<?php
+			include("../view/guide_dns.php");
+		?>
     <div class="ml-2" style="margin-top:-2%">
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="server_dns">
         <input type="hidden" name="under_action" value="gen_dns">
         <h4><strong>Configuration de la machine master</strong></h4>
 		<br>
-		<label for="domain"><strong>Nom du domaine :</strong></label><input type="text" name="domain_name" maxlength="50" required /><br/><br>
-		<label for="master"><strong>Nom de la machine master :</strong></label><input type="text" name="master_name" maxlength="50" required /><br/><br>
-	<label for="private_ip"><strong>Ip privée de la machine master :</strong></label><input type="text" name="master_ip" maxlength="50" required /><br/><br>
+		<table style='border-collapse: collapse;'>
+		  <tr>
+		    <th ><label for="domain"><strong><center>Nom du domaine :</center></strong></label></th>
+		    <th ><label for="master"><strong><center>Nom de la machine master :</center></strong></label></th>
+		    <th ><label for="private_ip"><strong><center>Ip privée de la machine master :</center></strong></label></th>
+
+		  </tr>
+		  <tr>
+		    <th ><center><input type="text" name="domain_name" maxlength="50" required></center></th>
+		    <td ><input type="text" name="master_name" maxlength="50" required></center></td>
+		    <td ><input type="text" name="master_ip" maxlength="50" required></center></td>
+		  </tr>
+		</table><br>
         <h4><strong>Configuration de vos zones</strong></h4><br>
         <button class="btn btn-dark" onclick="append(event)" onkeyup="cancel(this.key)" id="new">Ajouter une machine</button>
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>

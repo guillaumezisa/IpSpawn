@@ -7,6 +7,9 @@
       </p>
     </div></center>
     <section class="jumbotron ">
+      <?php
+        include("../view/guide_web.php");
+      ?>
       <div class="ml-2"><center>
         <div class="container">
           <div class="row">
@@ -16,7 +19,7 @@
                   <strong><h4>Installation d'un serveur Apache2</h4></strong>
                 </div>
                 <div class="card-body ">
-                  <h5 class="card-title ">Apache est un serveur web simple et assez ancien avec énormément de documentation, et énormément améliorable.
+                  <h5 class="card4 ">Apache est un serveur web simple et assez ancien avec énormément de documentation.
                   </h5>
                 </div>
                 <div class="card-footer text-muted">
@@ -30,7 +33,7 @@
                   <strong><h4>Installation d'un serveur Nginx</h4></strong>
                 </div>
                 <div class="card-body ">
-                  <h5 class="card-title ">Nginx est un serveur web assez simple, plutot récent il est l'avenir des serveurs web, il est plus optimisé que apache et est améliorable.
+                  <h5 class="card4 ">Nginx est un serveur web assez simple, plutot récent il est l'avenir des serveurs web, il est plus optimisé que apache.
                   </h5>
                 </div>
                 <div class="card-footer text-muted">
