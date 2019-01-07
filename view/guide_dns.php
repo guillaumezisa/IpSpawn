@@ -14,9 +14,9 @@ par la suite nous vous demanderons de créer vos zones :<br><br>
   </tr>
   <tr>
     <td style='border: 1px solid black'>Sert a rajouter des serveurs dns</td>
-    <td style='border: 1px solid black'>Pointe un nom de domaine vers une ip</td>
-    <td style='border: 1px solid black'>Redirection serveur web</td>
-    <td style='border: 1px solid black'>Redirection serveur Mail</td>
+    <td style='border: 1px solid black'>Pointe une machine vers une ip</td>
+    <td style='border: 1px solid black'>Création d'un alias</td>
+    <td style='border: 1px solid black'>Enregistrer un serveur Mail</td>
   </tr>
 
 </table><br>
