@@ -176,7 +176,7 @@ label
         check0[i].type = "number";
         check0[i].max = 900;
         document.getElementById('span'+ i).textContent = " FQDN : ";
-        check[i].setAttribute('pattern',"^[A-Za-z0-9]+[.]{1}$");
+        check[i].setAttribute('pattern',"^[A-Za-z0-9/.]+[.]{1}$");
         check0[i].removeAttribute('pattern');
         document.getElementById('spanInput'+ i).textContent = " Valeur de priorité : ";
       } else {

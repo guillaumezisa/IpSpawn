@@ -40,6 +40,21 @@
 		<br>
 		<h4><strong>Administrateur</strong></h4>
 		<br>
+		<table style='border-collapse: collapse;'>
+		  <tr>
+		    <th style='border: 1px solid black'>Octal</th>
+		    <th style='border: 1px solid black'>Chiffre de protection</th>
+		    <th style='border: 1px solid black'>Permissions</th>
+
+		  </tr>
+		  <tr>
+		    <th style='border: 1px solid black'>000</th>
+		    <td style='border: 1px solid black'>0=(0+0+0)</td>
+		    <td style='border: 1px solid black'>Aucune autorisation</td>
+		  </tr>
+
+		</table><br>
+
 			<label for="name_admin"><strong>    Nom Admin :</strong></label><input type="text" name="name_admin" maxlength="50" required /><br/><br>
 			<label for="passwrd_admin"><strong> Mot de passe Admin :</strong></label><input type="password" name="passwrd_admin" maxlength="50" required /><br/><br>
 			<label for="domain"><strong>  		Nom de domaine :</strong></label><input type="text" name="domain" maxlength="50" required /><br/><br>
