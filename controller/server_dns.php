@@ -37,9 +37,9 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     #CONCATENATION DE TABLEAUX BASH---------------------------------------------
     for( $i=0 ;$i<$nb ;$i++){
       if ($i === 0 ){
-        $zone = "\"".$_GET['hostname'][$i]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['private_ip'][$i]."\"";
+        $zone = "\"".$_GET['hostname'][$i]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['private_ip'][$i]."\" ";
       } else {
-        $zone = $zone."\" \"".$_GET['hostname'][$i]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['private_ip'][$i]."\"";
+        $zone = $zone." \"".$_GET['hostname'][$i]."\" \"".$_GET['type_name'][$i]."\" ".$_GET['private_ip'][$i];
       }
     }
     $zone ="test_resolution = (".$zone.")\n";
@@ -64,7 +64,7 @@ echo \"
 echo \"\"\n";
 
 $script="
-Réglage du DNS en Master
+#Réglage du DNS en Master
 option=\"master\"
 
 # Récupère la date de création pour générer le fichier Bind
