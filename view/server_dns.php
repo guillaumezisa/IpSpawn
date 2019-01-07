@@ -2,7 +2,7 @@
 label
 {
 	display: block;
-	width: 250px;
+	width: 260px;
 }
 </style>
 <main role="main"><center>
