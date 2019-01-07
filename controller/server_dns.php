@@ -1,6 +1,6 @@
 <main role="main"><center>
   <div class="container"><br>
-  <h3><strong>Gestion du serveur DNS</strong></h3>
+    <h3><strong>Gestion du serveur DNS</strong></h3>
     <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte a outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
@@ -14,8 +14,10 @@
 #GÉNÉRATION DES VARIABLE DE FICHIERS--------------------------------------------
 $file_path="../script/script_client/server_dns_".session_id().".sh";
 $file_name="server_dns.sh";
+
 #VÉRIFICATION DE L'OPTION D'AUTO-DESTRUCTION------------------------------------
 if (isset( $_GET["auto_destruction"] )){ $rm = "rm ".$file_name; } else { $rm = ""; }
+
 #AJOUT DU LIEN DE TÉLÉCHARGEMENT & GUIDE----------------------------------------
 echo "<center><a class='btn btn-dark' href='".$file_path."'download='".$file_name."' target='_blank'>Télécharger le script </a></center><br>";
 include("../view/guide_execution.php");
@@ -23,209 +25,200 @@ include("../view/guide_execution.php");
 #-------------------------------------------------------------------------------
 # GÉNÉRATION DU SCRIPT
 #-------------------------------------------------------------------------------
-  if(isset($_GET['action']) && isset($_GET['under_action'])){
-    if(isset($_GET['master']) && isset($_GET['domain'])){
-      $nb = count($username);
-      $master="master=".$_GET['master']."\n";
-      $domain="domain=".$_GET['domain'].".\n";
-      #CONCATENATION DE TABLEAUX BASH---------------------------------------------
-      for( $i=0 ;$i<$nb ;$i++){
-        if ($i === 0 ){
-          $hostname = "user[$i]=".$_GET['username'][$i]."\n";
-          $type_name= "type_name[$i]=".$_GET['type_name'][$i]."\n";
-          $private_ip = "private_ip[$i]=".$_GET['private_ip'][$i]."\n";
-        } else {
-          $hostname = $hostname."user[$i]=".$_GET['username'][$i]."\n";
-          $type_name= $type_name."type_name[$i]=".$_GET['type_name'][$i]."\n";
-          $private_ip = $private_ip."private_ip[$i]=".$_GET['private_ip'][$i]."\n";
+
+if(isset($_GET['action']) && isset($_GET['under_action'])){
+  if(isset($_GET['master_name']) && isset($_GET['domain_name'])  && isset($_GET['master_ip'])){
+    $nb = count($_GET['hostname']);
+    $domain_name="domain_name=".$_GET['domain_name'].".\n";
+    $master_name="master_name=".$_GET['master_name']."\n";
+    $master_ip="master_ip=".$_GET["master_ip"]."\n";
+    $num_columns="num_columns=".$nb."\n";
+
+    #CONCATENATION DE TABLEAUX BASH---------------------------------------------
+    for( $i=0 ;$i<$nb ;$i++){
+      if ($i === 0 ){
+        $zone = "\"".$_GET['hostname'][$i]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['private_ip'][$i]."\"";
+      } else {
+        $zone = $zone."\" \"".$_GET['hostname'][$i]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['private_ip'][$i]."\"";
       }
     }
-      #CRÉATION DE VARIABLES IMPORTANTES POUR ISOLER PHP & BASH-----------------
+    $zone ="test_resolution = (".$zone.")\n";
+    #CRÉATION DE VARIABLES IMPORTANTES POUR ISOLER PHP & BASH-----------------
 
-      #GÉNÉRATION DU SCRIPT-----------------------------------------------------
+    #GÉNÉRATION DU SCRIPT-----------------------------------------------------
       $firstline = "
-      #!/bin/bash
-      #-------------------------------------------------------------------------
-      #SCRIPT D'INSTALATION D'UN SERVEUR DNS
-      #-------------------------------------------------------------------------
-      clear
-      echo \"========================================================================\"
-      echo \"\"
-      echo \"
-            ██╗██████╗ ███████╗██████╗  █████╗ ██╗    ██╗███╗   ██╗
-            ██║██╔══██╗██╔════╝██╔══██╗██╔══██╗██║    ██║████╗  ██║
-            ██║██████╔╝███████╗██████╔╝███████║██║ █╗ ██║██╔██╗ ██║
-            ██║██╔═══╝ ╚════██║██╔═══╝ ██╔══██║██║███╗██║██║╚██╗██║
-            ██║██║     ███████║██║     ██║  ██║╚███╔███╔╝██║ ╚████║
-            ╚═╝╚═╝     ╚══════╝╚═╝     ╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═══╝ \"
-      echo \"\"\n";
+#!/bin/bash
+#-------------------------------------------------------------------------
+#SCRIPT D'INSTALATION D'UN SERVEUR DNS
+#-------------------------------------------------------------------------
+clear
+echo \"========================================================================\"
+echo \"\"
+echo \"
+██╗██████╗ ███████╗██████╗  █████╗ ██╗    ██╗███╗   ██╗
+██║██╔══██╗██╔════╝██╔══██╗██╔══██╗██║    ██║████╗  ██║
+██║██████╔╝███████╗██████╔╝███████║██║ █╗ ██║██╔██╗ ██║
+██║██╔═══╝ ╚════██║██╔═══╝ ██╔══██║██║███╗██║██║╚██╗██║
+██║██║     ███████║██║     ██║  ██║╚███╔███╔╝██║ ╚████║
+╚═╝╚═╝     ╚══════╝╚═╝     ╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═══╝ \"
+echo \"\"\n";
 
-      $script="
-      statut=\$(\'whoami\')
+$script="
+Réglage du DNS en Master
+option=\"master\"
 
-      # Variables à changer en fonction des besoins et de la machine
-      hostname=\`hostname\`
-      ip=\"192.168.70.134\"
-      domain=\$domain
-      num_columns=12
-      test_resolution=(\"\" \"NS\" \"\$domain\" \"ns1\" \"A\" \"192.168.70.134\" \"mail\" \"A\" \"192.168.70.134\" \"@\" \"MX\" \"10 mail\")
-      test_reverse=(\"\" \"NS\" \"\$domain\" \"192.168.70.134\" \"PTR\" \"\$domain\")
+# Récupère la date de création pour générer le fichier Bind
+date_creation=`date +%Y%d`
 
-      # Réglage du DNS en Master
-      option=\"master\"
-      # Récupère la date de création pour générer le fichier Bind
-      date_creation=\`date +%Y%d\`
+# Vérification du statut de l\'utilisateur qui lance le script
+if [ \$statut != root ]
+then
+ 	echo \"\"
+ 	echo \"Vous n\'avez pas les droits n\'écéssaires, contactez votre administrateur ..\"
+ 	echo \"\"
+ 	sleep 1
+ 	exit
+elif [ \$statut = root ]
+then
+  # Mise à jour
+  apt-get -y update
+  apt-get -y upgrade
 
+  # Installation des paquets nécéssaires
+  apt-get -y install bind9
+  apt-get -y install dnsutils
 
-      # Vérification du statut de l\'utilisateur qui lance le script
-      if [ \$statut != root ]
-      then
-      	echo \"\"
-      	echo \"Vous n\'avez pas les droits n\'écéssaires, contactez votre administrateur ..\"
-      	echo \"\"
-      	sleep 1
-      	exit
+  echo \"\"
+  echo \"---------- Fin de l\'installation ----------\"
+  echo \"\"
+  sleep 2
+  echo \"---------- Début de la configuration ---------\"
+  sleep 2
 
-      elif [ \$statut = root ]
-      then
+  # Mise en place des variables de configuration
+  exist=\"\$(grep search /etc/resolv.conf)\"
+  ipexist=\"\$(grep \$ip /etc/resolv.conf)\"
+  reverse=\"\$(echo \$ip | awk -F. \'{print \$3\".\"\$2\".\"\$1}\')\"
+  zonexist=\"\$(grep \$domain /etc/bind/named.conf.local)\"
+  reversexist=\"\$(grep \$reverse /etc/bind/named.conf.local)\"
+  conf_exist=\"\$(grep \"listen-on { any; };\" /etc/bind/named.conf.options)\"
 
-      # Mise à jour
+  # Modification du fichier hosts
+  sed -i -r \"2s/.*/\$ip	\$hostname/g\" /etc/hosts
 
-      apt-get -y update
-      apt-get -y upgrade
+  # Modifications du fichier resolv.conf
+  sed -i -r \"s/search.*/search \$domain/g\" /etc/resolv.conf
 
-      # Installation des paquets nécéssaires
+  # Je vérifie si la section domain exite, sinon je l\'ajoute
+  if [ ! -z \"\$exist\" ]
+  then
+    sed -i -r \"s/domain.*/domain \$domain/g\" /etc/resolv.conf
+  else
+    sed -i -r \"/search.*/a \domain \$domain\" /etc/resolv.conf
+  fi
 
-      apt-get -y install bind9
-      apt-get -y install dnsutils
+  # Je vérifie que le nameserver n\'ai pas déjà été rentré
+  if [ -z \"\$ipexist\" ]
+  then
+    sed -i -r \"/search.*/a \\nameserver \$ip\" /etc/resolv.conf
+  else
+   	: ne fais rien
+  fi
+  # Je vérifier que les zones n\'aient pas déjà été créers
+  if [ -z \"\$zonexist\" ]
+  then
+echo \"
+zone \"\$domain\" {
+type \$option;
+file \"/etc/bind/db.\$domain\";
+ };\" >>/etc/bind/named.conf.local
+  else
+    : ne fais rien
+  fi
 
-      echo \"\"
-      echo \"---------- Fin de l\'installation ----------\"
-      echo \"\"
-      sleep 2
-      echo \"---------- Début de la configuration ---------\"
-      sleep 2
-
-      # Mise en place des variables de configuration
-      exist=\"\$(grep search /etc/resolv.conf)\"
-      ipexist=\"\$(grep \$ip /etc/resolv.conf)\"
-      reverse=\"\$(echo \$ip | awk -F. \'{print \$3\".\"\$2\".\"\$1}\')\"
-      zonexist=\"\$(grep \$domain /etc/bind/named.conf.local)\"
-      reversexist=\"\$(grep \$reverse /etc/bind/named.conf.local)\"
-      conf_exist=\"\$(grep \"listen-on { any; };\" /etc/bind/named.conf.options)\"
-
-
-      # Ajout du FQDN dans le fichier hostname
-      \`sudo hostnamectl set-hostname \$hostname.\$domain\`
-      # Modification du fichier hosts
-      sed -i -r \"2s/.*/\$ip	\$hostname.\$domain/g\" /etc/hosts
-
-      # Modifications du fichier resolv.conf
-      sed -i -r \"s/search.*/search \$domain/g\" /etc/resolv.conf
-
-      # Je vérifie si la section domain exite, sinon je l\'ajoute
-      if [ ! -z \"\$exist\" ]
-      then
-      	sed -i -r \"s/domain.*/domain \$domain/g\" /etc/resolv.conf
-      else
-      	sed -i -r \"/search.*/a \domain \$domain\" /etc/resolv.conf
-      fi
-
-      # Je vérifie que le nameserver n\'ai pas déjà été rentré
-      if [ -z \"\$ipexist\" ]
-      then
-      	sed -i -r \"/search.*/a \nameserver \$ip\" /etc/resolv.conf
-      else
-      	: ne fais rien
-      fi
-      # Je vérifier que les zones n\'aient pas déjà été créers
-      if [ -z \"\$zonexist\" ]
-      then
-      echo \"
-      zone \"\$domain\" {
-      	type \$option;
-      	file \"/etc/bind/db.\$domain\ \";
-      };\" >>/etc/bind/named.conf.local
-      else
-      	: ne fais rien
-      fi
-      # Je fais la même vérification pour la zone reverse
-      if [ -z \"\$reversexist\" ]
-      then
-      echo \"
+  # Je fais la même vérification pour la zone reverse
+  if [ -z \"\$reversexist\" ]
+  then
+echo \"
 zone \"\$reverse.in-addr.arpa\" {
 type \$option;
-file \"/etc/bind/db.\$reverse.in-addr.arpa \";
+file \"/etc/bind/db.\$reverse.in-addr.arpa\";
 };\" >>/etc/bind/named.conf.local
-      else
-      	: ne fais rien
-      fi
+  else
+    : ne fais rien
+  fi
 
-      # Vérification de la configuration du fichier named.conf.options
+  # Vérification de la configuration du fichier named.conf.options
+  # problème de tabulation
+  if [ -z \"\$conf_exist\" ]
+  then
+    sed -i \'25d\' /etc/bind/named.conf.options
+    echo -e \"	listen-on { any; };\n};\" >> /etc/bind/named.conf.options
+  else
+    : ne fais rien
+  fi
 
-      #PROBLÈME DE TABULATION---------------------------------------------------
-      if [ -z \"\$conf_exist\" ]
-      then
-      	sed -i \'25d\' /etc/bind/named.conf.options
-      	echo -e \"	listen-on { any; };\n};\" >> /etc/bind/named.conf.options
-      else
-      	: ne fais rien
-      fi
+  # Création des fichiers des enregistrements
+  touch /etc/bind/db.\$domain
+  touch /etc/bind/db.\$reverse.in-addr.arpa
 
-      # Création des fichiers des enregistrements
-      touch /etc/bind/db.\$domain
-      touch /etc/bind/db.\$reverse.in-addr.arpa
+  # Contenu du fichier d\'enregistrement
 
-      #CONTENUS DU FICHIER D'ENREGISTREMENTS------------------------------------
+   echo \"
+     \\$TTL 86400
+     @	IN	SOA	\$domain. root.\$domain. (
+     				\$date_creation
+     				21600
+     				3600
+     				64800
+     				86400 )
 
-      echo \"
-\$TTL 86400
-@	IN	SOA	\$domain. root.\$domain. (
-				\$date_creation
-				21600
-				3600
-				64800
-				86400 )
-      \" >>/etc/bind/db.\$domain
+     \" >>/etc/bind/db.\$domain
 
-      #BOUCLE QUI PERMET L'AJOUT D'ENREGISTREMENTS------------------------------
-      for (( i=0; i<\$num_columns; i+=3 ))
-      do
-      	echo -e \"\${test_resolution[\$i]}		IN		\${test_resolution[\$i+1]}		\${test_resolution[\$i+2]} \">>/etc/bind/db.\$domain
-      done
+     # La partie des enregsitrements en reverse
+     echo \"
+     \\$TTL 86400
+     @	IN	SOA	\$domain. root.\$domain. (
+     				\$date_creation
+     				21600
+     				3600
+     				64800
+     				86400 )
 
-      #LA PARTIE DES ENREGISTREMENTS EN REVERSE---------------------------------
-      echo \"
-      \$TTL 86400
-@	IN	SOA	\$domain. root.\$domain. (
-				\$date_creation
-				21600
-				3600
-				64800
-				86400 )
-  \" >>/etc/bind/db.\$reverse.in-addr.arpa
+     \" >>/etc/bind/db.\$reverse.in-addr.arpa
 
-  #BOUCLE D'ENREGISTREMENT DE ZONE REVERSE--------------------------------------
-  for (( i=0; i<\$num_columns; i+=3 ))
-  do
-  	cuted_ip=\"\$(echo \"\${test_reverse[\$i]}\" | awk -F. \'{print \$4}\')\"
-  	echo -e \"\$cuted_ip		IN		\${test_reverse[\$i+1]}		\${test_reverse[\$i+2]}\" >>/etc/bind/db.\$reverse.in-addr.arpa
-  done
+     # Boucle qui permet de rajouter les enregistrements
 
-  # REDÉMARAGE DES SERVICES-----------------------------------------------------
-  \`sudo service bind9 restart\`
-  \`sudo service networking restart\`
-  echo \"\"
-  echo \"---------- Fin de la configuration ----------\"
-  sleep 2
-fi
+     for (( i=0; i<\$num_columns; i+=3 ))
+     do
+      cuted_ip=\"\$(echo \"\${test_resolution[\$i+2]}\" | awk -F. \'{print \$4}\')\"
+     	value=\"\${test_resolution[\$i+1]}\"
 
-
-
+     	if [ \"\$value\" == \"NS\" ]
+     	then
+     		echo -e \"@	IN	\${test_resolution[\$i+1]}	\${test_resolution[\$i+2]} \">>/etc/bind/db.\$domain
+     		echo -e \"@	IN	\${test_resolution[\$i+1]}	\${test_resolution[\$i+2]} \">>/etc/bind/db.\$reverse.in-addr.arpa
+     	elif [ \"\$value\" == \"MX\" ]
+     	then
+     		echo -e \"@	IN	\${test_resolution[\$i+1]}	\${test_resolution[\$i+2]} \">>/etc/bind/db.\$domain
+     	elif [ \"\$value\" == \"CNAME\" ]
+     	then
+     		echo -e \"\${test_resolution[\$i]}	IN	CNAME	\${test_resolution[\$i+2]} \">>/etc/bind/db.\$domain
+     	else
+     		echo -e \"\${test_resolution[\$i]}		IN	\${test_resolution[\$i+1]}	\${test_resolution[\$i+2]} \">>/etc/bind/db.\$domain
+     		echo -e \"\$cuted_ip	IN	PTR	\${test_resolution[\$i+2]} \">>/etc/bind/db.\$reverse.in-addr.arpa
+     	fi
+     done
+     # Redémarage des services
+     `sudo service bind9 restart`
+     `sudo service networking restart`
+     echo \"\"
+     echo \"---------- Fin de la configuration ----------\\\"
+     sleep 2
       ";
 
       #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
-      $new_script = $firstline  . $master . $hostname . $type_name . $private_ip . $domain. $username . $password . $script . $rm;
+      $new_script = $firstline  . $domain_name . $master_name . $master_ip . $num_columns . $zone . $script . $rm;
       $file = fopen($file_path, 'w+');
       fputs($file,$new_script);
 
