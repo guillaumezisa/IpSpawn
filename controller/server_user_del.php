@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
   <h3><strong>Suppression d'utilisateur(s)</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -70,7 +70,7 @@ if [ $(whoami) == ".$root." ];then
     userdel -r ".$user."
   done\n
 else
-    echo Vous devez être root pour executer ce script
+    echo Vous devez être root pour exécuter ce script
 fi";
 
     #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT---------------------------

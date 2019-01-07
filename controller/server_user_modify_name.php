@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
   <h3><strong>Modification d'utilisateur(s)</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -11,7 +11,7 @@
 # GENERATION DU SCRIPT D'AJOUT DE DROITS AU GROUPE
 #-------------------------------------------------------------------------------
 
-#GÉNÉRATION DES VARIABLE DE FICHIERS--------------------------------------------
+#GÉNÉRATION DES VARIABLES DE FICHIERS--------------------------------------------
 $file_name="mod_name.sh";
 $file_path="../script/script_client/mod_name_".session_id().".sh";
 
@@ -74,7 +74,7 @@ if [ $(whoami) == ".$root." ];then
     usermod --login $user2 --home /home/\"$user2\" --move-home $user1
   done\n
 else
-  echo Vous devez être root pour executer ce script
+  echo Vous devez être root pour exécuter ce script
 fi";
 
     #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT---------------------------

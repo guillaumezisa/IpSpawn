@@ -30,7 +30,7 @@ date_creation=`date +%Y%d`
 if [ $statut != root ]
 then
 	echo ""
-	echo "Vous n'avez pas les droits n'écéssaires, contactez votre administrateur .."
+	echo "Vous n'avez pas les droits nécéssaires, contactez votre administrateur .."
 	echo ""
 	sleep 1
 	exit
@@ -105,7 +105,7 @@ zone "$reverse.in-addr.arpa" {
 	file "\"/etc/bind/db.$reverse.in-addr.arpa\"";
 };" >>/etc/bind/named.conf.local
 else
-	: ne fais rien	
+	: ne fais rien
 fi
 
 # Vérification de la configuration du fichier named.conf.options
@@ -155,19 +155,19 @@ for (( i=0; i<$num_columns; i+=3 ))
 do
 	cuted_ip="$(echo "${test_resolution[$i+2]}" | awk -F. '{print $4}')"
 	value="${test_resolution[$i+1]}"
-	
+
 	if [ "$value" == "NS" ]
 	then
 
 		echo -e "@	IN	${test_resolution[$i+1]}	${test_resolution[$i+2]} ">>/etc/bind/db.$domain
 
 		echo -e "@	IN	${test_resolution[$i+1]}	${test_resolution[$i+2]} ">>/etc/bind/db.$reverse.in-addr.arpa
-	
+
 	elif [ "$value" == "MX" ]
 	then
 
 		echo -e "@	IN	${test_resolution[$i+1]}	${test_resolution[$i+2]} ">>/etc/bind/db.$domain
-		
+
 	elif [ "$value" == "CNAME" ]
 	then
 

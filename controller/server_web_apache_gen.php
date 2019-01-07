@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Installation d'un serveur web Apache2</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a><br><br>
   </div>
   <section class="jumbotron ">
@@ -12,7 +12,7 @@
 # GENERATION DU SCRIPT D'INSTALLATION D'APACHE2
 #-------------------------------------------------------------------------------
 
-#GÉNÉRATION DES VARIABLE DE FICHIERS--------------------------------------------
+#GÉNÉRATION DES VARIABLES DE FICHIERS--------------------------------------------
 $file_path="../script/script_client/install_apache2_".session_id().".sh";
 $file_name="install_apache2.sh";
 
@@ -55,7 +55,7 @@ if [ $(whoami) == ".$root." ];then
   apt install php -y
   apt install mariadb-server
 else
-  echo Vous devez être root pour executer ce script
+  echo Vous devez être root pour exécuter ce script
 fi
 ";
 

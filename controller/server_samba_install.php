@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
   <h3><strong>Gestion du serveur samba</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -36,7 +36,7 @@ include("../view/guide_execution.php");
       #SCRIPT D'INSTALATION D'UN SERVEUR SAMBA
       #V.1.3
       #Le : 2018/12/06
-      #Script par Rodney Nguengue : nguengue@intechinfo.fr
+      #Script par Rodney Nguengue : nguengueogoula@intechinfo.fr
       #Script par Robin Cuvillier : rcvuillier@intechinfo.fr
       #-------------------------------------------------------------------------
       clear
@@ -55,10 +55,10 @@ include("../view/guide_execution.php");
 
       function begin() {
         statut=$('whoami')
-      # Vérification des droits de l'éxécuteur du script
+      # Vérification des droits de l'exécuteur du script
         if [ ".$statut." != root ]
         then
-          echo \"Vous n'avez pas les droits n'écéssaires, contactez votre administrateur ...\"
+          echo \"Vous n'avez pas les droits nécéssaires, contactez votre administrateur ...\"
           sleep 1
           exit
 

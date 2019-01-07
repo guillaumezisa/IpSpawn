@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
   <h3><strong>Convertisseur</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -10,7 +10,7 @@
   #ATTENTION ZONE A DEBUGGER
   #CHARGEMENT DE LA FONCTION
   include("../script/script_tools/script_convert.php");
-  #VERIFICATION DE L'EXISTANCE DES VARIABLES IMPORTANTES
+  #VERIFICATION DE L'EXISTENCE DES VARIABLES IMPORTANTES
   if ( isset($_GET['nb']) && isset($_GET['convtype']) ){
     #ADAPTATION DES VARIABLES AVEC LA FONCTION
     $entry = $_GET['nb'];
@@ -30,4 +30,3 @@
     }
   }
 ?>
-

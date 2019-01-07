@@ -189,12 +189,12 @@ touch /etc/postfix/generic
 
     for ((y=0;y<".$nb.";y++))
     do
-      #VÉRIFIE L'EXISTANCE DES L'UTILISATEURS
+      #VÉRIFIE L'EXISTENCE D'UTILISATEURS
       sudo mysql -u root 'messagerie' -e \"SELECT email FROM users\" >> tmp.txt
       tmp=$(cat tmp.txt | grep ".$user.")
       if [ \"".$tmp."\" != \"\" ];
       then
-        echo \"L'utilisateur éxiste déjà\"
+        echo \"L'utilisateur existe déjà\"
       else
         #AJOUT DES UTILISATEURS NON-EXISTANT
           sudo mysql -u root messagerie -e \"INSERT INTO users VALUES ('', 1, PASSWORD('".$password."'), '".$user."@".$domain."', '".$domain."/".$user."');\"

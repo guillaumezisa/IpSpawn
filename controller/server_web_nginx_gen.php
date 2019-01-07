@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Installation d'un serveur web Nginx</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite a outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a><br><br>
   </div>
   <section class="jumbotron ">
@@ -12,7 +12,7 @@
 # GENERATION DU SCRIPT D'INSTALLATION DE NGINX
 #-------------------------------------------------------------------------------
 
-#GÉNÉRATION DES VARIABLE DE FICHIERS--------------------------------------------
+#GÉNÉRATION DES VARIABLES DE FICHIERS--------------------------------------------
 $file_path="../script/script_client/install_nginx_".session_id().".sh";
 $file_name="install_nginx.sh";
 
@@ -51,7 +51,7 @@ echo \"\"\n";
 #ROOT OBLIGATOIRE POUR L'EXECUTION----------------------------------------------
 if [ $(whoami) == ".$root." ];then
 
-  #INSTALLATION DES PAQUETS IMPORTANT-------------------------------------------
+  #INSTALLATION DES PAQUETS IMPORTANTS-------------------------------------------
   apt install nginx -y
   apt install php-fpm -y
   apt install php -y
@@ -67,7 +67,7 @@ if [ $(whoami) == ".$root." ];then
   service nginx restart
   echo Installation réussie
 else
-  echo Vous devez être root pour executer ce script;
+  echo Vous devez être root pour exécuter ce script;
 fi
 ";
 
