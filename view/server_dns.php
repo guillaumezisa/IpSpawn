@@ -10,12 +10,12 @@ label
     <h3><strong>Installation d'un Dns</strong></h3>
     <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
-  </div><br>
+  </div><br></center>
   <section class="jumbotron ">
 		<?php
 			include("../view/guide_dns.php");
 		?>
-    <div class="ml-2" style="margin-top:-2%">
+    <div class="ml-2" style="margin-top:-2%"><center>
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="server_dns">
         <input type="hidden" name="under_action" value="gen_dns">
@@ -39,9 +39,9 @@ label
         <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer la dernière machine</button><br><br>
         <div id="NIQUEJS"></div>
-		</div>
+		</div><center>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
-        <button type="submit" class="btn btn-dark" id="choice">Valider</button>
+        <button type="submit" class="btn btn-dark" id="choice">Valider</button></center>
       </form>
     </div>
   </section>
