@@ -37,7 +37,7 @@ label
         <h4><strong>Configuration de vos zones</strong></h4><br>
         <button class="btn btn-dark" onclick="append(event)" onkeyup="cancel(this.key)" id="new">Ajouter une machine</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer la dernière machine</button><br><br>
-        <div id="NIQUEJS"></div>
+        <div id="JS"></div>
 		</div><center>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
         <button type="submit" class="btn btn-dark" id="choice">Valider</button></center>
@@ -110,7 +110,7 @@ label
     input_a.pattern = "^[A-Za-z0-9/.]+[.]{1}$";
     input_a.setAttribute('id','submit' + count);
     input_a.required = true;
-    var parentDiv = document.getElementById("NIQUEJS");
+    var parentDiv = document.getElementById("JS");
     parentDiv.append(div);
     div.append(text_q);
     div.append(input_q);
