@@ -7,7 +7,7 @@ label
 </style>
 <main role="main"><center>
   <div class="container"><br>
-    <h3><strong>Installation d'un Dns</strong></h3>
+    <h3><strong>Installation d'un DNS</strong></h3>
     <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div><br></center>
@@ -25,7 +25,7 @@ label
 		  <tr>
 		    <th ><label for="domain"><strong><center>Nom du domaine :</center></strong></label></th>
 		    <th ><label for="master"><strong><center>Nom de la machine master :</center></strong></label></th>
-		    <th ><label for="private_ip"><strong><center>Ip privée de la machine master :</center></strong></label></th>
+		    <th ><label for="private_ip"><strong><center>IP privée de la machine master :</center></strong></label></th>
 
 		  </tr>
 		  <tr>
@@ -36,7 +36,6 @@ label
 		</table><br>
         <h4><strong>Configuration de vos zones</strong></h4><br>
         <button class="btn btn-dark" onclick="append(event)" onkeyup="cancel(this.key)" id="new">Ajouter une machine</button>
-        <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer la dernière machine</button><br><br>
         <div id="NIQUEJS"></div>
 		</div><center>

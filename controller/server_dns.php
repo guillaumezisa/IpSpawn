@@ -35,6 +35,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     $num_columns="num_columns=".$nb."\n";
 
     #CONCATENATION DE TABLEAUX BASH---------------------------------------------
+    if(isset($_GET['private_ip'])){
     for( $i=0 ;$i<$nb ;$i++){
       if ($i === 0 ){
         $zone = "\"".$_GET['hostname'][$i]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['private_ip'][$i]."\" ";
@@ -43,6 +44,9 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
       }
     }
     $zone ="test_resolution = (".$zone.")\n";
+  } else {
+    $zone = NULL;
+  }
     #CRÉATION DE VARIABLES IMPORTANTES POUR ISOLER PHP & BASH-----------------
 
     #GÉNÉRATION DU SCRIPT-----------------------------------------------------
@@ -165,7 +169,7 @@ file \"/etc/bind/db.\$reverse.in-addr.arpa\";
   # Contenu du fichier d\'enregistrement
 
    echo \"
-     \\$TTL 86400
+     \$TTL 86400
      @	IN	SOA	\$domain. root.\$domain. (
      				\$date_creation
      				21600
@@ -177,7 +181,7 @@ file \"/etc/bind/db.\$reverse.in-addr.arpa\";
 
      # La partie des enregsitrements en reverse
      echo \"
-     \\$TTL 86400
+     \$TTL 86400
      @	IN	SOA	\$domain. root.\$domain. (
      				\$date_creation
      				21600

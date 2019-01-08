@@ -22,7 +22,6 @@
 		<h4><strong>Restriction de commande(s)</strong></h4>
 		<br>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter une commande à restreindre</button>
-        <button class="btn btn-dark" onclick="reload(event)">Réinitialiser</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer la derniere commande</button><br><br>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
         <input type="hidden" name="email" value=""
