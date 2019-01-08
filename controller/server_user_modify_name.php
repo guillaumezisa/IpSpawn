@@ -72,6 +72,7 @@ if [ $(whoami) == ".$root." ];then
   do
     #MODIFICATION D'UTILISATEUR-------------------------------------------------
     usermod --login $user2 --home /home/\"$user2\" --move-home $user1
+    echo Le nom de l\'utilisateur a bien été modifié
   done\n
 else
   echo Vous devez être root pour exécuter ce script

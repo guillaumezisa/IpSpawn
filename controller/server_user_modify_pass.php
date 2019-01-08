@@ -74,6 +74,7 @@ if [ $(whoami) == ".$root." ];then
   do
     #MODIFICATION DU MOT DE PASSE D'UTILISATEURS--------------------------------
     echo -e \"$pass$hum$pass\" | passwd ".$user."
+    echo Le mot de passe de l\'utilisateur a bien été modifié
   done\n
 else
   echo Vous devez être root pour exécuter ce script

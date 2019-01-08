@@ -5,6 +5,9 @@
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron">
+    <?php
+      include("../view/guide_group_mod_name.php");
+    ?>
     <div class="ml-2">
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="group">

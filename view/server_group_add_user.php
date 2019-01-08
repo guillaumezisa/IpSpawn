@@ -5,6 +5,9 @@
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
+    <?php
+      include("../view/guide_group_add_user.php");
+    ?>
     <div class="ml-2">
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="group">
@@ -13,6 +16,7 @@
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier utilisateur</button><br><br>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
         <input type="hidden" name="email" value="" />
+      </div>
         <button type="submit" class="btn btn-dark" id="choice" >Valider</button></center><br><br>
       </form>
     </div></center>

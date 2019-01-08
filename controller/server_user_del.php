@@ -42,7 +42,8 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     $root='"root"';
 
     #GÉNÉRATION DU SCRIPT-------------------------------------------------------
-    $firstline = "#!/bin/bash
+    $firstline = "
+#!/bin/bash
 #-------------------------------------------------------------------------------
 #SCRIPT DE SUPPRESSION D'UTILISATEURS généré par IpSpawn.com
 #V.1.2
@@ -67,8 +68,9 @@ if [ $(whoami) == ".$root." ];then
   for ((y=0;y<".$nb.";y++))
   do
     #SUPPRESSION DES UTILISATEURS-----------------------------------------------
-    userdel -r ".$user."
+    userdel -r ".$user." > /dev/null
   done\n
+  echo L\'utilisateur a bien été supprimé
 else
     echo Vous devez être root pour exécuter ce script
 fi";

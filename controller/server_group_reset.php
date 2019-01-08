@@ -54,6 +54,7 @@ if [ $(whoami) == ".$root." ];then
   echo 'Defaults	mail_badpass' >> /etc/sudoers
   echo 'Defaults	secure_path=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"' >> /etc/sudoers
   echo 'root	ALL=(ALL:ALL) ALL' >> /etc/sudoers
+  echo '%sudo	ALL=(ALL:ALL) ALL' >> /etc/sudoers
 else
   echo Vous devez être root pour exécuter ce script
 fi

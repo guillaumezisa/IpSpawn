@@ -9,15 +9,17 @@
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="group">
         <input type="hidden" name="under_action" value="add_group_gen">
+        <input type="hidden" name="email" value="" />
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un groupe</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier groupe</button><br><br>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
-        <input type="hidden" name="email" value="" />
+        </div>
         <button type="submit" class="btn btn-dark" id="choice" >Valider</button></center><br><br>
       </form>
     </div></center>
   </section>
 </main>
+
 <script>
   function rm_last_div(event){
     event.preventDefault();
@@ -32,7 +34,7 @@
     div.setAttribute('class','allDivs');
     var input_a = document.createElement('input');
     var br = document.createElement('br');
-    var text_a = document.createTextNode(' Nom de groupe ');
+    var text_a = document.createTextNode(' Nom de l\'utilisateur : ')
     input_a.type = "text";
     input_a.name ="groupname[]";
     input_a.pattern = "^[\(\)a-zA-Z0-9,-_ ]{0,}$";

@@ -71,6 +71,7 @@ if [ $(whoami) == ".$root." ];then
   do
     #MODIFICATION DU GROUPE-----------------------------------------------------
     groupmod --new-name $group2 $group1
+    echo Le groupe a bien été modifier
   done\n
 else
   echo Vous devez être root pour exécuter ce script
