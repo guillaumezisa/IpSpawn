@@ -29,9 +29,9 @@ include("../view/guide_execution.php");
 if(isset($_GET['action']) && isset($_GET['under_action'])){
   if(isset($_GET['master_name']) && isset($_GET['domain_name'])  && isset($_GET['master_ip'])){
     $nb = count($_GET['hostname']);
-    $domain_name="domain_name=".$_GET['domain_name'].".\n";
+    $domain_name="domain=".$_GET['domain_name'].".\n";
     $master_name="master_name=".$_GET['master_name']."\n";
-    $master_ip="master_ip=".$_GET["master_ip"]."\n";
+    $master_ip="ip=".$_GET["master_ip"]."\n";
     $num_columns="num_columns=".$nb."\n";
 
     #CONCATENATION DE TABLEAUX BASH---------------------------------------------
@@ -48,7 +48,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     $zone = NULL;
   }
     #CRÉATION DE VARIABLES IMPORTANTES POUR ISOLER PHP & BASH-----------------
-
+    $statut = '${statut}';
     #GÉNÉRATION DU SCRIPT-----------------------------------------------------
       $firstline = "
 #!/bin/bash
@@ -68,32 +68,37 @@ echo \"
 echo \"\"\n";
 
 $script="
+
+function begin {
+  statut=$('whoami')
+# Vérification des droits de l'exécuteur du script
+  if [ ".$statut." != root ]
+  then
+    echo \"Vous n'avez pas les droits nécéssaires, contactez votre administrateur ...\"
+    sleep 1
+    exit
+
+  elif [ ".$statut." = root ]
+    then
+    apt-get -y update
+    apt-get -y upgrade
+  fi
+}
+
+begin
+
 #Réglage du DNS en Master
 option=\"master\"
 
 # Récupère la date de création pour générer le fichier Bind
 date_creation=`date +%Y%d`
 
-# Vérification du statut de l\'utilisateur qui lance le script
-if [ \$statut != root ]
-then
- 	echo \"\"
- 	echo \"Vous n\'avez pas les droits nécéssaires, contactez votre administrateur ..\"
- 	echo \"\"
- 	sleep 1
- 	exit
-elif [ \$statut = root ]
-then
-  # Mise à jour
-  apt-get -y update
-  apt-get -y upgrade
-
   # Installation des paquets nécéssaires
   apt-get -y install bind9
   apt-get -y install dnsutils
 
   echo \"\"
-  echo \"---------- Fin de l\'installation ----------\"
+  echo \"---------- Fin de l'installation ----------\"
   echo \"\"
   sleep 2
   echo \"---------- Début de la configuration ---------\"
@@ -102,7 +107,7 @@ then
   # Mise en place des variables de configuration
   exist=\"\$(grep search /etc/resolv.conf)\"
   ipexist=\"\$(grep \$ip /etc/resolv.conf)\"
-  reverse=\"\$(echo \$ip | awk -F. \'{print \$3\".\"\$2\".\"\$1}\')\"
+  reverse=\"\$(echo \$ip | awk -F. '{print \$3\".\"\$2\".\"\$1}')\"
   zonexist=\"\$(grep \$domain /etc/bind/named.conf.local)\"
   reversexist=\"\$(grep \$reverse /etc/bind/named.conf.local)\"
   conf_exist=\"\$(grep \"listen-on { any; };\" /etc/bind/named.conf.options)\"
@@ -195,7 +200,7 @@ file \"/etc/bind/db.\$reverse.in-addr.arpa\";
 
      for (( i=0; i<\$num_columns; i+=3 ))
      do
-      cuted_ip=\"\$(echo \"\${test_resolution[\$i+2]}\" | awk -F. \'{print \$4}\')\"
+      cuted_ip=\"\$(echo \"\${test_resolution[\$i+2]}\" | awk -F. '{print \$4}')\"
      	value=\"\${test_resolution[\$i+1]}\"
 
      	if [ \"\$value\" == \"NS\" ]
@@ -217,7 +222,7 @@ file \"/etc/bind/db.\$reverse.in-addr.arpa\";
      `sudo service bind9 restart`
      `sudo service networking restart`
      echo \"\"
-     echo \"---------- Fin de la configuration ----------\\\"
+     echo \"---------- Fin de la configuration ----------\"
      sleep 2
       ";
 
