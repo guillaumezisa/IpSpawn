@@ -61,7 +61,7 @@ if [ \$(whoami) == \"root\" ];then
   echo \"========================================================================\";
   echo \"  GÉNÉRATION DES VARIABLES DE DÉPART \";
 
-  ip=192.168.245.150
+  ip=".$_GET['ip']."
   card=\$(ip route | grep default | awk '{ print \$5}');
   broadcast=\$(ip a | grep \$card| grep inet | awk '{print \$4}');
   gateway=\$(ip route | grep default | awk '{print \$3}');
@@ -125,29 +125,29 @@ fi
 
   #CREATION D'UN SCRIPT DE RECUPERATION---------------------------------------
   $firstline_reset = "
-  #!/bin/bash
-  #---------------------------------------------------------------------------
-  #SCRIPT DE MISE EN PLACE D'IP DHCP généré par IpSpawn.com
-    #V.1.1
-    #Le : 2018/12/06
-    #Script par Guillaume Zisa : zisa@intechinfo.fr
-    #---------------------------------------------------------------------------\n";
-    #GÉNÉRATION DU SCRIPT-------------------------------------------------------
-    $script_reset="
-    #ROOT OBLIGATOIRE POUR L'EXECUTION------------------------------------------
-    if [ $(whoami) == \"root\" ];then
-      #RÉÉCRITURE DES PARAMETRES PAR DEFAUT D'INTERFACES ( DHCP )-------------
-      echo \"source /etc/network/interface.d/*\" > /etc/network/interfaces
-      echo \"\" >> /etc/network/interfaces
-      echo \"#LOCALHOST\" >> /etc/network/interfaces
-      echo \"\" >> /etc/network/interfaces
-      echo \"auto lo \" >> /etc/network/interfaces
-      echo \"iface lo inet loopback\" >> /etc/network/interfaces
-      echo \"\" >> /etc/network/interfaces
-    else
-      echo Vous devez être root pour exécuter ce script
-    fi";
-
+#!/bin/bash
+---------------------------------------------------------------------------
+#SCRIPT DE MISE EN PLACE D'IP DHCP généré par IpSpawn.com
+#V.1.1
+#Le : 2018/12/06
+#Script par Guillaume Zisa : zisa@intechinfo.fr
+#---------------------------------------------------------------------------\n";
+#GÉNÉRATION DU SCRIPT-------------------------------------------------------
+  $script_reset="
+#ROOT OBLIGATOIRE POUR L'EXECUTION------------------------------------------
+if [ $(whoami) == \"root\" ];then
+  #RÉÉCRITURE DES PARAMETRES PAR DEFAUT D'INTERFACES ( DHCP )-------------
+  echo \"source /etc/network/interface.d/*\" > /etc/network/interfaces
+  echo \"\" >> /etc/network/interfaces
+  echo \"#LOCALHOST\" >> /etc/network/interfaces
+  echo \"\" >> /etc/network/interfaces
+  echo \"auto lo \" >> /etc/network/interfaces
+  echo \"iface lo inet loopback\" >> /etc/network/interfaces
+  echo \"\" >> /etc/network/interfaces
+  echo Votre fichier d'interface a été reinitialiser
+else
+  echo Vous devez être root pour exécuter ce script
+fi";
     $new_script_reset = $firstline_reset . $script_reset ;
     $file_reset = fopen($file_path_reset, 'w+');
     fputs($file_reset,$new_script_reset);
