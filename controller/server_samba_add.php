@@ -69,63 +69,56 @@ include("../view/guide_execution.php");
       echo \"\"\n";
 
       $script="
+function begin() {
+  statut=$('whoami')
+  # Vérification des droits de l'exécuteur du script
+  if [ ".$statut." != root ]
+    then
+    echo \"Vous n'avez pas les droits nécéssaires, contactez votre administrateur ...\"
+    sleep 1
+    exit
+  elif [ ".$statut." = root ]
+  then
+    apt-get -y update
+    apt-get -y upgrade
+  fi
+}
 
-      function begin() {
-        statut=$('whoami')
-      # Vérification des droits de l'exécuteur du script
-        if [ ".$statut." != root ]
-        then
-          echo \"Vous n'avez pas les droits nécéssaires, contactez votre administrateur ...\"
-          sleep 1
-          exit
+begin
 
-        elif [ ".$statut." = root ]
-          then
-          apt-get -y update
-          apt-get -y upgrade
-        fi
-      }
+if [ ".$statut." = root ]
+then
+  for ((y=0;y<".$nb.";y++))
+  do
+    id ".$user."
+    if [ $? == 0 ];
+    then
+      echo \"'".$user."' déjà existant.\"
+    else
+      useradd -m -d /home/".$user." -s /bin/bash ".$user."
+      echo \"".$user.":".$password."\"| chpasswd
+    fi
 
-      begin
+    cat /etc/group | awk -F\":\" '{print$1}' | grep -w ".$group."
+    if [ $? == 0 ];
+    then
+      echo \"'".$group."' déjà existant.\"
+    else
+      groupadd ".$group."
+    fi
+    usermod -a -G ".$group." ".$user."
 
-      if [ ".$statut." = root ]
-      then
+    # Création du Répertoire partagé
+    mkdir -p ".$path."/".$dossier."
 
-      for ((y=0;y<".$nb.";y++))
-      do
+    # Application des Droits au dossier
+    chown -R root:".$group." ".$path."/".$dossier."
+    chmod -R 770 ".$path."/".$dossier."
 
-      id ".$user."
-      if [ $? == 0 ];
-      then
-        echo \"'".$user."' déjà existant.\"
-      else
-        useradd -m -d /home/".$user." -s /bin/bash ".$user."
-        echo \"".$user.":".$password."\"| chpasswd
-      fi
-
-      cat /etc/group | awk -F\":\" '{print$1}' | grep -w ".$group."
-      if [ $? == 0 ];
-      then
-        echo \"'".$group."' déjà existant.\"
-      else
-        groupadd ".$group."
-      fi
-
-      usermod -a -G ".$group." ".$user."
-
-      # Création du Répertoire partagé
-      mkdir -p ".$path."/".$dossier."
-
-      # Application des Droits au dossier
-      chown -R root:".$group." ".$path."/".$dossier."
-      chmod -R 770 ".$path."/".$dossier."
-
-      echo -e \"[".$dossier."]\n  comment = Dossier du group ".$group."\n path = ".$path."/".$dossier."\n log file = /var/log/samba/log.".$dossier."\n  max log size = 100\n  hide dot files = yes\n  guest ok = no\n guest only = no\n write list = @".$group."\n  read list = \n  valid users = @".$group."\n\"  >> /etc/samba/smb.conf
-
-      done
-      systemctl restart smbd
-
-      fi
+    echo -e \"[".$dossier."]\n  comment = Dossier du group ".$group."\n path = ".$path."/".$dossier."\n log file = /var/log/samba/log.".$dossier."\n  max log size = 100\n  hide dot files = yes\n  guest ok = no\n guest only = no\n write list = @".$group."\n  read list = \n  valid users = @".$group."\n\"  >> /etc/samba/smb.conf
+  done
+  systemctl restart smbd
+fi
       ";
 
       #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
