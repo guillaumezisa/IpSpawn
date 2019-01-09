@@ -12,8 +12,8 @@
         <input type="hidden" name="email" value="" />
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un groupe</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier groupe</button><br><br>
-        <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
         </div>
+        <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
         <button type="submit" class="btn btn-dark" id="choice" >Valider</button></center><br><br>
       </form>
     </div></center>

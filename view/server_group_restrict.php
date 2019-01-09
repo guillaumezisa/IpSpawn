@@ -23,9 +23,9 @@
 		<br>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter une commande à restreindre</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer la derniere commande</button><br><br>
+        </div>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
-        <input type="hidden" name="email" value=""
-      </div>
+        <input type="hidden" name="email" value="">
       <button type="submit" class="btn btn-dark" id="choice" >Valider</button></center><br><br>
     </form>
   </section>

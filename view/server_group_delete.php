@@ -14,11 +14,11 @@
         <input type="hidden" name="under_action" value="del_gen">
         <button class="btn btn-dark" onclick="append(event)" id="new">Ajouter un groupe</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier group</button><br><br>
+        </div>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
         <input type="hidden" name="email" value="" />
         <button type="submit" class="btn btn-dark" id="choice" >Valider</button></center><br><br>
       </form>
-    </div>
   </section>
 </main>
 <script>

@@ -13,7 +13,7 @@
           </div>
           <div class="col-sm-10">
             <div class="text-light bg-info" style="width:100%;border:solid black 1.5px;border-radius:4px;"><br>
-              <center>Les groupes ajoutés au sudoers ont les droits sudo ( super utilisateur / root ), <br>faites attention de ne pas donner ces privilèges à n'importe qui.<br><br>
+              <center>Les groupes ajoutés au sudoers ont les droits sudo ( super utilisateur / root ), <br>faites attention de ne pas donner ces privilèges à n'importe qui.</center><br><br>
             </div>
             </div>
           </div>
@@ -27,10 +27,11 @@
         <input type="hidden" name="under_actionx" value="gen_sudoers">
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un groupe</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier groupe </button><br><br>
+        </center></div>
+        <center>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
         <input type="hidden" name="email" value="" />
-    </div></center>
-    <center><button type="submit" class="btn btn-dark" id="choice" >Valider</button></center><br><br>
+        <button type="submit" class="btn btn-dark" id="choice" >Valider</button></center><br><br>
     </form>
     </section>
 </main>
