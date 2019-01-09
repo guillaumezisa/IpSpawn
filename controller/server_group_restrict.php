@@ -109,7 +109,7 @@ if [[ \$group_exist != \"\" ]];then
     echo \$final >> /etc/sudoers
 
   else
-    for((i=0;i<4;i++));do
+    for((i=0;i<".$nb.";i++));do
       command_exist=\$(which \${command[\$i]});
 
       #CRÉATION DES STRINGS DE CONFIGURATION
@@ -130,7 +130,7 @@ if [[ \$group_exist != \"\" ]];then
     done
 
     #CONCATÉNATION DES STRINGS
-    for (( i=0 ; i<4 ; i++ ));do
+    for (( i=0 ; i<".$nb." ; i++ ));do
       if [ \$i -eq 0 ];then
         final_string=\$group_exist_sudoers\"\"\${string[\$i]}
       elif [ \$i -eq 3 ];then
@@ -154,10 +154,10 @@ fi
     $file = fopen($file_path, 'w+');
     fputs($file,$new_script);
   } else {
-    echo "lol";
+    echo "";
   }
 } else {
-  echo "lol2";
+  echo "";
 }
 
 ?>

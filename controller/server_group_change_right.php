@@ -73,6 +73,7 @@ if [ $(whoami) == ".$root." ];then
     if [ [\"-f ".$wh." || -d ".$wh." \"] ];
     then
       chmod ".$R." ".$pro." ".$wh."
+      echo Le fichier ou le dossier a été modifié
     else
       echo Le fichier ou le dossier est introuvable
     fi

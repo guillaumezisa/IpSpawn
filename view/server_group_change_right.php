@@ -14,10 +14,9 @@
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter des droits</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer les derniers droits</button><br><br>
         <h6><input type="checkbox" name="recursion" value= "yes" > Activer la récursivité ( exécute pour tous les fichiers de l'arborescence )<br>
-        </div>
-        <input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6><br>
+        <input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
         <input type="hidden" name="email" value="" />
-      <button class="btn btn-dark" id="choice" >Valider</button></center><br><br>
+      </div><button class="btn btn-dark" id="choice" >Valider</button></center><br><br>
       </form>
     </div></center>
   </section>
@@ -45,7 +44,7 @@
     input_q.required = true;
     input_a.type = "text";
     input_a.name ="where[]";
-    input_a.pattern = "^[\(\)a-zA-Z0-9,-_ ]{0,}$";
+    input_a.pattern = "^[\(\)a-zA-Z0-9,-* ]{0,}$";
     input_a.required = true;
     var parentDiv = document.getElementById("new").parentNode;
     parentDiv.append(div);
