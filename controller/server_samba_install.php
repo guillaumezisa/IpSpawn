@@ -31,67 +31,25 @@ include("../view/guide_execution.php");
 
       #GÉNÉRATION DU SCRIPT-----------------------------------------------------
       $firstline = "
-      #!/bin/bash
-      #-------------------------------------------------------------------------
-      #SCRIPT D'INSTALATION D'UN SERVEUR SAMBA
-      #V.1.3
-      #Le : 2018/12/06
-      #Script par Rodney Nguengue : nguengueogoula@intechinfo.fr
-      #Script par Robin Cuvillier : rcvuillier@intechinfo.fr
-      #-------------------------------------------------------------------------
-      clear
-      echo \"========================================================================\"
-      echo \"\"
-      echo \"
-            ██╗██████╗ ███████╗██████╗  █████╗ ██╗    ██╗███╗   ██╗
-            ██║██╔══██╗██╔════╝██╔══██╗██╔══██╗██║    ██║████╗  ██║
-            ██║██████╔╝███████╗██████╔╝███████║██║ █╗ ██║██╔██╗ ██║
-            ██║██╔═══╝ ╚════██║██╔═══╝ ██╔══██║██║███╗██║██║╚██╗██║
-            ██║██║     ███████║██║     ██║  ██║╚███╔███╔╝██║ ╚████║
-            ╚═╝╚═╝     ╚══════╝╚═╝     ╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═══╝ \"
-      echo \"\"\n";
-
-      $script="
-
-      function begin() {
-        statut=$('whoami')
-      # Vérification des droits de l'exécuteur du script
-        if [ ".$statut." != root ]
-        then
-          echo \"Vous n'avez pas les droits nécéssaires, contactez votre administrateur ...\"
-          sleep 1
-          exit
-
-        elif [ ".$statut." = root ]
-          then
-          apt-get -y update
-          apt-get -y upgrade
-        fi
-      }
-
-      begin
-
-      if [ ".$statut." = root ]
-      then
-
-        # Installation des paquets samba
-
-        sudo apt-get -y install samba
-        sudo apt-get -y install samba-common-bin
-
-        cp /etc/samba/smb.conf /etc/samba/smb.conf_backup
-        grep -v -E \"^#|^;\" /etc/samba/smb.conf_backup | grep . > /etc/samba/smb.conf
-        systemctl restart smbd
-
-        mkdir ".$path."
-        mkdir ".$path."/commun
-        chmod 755 ".$path."
-        chmod 777 ".$path."/commun
-
-        echo -e \"\n[commun]\n  comment = Dossier commun à tous\n path = ".$path."/commun\n log file = /var/log/samba/log.commun\n  max log size = 100\nbrowseable = yes\n  hide dot files = yes\n  read only = no\n  public = yes\n  writable = yes\n  create mode = 0775\n  printable = no\n\"  >> /etc/samba/smb.conf
-
-        systemctl restart smbd
-      ";
+#!/bin/bash
+#-------------------------------------------------------------------------
+#SCRIPT D'INSTALATION D'UN SERVEUR SAMBA
+#V.1.3
+#Le : 2018/12/06
+#Script par Rodney Nguengue : nguengueogoula@intechinfo.fr
+#Script par Robin Cuvillier : rcvuillier@intechinfo.fr
+#-------------------------------------------------------------------------
+clear
+echo \"========================================================================\"
+echo \"\"
+echo \"
+        ██╗██████╗ ███████╗██████╗  █████╗ ██╗    ██╗███╗   ██╗
+        ██║██╔══██╗██╔════╝██╔══██╗██╔══██╗██║    ██║████╗  ██║
+        ██║██████╔╝███████╗██████╔╝███████║██║ █╗ ██║██╔██╗ ██║
+        ██║██╔═══╝ ╚════██║██╔═══╝ ██╔══██║██║███╗██║██║╚██╗██║
+        ██║██║     ███████║██║     ██║  ██║╚███╔███╔╝██║ ╚████║
+        ╚═╝╚═╝     ╚══════╝╚═╝     ╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═══╝ \"
+echo \"\"\n";
 
       if(isset($_GET['dossier']) && isset($_GET['group']) && isset($_GET['password'])){
         $nb = count($_GET['dossier']);
@@ -116,32 +74,59 @@ include("../view/guide_execution.php");
       $group = '${group[$y]}';
       $dossier = '${dossier[$y]}';
 
-      $script=$script."
+      $script="
+function begin() {
+  statut=$('whoami')
+  # Vérification des droits de l'exécuteur du script
+  if [ ".$statut." != root ]
+  then
+    echo \"Vous n'avez pas les droits nécéssaires, contactez votre administrateur ...\"
+    sleep 1
+    exit
+  elif [ ".$statut." = root ]
+  then
+    apt-get -y update
+    apt-get -y upgrade
+  fi
+}
+begin
 
-      for ((y=0;y<".$nb.";y++))
-      do
+if [ ".$statut." = root ]
+then
+  # Installation des paquets samba
+  sudo apt-get -y install samba
+  sudo apt-get -y install samba-common-bin
+  cp /etc/samba/smb.conf /etc/samba/smb.conf_backup
+  grep -v -E \"^#|^;\" /etc/samba/smb.conf_backup | grep . > /etc/samba/smb.conf
+  systemctl restart smbd
+  mkdir ".$path."
+  mkdir ".$path."/commun
+  chmod 755 ".$path."
+  chmod 777 ".$path."/commun
+  echo -e \"\n[commun]\n  comment = Dossier commun à tous\n path = ".$path."/commun\n log file = /var/log/samba/log.commun\n  max log size = 100\nbrowseable = yes\n  hide dot files = yes\n  read only = no\n  public = yes\n  writable = yes\n  create mode = 0775\n  printable = no\n\"  >> /etc/samba/smb.conf
+  systemctl restart smbd
 
-        cat /etc/group | awk -F\":\" '{print$1}' | grep -w ".$group."
-        if [ $? == 0 ];
-        then
-          echo \"'".$group."' déjà existant.\"
-        else
-          groupadd ".$group."
-        fi
+  for ((y=0;y<".$nb.";y++))
+  do
+    cat /etc/group | awk -F\":\" '{print$1}' | grep -w ".$group."
+    if [ $? == 0 ];
+    then
+      echo \"'".$group."' déjà existant.\"
+    else
+      groupadd ".$group."
+    fi
 
-        # Création du Répertoire partagé
-        mkdir -p ".$path."/".$dossier."
+    # Création du Répertoire partagé
+    mkdir -p ".$path."/".$dossier."
 
-        # Application des Droits au dossier
-        chown -R root:".$group." ".$path."/".$dossier."
-        chmod -R 770 ".$path."/".$dossier."
-
-        echo -e \"[".$dossier."]\n  comment = Dossier du group ".$group."\n path = ".$path."/".$dossier."\n log file = /var/log/samba/log.".$dossier."\n  max log size = 100\n  hide dot files = yes\n  guest ok = no\n guest only = no\n write list = @".$group."\n  read list = \n  valid users = @".$group."\n\"  >> /etc/samba/smb.conf
-
-      done
-      systemctl restart smbd
-      fi
-      ";
+    # Application des Droits au dossier
+    chown -R root:".$group." ".$path."/".$dossier."
+    chmod -R 770 ".$path."/".$dossier."
+    echo -e \"[".$dossier."]\n  comment = Dossier du group ".$group."\n path = ".$path."/".$dossier."\n log file = /var/log/samba/log.".$dossier."\n  max log size = 100\n  hide dot files = yes\n  guest ok = no\n guest only = no\n write list = @".$group."\n  read list = \n  valid users = @".$group."\n\"  >> /etc/samba/smb.conf
+  done
+  systemctl restart smbd
+fi
+";
 
     }
 
