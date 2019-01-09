@@ -53,7 +53,8 @@ if [ $(whoami) == ".$root." ];then
   #INSTALLATION DES PAQUETS IMPORTANT-------------------------------------------
   apt install apache2 -y
   apt install php -y
-  apt install mariadb-server
+  apt install mariadb-server -y
+  echo Installation du complete
 else
   echo Vous devez être root pour exécuter ce script
 fi
