@@ -13,10 +13,10 @@
         <input type="hidden" name="under_actionx" value="gen_owner">
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter une modification de propriétaire</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier propriétaire</button><br><br>
-        <h6><input type="checkbox" name="recursion" value= "yes" > Activer la récursivité ( exécute pour tous les fichiers de l'arborescence )<br>
-        <input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
+        <h6><input type="checkbox" name="recursion" value= "yes" > Activer la récursivité ( exécute pour tous les fichiers de l'arborescence )<br></div>
+        <input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6><br>
         <input type="hidden" name="email" value="" />
-      </div><button class="btn btn-dark" id="choice" >Valider</button></center><br><br>
+      <button class="btn btn-dark" id="choice" >Valider</button></center><br><br>
       </form>
     </div></center>
   </section>

@@ -5,18 +5,14 @@
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron">
-    <?php
-      include("../view/guide_group_mod_name.php");
-    ?>
     <div class="ml-2">
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="group">
         <input type="hidden" name="under_action" value="mod_name_gen">
-        <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un groupe</button>
-        <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier groupe</button><br><br>
+        <button class="btn btn-dark" onclick="append(event)" id="new">Ajouter un groupe</button>
+        <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier groupe</button><br><br></div>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
         <input type="hidden" name="email" value="" />
-      </div>
       <button type="submit" class="btn btn-dark" id="choice" >Valider</button></center><br><br>
     </form>
   </section>
