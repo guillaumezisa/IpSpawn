@@ -136,11 +136,11 @@ date_creation=`date +%Y%d`
   # Je vérifier que les zones n\'aient pas déjà été créées
   if [ -z \"\$zonexist\" ]
   then
-echo \"
-zone \"\$domain\" {
-type \$option;
-file \"/etc/bind/db.\$domain\";
- };\" >>/etc/bind/named.conf.local
+  echo \"
+    zone \"\$domain\" {
+    type \$option;
+    file \"/etc/bind/db.\$domain\";
+    };\" >>/etc/bind/named.conf.local
   else
     : ne fais rien
   fi
@@ -148,11 +148,11 @@ file \"/etc/bind/db.\$domain\";
   # Je fais la même vérification pour la zone reverse
   if [ -z \"\$reversexist\" ]
   then
-echo \"
-zone \"\$reverse.in-addr.arpa\" {
-type \$option;
-file \"/etc/bind/db.\$reverse.in-addr.arpa\";
-};\" >>/etc/bind/named.conf.local
+    echo \"
+    zone \"\$reverse.in-addr.arpa\" {
+    type \$option;
+    file \"/etc/bind/db.\$reverse.in-addr.arpa\";
+    };\" >>/etc/bind/named.conf.local
   else
     : ne fais rien
   fi
