@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Gestion du serveur DNS</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte à outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte � outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -32,12 +32,13 @@ print_r($_GET['type_name']);
 echo "<br>";
 
 if(isset($_GET['action']) && isset($_GET['under_action'])){
-  if(isset($_GET['master_name']) && isset($_GET['domain_name'])  && isset($_GET['master_ip'])){
+  if(isset($_GET['master_name']) && isset($_GET['domain_name'])  && isset($_GET['master_ip']) && isset($_GET['ttl'])){
     $nb = count($_GET['type_name']);
-    $domain_name="domain=".$_GET['domain_name'].".\n";
+    $domain_name="domain_name=".$_GET['domain_name'].".\n";
     $master_name="master_name=".$_GET['master_name']."\n";
-    $master_ip="ip=".$_GET["master_ip"]."\n";
+    $master_ip="master_ip=".$_GET["master_ip"]."\n";
     $num_columns="num_columns=".$nb."\n";
+	$ttl="ttl=".$_GET['ttl']."\n";
 
     #CONCATENATION DE TABLEAUX BASH---------------------------------------------
     $count=0;
@@ -101,7 +102,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     $zone = NULL;
   }*/
     #CRÉATION DE VARIABLES IMPORTANTES POUR ISOLER PHP & BASH-----------------
-    $statut = '${statut}';
+
     #GÉNÉRATION DU SCRIPT-----------------------------------------------------
       $firstline = "
 #!/bin/bash
@@ -112,46 +113,38 @@ clear
 echo \"========================================================================\"
 echo \"\"
 echo \"
-██╗██████╗ ███████╗██████╗  █████╗ ██╗    ██╗███╗   ██╗
-██║██╔══██╗██╔════╝██╔══██╗██╔══██╗██║    ██║████╗  ██║
-██║██████╔╝███████╗██████╔╝███████║██║ █╗ ██║██╔██╗ ██║
-██║██╔═══╝ ╚════██║██╔═══╝ ██╔══██║██║███╗██║██║╚██╗██║
-██║██║     ███████║██║     ██║  ██║╚███╔███╔╝██║ ╚████║
-╚═╝╚═╝     ╚══════╝╚═╝     ╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═══╝ \"
+██╗██████╗ ███████╗██████� █████╗ ██�   ██╗███�  ██�
+██║██╔══██╗██╔════╝██╔══██╗██╔══██╗██║    ██║████╗  ██�
+██║██████╔╝███████╗██████╔╝███████║██║ █╗ ██║██╔██�██�
+██║██╔═══╝ ╚════██║██╔═══�██╔══██║██║███╗██║██║╚██╗██║
+██║██║     ███████║██�    ██� ██║╚███╔███╔╝██║ ╚████║
+╚═╝╚═╝     ╚══════╝╚═�    ╚═� ╚═�╚══╝╚══╝ ╚═� ╚═══�\"
 echo \"\"\n";
 
 $script="
-
-function begin {
-  statut=$('whoami')
-# Vérification des droits de l'exécuteur du script
-  if [ ".$statut." != root ]
-  then
-    echo \"Vous n'avez pas les droits nécéssaires, contactez votre administrateur ...\"
-    sleep 1
-    exit
-
-  elif [ ".$statut." = root ]
-    then
-    apt-get -y update
-    apt-get -y upgrade
-  fi
-}
-
-begin
-
 #Réglage du DNS en Master
 option=\"master\"
 
-# Récupère la date de création pour générer le fichier Bind
-date_creation=`date +%Y%d`
+# Vérification du statut de l\'utilisateur qui lance le script
+if [ \$statut != root ]
+then
+ 	echo \"\"
+ 	echo \"Vous n\'avez pas les droits nécéssaires, contactez votre administrateur ..\"
+ 	echo \"\"
+ 	sleep 1
+ 	exit
+elif [ \$statut = root ]
+then
+  # Mise � jour
+  apt-get -y update
+  apt-get -y upgrade
 
   # Installation des paquets nécéssaires
   apt-get -y install bind9
   apt-get -y install dnsutils
 
   echo \"\"
-  echo \"---------- Fin de l'installation ----------\"
+  echo \"---------- Fin de l\'installation ----------\"
   echo \"\"
   sleep 2
   echo \"---------- Début de la configuration ---------\"
@@ -160,7 +153,7 @@ date_creation=`date +%Y%d`
   # Mise en place des variables de configuration
   exist=\"\$(grep search /etc/resolv.conf)\"
   ipexist=\"\$(grep \$ip /etc/resolv.conf)\"
-  reverse=\"\$(echo \$ip | awk -F. '{print \$3\".\"\$2\".\"\$1}')\"
+  reverse=\"\$(echo \$ip | awk -F. \'{print \$3\".\"\$2\".\"\$1}\')\"
   zonexist=\"\$(grep \$domain /etc/bind/named.conf.local)\"
   reversexist=\"\$(grep \$reverse /etc/bind/named.conf.local)\"
   conf_exist=\"\$(grep \"listen-on { any; };\" /etc/bind/named.conf.options)\"
@@ -179,21 +172,21 @@ date_creation=`date +%Y%d`
     sed -i -r \"/search.*/a \domain \$domain\" /etc/resolv.conf
   fi
 
-  # Je vérifie que le nameserver n\'ai pas déjà été rentré
+  # Je vérifie que le nameserver n\'ai pas déj� été rentré
   if [ -z \"\$ipexist\" ]
   then
     sed -i -r \"/search.*/a \\nameserver \$ip\" /etc/resolv.conf
   else
    	: ne fais rien
   fi
-  # Je vérifier que les zones n\'aient pas déjà été créées
+  # Je vérifie que les zones n\'aient pas déj� été créées
   if [ -z \"\$zonexist\" ]
   then
-  echo \"
-    zone \"\$domain\" {
-    type \$option;
-    file \"/etc/bind/db.\$domain\";
-    };\" >>/etc/bind/named.conf.local
+echo \"
+zone \"\$domain\" {
+type \$option;
+file \"/etc/bind/db.\$domain\";
+ };\" >>/etc/bind/named.conf.local
   else
     : ne fais rien
   fi
@@ -201,11 +194,11 @@ date_creation=`date +%Y%d`
   # Je fais la même vérification pour la zone reverse
   if [ -z \"\$reversexist\" ]
   then
-    echo \"
-    zone \"\$reverse.in-addr.arpa\" {
-    type \$option;
-    file \"/etc/bind/db.\$reverse.in-addr.arpa\";
-    };\" >>/etc/bind/named.conf.local
+echo \"
+zone \"\$reverse.in-addr.arpa\" {
+type \$option;
+file \"/etc/bind/db.\$reverse.in-addr.arpa\";
+};\" >>/etc/bind/named.conf.local
   else
     : ne fais rien
   fi
@@ -229,23 +222,23 @@ date_creation=`date +%Y%d`
    echo \"
      \$TTL 86400
      @	IN	SOA	\$domain. root.\$domain. (
-     				\$date_creation
+     				\$ttl
      				21600
      				3600
      				64800
-     				86400 )
+     				84600 )
 
      \" >>/etc/bind/db.\$domain
 
-     # La partie des enregsitrements en reverse
+     # La partie des enregistrements en reverse
      echo \"
      \$TTL 86400
      @	IN	SOA	\$domain. root.\$domain. (
-     				\$date_creation
+     				\$ttl
      				21600
      				3600
      				64800
-     				86400 )
+     				84600 )
 
      \" >>/etc/bind/db.\$reverse.in-addr.arpa
 
@@ -253,7 +246,7 @@ date_creation=`date +%Y%d`
 
      for (( i=0; i<\$num_columns; i+=3 ))
      do
-      cuted_ip=\"\$(echo \"\${test_resolution[\$i+2]}\" | awk -F. '{print \$4}')\"
+      cuted_ip=\"\$(echo \"\${test_resolution[\$i+2]}\" | awk -F. \'{print \$4}\')\"
      	value=\"\${test_resolution[\$i+1]}\"
 
      	if [ \"\$value\" == \"NS\" ]
@@ -275,7 +268,7 @@ date_creation=`date +%Y%d`
      `sudo service bind9 restart`
      `sudo service networking restart`
      echo \"\"
-     echo \"---------- Fin de la configuration ----------\"
+     echo \"---------- Fin de la configuration ----------\\\"
      sleep 2
       ";
 

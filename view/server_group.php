@@ -1,4 +1,3 @@
-
 <main role="main">
     <center><div class="container">
        <br><center><h3><strong>Gestion de groupe(s)</strong></h3></center>
@@ -85,15 +84,15 @@
               </div>
             </div>
             <div class="col-sm-6">
-              <div class="card text-center text-white bg-dark">
-                <div class="card-header">
-                  <strong><h4>Réinitialiser les privilèges</h4></strong>
+              <div class="card text-center text-white bg-danger">
+                <div class="card2">
+                  <strong><h4>Modifier les droits d'exécution/d'accès</h4></strong>
                 </div>
-                <div class="card-body bg-secondary">
-                  <h5 class="card2"><br>Attention:<br>Supprime définitivement tous les réglages de droits.<br><br></h5>
+                <div class="card-body ">
+                  <h5 class="card2">Modifier les droits d'exécutions et d'accès peut vous être utile pour sécuriser des zones, faites tout de même bien attention à ne pas rendre des fichiers de commandes inaccessible(/bin) ou des fichiers de configuration inaccesible(/etc) cela pourrait détruire votre système.</h5>
                 </div>
                 <div class="card-footer text-muted">
-                  <a class="btn btn-secondary" href="../controller/redirection.php?action=group&under_action=mod_reset_gen">Réinitialiser</a><br>
+                  <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=add_right&under_actionx=right">Modifier</a>
                 </div>
               </div>
             </div>

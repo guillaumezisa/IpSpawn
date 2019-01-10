@@ -26,12 +26,13 @@ label
 		    <th ><label for="domain"><strong><center>Nom du domaine :</center></strong></label></th>
 		    <th ><label for="master"><strong><center>Nom de la machine master :</center></strong></label></th>
 		    <th ><label for="private_ip"><strong><center>IP privée de la machine master :</center></strong></label></th>
-
+			<th ><label for="ttl"><strong><center>TTL :</center></strong></label></th>
 		  </tr>
 		  <tr>
 		    <th ><center><input type="text" name="domain_name" maxlength="50" required></center></th>
 		    <td ><center><input type="text" name="master_name" maxlength="50" required></center></td>
 		    <td ><center><input type="text" name="master_ip" maxlength="50" required></center></td>
+			<td ><center><input type="text" name="ttl" maxlength="50" required></center></td>
 		  </tr>
 		</table><br>
         <h4><strong>Configuration de vos zones</strong></h4><br>
