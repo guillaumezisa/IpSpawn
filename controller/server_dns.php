@@ -42,7 +42,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
         if($i === 0){
           if($_GET['type_name'][$i] === "NS"){
             $count;
-            $zone = "\" \" \"".$_GET['type_name'][$i]."\" \"".$_GET['hostname'][$y]."\" ";
+            $zone = "\"_\" \"".$_GET['type_name'][$i]."\" \"".$_GET['hostname'][$y]."\" ";
             $y=$y+1;
           }elseif($_GET['type_name'][$i] === "MX"){
             $count=$count+1;
@@ -60,29 +60,64 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
         } else {
           if($_GET['type_name'][$i] === "NS"){
             $count=$count+1;
-            $zone = $zone."\" \" \"".$_GET['type_name'][$i]."\" \"".$_GET['hostname'][$y]."\" ";
+            $zone = $zone."\"_\" \"".$_GET['type_name'][$i]."\" \"".$_GET['hostname'][$y]."\" ";
             $y=$y+1;
           }elseif($_GET['type_name'][$i] === "MX"){
             $count=$count+2;
-            $zone = $zone." \"".$_GET['hostname'][$y]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['hostname'][$y+1]."\" ";
+            $zone = $zone."\"".$_GET['hostname'][$y]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['hostname'][$y+1]."\" ";
             $y=$y+2;
           }elseif($_GET['type_name'][$i] === "A"){
             $count=$count+2;
-            $zone = $zone." \"".$_GET['hostname'][$y]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['hostname'][$y+1]."\" ";
+            $zone = $zone."\"".$_GET['hostname'][$y]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['hostname'][$y+1]."\" ";
             $y=$y+2;
           }elseif($_GET['type_name'][$i] === "CNAME"){
             $count=$count+2;
-            $zone = $zone." \"".$_GET['hostname'][$y]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['hostname'][$y+1]."\" ";
+            $zone = $zone."\"".$_GET['hostname'][$y]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['hostname'][$y+1]."\" ";
             $y=$y+2;
           }
         }
       }
+      echo "<br>".$zone."<br>";
+      function replace($liste, $i){
+        $tmp = array($liste[$i-4], $liste[$i-3], $liste[$i-2]);
+        $liste[$i-4]=$liste[$i-1];
+        $liste[$i-3]=$liste[$i];
+        $liste[$i-2]=$liste[$i+1];
+        $liste[$i-1]=$tmp[0];
+        $liste[$i]=$tmp[1];
+        $liste[$i+1]=$tmp[2];
+        return $liste;
+      }
+      $liste = explode(" ", $zone);
+      $trigger = false;
+      
+      while($trigger === false){
+        $trigger = true;
+        for($i=4;$i<count($liste);$i=$i+3){
+          if($liste[$i] === "\"NS\"" && $liste[$i-3] !== "\"NS\""){
+            $liste = replace($liste, $i);
+            $trigger = false;
+          }
+          if($liste[$i] === "\"A\"" && $liste[$i-3] !== "\"A\"" && $liste[$i-3] !== "\"NS\""){
+            $liste = replace($liste, $i);
+            $trigger = false;
+          }
+          if($liste[$i] === "\"CNAME\""  && $liste[$i-3] !== "\"A\"" && $liste[$i-3] !== "\"NS\"" && $liste[$i-3] !== "\"CNAME\""){
+            $liste = replace($liste, $i);
+            $trigger = false;
+          }
+          if($liste[$i] === "\"MX\"" && $liste[$i-3] !== "\"MX\""  && $liste[$i-3] !== "\"A\"" && $liste[$i-3] !== "\"NS\"" && $liste[$i-3] !== "\"CNAME\""){
+            $liste = replace($liste, $i);
+            $trigger = false;
+          }
+        }
+      }
+      $zone = implode(" ", $liste);
+      $zone = str_replace("\"_\"", "\"\"", $zone);
       $zone ="test_resolution = (".$zone.")\n";
     } else {
       $zone = NULL;
     }
-    
-    echo $zone;
 
       /*for( $i=0 ;$i<$nb ;$i++){
       if ($i === 0 ){
