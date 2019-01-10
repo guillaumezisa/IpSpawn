@@ -133,7 +133,7 @@ date_creation=`date +%Y%d`
   else
    	: ne fais rien
   fi
-  # Je vérifier que les zones n\'aient pas déjà été créées
+  # Je vérifie que les zones n\'aient pas déjà été créées
   if [ -z \"\$zonexist\" ]
   then
   echo \"
@@ -184,7 +184,7 @@ date_creation=`date +%Y%d`
 
      \" >>/etc/bind/db.\$domain
 
-     # La partie des enregsitrements en reverse
+     # La partie des enregistrements en reverse
      echo \"
      \$TTL 86400
      @	IN	SOA	\$domain. root.\$domain. (
