@@ -26,7 +26,7 @@ label
 		    <th ><label for="domain"><strong><center>Nom du domaine :</center></strong></label></th>
 		    <th ><label for="master"><strong><center>Nom de la machine master :</center></strong></label></th>
 		    <th ><label for="private_ip"><strong><center>IP privée de la machine master :</center></strong></label></th>
-
+			<th ><label for="ttl"><strong><center>TTL :</center></strong></label></th>
 		  </tr>
 		  <tr>
 		    <th ><center><input type="text" name="domain_name" maxlength="50" required></center></th>
