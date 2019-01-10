@@ -56,8 +56,6 @@ include("../view/guide_execution.php");
       $password ='${psswrd[$y]}';
       $tmp ='$tmp';
 
-    echo $username;
-
       #GÉNÉRATION DU SCRIPT-----------------------------------------------------
       $firstline = "
       #!/bin/bash
