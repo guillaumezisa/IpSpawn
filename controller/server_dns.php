@@ -77,7 +77,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
           }
         }
       }
-      echo "<br>".$zone."<br>";
+
       function replace($liste, $i){
         $tmp = array($liste[$i-4], $liste[$i-3], $liste[$i-2]);
         $liste[$i-4]=$liste[$i-1];
