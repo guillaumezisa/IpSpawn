@@ -4,7 +4,7 @@
     <div class='col-sm-10'>
       <div class='text-light bg-info' style='width:100%;border:solid black 1.5px;border-radius:4px; margin: 30px auto;'>
         <br><h4>Mode d'emploi : </h4>
-        La modification du propriétaire(utilisateur:groupe) d'un fichier <br>ou bien d'un dossier permet au propriétaire d'avoir des droits supérieurs sur les fichiers lui appartenant.<br>
+        La modification du propriétaire (utilisateur:groupe) d'un fichier <br>ou bien d'un dossier permet au propriétaire d'avoir des droits supérieurs sur les fichiers lui appartenant.<br>
         Vous allez donc avoir besoin d'un utilisateur propriétaire et d'un groupe ( dans lequel l'utilisateur est ).<br>
         Veuillez l'écrire sous la forme suivante: <br><br>utilisateur:groupe<br><br>
 
@@ -13,5 +13,6 @@
       </div>
     </div>
   </div>
-<div class='col-sm-1'></div>
+  <div class='col-sm-1'>
+  </div>
 </div>

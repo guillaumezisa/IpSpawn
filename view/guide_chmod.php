@@ -11,7 +11,6 @@
             <th style='border: 1px solid black'>Octal</th>
             <th style='border: 1px solid black'>Chiffre de protection</th>
             <th style='border: 1px solid black'>Permissions</th>
-
           </tr>
           <tr>
             <th style='border: 1px solid black'>000</th>
@@ -68,7 +67,7 @@
             <td style='border: 1px solid black'>7</td>
           </tr>
         </table><br>
-        Si vous voulez changer les droits du dossier, vous devez ouvrir un terminal puis allez dans le dossier et tapez <bold>pwd</bold> vous aurez le chemin.<br><br>
+        Si vous voulez changer les droits du dossier, vous devez ouvrir un terminal puis aller dans le dossier et tapez <bold>pwd</bold> vous aurez le chemin.<br><br>
         Pour les fichiers mettez-vous dans le dossier puis faites un <bold>pwd</bold> copier le chemin ici et rajouter le nom du fichier derrière le <bold>/.</bold><br><br>
       </div>
     </div>

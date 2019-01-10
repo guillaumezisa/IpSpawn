@@ -1,5 +1,3 @@
-<?php
-echo"
 <div class='container' style='margin-top:-4%'>
   <div class='row'>
     <div class='col-sm-1'></div>
@@ -11,7 +9,7 @@ echo"
       </div>
     </div>
   </div>
-<div class='col-sm-1'></div>
+  <div class='col-sm-1'>
+  </div>
 </div>
-</div>";
-?>
+</div>

@@ -1,10 +1,14 @@
-<div class="text-light bg-info" style="width:100%;border:solid black 1.5px;border-radius:4px; margin: 30px auto;">
-  <br><h1>Prérequis : </h1> <h5>
-<br>	- Avoir les ports 25 et 143 d'ouverts sur sa box.
-<br>	- Avoir une machine avec une IP FIXE disposé à héberger le service.
-<br>	- Être administrateur du système.
-<br>	- Avoir un enregistrement DNS MX pointant sur la machine hôte du serveur.
-<br>	- Avoir la liste de ses utilisateurs du service de messagerie.
-<br>	- Ne pas oublier de donner les droits d'exécution au script (chmod +x "nomduscript").</h5>
-<br>
-</div>
+<div class='container' style='margin-top:-4%'></center>
+  <div class='text-light bg-info' style='width:80%;border:solid black 1.5px;border-radius:4px; margin: 30px auto; mar'><br>
+    <h5 style='margin-left:10%'>
+      Un serveur mail vous permettra d'envoyer et de recevoir des mails<br>
+      de n'importe ou en passant par le serveur.<br><br>
+      Pour que l'installation soit un succès vous devrez ouvrir certain port via la configuration <br>
+      de votre routeur ( option transfère de ports ),
+      ouvrir les ports 25 ( smtp ) et 143 ( imap ),<br>
+      permettant l'envoie de mail de l'autre bout du monde.<br><br>
+      Il faut également mettre en place un serveur dns ( enregistrement MX )<br>
+      de manière a bien rediriger les mail vers le serveur mail.<br><br>
+    </h5>
+  </div>
+</div><center>
