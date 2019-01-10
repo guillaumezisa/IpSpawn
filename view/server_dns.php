@@ -66,28 +66,42 @@ label
     var text_q = document.createElement('span');
     text_q.setAttribute('id','span'+ count);
     text_q.textContent = "Nom de l'hôte : ";
+
     var input_q = document.createElement('input');
-	input_q.setAttribute('disabled','true');
+	  input_q.setAttribute('disabled','true');
     input_q.type = "text";
     input_q.name ="hostname[]";
     input_q.setAttribute('class','firstInp');
     input_q.required = true;
+
+    var input_x = document.createElement('input');
+	  input_x.setAttribute('disabled','true');
+    input_x.type = "text";
+    input_x.name ="fqdn[]";
+    input_x.setAttribute('class','firstInp');
+    input_x.required = true;
+
     var input_b = document.createElement('input');
     input_b.type = "text";
     input_b.name ="name[]";
     input_b.required = true;
+
     var text_a = document.createElement('span');
     text_a.setAttribute('id','spanInput'+ count);
     text_a.textContent = " FQDN : ";
     var input_c = document.createElement('input');
     var input_a = document.createElement('input');
     var br = document.createElement('br');
+
+    // Création du SELECT 
     var text_b = document.createElement('select');
     text_b.setAttribute('class','selectMach');
     text_b.setAttribute('onchange','checkSelect()');
     text_b.name = "type_name[]";
     input_a.type = "text";
     input_a.setAttribute('class','secInp');
+
+    // Options du select
     var option0 = document.createElement('option');
     option0.value = "NS";
     option0.innerText = "NS";
@@ -96,7 +110,7 @@ label
     option1.value = "MX";
     option1.innerText = "MX";
     text_b.append(option1);
-	var option2 = document.createElement('option'); // Bloc à copier coller pour ajout d'options
+	  var option2 = document.createElement('option'); // Bloc à copier coller pour ajout d'options
     option2.value = "A";
     option2.innerText = "A";
     text_b.append(option2);
@@ -104,12 +118,16 @@ label
     option3.value = "CNAME";
     option3.innerText = "CNAME";
     text_b.append(option3 );
+
+    // Restrictions
     var text_3 = document.createTextNode(' Type d\'enregistrement : ');
     input_b.pattern = "^[\(\)a-zA-Z0-9,-_ ]{0,}$";
     input_a.name ="hostname[]";
     input_a.pattern = "^[A-Za-z0-9/.]+[.]{1}$";
     input_a.setAttribute('id','submit' + count);
     input_a.required = true;
+
+    // Application du js
     var parentDiv = document.getElementById("JS");
     parentDiv.append(div);
     div.append(text_q);
@@ -118,6 +136,9 @@ label
     div.append(text_b);
     div.append(text_a);
     div.append(input_a);
+    div.append(text_x);
+    div.append(input_x);
+
     count = count + 1;
   }
 

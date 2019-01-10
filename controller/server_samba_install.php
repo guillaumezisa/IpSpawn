@@ -51,30 +51,7 @@ echo \"
         ╚═╝╚═╝     ╚══════╝╚═╝     ╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═══╝ \"
 echo \"\"\n";
 
-      if(isset($_GET['dossier']) && isset($_GET['group']) && isset($_GET['password'])){
-        $nb = count($_GET['dossier']);
-
-        #CONCATENATION DE TABLEAUX BASH---------------------------------------------
-        for( $i=0 ;$i<$nb ;$i++){
-          if ($i === 0 ){
-            $dossiers = $_GET['dossier'][$i];
-            $passwords = $_GET['password'][$i];
-            $groups= $_GET['group'][$i];
-          } else {
-            $dossiers=$dossiers." ".$_GET['dossier'][$i];
-            $passwords=$passwords." ".$_GET['password'][$i];
-            $groups=$groups." ".$_GET['group'][$i];
-          }
-        }
-      $dossiers="dossier=(".$dossiers.")\n";
-      $groups="group=(".$groups.")\n";
-      $passwords="password=(".$passwords.")\n";
-
-      $password ='${password[$y]}';
-      $group = '${group[$y]}';
-      $dossier = '${dossier[$y]}';
-
-      $script="
+$script="
 function begin() {
   statut=$('whoami')
   # Vérification des droits de l'exécuteur du script
@@ -105,7 +82,32 @@ then
   chmod 777 ".$path."/commun
   echo -e \"\n[commun]\n  comment = Dossier commun à tous\n path = ".$path."/commun\n log file = /var/log/samba/log.commun\n  max log size = 100\nbrowseable = yes\n  hide dot files = yes\n  read only = no\n  public = yes\n  writable = yes\n  create mode = 0775\n  printable = no\n\"  >> /etc/samba/smb.conf
   systemctl restart smbd
+      ";
 
+      if(isset($_GET['dossier']) && isset($_GET['group']) && isset($_GET['password'])){
+        $nb = count($_GET['dossier']);
+
+        #CONCATENATION DE TABLEAUX BASH---------------------------------------------
+        for( $i=0 ;$i<$nb ;$i++){
+          if ($i === 0 ){
+            $dossiers = $_GET['dossier'][$i];
+            $passwords = $_GET['password'][$i];
+            $groups= $_GET['group'][$i];
+          } else {
+            $dossiers=$dossiers." ".$_GET['dossier'][$i];
+            $passwords=$passwords." ".$_GET['password'][$i];
+            $groups=$groups." ".$_GET['group'][$i];
+          }
+        }
+      $dossiers="dossier=(".$dossiers.")\n";
+      $groups="group=(".$groups.")\n";
+      $passwords="password=(".$passwords.")\n";
+
+      $password ='${password[$y]}';
+      $group = '${group[$y]}';
+      $dossier = '${dossier[$y]}';
+      
+  $script2="
   for ((y=0;y<".$nb.";y++))
   do
     cat /etc/group | awk -F\":\" '{print$1}' | grep -w ".$group."
@@ -127,13 +129,11 @@ then
   systemctl restart smbd
 fi
 ";
-
-    }
-
+      }
   #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
 
   if(isset($dossiers) || isset($groups) || isset($passwords)){
-    $new_script = $firstline . $dossiers . $groups . $passwords . $script . $rm;
+    $new_script = $firstline . $dossiers . $groups . $passwords . $script . $script2 . $rm;
   } else {
     $new_script = $firstline . $script . $rm;
   }

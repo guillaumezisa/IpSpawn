@@ -25,18 +25,71 @@ include("../view/guide_execution.php");
 #-------------------------------------------------------------------------------
 # GÉNÉRATION DU SCRIPT
 #-------------------------------------------------------------------------------
+echo "<br>hostname : ";
+print_r($_GET['hostname']);
+echo "<br> type : ";
+print_r($_GET['type_name']);
+echo "<br>";
 
 if(isset($_GET['action']) && isset($_GET['under_action'])){
   if(isset($_GET['master_name']) && isset($_GET['domain_name'])  && isset($_GET['master_ip'])){
-    $nb = count($_GET['hostname']);
+    $nb = count($_GET['type_name']);
     $domain_name="domain=".$_GET['domain_name'].".\n";
     $master_name="master_name=".$_GET['master_name']."\n";
     $master_ip="ip=".$_GET["master_ip"]."\n";
     $num_columns="num_columns=".$nb."\n";
 
     #CONCATENATION DE TABLEAUX BASH---------------------------------------------
-    if(isset($_GET['private_ip'])){
-    for( $i=0 ;$i<$nb ;$i++){
+    $count=0;
+    $y=0;
+    if(isset($_GET['hostname'])){
+      for($i=0;$i<$nb;$i++){
+        if($i === 0){
+          if($_GET['type_name'][$i] === "NS"){
+            $count;
+            $zone = "\" \" \"".$_GET['type_name'][$i]."\" \"".$_GET['hostname'][$y]."\" ";
+            $y=$y+1;
+          }elseif($_GET['type_name'][$i] === "MX"){
+            $count=$count+1;
+            $zone = "\"".$_GET['hostname'][$y]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['hostname'][$y+1]."\" ";
+            $y=$y+2;
+          }elseif($_GET['type_name'][$i] === "A"){
+            $count=$count+1;
+            $zone = "\"".$_GET['hostname'][$y]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['hostname'][$y+1]."\" ";
+            $y=$y+2;
+          }elseif($_GET['type_name'][$i] === "CNAME"){
+            $count=$count+1;
+            $zone = "\"".$_GET['hostname'][$y]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['hostname'][$y+1]."\" ";
+            $y=$y+2;
+          }
+        } else {
+          if($_GET['type_name'][$i] === "NS"){
+            $count=$count+1;
+            $zone = $zone."\" \" \"".$_GET['type_name'][$i]."\" \"".$_GET['hostname'][$y]."\" ";
+            $y=$y+1;
+          }elseif($_GET['type_name'][$i] === "MX"){
+            $count=$count+2;
+            $zone = $zone." \"".$_GET['hostname'][$y]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['hostname'][$y+1]."\" ";
+            $y=$y+2;
+          }elseif($_GET['type_name'][$i] === "A"){
+            $count=$count+2;
+            $zone = $zone." \"".$_GET['hostname'][$y]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['hostname'][$y+1]."\" ";
+            $y=$y+2;
+          }elseif($_GET['type_name'][$i] === "CNAME"){
+            $count=$count+2;
+            $zone = $zone." \"".$_GET['hostname'][$y]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['hostname'][$y+1]."\" ";
+            $y=$y+2;
+          }
+        }
+      }
+      $zone ="test_resolution = (".$zone.")\n";
+    } else {
+      $zone = NULL;
+    }
+    
+    echo $zone;
+
+      /*for( $i=0 ;$i<$nb ;$i++){
       if ($i === 0 ){
         $zone = "\"".$_GET['hostname'][$i]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['private_ip'][$i]."\" ";
       } else {
@@ -46,7 +99,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     $zone ="test_resolution = (".$zone.")\n";
   } else {
     $zone = NULL;
-  }
+  }*/
     #CRÉATION DE VARIABLES IMPORTANTES POUR ISOLER PHP & BASH-----------------
     $statut = '${statut}';
     #GÉNÉRATION DU SCRIPT-----------------------------------------------------
