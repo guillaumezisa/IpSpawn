@@ -13,7 +13,7 @@
 
 #GÉNÉRATION DES VARIABLES DE FICHIERS--------------------------------------------
 $file_path="../script/server_samba/server_samba".session_id().".sh";
-$file_name="server_samba.sh";
+$file_name="script_server_samba.sh";
 #VÉRIFICATION DE L'OPTION D'AUTO-DESTRUCTION------------------------------------
 if (isset( $_GET["auto_destruction"] )){ $rm = "rm ".$file_name; } else { $rm = ""; }
 #AJOUT DU LIEN DE TÉLÉCHARGEMENT & GUIDE----------------------------------------
