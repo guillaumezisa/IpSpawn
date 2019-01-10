@@ -5,19 +5,11 @@
     Pour mettre en place votre serveur DNS veillez à avoir tous vos serveurs sur ip fixe,<br>
     ainsi qu'un un nom de domaine. Votre serveur principal DNS sera votre DNS master,<br>
     par la suite nous vous demanderons de créer vos zones :<br><br>
-    <table style='border-collapse: collapse;'>
-      <tr>
-        <th style='border: 1px solid black'>NS</th>
-        <th style='border: 1px solid black'>A</th>
-        <th style='border: 1px solid black'>CNAME</th>
-        <th style='border: 1px solid black'>MX</th>
-      </tr>
-      <tr>
-        <td style='border: 1px solid black'>Un enregistrement NS identifie les serveurs de noms de la zone hébergée.</td>
-        <td style='border: 1px solid black'>Pointe le nom de l'hôte vers une adresse IP.</td>
-        <td style='border: 1px solid black'>Pointe le nom de l'hôte vers un autre nom d'hôte.</td>
-        <td style='border: 1px solid black'>Pointe le nom de l'hôte vers l'hôte d'un serveur de messagerie électronique.</td>
-      </tr>
-    </table><br></h5><br>
+
+        <b style="color:red">NS</b> :Un enregistrement NS identifie les serveurs de noms de la zone hébergée.<br>
+        <b style="color:red">A</b> :Pointe le nom de l'hôte vers une adresse IP.<br>
+        <b style="color:red">CNAME</b> :Pointe le nom de l'hôte vers un autre nom d'hôte.</br>
+        <b style="color:red">MX</b> :Pointe le nom de l'hôte vers l'hôte d'un serveur de messagerie électronique.<br><br>
+
 </div>
 </div><br>
