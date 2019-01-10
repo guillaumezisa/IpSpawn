@@ -98,15 +98,15 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
             $liste = replace($liste, $i);
             $trigger = false;
           }
-          if($liste[$i] === "\"A\"" && $liste[$i-3] !== "\"A\"" && $liste[$i-3] !== "\"NS\""){
+          if($liste[$i] === "\"MX\"" && $liste[$i-3] !== "\"MX\"" && $liste[$i-3] !== "\"NS\""){
             $liste = replace($liste, $i);
             $trigger = false;
           }
-          if($liste[$i] === "\"CNAME\""  && $liste[$i-3] !== "\"A\"" && $liste[$i-3] !== "\"NS\"" && $liste[$i-3] !== "\"CNAME\""){
+          if($liste[$i] === "\"A\""  && $liste[$i-3] !== "\"A\"" && $liste[$i-3] !== "\"NS\"" && $liste[$i-3] !== "\"MX\""){
             $liste = replace($liste, $i);
             $trigger = false;
           }
-          if($liste[$i] === "\"MX\"" && $liste[$i-3] !== "\"MX\""  && $liste[$i-3] !== "\"A\"" && $liste[$i-3] !== "\"NS\"" && $liste[$i-3] !== "\"CNAME\""){
+          if($liste[$i] === "\"CNAME\"" && $liste[$i-3] !== "\"MX\""  && $liste[$i-3] !== "\"A\"" && $liste[$i-3] !== "\"NS\"" && $liste[$i-3] !== "\"CNAME\""){
             $liste = replace($liste, $i);
             $trigger = false;
           }
@@ -119,6 +119,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
       $zone = NULL;
     }
 
+    echo $zone;
       /*for( $i=0 ;$i<$nb ;$i++){
       if ($i === 0 ){
         $zone = "\"".$_GET['hostname'][$i]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['private_ip'][$i]."\" ";
