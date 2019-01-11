@@ -110,24 +110,24 @@ then
 
   $script2="
   for ((y=0;y<".$nb.";y++))
-  do
-    cat /etc/group | awk -F\":\" '{print$1}' | grep -w ".$group."
-    if [ $? == 0 ];
-    then
-      echo \"'".$group."' déjà existant.\"
-    else
-      groupadd ".$group."
-    fi
+do
+  cat /etc/group | awk -F\":\" '{print$1}' | grep -w ".$group."
+  if [ $? == 0 ];
+  then
+    echo \"'".$group."' déjà existant.\"
+  else
+    groupadd ".$group."
+  fi
 
-    # Création du Répertoire partagé
-    mkdir -p ".$path."/".$dossier."
+  # Création du Répertoire partagé
+  mkdir -p ".$path."/".$dossier."
 
-    # Application des Droits au dossier
-    chown -R root:".$group." ".$path."/".$dossier."
-    chmod -R 770 ".$path."/".$dossier."
-    echo -e \"[".$dossier."]\n  comment = Dossier du group ".$group."\n path = ".$path."/".$dossier."\n log file = /var/log/samba/log.".$dossier."\n  max log size = 100\n  hide dot files = yes\n  guest ok = no\n guest only = no\n write list = @".$group."\n  read list = \n  valid users = @".$group."\n\"  >> /etc/samba/smb.conf
-  done
-  service smbd restart
+  # Application des Droits au dossier
+  chown -R root:".$group." ".$path."/".$dossier."
+  chmod -R 770 ".$path."/".$dossier."
+  echo -e \"[".$dossier."]\n  comment = Dossier du group ".$group."\n path = ".$path."/".$dossier."\n log file = /var/log/samba/log.".$dossier."\n  max log size = 100\n  hide dot files = yes\n  guest ok = no\n guest only = no\n write list = @".$group."\n  read list = \n  valid users = @".$group."\n\"  >> /etc/samba/smb.conf
+done
+service smbd restart
 fi
 ";
       }
