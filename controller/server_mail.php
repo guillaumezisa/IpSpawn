@@ -248,6 +248,7 @@ fi\n";
 
       #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
       $new_script = $firstline . $username . $psswrd . $script . $rm;
+      echo "gggggggggggggggggg";
       $file = fopen($file_path, 'w+');
       fputs($file,$new_script);
 
