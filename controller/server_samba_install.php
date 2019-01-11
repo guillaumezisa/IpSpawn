@@ -76,13 +76,13 @@ then
   cd /etc/samba
   cp /etc/samba/smb.conf /etc/samba/smb.conf.save
   grep -v -E \"^#|^;\" /etc/samba/smb.conf.save | grep . > /etc/samba/smb.conf
-  systemctl restart smbd
+  service smbd restart
   mkdir ".$path."
   mkdir ".$path."/commun
   chmod 755 ".$path."
   chmod 777 ".$path."/commun
   echo -e \"\n[commun]\n  comment = Dossier commun à tous\n path = ".$path."/commun\n log file = /var/log/samba/log.commun\n  max log size = 100\nbrowseable = yes\n  hide dot files = yes\n  read only = no\n  public = yes\n  writable = yes\n  create mode = 0775\n  printable = no\n\"  >> /etc/samba/smb.conf
-  systemctl restart smbd
+  service smbd restart
       ";
 
       if(isset($_GET['dossier']) && isset($_GET['group']) && isset($_GET['password'])){
@@ -127,7 +127,7 @@ then
     chmod -R 770 ".$path."/".$dossier."
     echo -e \"[".$dossier."]\n  comment = Dossier du group ".$group."\n path = ".$path."/".$dossier."\n log file = /var/log/samba/log.".$dossier."\n  max log size = 100\n  hide dot files = yes\n  guest ok = no\n guest only = no\n write list = @".$group."\n  read list = \n  valid users = @".$group."\n\"  >> /etc/samba/smb.conf
   done
-  systemctl restart samba
+  service smbd restart
 fi
 ";
       }
