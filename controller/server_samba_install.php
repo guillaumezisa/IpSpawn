@@ -73,6 +73,7 @@ then
   # Installation des paquets samba
   sudo apt-get -y install samba
   sudo apt-get -y install samba-common-bin
+  cd /etc/samba
   cp /etc/samba/smb.conf /etc/samba/smb.conf.save
   grep -v -E \"^#|^;\" /etc/samba/smb.conf.save | grep . > /etc/samba/smb.conf
   systemctl restart smbd
