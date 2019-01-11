@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Mettre l'ip d'une machine en statique</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a><br><br>
   </div>
   <section class="jumbotron ">
@@ -44,12 +44,14 @@ clear
 echo \"========================================================================\"
 echo \"\"
 echo \"
-      ██╗██████╗ ███████╗██████╗  █████╗ ██╗    ██╗███╗   ██╗
-      ██║██╔══██╗██╔════╝██╔══██╗██╔══██╗██║    ██║████╗  ██║
-      ██║██████╔╝███████╗██████╔╝███████║██║ █╗ ██║██╔██╗ ██║
-      ██║██╔═══╝ ╚════██║██╔═══╝ ██╔══██║██║███╗██║██║╚██╗██║
-      ██║██║     ███████║██║     ██║  ██║╚███╔███╔╝██║ ╚████║
-      ╚═╝╚═╝     ╚══════╝╚═╝     ╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═══╝ \"
+        ██ ██████  ██████ ██████  ██████  ██    ██ ██     ██
+        ██ ██   ██ ██     ██   ██ ██   ██ ██    ██ ████   ██
+        ██ ██████  ██████ ██████  ███████ ██    ██ ██ ██  ██
+        ██ ██          ██ ██      ██   ██ ██ ██ ██ ██  ██ ██
+        ██ ██      ██████ ██      ██   ██  ██  ██  ██   ████
+\"
+echo \"\"
+echo \"========================================================================\"
 echo \"\"
 \n";
     $script="
