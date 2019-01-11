@@ -6,8 +6,10 @@
        <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
       </p>
     </div></center>
-
     <section class="jumbotron ">
+      <?php
+        include("../view/guide_group_right.php");
+      ?>
       <div class="ml-2"><center>
         <div class="container">
           <div class="row">
