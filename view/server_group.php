@@ -89,7 +89,7 @@
                   <strong><h4>Modifier les droits d'exécution/d'accès</h4></strong>
                 </div>
                 <div class="card-body bg-secondary">
-                  <h5 class="card2">Modifier les droits d'exécutions et d'accès peut vous être utile pour sécuriser des zones, faites tout de même bien attention à ne pas rendre des fichiers de commandes inaccessible(/bin) ou des fichiers de configuration inaccesible(/etc) cela pourrait détruire votre système.</h5>
+                  <h5 class="card2">Modifier les droits d'exécution et d'accès peut vous être utile pour sécuriser des zones, faites tout de même bien attention à ne pas rendre des fichiers de commandes inaccessible(/bin) ou des fichiers de configuration inaccesible(/etc) cela pourrait détruire votre système.</h5>
                 </div>
                 <div class="card-footer text-muted">
                   <a class="btn btn-secondary" href="../controller/redirection.php?action=group&under_action=add_right&under_actionx=right">Modifier</a>
