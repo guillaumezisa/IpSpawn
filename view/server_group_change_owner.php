@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
-    <h3><strong>Modification des propriétaires de fichier / repertoires</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
+    <h3><strong>Modification des propriétaires de fichier / répertoires</strong></h3>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -11,7 +11,7 @@
         <input type="hidden" name="action" value="group">
         <input type="hidden" name="under_action" value="add_right">
         <input type="hidden" name="under_actionx" value="gen_owner">
-        <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter une modification de propriétaire</button>
+        <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter une modification de propriétaires</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier propriétaire</button><br><br>
         <h6><input type="checkbox" name="recursion" value= "yes" > Activer la récursivité ( exécute pour tous les fichiers de l'arborescence )<br></div>
         <input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6><br>

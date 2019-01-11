@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Gestion du serveur DNS</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte à outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte � outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -144,11 +144,11 @@ clear
 echo \"========================================================================\"
 echo \"\"
 echo \"
-██ ██████  ███████ ██████  ███████ ██     ██ ███    ██
+██ ██████  ██████�██████  ██████�██     ██ ██�   ██
 ██ ██   ██ ██      ██   ██ ██   ██ ██     ██ ████   ██
-██ ██████  ███████ ██████  ███████ ██  █  ██ ██ ██  ██
-██ ██           ██ ██      ██   ██ ██ ███ ██ ██  ██ ██
-██ ██      ███████ ██      ██   ██  ███ ███  ██   ████\"
+██ ██████  ██████�██████  ██████�██  � ██ ██ ██  ██
+██ ██           ██ ██      ██   ██ ██ ██�██ ██  ██ ██
+██ ██      ██████�██      ██   ██  ██�██� ██   ████\"
 
 echo \"\"\n";
 
@@ -208,14 +208,14 @@ begin
     sed -i -r \"/search.*/a \domain \$domain\" /etc/resolv.conf
   fi
 
-  # Je vérifie que le nameserver n\'ai pas déj� été rentré
+  # Je vérifie que le nameserver n\'ai pas déj� été rentré
   if [ -z \"\$ipexist\" ]
   then
     sed -i -r \"/search.*/a \\nameserver \$ip\" /etc/resolv.conf
   else
    	: ne fais rien
   fi
-  # Je vérifie que les zones n\'aient pas déj� été créées
+  # Je vérifie que les zones n\'aient pas déj� été créées
   if [ -z \"\$zonexist\" ]
   then
 echo \"
@@ -256,7 +256,7 @@ file \\\"/etc/bind/db.\$reverse.in-addr.arpa\\\";
   # Contenu du fichier d\'enregistrement
 
    echo -e \"\"\\\$TTL\" 86400\n@	IN	SOA	\$domain root.\$domain (
-     				\$ttl
+     				201901
      				21600
      				3600
      				64800
@@ -266,7 +266,7 @@ file \\\"/etc/bind/db.\$reverse.in-addr.arpa\\\";
 
      # La partie des enregistrements en reverse
      echo -e \"\"\\\$TTL\" 86400\n@ IN SOA \$domain root.\$domain (
-     				\$ttl
+     				201902
      				21600
      				3600
      				64800
