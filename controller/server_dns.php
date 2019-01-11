@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Gestion du serveur DNS</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte � outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -119,8 +119,6 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     } else {
       $zone = NULL;
     }
-    echo $zone;
-
       /*for( $i=0 ;$i<$nb ;$i++){
       if ($i === 0 ){
         $zone = "\"".$_GET['hostname'][$i]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['private_ip'][$i]."\" ";
@@ -144,12 +142,14 @@ clear
 echo \"========================================================================\"
 echo \"\"
 echo \"
-██ ██████  ██████�██████  ██████�██     ██ ██�   ██
-██ ██   ██ ██      ██   ██ ██   ██ ██     ██ ████   ██
-██ ██████  ██████�██████  ██████�██  � ██ ██ ██  ██
-██ ██           ██ ██      ██   ██ ██ ██�██ ██  ██ ██
-██ ██      ██████�██      ██   ██  ██�██� ██   ████\"
-
+██ ██████  ██████ ██████  ██████  ██    ██ ██     ██
+██ ██   ██ ██     ██   ██ ██   ██ ██    ██ ████   ██
+██ ██████  ██████ ██████  ███████ ██    ██ ██ ██  ██
+██ ██          ██ ██      ██   ██ ██ ██ ██ ██  ██ ██
+██ ██      ██████ ██      ██   ██  ██  ██  ██   ████
+\"
+echo \"\"
+echo \"========================================================================\"
 echo \"\"\n";
 
 $script="
@@ -208,14 +208,14 @@ begin
     sed -i -r \"/search.*/a \domain \$domain\" /etc/resolv.conf
   fi
 
-  # Je vérifie que le nameserver n\'ai pas déj� été rentré
+  # Je vérifie que le nameserver n\'ai pas déj� été rentré
   if [ -z \"\$ipexist\" ]
   then
     sed -i -r \"/search.*/a \\nameserver \$ip\" /etc/resolv.conf
   else
    	: ne fais rien
   fi
-  # Je vérifie que les zones n\'aient pas déj� été créées
+  # Je vérifie que les zones n\'aient pas déj� été créées
   if [ -z \"\$zonexist\" ]
   then
 echo \"
