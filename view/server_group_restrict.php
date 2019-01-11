@@ -6,8 +6,8 @@
 </style>
 <main role="main"><center>
   <div class="container"><br>
-    <h3><strong>Ajout de restriction(s)ou de droit(s) a un groupe du sudoers</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
+    <h3><strong>Ajout de restriction(s)ou de droit(s) à un groupe du sudoers</strong></h3>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron">
@@ -25,7 +25,7 @@
 		<h4><strong>Restriction de commande(s)</strong></h4>
 		<br>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter une commande à restreindre</button>
-        <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer la derniere commande</button><br><br>
+        <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer la dernière commande</button><br><br>
         </div>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
         <input type="hidden" name="email" value="">
@@ -60,7 +60,7 @@
     var br6 = document.createElement('br');
     var text_q = document.createTextNode(' Commande : ');
     var text_mdp = document.createTextNode(' Les membres du groupes devront entrer le mot de passe pour utiliser cette commande : ');
-    var text_exe = document.createTextNode(' La commande ne pourra pas être exécuter par les membres du groupes : ');
+    var text_exe = document.createTextNode(' La commande ne pourra pas être exécuter par les membres du groupe : ');
     var text_a = document.createTextNode(' Oui: ');
     var text_b = document.createTextNode(' Non: ');
     var text_c = document.createTextNode(' Oui: ');

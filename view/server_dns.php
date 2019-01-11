@@ -8,7 +8,7 @@ label
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Installation d'un DNS</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boite à outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div><br></center>
   <section class="jumbotron ">
@@ -94,7 +94,7 @@ label
     var input_a = document.createElement('input');
     var br = document.createElement('br');
 
-    // Création du SELECT 
+    // Création du SELECT
     var text_b = document.createElement('select');
     text_b.setAttribute('class','selectMach');
     text_b.setAttribute('onchange','checkSelect()');
