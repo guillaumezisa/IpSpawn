@@ -28,12 +28,13 @@ include("../view/guide_execution.php");
 if(isset($_GET['action']) && isset($_GET['under_action'])){
   if(isset($_GET['master_name']) && isset($_GET['domain_name'])  && isset($_GET['master_ip']) && isset($_GET['ttl'])){
     $nb = count($_GET['type_name']);
-    $domain_name="domain_name=".$_GET['domain_name'].".\n";
-    $master_name="master_name=".$_GET['master_name']."\n";
-    $master_ip="master_ip=".$_GET["master_ip"]."\n";
-    $num_columns="num_columns=".$nb."\n";
-	$ttl="ttl=".$_GET['ttl']."\n";
-
+    $domain_name="domain=".$_GET['domain_name'].".\n";
+    $master_name="hostname=".$_GET['master_name']."\n";
+    $master_ip="ip=".$_GET["master_ip"]."\n";
+    $num_columns=$nb*3;
+    $num_columns="num_columns=".$num_columns."\n";
+    $ttl="ttl=".$_GET['ttl']."\n";
+    
     #CONCATENATION DE TABLEAUX BASH---------------------------------------------
     $count=0;
     $y=0;
@@ -114,12 +115,12 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
       }
       $zone = implode(" ", $liste);
       $zone = str_replace("\"_\"", "\"\"", $zone);
-      $zone ="test_resolution = (".$zone.")\n";
+      $zone ="test_resolution=(".$zone.")\n";
     } else {
       $zone = NULL;
     }
-
     echo $zone;
+
       /*for( $i=0 ;$i<$nb ;$i++){
       if ($i === 0 ){
         $zone = "\"".$_GET['hostname'][$i]."\" \"".$_GET['type_name'][$i]."\" \"".$_GET['private_ip'][$i]."\" ";
@@ -143,12 +144,12 @@ clear
 echo \"========================================================================\"
 echo \"\"
 echo \"
-██╗██████╗ ███████╗██████� █████╗ ██�   ██╗███�  ██�
-██║██╔══██╗██╔════╝██╔══██╗██╔══██╗██║    ██║████╗  ██�
-██║██████╔╝███████╗██████╔╝███████║██║ █╗ ██║██╔██�██�
-██║██╔═══╝ ╚════██║██╔═══�██╔══██║██║███╗██║██║╚██╗██║
-██║██║     ███████║██�    ██� ██║╚███╔███╔╝██║ ╚████║
-╚═╝╚═╝     ╚══════╝╚═�    ╚═� ╚═�╚══╝╚══╝ ╚═� ╚═══�\"
+██ ██████  ███████ ██████  ███████ ██     ██ ███    ██
+██ ██   ██ ██      ██   ██ ██   ██ ██     ██ ████   ██
+██ ██████  ███████ ██████  ███████ ██  █  ██ ██ ██  ██
+██ ██           ██ ██      ██   ██ ██ ███ ██ ██  ██ ██
+██ ██      ███████ ██      ██   ██  ███ ███  ██   ████\"
+
 echo \"\"\n";
 
 $script="
@@ -156,25 +157,30 @@ $script="
 option=\"master\"
 
 # Vérification du statut de l\'utilisateur qui lance le script
-if [ \$statut != root ]
-then
- 	echo \"\"
- 	echo \"Vous n\'avez pas les droits nécéssaires, contactez votre administrateur ..\"
- 	echo \"\"
- 	sleep 1
- 	exit
-elif [ \$statut = root ]
-then
-  # Mise � jour
-  apt-get -y update
-  apt-get -y upgrade
+function begin() {
+  statut=$('whoami')
+  # Vérification des droits de l'exécuteur du script
+  if [ \"\$statut\" != root ]
+  then
+    echo \"Vous n'avez pas les droits nécéssaires, contactez votre administrateur ...\"
+    sleep 1
+  exit
+
+  elif [ \"\$statut\" = root ]
+  then
+    apt-get -y update
+    apt-get -y upgrade
+  fi
+}
+
+begin
 
   # Installation des paquets nécéssaires
   apt-get -y install bind9
   apt-get -y install dnsutils
 
   echo \"\"
-  echo \"---------- Fin de l\'installation ----------\"
+  echo \"---------- Fin de l'installation ----------\"
   echo \"\"
   sleep 2
   echo \"---------- Début de la configuration ---------\"
@@ -182,10 +188,10 @@ then
 
   # Mise en place des variables de configuration
   exist=\"\$(grep search /etc/resolv.conf)\"
-  ipexist=\"\$(grep \$ip /etc/resolv.conf)\"
-  reverse=\"\$(echo \$ip | awk -F. \'{print \$3\".\"\$2\".\"\$1}\')\"
-  zonexist=\"\$(grep \$domain /etc/bind/named.conf.local)\"
-  reversexist=\"\$(grep \$reverse /etc/bind/named.conf.local)\"
+  ipexist=\"\$(grep \"\$ip\" /etc/resolv.conf)\"
+  reverse=\"\$(echo \$ip | awk -F. '{print \$3\".\"\$2\".\"\$1}')\"
+  zonexist=\"\$(grep \"\$domain\" /etc/bind/named.conf.local)\"
+  reversexist=\"\$(grep \"\$reverse\" /etc/bind/named.conf.local)\"
   conf_exist=\"\$(grep \"listen-on { any; };\" /etc/bind/named.conf.options)\"
 
   # Modification du fichier hosts
@@ -237,21 +243,21 @@ file \"/etc/bind/db.\$reverse.in-addr.arpa\";
   # problème de tabulation
   if [ -z \"\$conf_exist\" ]
   then
-    sed -i \'25d\' /etc/bind/named.conf.options
+    sed -i 25d /etc/bind/named.conf.options
     echo -e \"	listen-on { any; };\n};\" >> /etc/bind/named.conf.options
   else
     : ne fais rien
   fi
 
   # Création des fichiers des enregistrements
-  touch /etc/bind/db.\$domain
+  touch /etc/bind/db.\$domain_name
   touch /etc/bind/db.\$reverse.in-addr.arpa
 
   # Contenu du fichier d\'enregistrement
 
-   echo \"
-     \$TTL 86400
-     @	IN	SOA	\$domain. root.\$domain. (
+   echo -e \"
+     \"\\\$TTL\" 86400
+     @	IN	SOA	\$domain root.\$domain (
      				\$ttl
      				21600
      				3600
@@ -261,9 +267,9 @@ file \"/etc/bind/db.\$reverse.in-addr.arpa\";
      \" >>/etc/bind/db.\$domain
 
      # La partie des enregistrements en reverse
-     echo \"
-     \$TTL 86400
-     @	IN	SOA	\$domain. root.\$domain. (
+     echo -e \"
+     \"\\\$TTL\" 86400
+     @	IN	SOA	\$domain root.\$domain (
      				\$ttl
      				21600
      				3600
@@ -276,7 +282,7 @@ file \"/etc/bind/db.\$reverse.in-addr.arpa\";
 
      for (( i=0; i<\$num_columns; i+=3 ))
      do
-      cuted_ip=\"\$(echo \"\${test_resolution[\$i+2]}\" | awk -F. \'{print \$4}\')\"
+      cuted_ip=\"\$(echo \"\${test_resolution[\$i+2]}\" | awk -F. '{print \$4}')\"
      	value=\"\${test_resolution[\$i+1]}\"
 
      	if [ \"\$value\" == \"NS\" ]
@@ -295,12 +301,11 @@ file \"/etc/bind/db.\$reverse.in-addr.arpa\";
      	fi
      done
      # Redémarage des services
-     `sudo service bind9 restart`
-     `sudo service networking restart`
+     `service bind9 restart`
+     `service networking restart`
      echo \"\"
-     echo \"---------- Fin de la configuration ----------\\\"
-     sleep 2
-      ";
+     echo \"---------- Fin de la configuration ----------\"
+     sleep 2";
 
       #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
       $new_script = $firstline  . $domain_name . $master_name . $master_ip . $num_columns . $zone . $script . $rm;
