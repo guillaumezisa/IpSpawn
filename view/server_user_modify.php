@@ -14,7 +14,7 @@
             <div class="col-sm-6">
               <div class="card text-center text-white bg-success">
                 <div class="card-header">
-                  <strong><h4>Modifier le(s) nom(s) d'utilisateur(s)</h4></strong>
+                  <strong><h4>Modification de(s) nom(s) d'utilisateur(s)</h4></strong>
                 </div>
                 <div class="card-body ">
                   <h5 class="card2">Si vous souhaitez modifier le(s) nom(s) d'utilisateur(s).</h5><br><br><br>
