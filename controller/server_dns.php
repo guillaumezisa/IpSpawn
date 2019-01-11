@@ -133,8 +133,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     #CRÉATION DE VARIABLES IMPORTANTES POUR ISOLER PHP & BASH-----------------
 
     #GÉNÉRATION DU SCRIPT-----------------------------------------------------
-      $firstline = "
-#!/bin/bash
+      $firstline = "#!/bin/bash
 #-------------------------------------------------------------------------
 #SCRIPT D'INSTALATION D'UN SERVEUR DNS
 #-------------------------------------------------------------------------

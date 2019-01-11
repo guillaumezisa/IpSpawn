@@ -30,8 +30,7 @@ include("../view/guide_execution.php");
       $path = $_GET['zone'];
 
       #GÉNÉRATION DU SCRIPT-----------------------------------------------------
-      $firstline = "
-#!/bin/bash
+      $firstline = "#!/bin/bash
 #-------------------------------------------------------------------------
 #SCRIPT D'INSTALATION D'UN SERVEUR SAMBA
 #V.1.3

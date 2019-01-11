@@ -44,8 +44,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     $group = '${group[$y]}';
 
     #GÉNÉRATION DU SCRIPT-------------------------------------------------------
-    $firstline = "
-#!/bin/bash
+    $firstline = "#!/bin/bash
 #---------------------------------------------------------------------------
 #SCRIPT DE SUPPRESSION D'UTILISATEURS généré dans le serveur samba
 #V.1
