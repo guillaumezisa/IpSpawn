@@ -149,7 +149,7 @@ then
     # Création de la base de donnée à exploiter
     sudo mysql -u root << EOF
     CREATE DATABASE messagerie;
-    EOF
+EOF
 
     # Création des différentes tables
     sudo mysql -u root messagerie << EOF
@@ -158,7 +158,7 @@ then
     name VARCHAR(50) NOT NULL,
     PRIMARY KEY (id)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-    EOF
+EOF
 
     sudo mysql -u root messagerie << EOF
     CREATE TABLE users (
@@ -171,13 +171,13 @@ then
     UNIQUE KEY email  (email),
     FOREIGN KEY (domain_id) REFERENCES domains(id) ON DELETE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-    EOF
+EOF
   fi
 
   # Récupération des informations des nouveaux utilisateurs du service de messagerie
   sudo mysql -u root messagerie << EOF
   INSERT INTO domains VALUES ('', '".$domain."');
-  EOF
+EOF
 
   touch /etc/postfix/generic
 
