@@ -221,7 +221,7 @@ begin
 echo \"
 zone \"\$domain\" {
 type \$option;
-file \"/etc/bind/db.\$domain\";
+file \\\"/etc/bind/db.\$domain\\\";
  };\" >>/etc/bind/named.conf.local
   else
     : ne fais rien
@@ -233,7 +233,7 @@ file \"/etc/bind/db.\$domain\";
 echo \"
 zone \"\$reverse.in-addr.arpa\" {
 type \$option;
-file \"/etc/bind/db.\$reverse.in-addr.arpa\";
+file \\\"/etc/bind/db.\$reverse.in-addr.arpa\\\";
 };\" >>/etc/bind/named.conf.local
   else
     : ne fais rien
@@ -255,9 +255,7 @@ file \"/etc/bind/db.\$reverse.in-addr.arpa\";
 
   # Contenu du fichier d\'enregistrement
 
-   echo -e \"
-     \"\\\$TTL\" 86400
-     @	IN	SOA	\$domain root.\$domain (
+   echo -e \"\"\\\$TTL\" 86400\n@	IN	SOA	\$domain root.\$domain (
      				\$ttl
      				21600
      				3600
@@ -267,9 +265,7 @@ file \"/etc/bind/db.\$reverse.in-addr.arpa\";
      \" >>/etc/bind/db.\$domain
 
      # La partie des enregistrements en reverse
-     echo -e \"
-     \"\\\$TTL\" 86400
-     @	IN	SOA	\$domain root.\$domain (
+     echo -e \"\"\\\$TTL\" 86400\n@ IN SOA \$domain root.\$domain (
      				\$ttl
      				21600
      				3600
@@ -291,10 +287,10 @@ file \"/etc/bind/db.\$reverse.in-addr.arpa\";
      		echo -e \"@	IN	\${test_resolution[\$i+1]}	\${test_resolution[\$i+2]} \">>/etc/bind/db.\$reverse.in-addr.arpa
      	elif [ \"\$value\" == \"MX\" ]
      	then
-     		echo -e \"@	IN	\${test_resolution[\$i+1]}	\${test_resolution[\$i+2]} \">>/etc/bind/db.\$domain
+     		echo -e \"@	IN	\${test_resolution[\$i+1]}	\${test_resolution[\$i+2]} mail.\$domain\">>/etc/bind/db.\$domain
      	elif [ \"\$value\" == \"CNAME\" ]
      	then
-     		echo -e \"\${test_resolution[\$i]}	IN	CNAME	\${test_resolution[\$i+2]} \">>/etc/bind/db.\$domain
+     		echo -e \"\${test_resolution[\$i+2]}	IN	CNAME	\${test_resolution[\$i]} \">>/etc/bind/db.\$domain
      	else
      		echo -e \"\${test_resolution[\$i]}		IN	\${test_resolution[\$i+1]}	\${test_resolution[\$i+2]} \">>/etc/bind/db.\$domain
      		echo -e \"\$cuted_ip	IN	PTR	\${test_resolution[\$i+2]} \">>/etc/bind/db.\$reverse.in-addr.arpa
@@ -308,7 +304,7 @@ file \"/etc/bind/db.\$reverse.in-addr.arpa\";
      sleep 2";
 
       #RASSEMBLEMENT DES VARIABLES & CREATION DU SCRIPT-------------------------
-      $new_script = $firstline  . $domain_name . $master_name . $master_ip . $num_columns . $zone . $script . $rm;
+      $new_script = $firstline  . $domain_name . $master_name . $master_ip . $num_columns . $ttl . $zone . $script . $rm;
       $file = fopen($file_path, 'w+');
       fputs($file,$new_script);
 
