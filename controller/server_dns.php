@@ -256,9 +256,9 @@ file \"/etc/bind/db.\$reverse.in-addr.arpa\";
   # Contenu du fichier d\'enregistrement
 
    echo -e \"
-     \"\\\$TTL\" 86400
+     \"\\\$TTL\" \$ttl
      @	IN	SOA	\$domain root.\$domain (
-     				\$ttl
+     				201901
      				21600
      				3600
      				64800
@@ -268,9 +268,9 @@ file \"/etc/bind/db.\$reverse.in-addr.arpa\";
 
      # La partie des enregistrements en reverse
      echo -e \"
-     \"\\\$TTL\" 86400
+     \"\\\$TTL\" \$ttl
      @	IN	SOA	\$domain root.\$domain (
-     				\$ttl
+     				201902
      				21600
      				3600
      				64800
