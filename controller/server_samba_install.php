@@ -127,7 +127,7 @@ then
     chmod -R 770 ".$path."/".$dossier."
     echo -e \"[".$dossier."]\n  comment = Dossier du group ".$group."\n path = ".$path."/".$dossier."\n log file = /var/log/samba/log.".$dossier."\n  max log size = 100\n  hide dot files = yes\n  guest ok = no\n guest only = no\n write list = @".$group."\n  read list = \n  valid users = @".$group."\n\"  >> /etc/samba/smb.conf
   done
-  systemctl restart smbd
+  systemctl restart samba
 fi
 ";
       }
