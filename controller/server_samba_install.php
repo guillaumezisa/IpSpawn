@@ -73,8 +73,8 @@ then
   # Installation des paquets samba
   sudo apt-get -y install samba
   sudo apt-get -y install samba-common-bin
-  cp /etc/samba/smb.conf /etc/samba/smb.conf_backup
-  grep -v -E \"^#|^;\" /etc/samba/smb.conf_backup | grep . > /etc/samba/smb.conf
+  cp /etc/samba/smb.conf /etc/samba/smb.conf.save
+  grep -v -E \"^#|^;\" /etc/samba/smb.conf.save | grep . > /etc/samba/smb.conf
   systemctl restart smbd
   mkdir ".$path."
   mkdir ".$path."/commun
@@ -106,7 +106,7 @@ then
       $password ='${password[$y]}';
       $group = '${group[$y]}';
       $dossier = '${dossier[$y]}';
-      
+
   $script2="
   for ((y=0;y<".$nb.";y++))
   do
