@@ -11,6 +11,7 @@
       <div class="ml-2"><center>
         <div class="container">
           <?php
+
             include("../view/guide_user.php");
           ?>
           <div class="row">
@@ -20,7 +21,7 @@
                   <strong><h4>Ajout d'utilisateur(s)</h4></strong>
                 </div>
                 <div class="card-body ">
-                  <h5 class="card3 ">L'ajout d'utilisateur(s) est la première étape pour permettre à d'autres personnes l'accès au serveur.</h5>
+                  <h5 class="card4 ">L'ajout d'utilisateur(s) est la première étape pour permettre à d'autres personnes l'accès au serveur.</h5>
                 </div>
                 <div class="card-footer text-muted">
                   <a class="btn btn-dark" href="../controller/redirection.php?action=user&under_action=add">Ajouter</a>
@@ -33,7 +34,7 @@
                   <strong><h4>Suppression d'utilisateur(s)</h4></strong>
                 </div>
                 <div class="card-body ">
-                  <h5 class="card3">Si vous avez créer des utilisateurs que vous souhaitez supprimer.</h5><br>
+                  <h5 class="card4">Si vous avez créer des utilisateurs que vous souhaitez supprimer.</h5><br>
                 </div>
                 <div class="card-footer text-muted">
                   <a class="btn btn-dark" href="../controller/redirection.php?action=user&under_action=del">Supprimer</a><br>
@@ -46,7 +47,7 @@
                   <strong><h4>Modification d'utilisateur(s)</h4></strong>
                 </div>
                 <div class="card-body ">
-                  <h5 class="card3">Si vous souhaitez modifier le(s) nom(s) ou mot(s) de passe d'utilisateur(s).
+                  <h5 class="card4">Si vous souhaitez modifier le(s) nom(s) ou mot(s) de passe d'utilisateur(s).
                   </h5>
                 </div>
                 <div class="card-footer text-muted">
