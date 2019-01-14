@@ -9,7 +9,7 @@
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="group">
         <input type="hidden" name="under_action" value="mod_name_gen">
-        <button class="btn btn-dark" onclick="append(event)" id="new">Ajouter un groupe</button>
+        <button class="btn btn-dark" onclick="append(event)" id="new">Modifier un groupe</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier groupe</button><br><br></div>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
         <input type="hidden" name="email" value="" />

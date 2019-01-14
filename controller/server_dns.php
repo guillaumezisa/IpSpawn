@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
-    <h3><strong>Gestion du serveur DNS</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Bo�te � outils</a>
+    <h3><strong>Installation d'un serveur DNS</strong></h3>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Bo�te � outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -143,7 +143,7 @@ echo \"\"
 echo \"
 ██ ██████  ██████ ██████  ██████  ██    ██ ██     ██
 ██ ██   ██ ██     ██   ██ ██   ██ ██    ██ ████   ██
-██ ██████  ██████ ██████  ██████�██    ██ ██ ██  ██
+██ ██████  ██████ ██████  ██████  ██    ██ ██ ██  ██
 ██ ██          ██ ██      ██   ██ ██ ██ ██ ██  ██ ██
 ██ ██      ██████ ██      ██   ██  ██  ██  ██   ████
 \"
@@ -206,7 +206,7 @@ begin
     sed -i -r \"/search.*/a \domain \$domain\" /etc/resolv.conf
   fi
 
-  # Je vérifie que le nameserver n'ai pas déj� été rentré
+  # Je vérifie que le nameserver n'ai pas déj� été rentré
   if [ -z \"\$ipexist\" ]
   then
     cp /etc/resolv.conf /etc/resolv.conf.backup
@@ -216,7 +216,7 @@ begin
   else
    	: ne fais rien
   fi
-  # Je vérifie que les zones n\'aient pas déj� été créées
+  # Je vérifie que les zones n\'aient pas déj� été créées
   if [ -z \"\$zonexist\" ]
   then
 echo \"

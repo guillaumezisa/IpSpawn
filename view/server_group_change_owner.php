@@ -1,6 +1,6 @@
 <main role="main"><center>
   <div class="container"><br>
-    <h3><strong>Modification des propriétaires de fichier / répertoires</strong></h3>
+    <h3><strong>Modification des propriétaires des fichiers / répertoires</strong></h3>
     <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>

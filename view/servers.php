@@ -70,14 +70,14 @@
                <div class="col-sm-4">
                  <div class="card text-center text-white bg-dark">
                    <div class="card-header bg-dark">
-                     <strong><h4>Configuration Ip Fixe</h4></strong>
+                     <strong><h4>Configuration IP Fixe</h4></strong>
                    </div>
                    <div class="card-body bg-secondary">
-                     <h5 class="card4"><bold>Configuration d'une ip fixe et de la résolution de noms.</bold>
+                     <h5 class="card4"><bold>Configuration d'une IP fixe et de la résolution de noms.</bold>
                      </h5>
                    </div>
                    <div class="card-footer bg-dark">
-                     <a class="btn btn-secondary" href="../controller/redirection.php?action=ip_static">IpFixe</a>
+                     <a class="btn btn-secondary" href="../controller/redirection.php?action=ip_static">IP fixe</a>
                    </div>
                  </div>
                </div>
