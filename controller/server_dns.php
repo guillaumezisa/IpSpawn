@@ -192,7 +192,6 @@ begin
   zonexist=\"\$(grep \"\$domain\" /etc/bind/named.conf.local)\"
   reversexist=\"\$(grep \"\$reverse\" /etc/bind/named.conf.local)\"
   conf_exist=\"\$(grep \"listen-on { any; };\" /etc/bind/named.conf.options)\"
-
   # Modification du fichier hosts
   sed -i -r \"2s/.*/\$ip	\$hostname/g\" /etc/hosts
 
@@ -207,10 +206,13 @@ begin
     sed -i -r \"/search.*/a \domain \$domain\" /etc/resolv.conf
   fi
 
-  # Je vérifie que le nameserver n\'ai pas déj� été rentré
+  # Je vérifie que le nameserver n'ai pas déjà été rentré
   if [ -z \"\$ipexist\" ]
   then
-    sed -i -r \"/search.*/a \\nameserver \$ip\" /etc/resolv.conf
+    cp /etc/resolv.conf /etc/resolv.conf.backup
+    sed -i 'd' /etc/resolv.conf
+    echo -e \"nameserver \$ip\" >> /etc/resolv.conf
+    cat /etc/resolv.conf.backup >> /etc/resolv.conf
   else
    	: ne fais rien
   fi
