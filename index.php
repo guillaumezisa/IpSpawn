@@ -9,7 +9,7 @@
            <p class="lead text-muted">IpSpawn rassemble une boîte à outils de Découpage de plage, de conversion binaire à décimal ainsi que la mise en place de services sur un serveur debian 9.</p>
          <p>
            <a href="controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte à outils</a>
-           <a href="controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur Debian 9</a
+           <a href="controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a
              <?php
               echo '${user[$y]}' ;
              ?>
