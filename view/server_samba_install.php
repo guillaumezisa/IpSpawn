@@ -37,7 +37,7 @@
         <input type="hidden" name="under_action" value="install_gen">
         <h4><strong>Configuration de la zone de partage commune à tous les utilisateurs</strong></h4><br>
 		<label for="zone"><strong>Veuillez entrer un chemin vers un dossier commun à tous :</strong></label><input type="text" name="zone" maxlength="50" required value="" /><br/><br>
-        <h4><strong>Configuration des utilisateurs</strong></h4><br>
+        <h4><strong>Gestion des sous-dossiers</strong></h4><br>
         <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un sous-dossier</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier dossier</button><br><br>
         </div>
