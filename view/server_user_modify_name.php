@@ -1,6 +1,6 @@
 <main role="main"><center>
   <div class="container"><br>
-    <h3><strong>Modification de nom(s) d'utilisateur(s)</strong></h3>
+    <h3><strong>Modification(s) de(s) nom(s) d'utilisateur(s)</strong></h3>
     <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte à outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
@@ -9,7 +9,7 @@
       <form action="../controller/redirection.php" method="GET">
         <input type="hidden" name="action" value="user">
         <input type="hidden" name="under_action" value="mod_name_gen">
-        <button class="btn btn-dark" onclick="append(event)" id="new"<button>Ajouter un utilisateur</button>
+        <button class="btn btn-dark" onclick="append(event)" id="new"<button>Modifier un utilisateur</button>
         <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier utilisateur</button><br><br>
     </div>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>

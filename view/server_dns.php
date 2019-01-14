@@ -24,7 +24,7 @@ label
 		<table style='border-collapse: collapse;'>
 		  <tr>
 		    <th ><label for="domain"><strong><center>Nom du domaine :</center></strong></label></th>
-		    <th ><label for="master"><strong><center>Nom de la machine master :</center></strong></label></th>
+		    <th ><label for="master"><strong><center>Hostname :</center></strong></label></th>
 		    <th ><label for="private_ip"><strong><center>IP privée de la machine master :</center></strong></label></th>
 			<th ><label for="ttl"><strong><center>TTL :</center></strong></label></th>
 		  </tr>
@@ -36,8 +36,8 @@ label
 		  </tr>
 		</table><br>
         <h4><strong>Configuration de vos zones</strong></h4><br>
-        <button class="btn btn-dark" onclick="append(event)" onkeyup="cancel(this.key)" id="new">Ajouter une machine</button>
-        <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer la dernière machine</button><br><br>
+        <button class="btn btn-dark" onclick="append(event)" onkeyup="cancel(this.key)" id="new">Ajouter un enregistrement</button>
+        <button class="btn btn-dark" onclick="rm_last_div(event)">Supprimer le dernier enregistrement</button><br><br>
         <div id="JS"></div>
 		</div><center>
         <h6><input type="checkbox" name="auto_destruction" value= "yes" > Détruire le script à la fin de l'exécution (Conseillé)</h6>
