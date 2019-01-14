@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Gestion du serveur DNS</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte à outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte � outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -143,7 +143,7 @@ echo \"\"
 echo \"
 ██ ██████  ██████ ██████  ██████  ██    ██ ██     ██
 ██ ██   ██ ██     ██   ██ ██   ██ ██    ██ ████   ██
-██ ██████  ██████ ██████  ███████ ██    ██ ██ ██  ██
+██ ██████  ██████ ██████  ██████�██    ██ ██ ██  ██
 ██ ██          ██ ██      ██   ██ ██ ██ ██ ██  ██ ██
 ██ ██      ██████ ██      ██   ██  ██  ██  ██   ████
 \"
@@ -192,7 +192,6 @@ begin
   zonexist=\"\$(grep \"\$domain\" /etc/bind/named.conf.local)\"
   reversexist=\"\$(grep \"\$reverse\" /etc/bind/named.conf.local)\"
   conf_exist=\"\$(grep \"listen-on { any; };\" /etc/bind/named.conf.options)\"
-
   # Modification du fichier hosts
   sed -i -r \"2s/.*/\$ip	\$hostname/g\" /etc/hosts
 
@@ -207,14 +206,17 @@ begin
     sed -i -r \"/search.*/a \domain \$domain\" /etc/resolv.conf
   fi
 
-  # Je vérifie que le nameserver n\'ai pas déjà été rentré
+  # Je vérifie que le nameserver n'ai pas déj� été rentré
   if [ -z \"\$ipexist\" ]
   then
-    sed -i -r \"/search.*/a \\nameserver \$ip\" /etc/resolv.conf
+    cp /etc/resolv.conf /etc/resolv.conf.backup
+    sed -i 'd' /etc/resolv.conf
+    echo -e \"nameserver \$ip\" >> /etc/resolv.conf
+    cat /etc/resolv.conf.backup >> /etc/resolv.conf
   else
    	: ne fais rien
   fi
-  # Je vérifie que les zones n\'aient pas déjà été créées
+  # Je vérifie que les zones n\'aient pas déj� été créées
   if [ -z \"\$zonexist\" ]
   then
 echo \"

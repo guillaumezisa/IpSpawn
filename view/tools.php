@@ -1,7 +1,7 @@
    <main role="main">
 
        <center><div class="container">
-          <br><center><h3><strong>Boite à outils</strong></h3></center>
+          <br><center><h3><strong>Boîte à outils</strong></h3></center>
           <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte à outils</a>
           <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
          </p>
