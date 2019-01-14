@@ -1,7 +1,7 @@
 <main role="main"><center>
   <div class="container"><br>
     <h3><strong>Gestion du serveur DNS</strong></h3>
-    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte à outils</a>
+    <a href="../controller/redirection.php?enter=tools" class="btn btn-success my-2">Boîte � outils</a>
     <a href="../controller/redirection.php?enter=servers" class="btn btn-primary my-2">Gestion de serveur(s) Debian 9</a>
   </div>
   <section class="jumbotron ">
@@ -34,7 +34,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     $num_columns=$nb*3;
     $num_columns="num_columns=".$num_columns."\n";
     $ttl="ttl=".$_GET['ttl']."\n";
-    
+
     #CONCATENATION DE TABLEAUX BASH---------------------------------------------
     $count=0;
     $y=0;
@@ -91,7 +91,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
       }
       $liste = explode(" ", $zone);
       $trigger = false;
-      
+
       while($trigger === false){
         $trigger = true;
         for($i=4;$i<count($liste);$i=$i+3){
@@ -143,7 +143,7 @@ echo \"\"
 echo \"
 ██ ██████  ██████ ██████  ██████  ██    ██ ██     ██
 ██ ██   ██ ██     ██   ██ ██   ██ ██    ██ ████   ██
-██ ██████  ██████ ██████  ███████ ██    ██ ██ ██  ██
+██ ██████  ██████ ██████  ██████�██    ██ ██ ██  ██
 ██ ██          ██ ██      ██   ██ ██ ██ ██ ██  ██ ██
 ██ ██      ██████ ██      ██   ██  ██  ██  ██   ████
 \"
@@ -198,7 +198,7 @@ begin
   # Modifications du fichier resolv.conf
   sed -i -r \"s/search.*/search \$domain/g\" /etc/resolv.conf
 
-  # Je vérifie si la section domain exite, sinon je l\'ajoute
+  # Je vérifie si la section domain existe, sinon je l\'ajoute
   if [ ! -z \"\$exist\" ]
   then
     sed -i -r \"s/domain.*/domain \$domain/g\" /etc/resolv.conf
@@ -206,7 +206,7 @@ begin
     sed -i -r \"/search.*/a \domain \$domain\" /etc/resolv.conf
   fi
 
-  # Je vérifie que le nameserver n'ai pas déjà été rentré
+  # Je vérifie que le nameserver n'ai pas déj� été rentré
   if [ -z \"\$ipexist\" ]
   then
     cp /etc/resolv.conf /etc/resolv.conf.backup
@@ -216,7 +216,7 @@ begin
   else
    	: ne fais rien
   fi
-  # Je vérifie que les zones n\'aient pas déj� été créées
+  # Je vérifie que les zones n\'aient pas déj� été créées
   if [ -z \"\$zonexist\" ]
   then
 echo \"

@@ -37,7 +37,7 @@
     div.setAttribute('class','allDivs');
     var input_a = document.createElement('input');
     var br = document.createElement('br');
-    var text_a = document.createTextNode(' Nom de l\'utilisateur : ')
+    var text_a = document.createTextNode(' Nom du groupe : ')
     input_a.type = "text";
     input_a.name ="groupname[]";
     input_a.pattern = "^[\(\)a-zA-Z0-9,-_ ]{0,}$";
