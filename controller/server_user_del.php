@@ -42,8 +42,7 @@ if(isset($_GET['action']) && isset($_GET['under_action'])){
     $root='"root"';
 
     #GÉNÉRATION DU SCRIPT-------------------------------------------------------
-    $firstline = "
-#!/bin/bash
+    $firstline = "#!/bin/bash
 #-------------------------------------------------------------------------------
 #SCRIPT DE SUPPRESSION D'UTILISATEURS généré par IpSpawn.com
 #V.1.2
