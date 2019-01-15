@@ -178,8 +178,14 @@ EOF
   sudo mysql -u root messagerie << EOF
   INSERT INTO domains VALUES ('', '".$domain."');
 EOF
-
+  
+  sudo chmod 777 /var/mail
   touch /etc/postfix/generic
+
+  sudo mysql -u root messagerie -e \"INSERT INTO users VALUES ('', 1, PASSWORD('".$passwrd_admin."'), '".$name_admin."@".$domain."', '".$domain."/".$name_admin."');\"
+  echo -e \"".$name_admin."@".$hostname.".".$domain."  ".$name_admin."@".$domain."\\n\" >> /etc/postfix/generic
+  mkdir /var/mail/".$name_admin."
+  echo \"L'utilisateur ".$name_admin." a bien été ajouté.\"
 
   for ((y=0;y<".$nb.";y++))
   do
@@ -193,6 +199,7 @@ EOF
       #AJOUT DES UTILISATEURS NON-EXISTANT
       sudo mysql -u root messagerie -e \"INSERT INTO users VALUES ('', 1, PASSWORD('".$password."'), '".$user."@".$domain."', '".$domain."/".$user."');\"
       echo -e \"".$user."@".$hostname.".".$domain."  ".$user."@".$domain."\\n\" >> /etc/postfix/generic
+      mkdir /var/mail/".$user."
       echo \"L'utilisateur ".$user." a bien été ajouté.\"
     fi
     rm tmp.txt

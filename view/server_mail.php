@@ -35,7 +35,7 @@
 		    	<th><label for="name_admin"><strong>    Nom Admin :</strong></label></th>
 		    	<th><label for="passwrd_admin"><strong> Mot de passe Admin :</strong></label></th>
 		    	<th><label for="domain"><strong>  		Nom de domaine :</strong></label></th>
-					<th><label for="hostname"><strong>		Nom de la machine :</strong></label></th>
+					<th><label for="hostname"><strong>		Hostname :</strong></label></th>
 				</tr>
 				<tr>
 				  <th><input type="text" name="name_admin" maxlength="50" required /></th>
