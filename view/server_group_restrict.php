@@ -59,8 +59,8 @@
     var br5 = document.createElement('br');
     var br6 = document.createElement('br');
     var text_q = document.createTextNode(' Commande : ');
-    var text_mdp = document.createTextNode(' Les membres du groupes devront entrer le mot de passe pour utiliser cette commande : ');
-    var text_exe = document.createTextNode(' La commande ne pourra pas être exécuter par les membres du groupe : ');
+    var text_mdp = document.createTextNode(' Cette commande nécéssite un passord ? ');
+    var text_exe = document.createTextNode(' Cette commande sera t\'elle éxécutable ? ');
     var text_a = document.createTextNode(' Oui: ');
     var text_b = document.createTextNode(' Non: ');
     var text_c = document.createTextNode(' Oui: ');

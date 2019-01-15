@@ -73,9 +73,9 @@ if [ $(whoami) == ".$root." ];then
     if grep \"^".$group.":\" /etc/group > /dev/null;
     then
       #SUPPRESSION DU GROUPE----------------------------------------------------
-      groupdel ".$group."\n
+      groupdel -f ".$group."\n
     else
-      echo Le groupe n'existe pas.
+      echo Le groupe n\'existe pas.
     fi
   done
 else

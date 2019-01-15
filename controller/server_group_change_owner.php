@@ -78,7 +78,7 @@ if [ $(whoami) == ".$root." ];then
     if [ [\"-f ".$path." || -d ".$path." \"] ];
     then
       chown ".$R." ".$user.":".$group." ".$path."
-      Le fichier ou le dossier a bien été modifié
+      echo Le fichier ou le dossier a bien été modifié
     else
       echo Le fichier ou le dossier est introuvable
     fi
