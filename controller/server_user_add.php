@@ -80,6 +80,7 @@ if [ $(whoami) == ".$root." ];then
       useradd -m -d /home/".$user." -s /bin/bash ".$user."
       echo ".$user.":".$pass."| chpasswd
       groupdel -f  ".$user."
+      echo Vous avez bien rajouter un utilisateur
     fi
   done
 else
