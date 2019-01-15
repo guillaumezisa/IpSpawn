@@ -22,7 +22,7 @@
                   <h5 class="card2"><br>Attention:<br>Supprime définitivement tous les réglages du sudoers.<br><br></h5>
                 </div>
                 <div class="card-footer text-muted">
-                  <a class="btn btn-secondary" href="../controller/redirection.php?action=group&under_action=mod_reset_gen">Réinitialiser</a><br>
+                  <a class="btn btn-dark" href="../controller/redirection.php?action=group&under_action=mod_reset_gen">Réinitialiser</a><br>
                 </div>
               </div>
             </div>
