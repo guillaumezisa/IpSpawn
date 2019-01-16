@@ -12,4 +12,5 @@ include('../view/header.php');
 <img src='../style/images/rage.gif'>
 <img src='../style/images/y.gif'>
 <img src='../style/images/dickbutt'>
+<img src='../style/images/o.gif'>
 </center>
