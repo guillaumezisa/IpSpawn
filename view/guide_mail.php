@@ -3,12 +3,12 @@
     <h5 style='margin-left:10%'>
       Un serveur mail vous permettra d'envoyer et de recevoir des mails<br>
       de n'importe ou en passant par le serveur.<br><br>
-      Pour que l'installation soit un succès vous devrez ouvrir certain port via la configuration <br>
-      de votre routeur ( option transfèrt de ports ),
-      ouvrir les ports 25 ( smtp ) et 143 ( imap ),<br>
-      permettant l'envoie de mail de l'autre bout du monde.<br><br>
-      Il faut également mettre en place un serveur dns ( enregistrement MX )<br>
+      <font color='red'>Pour que l'installation soit un succès il faut crée un enregistrement MX dans le DNS</font><br>
       de manière a bien rediriger les mails vers le serveur mail.<br><br>
+      Il faut également ouvrir certains ports via la configuration <br>
+      de votre routeur ( option transfèrt de ports ),
+      ouvrir les ports <font color='red'>25</font> ( smtp ) et <font color='red'>143</font> ( imap ),<br>
+      permettant l'envoie de mail de l'autre bout du monde.<br><br>
     </h5>
   </div>
 </div><center>

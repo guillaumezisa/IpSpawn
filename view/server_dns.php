@@ -29,10 +29,10 @@ label
 			<th ><label for="ttl"><strong><center>TTL :</center></strong></label></th>
 		  </tr>
 		  <tr>
-		    <th ><center><input type="text" name="domain_name" maxlength="50" required></center></th>
-		    <td ><center><input type="text" name="master_name" maxlength="50" required></center></td>
-		    <td ><center><input type="text" name="master_ip" maxlength="50" required></center></td>
-			<td ><center><input type="text" name="ttl" maxlength="50" required></center></td>
+		    <th ><center><input type="text" name="domain_name" maxlength="50" placeholder="domainname.com" required></center></th>
+		    <td ><center><input type="text" name="master_name" maxlength="50" placeholder="hostname" required></center></td>
+		    <td ><center><input type="text" name="master_ip" maxlength="50" placeholder="0.0.0.0" required></center></td>
+			<td ><center><input type="text" name="ttl" maxlength="50" placeholder="0" required></center></td>
 		  </tr>
 		</table><br>
         <h4><strong>Configuration de vos zones</strong></h4><br>
