@@ -38,10 +38,10 @@
 					<th><label for="hostname"><strong>		Hostname :</strong></label></th>
 				</tr>
 				<tr>
-				  <th><input type="text" name="name_admin" maxlength="50" required /></th>
-				  <td><input type="password" name="passwrd_admin" maxlength="50" required /></td>
+				  <th><input type="text" name="name_admin" maxlength="50" placeholder="admin" required /></th>
+				  <td><input type="password" name="passwrd_admin" maxlength="50" placeholder="motdepasse" required /></td>
 				  <td><input type="text" name="domain" maxlength="50" placeholder="exemple.com." required /></td>
-					<td><input type="text" name="hostname" maxlength="50" required /></td>
+					<td><input type="text" name="hostname" maxlength="50" placeholder="debian" required /></td>
 				</tr>
 
 		</table><br>

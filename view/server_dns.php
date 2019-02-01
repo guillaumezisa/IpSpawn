@@ -31,7 +31,7 @@ label
 		  <tr>
 		    <th ><center><input type="text" name="domain_name" maxlength="50" placeholder="domainname.com" required></center></th>
 		    <td ><center><input type="text" name="master_name" maxlength="50" placeholder="hostname" required></center></td>
-		    <td ><center><input type="text" name="master_ip" maxlength="50" placeholder="0.0.0.0" required></center></td>
+		    <td ><center><input type="text" name="master_ip" maxlength="50" placeholder="192.168.1.0" required></center></td>
 			<td ><center><input type="text" name="ttl" maxlength="50" placeholder="0" required></center></td>
 		  </tr>
 		</table><br>
